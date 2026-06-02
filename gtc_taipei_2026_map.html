@@ -302,6 +302,40 @@
   }
   .reset-btn:hover { background: rgba(118,185,0,0.22); }
 
+  /* 全貌 / 聚焦 切換 */
+  .mode-toggle {
+    margin-top: 10px;
+    display: inline-flex;
+    padding: 3px;
+    gap: 3px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+  }
+  .mode-toggle button {
+    font-family: var(--font-zh);
+    font-size: 12px;
+    color: var(--txt-2);
+    background: transparent;
+    border: 0;
+    padding: 5px 12px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all .15s;
+  }
+  .mode-toggle button:hover { color: var(--txt-0); }
+  .mode-toggle button.on {
+    color: #0b0f17;
+    background: var(--nv-green);
+    font-weight: 700;
+  }
+  .mode-label {
+    margin-top: 10px;
+    font-size: 11px;
+    color: var(--txt-2);
+    display: block;
+  }
+
   /* ===== 來源小字 ===== */
   .source-panel {
     background: rgba(11,15,23,0.8);
@@ -661,6 +695,33 @@ function themePositions() {
   });
 }
 
+// 各視角節點所在角度（與 audiencePositions 一致：上 右 下 左）
+const AUD_ANGLE_BY_KEY = {};
+AUDIENCES.forEach((a, i) => { AUD_ANGLE_BY_KEY[a.key] = [-90, 0, 90, 180][i]; });
+
+// 聚焦模式佈局：核心主題聚到該視角方向、靠近視角節點；非核心退到對側外圈、較散
+function focusThemePositions(audienceKey, coreSet) {
+  const angA = AUD_ANGLE_BY_KEY[audienceKey];
+  const core = [], non = [];
+  THEMES.forEach((t) => (coreSet.includes(t.id) ? core : non).push(t.id));
+  const pos = {};
+  const place = (id, deg, r) => {
+    const rad = (deg * Math.PI) / 180;
+    pos[id] = { x: CENTER.x + r * Math.cos(rad), y: CENTER.y + r * Math.sin(rad) };
+  };
+  const Rc = 600, spanC = Math.min(150, Math.max(1, core.length - 1) * 40);
+  core.forEach((id, i) => {
+    const off = core.length > 1 ? -spanC / 2 + (spanC * i) / (core.length - 1) : 0;
+    place(id, angA + off, Rc);
+  });
+  const Rn = 900, spanN = 230, angO = angA + 180;
+  non.forEach((id, i) => {
+    const off = non.length > 1 ? -spanN / 2 + (spanN * i) / (non.length - 1) : 0;
+    place(id, angO + off, Rn);
+  });
+  return THEMES.map((t) => pos[t.id]);
+}
+
 /* 各受眾的「核心主題」id —— 選了受眾後這些會點亮，其餘淡化（仍可點） */
 const AUDIENCE_CORE = {
   investor:        ['opening', 'cuda-x', 'ai-factory-dsx', 'token-economics', 'vera-rubin-production'],
@@ -677,6 +738,7 @@ function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [selectedAudience, setSelectedAudience] = useState(null);
   const [selectedTheme, setSelectedTheme] = useState(null);
+  const [focusMode, setFocusMode] = useState(false); // false=全貌, true=聚焦重點
   const rf = useReactFlow();
 
   const audPos = useMemo(audiencePositions, []);
@@ -703,25 +765,24 @@ function App() {
     style: { stroke: a.color + '66' },
   })), []);
 
-  // 初始化第 1 層
-  useEffect(() => {
-    setNodes(buildBase(null));
-    setEdges(buildBaseEdges());
-    setTimeout(() => rf.fitView({ padding: 0.25, duration: 400 }), 60);
-  }, []); // eslint-disable-line
-
-  // 第 2 層：展開／切換視角
-  const expandAudience = useCallback((audienceKey) => {
-    setSelectedAudience(audienceKey);
+  // 依 selectedAudience + focusMode 重建畫布（含核心點亮、全貌/聚焦佈局）
+  const renderLayout = useCallback((audienceKey, focus) => {
+    if (!audienceKey) {
+      setNodes(buildBase(null));
+      setEdges(buildBaseEdges());
+      setTimeout(() => rf.fitView({ padding: 0.25, duration: 400 }), 60);
+      return;
+    }
     const aud = AUD_MAP[audienceKey];
-
     const coreSet = AUDIENCE_CORE[audienceKey] || [];
+    const positions = focus ? focusThemePositions(audienceKey, coreSet) : themePos;
+
     const baseNodes = buildBase(audienceKey);
     const themeNodes = THEMES.map((t, i) => {
       const isCore = coreSet.includes(t.id);
       return {
         id: 'theme-' + t.id, type: 'theme',
-        position: { x: themePos[i].x - 124, y: themePos[i].y - 60 },
+        position: { x: positions[i].x - 124, y: positions[i].y - 60 },
         data: {
           title: t.title,
           timestampDisplay: t.timestampDisplay,
@@ -740,6 +801,7 @@ function App() {
       return {
         id: 'e-aud-' + t.id, source: 'aud-' + audienceKey, target: 'theme-' + t.id,
         animated: isCore,
+        hidden: focus && !isCore, // 聚焦模式：隱藏非核心連線讓畫面更乾淨
         style: isCore
           ? { stroke: aud.color + 'cc', strokeWidth: 2.4 }
           : { stroke: 'rgba(255,255,255,0.10)', strokeWidth: 1 },
@@ -747,18 +809,25 @@ function App() {
     });
     setEdges([...buildBaseEdges(), ...themeEdges]);
 
-    setTimeout(() => rf.fitView({ padding: 0.16, duration: 600 }), 80);
+    setTimeout(() => rf.fitView({ padding: focus ? 0.2 : 0.16, duration: 600 }), 80);
   }, [buildBase, buildBaseEdges, themePos, rf]);
+
+  // selectedAudience 或 focusMode 變動 → 重新佈局（含初次掛載建立第 1 層）
+  useEffect(() => {
+    renderLayout(selectedAudience, focusMode);
+  }, [selectedAudience, focusMode, renderLayout]);
+
+  // 第 2 層：展開／切換視角（佈局由上面的 effect 處理）
+  const expandAudience = useCallback((audienceKey) => {
+    setSelectedAudience(audienceKey);
+  }, []);
 
   // 回到第 1 層
   const resetToBase = useCallback(() => {
-    setSelectedAudience(null);
     setSelectedTheme(null);
     stopVideo();
-    setNodes(buildBase(null));
-    setEdges(buildBaseEdges());
-    setTimeout(() => rf.fitView({ padding: 0.25, duration: 500 }), 60);
-  }, [buildBase, buildBaseEdges, rf]);
+    setSelectedAudience(null); // effect 會重建第 1 層
+  }, []);
 
   // 節點點擊分派
   const onNodeClick = useCallback((evt, node) => {
@@ -819,6 +888,11 @@ function App() {
           <div class="tp-sub">從生成式 AI 到 Agentic AI，再到 Physical AI</div>
           <div class="tp-ops">拖曳平移畫布 · 滾輪／雙指縮放 · 點視角展開心智圖 · 點主題看影片片段</div>
           ${selectedAudience && html`
+            <span class="mode-label">檢視模式</span>
+            <div class="mode-toggle" role="group" aria-label="檢視模式">
+              <button class=${!focusMode ? 'on' : ''} aria-pressed=${!focusMode} onClick=${() => setFocusMode(false)}>全貌</button>
+              <button class=${focusMode ? 'on' : ''} aria-pressed=${focusMode} onClick=${() => setFocusMode(true)}>聚焦重點</button>
+            </div>
             <button class="reset-btn" onClick=${resetToBase}>
               <${LocateFixed} size=${14} /> 回到中心 · 重選視角
             </button>
