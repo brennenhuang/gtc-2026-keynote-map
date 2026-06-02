@@ -172,6 +172,12 @@
   - 看懂它：評審幾乎全高，封頂到 6（開場、Agentic、Token、RTX Spark、N1X、Physical AI）。
 - **效果**：孤兒主題（Vera CPU、Vera Rubin 系統）都找到家；僅「收尾」(recap) 仍留白，合理。衡量層級見 L1(覆蓋/Jaccard)→L2(評分)→L3(真人實測，待做)。
 
+## 30. 發 LinkedIn 前的整備
+- **連結預覽 (Open Graph)**：加 og:title/description/image + Twitter card；`preview.png`（首頁截圖,1600×900）commit 進 repo,讓貼到 LinkedIn 的連結卡有圖有字。
+- **移除股票代碼**：公開貼文列買賣代碼（2330.TW…）太像報明牌 → 移除代碼，**保留公司名 + 上市/未上市狀態 + 三色身分**；族群維持只列群不列股；免責保留並在頁尾加粗。
+- **官方來源**：頁尾與 README 加「官方來源：NVIDIA GTC Taipei Keynote」，嵌入影片標明為電腦王阿達中譯版（因其有逐字稿）。
+- **手機驗證**：iPhone viewport 實測 —— 5→18 節點展開正常、drawer 全螢幕、0 console error（展開後較密,可 pinch 放大）。
+
 ---
 
 ## 之後可調整的「旋鈕」

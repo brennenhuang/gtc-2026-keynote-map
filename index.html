@@ -4,6 +4,20 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>GTC Taipei 2026 · 多受眾導覽地圖</title>
+<meta name="description" content="把黃仁勳 GTC Taipei 2026 主題演講切成 13 主題 × 4 種視角（投資它／打造它／導入它／看懂它），選你的角度看你該看的片段，跳到對應影片。" />
+
+<!-- Open Graph / Twitter（LinkedIn 連結預覽用） -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://brennenhuang.github.io/gtc-2026-keynote-map/" />
+<meta property="og:title" content="GTC Taipei 2026 · 多受眾導覽地圖" />
+<meta property="og:description" content="同一場 NVIDIA keynote，四種看法：投資它／打造它／導入它／看懂它。選你的角度，點亮你該看的主題、跳到對應影片片段。" />
+<meta property="og:image" content="https://brennenhuang.github.io/gtc-2026-keynote-map/preview.png" />
+<meta property="og:image:width" content="1600" />
+<meta property="og:image:height" content="900" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="GTC Taipei 2026 · 多受眾導覽地圖" />
+<meta name="twitter:description" content="同一場 NVIDIA keynote，四種看法：投資它／打造它／導入它／看懂它。" />
+<meta name="twitter:image" content="https://brennenhuang.github.io/gtc-2026-keynote-map/preview.png" />
 
 <!-- React Flow 樣式 -->
 <link rel="stylesheet" href="https://esm.sh/@xyflow/react@12/dist/style.css" />
@@ -811,13 +825,13 @@ function CompanyNode({ data }) {
   const isComp = data.origin === 'competitor';
   return html`
     <div class="node-company exp-${lvl} ${unlisted ? 'unlisted' : ''} ${isComp ? 'comp' : ''}" style=${{ '--tagc': c }}
-         title=${(ORIGIN_LABEL[data.origin] || '') + '　|　' + data.tag + '　|　' + lvlLabel + (data.ticker ? '　|　' + data.ticker : (unlisted ? '　|　未上市' : '')) + '\n' + data.note}>
+         title=${(ORIGIN_LABEL[data.origin] || '') + '　|　' + data.tag + '　|　' + lvlLabel + (unlisted ? '　|　未上市' : '') + '\n' + data.note}>
       <${Handle} type="target" position=${Position.Top} />
       <div class="ncp-bubble"></div>
       <div class="ncp-name">${data.name}</div>
       ${isComp
-        ? html`<div class="ncp-ticker ncp-comp">競爭對手${data.ticker ? ' · ' + data.ticker : ''}</div>`
-        : (data.ticker ? html`<div class="ncp-ticker">${data.ticker}</div>` : (unlisted ? html`<div class="ncp-ticker ncp-unlisted">未上市</div>` : null))}
+        ? html`<div class="ncp-ticker ncp-comp">競爭對手</div>`
+        : (unlisted ? html`<div class="ncp-ticker ncp-unlisted">未上市</div>` : null)}
     </div>
   `;
 }
@@ -3423,8 +3437,8 @@ function App() {
       <!-- 來源小字 -->
       <div style=${{ position: 'absolute', bottom: 14, right: 14, zIndex: 20 }}>
         <div class="source-panel">
-          內容依據大會官方逐字稿（transcript.srt）與 2026/6 各媒體公開報導整理；時間戳為逐字稿真實時間（非估計）；影片版權屬原頻道（電腦王阿達 @kocpc 中譯版）。
-          原始影片：<a href="https://www.youtube.com/watch?v=wzxc29ol3R0" target="_blank" rel="noopener">youtube.com/watch?v=wzxc29ol3R0</a>
+          內容依據大會逐字稿與 2026/6 各媒體公開報導整理；時間戳為逐字稿真實時間（非估計）。公司／族群／上市狀態為產業關聯整理，<strong>非投資建議</strong>。
+          官方來源：<a href="https://www.nvidia.com/zh-tw/gtc/taipei/keynote/" target="_blank" rel="noopener">NVIDIA GTC Taipei Keynote</a>　·　嵌入影片（中譯逐字稿）：<a href="https://www.youtube.com/watch?v=wzxc29ol3R0" target="_blank" rel="noopener">電腦王阿達 @kocpc</a>
         </div>
       </div>
 
@@ -3474,7 +3488,7 @@ function CompanyPopover({ company, onClose, onOpenTheme }) {
       <div class="cpop-name">
         ${company.name}
         ${company.listed
-          ? html`<span class="cpop-ticker">${company.ticker}${company.exchange ? ' · ' + company.exchange : ''}</span>`
+          ? html`<span class="cpop-ticker">已上市</span>`
           : html`<span class="cpop-ticker cpop-unlisted">未上市</span>`}
       </div>
       ${(company.tnote || basisLabel) && html`<div class="cpop-basis">${company.tnote ? company.tnote + '　' : ''}${basisLabel ? '· 依據：' + basisLabel : ''}</div>`}

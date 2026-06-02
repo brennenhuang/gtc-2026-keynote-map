@@ -3,7 +3,9 @@
 🔗 **線上版：https://brennenhuang.github.io/gtc-2026-keynote-map/**
 
 把黃仁勳 GTC Taipei 2026 主題演講，切成 **13 個主題 × 4 種受眾** 的互動式心智圖。
-選擇你的視角（投資者 / 開發者·技術工作者 / 科技愛好者 / 企業決策者），地圖會**點亮該受眾的重點主題**，點主題即可看摘要、黃仁勳原句，並跳到對應的影片片段。投資者視角還會標出每個產品**關聯到哪些公司、與 NVIDIA 關聯多深、股票代號與上市狀態**（非投資建議）。
+選擇你的角度（**投資它 / 打造它 / 導入它 / 看懂它**），地圖會**點亮該角度的重點主題**，點主題即可看摘要、黃仁勳原句，並跳到對應的影片片段。投資角度還會標出每個產品**關聯到哪些公司、與 NVIDIA 關聯多深、上市狀態與相關受惠族群**（產業關聯整理，**非投資建議**）。
+
+> 官方來源：[NVIDIA GTC Taipei Keynote](https://www.nvidia.com/zh-tw/gtc/taipei/keynote/)　·　嵌入影片（中譯逐字稿）：[電腦王阿達 @kocpc](https://www.youtube.com/watch?v=wzxc29ol3R0)
 
 主軸：**從生成式 AI 到 Agentic AI，再到 Physical AI。**
 
