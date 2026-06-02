@@ -892,12 +892,12 @@ function companyPositions(themeCenter, n) {
   });
 }
 
-/* 各受眾的「核心主題」id —— 選了受眾後這些會點亮，其餘淡化（仍可點） */
+/* 各受眾的「核心主題」id —— 由 3 位評審相關度評分(L2)導出，非手挑；選了受眾後這些會點亮 */
 const AUDIENCE_CORE = {
-  investor:        ['vera-rubin-production', 'ai-factory-dsx', 'token-economics', 'n1x-newpc', 'cosmos-physical-ai'],
-  knowledgeWorker: ['agentic', 'cuda-x', 'enterprise-toolkit', 'rtx-spark'],
+  investor:        ['ai-factory-dsx', 'token-economics', 'vera-rubin-production', 'vera-rubin-intro'],
+  knowledgeWorker: ['agentic', 'cuda-x', 'enterprise-toolkit', 'rtx-spark', 'cosmos-physical-ai'],
   consumer:        ['opening', 'agentic', 'token-economics', 'rtx-spark', 'n1x-newpc', 'cosmos-physical-ai'],
-  decisionMaker:   ['agentic', 'ai-factory-dsx', 'token-economics', 'enterprise-toolkit', 'cosmos-physical-ai'],
+  decisionMaker:   ['enterprise-toolkit', 'ai-factory-dsx', 'token-economics', 'vera-cpu', 'agentic'],
 };
 
 /* 概念/論述型主題：沒有專屬供應鏈，不接「關聯公司」球泡（受惠公司散見各產品主題） */
