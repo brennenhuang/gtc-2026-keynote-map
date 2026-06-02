@@ -547,6 +547,14 @@
     color: var(--tagc); opacity: .9;
   }
   .node-company .ncp-ticker.ncp-unlisted { color: var(--txt-2); opacity: .8; }
+  /* 競爭對手：明標紅字標籤（手機不點也看得懂） */
+  .node-company .ncp-ticker.ncp-comp {
+    color: #fca5a5; font-weight: 700; opacity: 1;
+    background: rgba(239,68,68,0.16); border: 1px solid rgba(239,68,68,0.5);
+    padding: 1px 8px; border-radius: 999px;
+  }
+  /* 競爭對手球泡：紅色實心點＋紅光，與受惠者(綠/灰)區隔 */
+  .node-company.comp .ncp-bubble { border-style: solid; }
   /* 未上市：球泡改空心虛線（散戶買不到） */
   .node-company.unlisted .ncp-bubble {
     background: transparent !important;
@@ -786,13 +794,16 @@ function CompanyNode({ data }) {
   const lvl = data.exposure === 'high' ? 'high' : (data.exposure === 'low' ? 'low' : 'med');
   const lvlLabel = { high: '與 NVIDIA 關聯深度：高', med: '與 NVIDIA 關聯深度：中', low: '與 NVIDIA 關聯深度：低' }[lvl];
   const unlisted = data.listed === false;
+  const isComp = data.origin === 'competitor';
   return html`
-    <div class="node-company exp-${lvl} ${unlisted ? 'unlisted' : ''}" style=${{ '--tagc': c }}
+    <div class="node-company exp-${lvl} ${unlisted ? 'unlisted' : ''} ${isComp ? 'comp' : ''}" style=${{ '--tagc': c }}
          title=${(ORIGIN_LABEL[data.origin] || '') + '　|　' + data.tag + '　|　' + lvlLabel + (data.ticker ? '　|　' + data.ticker : (unlisted ? '　|　未上市' : '')) + '\n' + data.note}>
       <${Handle} type="target" position=${Position.Top} />
       <div class="ncp-bubble"></div>
       <div class="ncp-name">${data.name}</div>
-      ${data.ticker ? html`<div class="ncp-ticker">${data.ticker}</div>` : (unlisted ? html`<div class="ncp-ticker ncp-unlisted">未上市</div>` : null)}
+      ${isComp
+        ? html`<div class="ncp-ticker ncp-comp">競爭對手${data.ticker ? ' · ' + data.ticker : ''}</div>`
+        : (data.ticker ? html`<div class="ncp-ticker">${data.ticker}</div>` : (unlisted ? html`<div class="ncp-ticker ncp-unlisted">未上市</div>` : null))}
     </div>
   `;
 }
