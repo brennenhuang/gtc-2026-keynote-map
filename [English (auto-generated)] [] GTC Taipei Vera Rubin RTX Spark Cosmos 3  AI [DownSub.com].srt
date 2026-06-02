@@ -1,0 +1,9159 @@
+1
+00:00:08,720 --> 00:00:12,800
+This is how intelligence is made.
+
+2
+00:00:12,800 --> 00:00:15,679
+A new kind of factory,
+
+3
+00:00:15,679 --> 00:00:17,920
+generator of tokens,
+
+4
+00:00:17,920 --> 00:00:21,880
+the building blocks of AI.
+
+5
+00:00:24,800 --> 00:00:27,920
+Tokens have opened a new frontier,
+
+6
+00:00:27,920 --> 00:00:31,439
+turning data into knowledge, reason,
+
+7
+00:00:31,439 --> 00:00:34,439
+action.
+
+8
+00:00:36,800 --> 00:00:39,760
+They reveal patterns in complexity we
+
+9
+00:00:39,760 --> 00:00:43,320
+could never see.
+
+10
+00:00:47,680 --> 00:00:53,120
+Mirror our cities to keep us safe.
+
+11
+00:00:57,280 --> 00:01:00,079
+and lift us high
+
+12
+00:01:00,079 --> 00:01:03,480
+above them.
+
+13
+00:01:05,360 --> 00:01:10,920
+Tokens help robots learn from us,
+
+14
+00:01:13,040 --> 00:01:17,240
+work alongside us.
+
+15
+00:01:22,320 --> 00:01:26,600
+They go where we cannot.
+
+16
+00:01:30,479 --> 00:01:35,000
+Lending us helping hands
+
+17
+00:01:35,759 --> 00:01:38,799
+and closing the gap between hope and
+
+18
+00:01:38,799 --> 00:01:44,360
+healing so that we breathe easier.
+
+19
+00:01:45,520 --> 00:01:50,759
+And the smallest hearts beat stronger.
+
+20
+00:02:04,560 --> 00:02:10,040
+Tokens are helping us break new ground
+
+21
+00:02:11,280 --> 00:02:15,959
+on a scale never attempted.
+
+22
+00:02:26,000 --> 00:02:28,480
+So we can reach star cloud one.
+
+23
+00:02:28,480 --> 00:02:33,040
+Separation confirmed to infinity
+
+24
+00:02:33,040 --> 00:02:36,360
+and beyond.
+
+25
+00:02:40,640 --> 00:02:43,680
+Together we take the next great leap
+
+26
+00:02:43,680 --> 00:02:47,959
+into a bright new future
+
+27
+00:02:49,840 --> 00:02:54,200
+built for all mankind.
+
+28
+00:02:59,040 --> 00:03:02,000
+And here in Taipei
+
+29
+00:03:02,000 --> 00:03:05,879
+is where it all begins.
+
+30
+00:03:14,879 --> 00:03:17,360
+Welcome to the stage Nvidia founder and
+
+31
+00:03:17,360 --> 00:03:21,640
+CEO Jensen Wong.
+
+32
+00:03:29,440 --> 00:03:34,280
+Welcome to GTC Taiwan.
+
+33
+00:03:35,280 --> 00:03:38,640
+So great to see all of you.
+
+34
+00:03:38,640 --> 00:03:41,040
+Very good to be home. I brought my
+
+35
+00:03:41,040 --> 00:03:42,560
+parents home. Where are my parents?
+
+36
+00:03:42,560 --> 00:03:44,319
+Everybody give round of applause to my
+
+37
+00:03:44,319 --> 00:03:47,640
+mom and dad.
+
+38
+00:03:52,319 --> 00:03:55,760
+And a round of applause
+
+39
+00:03:55,760 --> 00:03:59,599
+for our pregame show superstars. Ladies
+
+40
+00:03:59,599 --> 00:04:02,760
+and gentlemen,
+
+41
+00:04:05,040 --> 00:04:08,560
+look how adorable they are.
+
+42
+00:04:08,560 --> 00:04:11,599
+the superstars of Taiwan. Uh there are
+
+43
+00:04:11,599 --> 00:04:13,760
+so many of you here today. We are
+
+44
+00:04:13,760 --> 00:04:17,759
+broadcasting this right now to 70 other
+
+45
+00:04:17,759 --> 00:04:21,600
+watch parties across Taiwan.
+
+46
+00:04:21,600 --> 00:04:24,160
+70 different conferences are going at
+
+47
+00:04:24,160 --> 00:04:26,400
+the same time. Everybody is watching
+
+48
+00:04:26,400 --> 00:04:28,639
+this keynote. We have so much to tell
+
+49
+00:04:28,639 --> 00:04:30,560
+you and I have so many partners to
+
+50
+00:04:30,560 --> 00:04:33,840
+thank. It is incredible how large our
+
+51
+00:04:33,840 --> 00:04:37,360
+ecosystem in Taiwan has become. Most of
+
+52
+00:04:37,360 --> 00:04:38,880
+the time when people think about
+
+53
+00:04:38,880 --> 00:04:41,680
+ecosystem, they think about our software
+
+54
+00:04:41,680 --> 00:04:44,080
+stack. They think about the developer
+
+55
+00:04:44,080 --> 00:04:46,479
+ecosystem above the computing systems
+
+56
+00:04:46,479 --> 00:04:48,880
+that Nvidia builds. But Nvidia's
+
+57
+00:04:48,880 --> 00:04:50,479
+ecosystem
+
+58
+00:04:50,479 --> 00:04:53,440
+spans all the way upstream to all of our
+
+59
+00:04:53,440 --> 00:04:56,639
+supply chain here in Taiwan where it all
+
+60
+00:04:56,639 --> 00:05:00,320
+begins and downstream all the way to
+
+61
+00:05:00,320 --> 00:05:02,560
+data centers and eventually to end
+
+62
+00:05:02,560 --> 00:05:05,600
+users. Today we're going to talk about
+
+63
+00:05:05,600 --> 00:05:08,000
+almost all of the ecosystem. There's so
+
+64
+00:05:08,000 --> 00:05:10,400
+many people to thank. I love my
+
+65
+00:05:10,400 --> 00:05:13,360
+ecosystem here. I mean, there's so many
+
+66
+00:05:13,360 --> 00:05:16,000
+companies here and some of my favorite
+
+67
+00:05:16,000 --> 00:05:19,639
+ecosystem partners.
+
+68
+00:05:51,360 --> 00:05:53,440
+So many
+
+69
+00:05:53,440 --> 00:05:56,880
+Taiwan's rich ecosystem,
+
+70
+00:05:56,880 --> 00:06:00,160
+the richest ecosystem, the world's best
+
+71
+00:06:00,160 --> 00:06:02,880
+supply chain. ecosystem. Unbelievable.
+
+72
+00:06:02,880 --> 00:06:05,199
+Well, thank you all for being here and
+
+73
+00:06:05,199 --> 00:06:08,000
+uh this year, this year our businesses
+
+74
+00:06:08,000 --> 00:06:10,720
+together are growing in incredibly. In
+
+75
+00:06:10,720 --> 00:06:13,440
+fact, somebody told me last night that
+
+76
+00:06:13,440 --> 00:06:16,960
+the annual GDP of Taiwan is going to
+
+77
+00:06:16,960 --> 00:06:21,160
+grow almost 10%.
+
+78
+00:06:26,160 --> 00:06:28,880
+Unbelievable. Well, we have a lot to
+
+79
+00:06:28,880 --> 00:06:31,039
+talk about. Let's get going.
+
+80
+00:06:31,039 --> 00:06:33,360
+Two years ago when I was here, I started
+
+81
+00:06:33,360 --> 00:06:35,600
+to talk to you about how AI has moved
+
+82
+00:06:35,600 --> 00:06:38,080
+from generative AI and the other waves
+
+83
+00:06:38,080 --> 00:06:40,400
+of AIs that are coming. The next wave of
+
+84
+00:06:40,400 --> 00:06:44,720
+AI was agentic AI and today we can say
+
+85
+00:06:44,720 --> 00:06:47,919
+that agentic AI has arrived that useful
+
+86
+00:06:47,919 --> 00:06:51,199
+AI has arrived. Now what does this mean?
+
+87
+00:06:51,199 --> 00:06:54,319
+This is GitHub. This is of course one of
+
+88
+00:06:54,319 --> 00:06:57,120
+the first applications of Agentic AI is
+
+89
+00:06:57,120 --> 00:06:59,440
+software coding. One of the most
+
+90
+00:06:59,440 --> 00:07:02,400
+valuable professions, incredibly large
+
+91
+00:07:02,400 --> 00:07:06,479
+ecosystem, 30 million, 40 million
+
+92
+00:07:06,479 --> 00:07:08,160
+professional software developers,
+
+93
+00:07:08,160 --> 00:07:10,720
+probably another couple of hundred who
+
+94
+00:07:10,720 --> 00:07:13,759
+are students and enthusiasts and so on
+
+95
+00:07:13,759 --> 00:07:17,199
+so forth, but say 30 40 million software
+
+96
+00:07:17,199 --> 00:07:19,840
+developers in the world code for a
+
+97
+00:07:19,840 --> 00:07:23,280
+living. And this represents most of
+
+98
+00:07:23,280 --> 00:07:26,080
+them. This is GitHub. The pull request
+
+99
+00:07:26,080 --> 00:07:28,560
+is when they download software, they
+
+100
+00:07:28,560 --> 00:07:30,880
+modify it, and commit is when they push
+
+101
+00:07:30,880 --> 00:07:33,599
+it back up. Okay? And so if you could
+
+102
+00:07:33,599 --> 00:07:39,000
+look at this in 2023,
+
+103
+00:07:39,199 --> 00:07:42,880
+the number of commits was 300 million.
+
+104
+00:07:42,880 --> 00:07:44,639
+2024,
+
+105
+00:07:44,639 --> 00:07:48,479
+400 million. 2025,
+
+106
+00:07:48,479 --> 00:07:53,199
+500 million commits in the first few
+
+107
+00:07:53,199 --> 00:07:58,160
+months. In the first few months of 2026,
+
+108
+00:07:58,160 --> 00:08:00,479
+it has nearly tripled. Now, what does
+
+109
+00:08:00,479 --> 00:08:03,039
+that mean?
+
+110
+00:08:03,039 --> 00:08:04,960
+30 million software developers
+
+111
+00:08:04,960 --> 00:08:09,199
+representing about $3 trillion
+
+112
+00:08:09,199 --> 00:08:12,400
+worth of GDP producing three, that's
+
+113
+00:08:12,400 --> 00:08:15,280
+what they're paid. $3 trillion worth of
+
+114
+00:08:15,280 --> 00:08:18,960
+salaries per year, which is generating
+
+115
+00:08:18,960 --> 00:08:21,280
+economic growth for the rest of the
+
+116
+00:08:21,280 --> 00:08:23,440
+industries. Say a hundred trillion
+
+117
+00:08:23,440 --> 00:08:25,280
+dollars of the world's industries is
+
+118
+00:08:25,280 --> 00:08:26,960
+impacted
+
+119
+00:08:26,960 --> 00:08:30,720
+is generated by $3 billion worth of
+
+120
+00:08:30,720 --> 00:08:33,279
+salary. That $3 trillion, excuse me,
+
+121
+00:08:33,279 --> 00:08:35,760
+three trillion that $3 trillion worth of
+
+122
+00:08:35,760 --> 00:08:39,519
+salary is now producing nearly three
+
+123
+00:08:39,519 --> 00:08:42,800
+times as much output.
+
+124
+00:08:42,800 --> 00:08:47,200
+It's effectively a $9 trillion
+
+125
+00:08:47,200 --> 00:08:50,720
+productivity from $3 trillion of
+
+126
+00:08:50,720 --> 00:08:53,600
+salaries. Does that make any sense? The
+
+127
+00:08:53,600 --> 00:08:56,080
+difference is absolutely extraordinary.
+
+128
+00:08:56,080 --> 00:08:57,440
+This is the potential. This is the
+
+129
+00:08:57,440 --> 00:09:00,000
+promise of AI. The number of engineers,
+
+130
+00:09:00,000 --> 00:09:01,519
+software engineers is actually
+
+131
+00:09:01,519 --> 00:09:04,080
+increasing. People talk about AI
+
+132
+00:09:04,080 --> 00:09:07,440
+reducing jobs. Complete nonsense. It's
+
+133
+00:09:07,440 --> 00:09:09,600
+causing more software engineers to be
+
+134
+00:09:09,600 --> 00:09:11,120
+hired. And the reason for that is very
+
+135
+00:09:11,120 --> 00:09:12,399
+simple.
+
+136
+00:09:12,399 --> 00:09:14,720
+If you can hire a software engineer and
+
+137
+00:09:14,720 --> 00:09:16,640
+you could generate
+
+138
+00:09:16,640 --> 00:09:20,160
+$9 trillion worth of productive work,
+
+139
+00:09:20,160 --> 00:09:21,360
+why wouldn't you want to hire more
+
+140
+00:09:21,360 --> 00:09:23,920
+software engineers?
+
+141
+00:09:23,920 --> 00:09:28,000
+If that line was flat, then obviously
+
+142
+00:09:28,000 --> 00:09:29,519
+people will hire fewer software
+
+143
+00:09:29,519 --> 00:09:31,760
+engineers. But because the output is so
+
+144
+00:09:31,760 --> 00:09:33,680
+incredible, people want to hire more
+
+145
+00:09:33,680 --> 00:09:35,040
+software engineers. This is going to
+
+146
+00:09:35,040 --> 00:09:38,240
+show up in our economy somehow soon. And
+
+147
+00:09:38,240 --> 00:09:40,800
+so the first thing is useful AI has
+
+148
+00:09:40,800 --> 00:09:42,399
+arrived. Now, what does that mean from
+
+149
+00:09:42,399 --> 00:09:44,560
+the industry's perspective? From the
+
+150
+00:09:44,560 --> 00:09:46,959
+industry's perspective, that means that
+
+151
+00:09:46,959 --> 00:09:50,800
+tokens are now in extraordinary demand.
+
+152
+00:09:50,800 --> 00:09:52,160
+Because if you could do this, you're
+
+153
+00:09:52,160 --> 00:09:53,680
+going to want to produce more of it. And
+
+154
+00:09:53,680 --> 00:09:57,360
+because tokens are now profitable units,
+
+155
+00:09:57,360 --> 00:10:01,040
+tokens are now profitable units of
+
+156
+00:10:01,040 --> 00:10:04,320
+revenues. because it is now profitable.
+
+157
+00:10:04,320 --> 00:10:06,640
+The AI companies want to build a lot
+
+158
+00:10:06,640 --> 00:10:09,120
+more tokens, generate a lot more tokens,
+
+159
+00:10:09,120 --> 00:10:11,120
+build more AI factories, which is the
+
+160
+00:10:11,120 --> 00:10:14,640
+reason why compute demand here in Taiwan
+
+161
+00:10:14,640 --> 00:10:16,560
+has skyrocketed.
+
+162
+00:10:16,560 --> 00:10:19,600
+It is precisely the reason why all of
+
+163
+00:10:19,600 --> 00:10:21,760
+you are so busy and your businesses are
+
+164
+00:10:21,760 --> 00:10:24,480
+doing so well. In fact, that looks like
+
+165
+00:10:24,480 --> 00:10:28,279
+some of your stock price
+
+166
+00:10:34,160 --> 00:10:36,880
+The compute pattern has changed.
+
+167
+00:10:36,880 --> 00:10:39,680
+Everything has changed. So the first
+
+168
+00:10:39,680 --> 00:10:43,440
+idea is that useful AI has arrived. AI
+
+169
+00:10:43,440 --> 00:10:46,880
+is now a profit generator. AI is now a
+
+170
+00:10:46,880 --> 00:10:50,720
+GDP generator. Behind it is a whole new
+
+171
+00:10:50,720 --> 00:10:53,040
+kind of computing pattern. Not just a
+
+172
+00:10:53,040 --> 00:10:55,360
+large language model, but an agent.
+
+173
+00:10:55,360 --> 00:10:57,600
+Today almost everything we're going to
+
+174
+00:10:57,600 --> 00:11:00,000
+talk about is going to be based on this.
+
+175
+00:11:00,000 --> 00:11:01,839
+So let me take a quick moment and show
+
+176
+00:11:01,839 --> 00:11:04,880
+you what I'm talking about inside in
+
+177
+00:11:04,880 --> 00:11:07,440
+this is a this is an agent. It's an
+
+178
+00:11:07,440 --> 00:11:09,760
+agent application.
+
+179
+00:11:09,760 --> 00:11:11,519
+In the old days this would be
+
+180
+00:11:11,519 --> 00:11:13,920
+application.
+
+181
+00:11:13,920 --> 00:11:16,880
+This would be code and this would be
+
+182
+00:11:16,880 --> 00:11:20,000
+operating system.
+
+183
+00:11:20,000 --> 00:11:23,200
+application code running inside an
+
+184
+00:11:23,200 --> 00:11:25,120
+application inside an operating system.
+
+185
+00:11:25,120 --> 00:11:28,480
+Today it is agent which consists of a
+
+186
+00:11:28,480 --> 00:11:31,760
+large language model or many
+
+187
+00:11:31,760 --> 00:11:34,640
+sitting inside a harness and that
+
+188
+00:11:34,640 --> 00:11:38,320
+harness helps it orchestrates it to do
+
+189
+00:11:38,320 --> 00:11:41,839
+productive work. This is the input. When
+
+190
+00:11:41,839 --> 00:11:45,200
+that input comes, it has to understand,
+
+191
+00:11:45,200 --> 00:11:49,839
+observe, reason, act, use tools. Use
+
+192
+00:11:49,839 --> 00:11:52,800
+tools. That tool could be a spreadsheet,
+
+193
+00:11:52,800 --> 00:11:55,519
+web browser, a data processing engine,
+
+194
+00:11:55,519 --> 00:11:58,399
+database engine. For example,
+
+195
+00:11:58,399 --> 00:12:01,360
+this is orchestrated. This harness
+
+196
+00:12:01,360 --> 00:12:05,519
+orchestrate this routing of information
+
+197
+00:12:05,519 --> 00:12:07,600
+every single time it touches either
+
+198
+00:12:07,600 --> 00:12:10,000
+processing the context,
+
+199
+00:12:10,000 --> 00:12:12,560
+understanding what is happening,
+
+200
+00:12:12,560 --> 00:12:15,120
+reasoning about what to do, coming up
+
+201
+00:12:15,120 --> 00:12:17,600
+with a plan that you can act that it
+
+202
+00:12:17,600 --> 00:12:21,040
+acts on. That orchestration path is
+
+203
+00:12:21,040 --> 00:12:24,160
+orchestrated by some software. And so
+
+204
+00:12:24,160 --> 00:12:28,079
+this is fundamentally a agent. It deals
+
+205
+00:12:28,079 --> 00:12:30,560
+with short-term memory called working
+
+206
+00:12:30,560 --> 00:12:33,200
+memory, long-term memory just like we
+
+207
+00:12:33,200 --> 00:12:35,200
+do. We have long-term memory and so the
+
+208
+00:12:35,200 --> 00:12:37,360
+memory management system is incredibly
+
+209
+00:12:37,360 --> 00:12:40,720
+important. This entire system is called
+
+210
+00:12:40,720 --> 00:12:44,720
+an agent. The large language model is
+
+211
+00:12:44,720 --> 00:12:49,680
+used to do the thinking and the harness
+
+212
+00:12:49,680 --> 00:12:51,519
+connects everything together just like
+
+213
+00:12:51,519 --> 00:12:54,399
+an operating system. Okay. And so this
+
+214
+00:12:54,399 --> 00:12:56,399
+is the new computing model and this is
+
+215
+00:12:56,399 --> 00:12:58,959
+what an agent it could do incredible
+
+216
+00:12:58,959 --> 00:13:01,360
+things. This is the big breakthrough.
+
+217
+00:13:01,360 --> 00:13:04,160
+The simultaneous conver the convergence
+
+218
+00:13:04,160 --> 00:13:06,320
+of large language models that are now
+
+219
+00:13:06,320 --> 00:13:09,279
+able to do a really good job thinking,
+
+220
+00:13:09,279 --> 00:13:12,480
+reasoning, planning using tools and the
+
+221
+00:13:12,480 --> 00:13:14,480
+fact that we have now these harnesses
+
+222
+00:13:14,480 --> 00:13:18,000
+that manages memory the orchestration
+
+223
+00:13:18,000 --> 00:13:20,399
+uses tools. We can now do amazing
+
+224
+00:13:20,399 --> 00:13:22,800
+things. Let me give you some example.
+
+225
+00:13:22,800 --> 00:13:24,959
+This is this is a prompt. This is the
+
+226
+00:13:24,959 --> 00:13:26,720
+prompt.
+
+227
+00:13:26,720 --> 00:13:29,920
+This is the code that is generated. And
+
+228
+00:13:29,920 --> 00:13:32,560
+this comes out.
+
+229
+00:13:32,560 --> 00:13:35,600
+This is the input.
+
+230
+00:13:35,600 --> 00:13:38,079
+This is the input. And that's the
+
+231
+00:13:38,079 --> 00:13:40,560
+output.
+
+232
+00:13:40,560 --> 00:13:41,920
+Do you guys What do you guys think? It's
+
+233
+00:13:41,920 --> 00:13:45,480
+pretty amazing, right?
+
+234
+00:13:47,920 --> 00:13:49,760
+We use cloud code here, but Codeexit
+
+235
+00:13:49,760 --> 00:13:51,360
+does an incredible job as well. Here's
+
+236
+00:13:51,360 --> 00:13:53,760
+another example. This is the input.
+
+237
+00:13:53,760 --> 00:13:56,720
+Create a GIF. Nvidia gen green dots on
+
+238
+00:13:56,720 --> 00:14:01,079
+black scatter form
+
+239
+00:14:01,120 --> 00:14:04,320
+Taiwan 101 building. Morph to GTC Taipei
+
+240
+00:14:04,320 --> 00:14:08,240
+to 2026. Morph to Nvidia I logo. Then
+
+241
+00:14:08,240 --> 00:14:10,720
+scatter and repeat. Right? So you saw
+
+242
+00:14:10,720 --> 00:14:12,880
+that. That was the prompt. Here's the
+
+243
+00:14:12,880 --> 00:14:15,040
+next one. I lost my remote control
+
+244
+00:14:15,040 --> 00:14:18,320
+battery clip. It looks like this. Create
+
+245
+00:14:18,320 --> 00:14:21,440
+a CAD file. It uses a tool create a CAD
+
+246
+00:14:21,440 --> 00:14:24,000
+file ready for 3D printing to create a
+
+247
+00:14:24,000 --> 00:14:28,880
+new new one. Make sense? This is now the
+
+248
+00:14:28,880 --> 00:14:31,360
+new computing pattern. Whereas we used
+
+249
+00:14:31,360 --> 00:14:34,720
+to launch an application,
+
+250
+00:14:34,720 --> 00:14:39,519
+click and type, we now replace that with
+
+251
+00:14:39,519 --> 00:14:42,480
+explaining to the AI what we want, our
+
+252
+00:14:42,480 --> 00:14:46,079
+intent. And the AI generates the code or
+
+253
+00:14:46,079 --> 00:14:49,199
+uses tools and produce the necessary
+
+254
+00:14:49,199 --> 00:14:53,040
+output. This is how computers are going
+
+255
+00:14:53,040 --> 00:14:56,160
+to work in the future. This is agentic
+
+256
+00:14:56,160 --> 00:14:58,399
+AI. For two years, we've been building
+
+257
+00:14:58,399 --> 00:15:01,279
+towards this and now it has arrived.
+
+258
+00:15:01,279 --> 00:15:02,800
+Now, one of the big breakthroughs, of
+
+259
+00:15:02,800 --> 00:15:05,760
+course, is tool use. A lot of people
+
+260
+00:15:05,760 --> 00:15:08,399
+have said, you know, Jensen, AI is
+
+261
+00:15:08,399 --> 00:15:10,320
+coming. Agentic AI is coming. Therefore,
+
+262
+00:15:10,320 --> 00:15:11,600
+all of the software companies are going
+
+263
+00:15:11,600 --> 00:15:13,680
+to go out of business. I said it's
+
+264
+00:15:13,680 --> 00:15:16,480
+exactly the opposite because there are
+
+265
+00:15:16,480 --> 00:15:19,360
+going to be so many agents.
+
+266
+00:15:19,360 --> 00:15:21,279
+The world is no longer limited by the
+
+267
+00:15:21,279 --> 00:15:24,560
+number of people. Therefore,
+
+268
+00:15:24,560 --> 00:15:26,720
+those agents are going to use more tools
+
+269
+00:15:26,720 --> 00:15:28,560
+than ever.
+
+270
+00:15:28,560 --> 00:15:30,560
+This is actually an incredible time to
+
+271
+00:15:30,560 --> 00:15:33,199
+be a software company. But the software
+
+272
+00:15:33,199 --> 00:15:36,639
+has to be presented to the agent in a
+
+273
+00:15:36,639 --> 00:15:39,519
+way that the agent can use it. This is a
+
+274
+00:15:39,519 --> 00:15:41,360
+break big breakthrough. And in fact what
+
+275
+00:15:41,360 --> 00:15:44,720
+we have done as you know what Nvidia's
+
+276
+00:15:44,720 --> 00:15:47,600
+treasure is is all of our CUDA
+
+277
+00:15:47,600 --> 00:15:50,480
+libraries. I call them CUDA X libraries.
+
+278
+00:15:50,480 --> 00:15:53,680
+This is Nvidia's treasure. Today we're
+
+279
+00:15:53,680 --> 00:15:56,959
+able to now pres present these CUDA X
+
+280
+00:15:56,959 --> 00:16:00,800
+libraries to agents who can use it much
+
+281
+00:16:00,800 --> 00:16:03,920
+more effectively than even h humans. And
+
+282
+00:16:03,920 --> 00:16:06,240
+so this is a wonderful time for CUDA X
+
+283
+00:16:06,240 --> 00:16:10,120
+libraries. Let's take a look.
+
+284
+00:16:11,199 --> 00:16:14,399
+20 years ago, we built CUDA, a single
+
+285
+00:16:14,399 --> 00:16:16,959
+architecture for accelerated computing.
+
+286
+00:16:16,959 --> 00:16:20,480
+We reinvented computing. A thousand CUDA
+
+287
+00:16:20,480 --> 00:16:22,639
+X libraries help developers make
+
+288
+00:16:22,639 --> 00:16:24,880
+breakthroughs in every field of science
+
+289
+00:16:24,880 --> 00:16:27,839
+and engineering. CUDA X libraries are
+
+290
+00:16:27,839 --> 00:16:30,639
+tools for agents.
+
+291
+00:16:30,639 --> 00:16:34,959
+CU Litho for computational lithography.
+
+292
+00:16:34,959 --> 00:16:39,320
+CU Opt for decision optimization.
+
+293
+00:16:39,519 --> 00:16:43,839
+QDSS for direct sparse solvers.
+
+294
+00:16:43,839 --> 00:16:46,480
+AIQ for deep research across structured
+
+295
+00:16:46,480 --> 00:16:49,519
+and unstructured documents.
+
+296
+00:16:49,519 --> 00:16:53,800
+Aerial for AI ran.
+
+297
+00:16:53,920 --> 00:16:57,600
+Warp for differentiable physics.
+
+298
+00:16:57,600 --> 00:17:00,480
+Parabicks for genomics.
+
+299
+00:17:00,480 --> 00:17:03,519
+At their foundation are algorithms and
+
+300
+00:17:03,519 --> 00:17:07,880
+they are beautiful.
+
+301
+00:17:58,480 --> 00:18:01,480
+Heat.
+
+302
+00:18:12,960 --> 00:18:15,960
+Heat.
+
+303
+00:18:20,559 --> 00:18:23,559
+Heat.
+
+304
+00:18:36,320 --> 00:18:39,320
+Heat.
+
+305
+00:18:55,360 --> 00:18:58,360
+Heat
+
+306
+00:18:58,720 --> 00:19:00,640
+up
+
+307
+00:19:00,640 --> 00:19:03,640
+here.
+
+308
+00:19:18,559 --> 00:19:21,559
+Heat
+
+309
+00:19:21,760 --> 00:19:24,760
+up here.
+
+310
+00:19:58,400 --> 00:20:02,080
+A round of applause for math. Math is
+
+311
+00:20:02,080 --> 00:20:05,080
+beautiful.
+
+312
+00:20:08,400 --> 00:20:10,320
+The computing pattern the computing
+
+313
+00:20:10,320 --> 00:20:12,960
+pattern of software is going to change.
+
+314
+00:20:12,960 --> 00:20:15,520
+In fact, let's come back to this. This
+
+315
+00:20:15,520 --> 00:20:20,320
+is the agent. It is the ultimate
+
+316
+00:20:20,320 --> 00:20:21,840
+disagregated
+
+317
+00:20:21,840 --> 00:20:24,400
+and distributed computing computing
+
+318
+00:20:24,400 --> 00:20:25,919
+model.
+
+319
+00:20:25,919 --> 00:20:27,600
+So many different computers are going to
+
+320
+00:20:27,600 --> 00:20:30,559
+be activated in order to process this
+
+321
+00:20:30,559 --> 00:20:34,640
+agent. The agent consists of model
+
+322
+00:20:34,640 --> 00:20:37,120
+harness,
+
+323
+00:20:37,120 --> 00:20:39,919
+tools and skills
+
+324
+00:20:39,919 --> 00:20:43,360
+and a runtime.
+
+325
+00:20:43,360 --> 00:20:45,440
+All of that is running at different
+
+326
+00:20:45,440 --> 00:20:48,320
+places in a data center.
+
+327
+00:20:48,320 --> 00:20:52,320
+You can think of the model as the brain,
+
+328
+00:20:52,320 --> 00:20:55,360
+the harness as the body,
+
+329
+00:20:55,360 --> 00:20:57,840
+the tools that it uses
+
+330
+00:20:57,840 --> 00:20:59,440
+working
+
+331
+00:20:59,440 --> 00:21:02,720
+in a runtime. Think of it as a workshop.
+
+332
+00:21:02,720 --> 00:21:06,159
+So this is a person, a worker working
+
+333
+00:21:06,159 --> 00:21:08,799
+with tools in a workshop. Of course,
+
+334
+00:21:08,799 --> 00:21:10,880
+this is being done at extraordinarily
+
+335
+00:21:10,880 --> 00:21:14,240
+large scales and each one of those steps
+
+336
+00:21:14,240 --> 00:21:16,159
+are running in a different part of the
+
+337
+00:21:16,159 --> 00:21:18,960
+computer. And you could see the large
+
+338
+00:21:18,960 --> 00:21:22,080
+language model is thinking, context
+
+339
+00:21:22,080 --> 00:21:25,360
+processing, observing, understanding the
+
+340
+00:21:25,360 --> 00:21:28,559
+environment, reasoning, coming up with a
+
+341
+00:21:28,559 --> 00:21:31,440
+plan, and acting on the plan. Every
+
+342
+00:21:31,440 --> 00:21:34,400
+single time that happens, an entire rack
+
+343
+00:21:34,400 --> 00:21:37,600
+of Grace Blackwell MVLink72 is
+
+344
+00:21:37,600 --> 00:21:40,320
+activated. It's thinking with the large
+
+345
+00:21:40,320 --> 00:21:44,400
+language model. Whenever it uses a tool,
+
+346
+00:21:44,400 --> 00:21:48,320
+a CPU use is used. That tool could be a
+
+347
+00:21:48,320 --> 00:21:50,799
+C compiler, it could be Python, it could
+
+348
+00:21:50,799 --> 00:21:53,840
+be JavaScript or it could be accelerated
+
+349
+00:21:53,840 --> 00:21:57,280
+computing. Today's agents are rel
+
+350
+00:21:57,280 --> 00:22:00,240
+relatively simple users of tools.
+
+351
+00:22:00,240 --> 00:22:02,080
+Tomorrow they're going to be very
+
+352
+00:22:02,080 --> 00:22:04,080
+sophisticated users of tools, which is
+
+353
+00:22:04,080 --> 00:22:06,240
+the reason why the CUDA X libraries that
+
+354
+00:22:06,240 --> 00:22:08,240
+I showed you are going to be incredibly
+
+355
+00:22:08,240 --> 00:22:10,720
+popular with agents. They solve some of
+
+356
+00:22:10,720 --> 00:22:12,400
+the most important problems the world
+
+357
+00:22:12,400 --> 00:22:15,520
+knows. And all of our CUDA X libraries
+
+358
+00:22:15,520 --> 00:22:18,720
+are now now going to come with skills
+
+359
+00:22:18,720 --> 00:22:22,960
+that the AI could learn how to use. So
+
+360
+00:22:22,960 --> 00:22:26,000
+the CUDA X library some skills basically
+
+361
+00:22:26,000 --> 00:22:29,440
+a manual the AI reads it and go aha
+
+362
+00:22:29,440 --> 00:22:32,400
+that's how you use it.
+
+363
+00:22:32,400 --> 00:22:34,320
+The ability to use these libraries by
+
+364
+00:22:34,320 --> 00:22:37,120
+agents are going to be incredible. And
+
+365
+00:22:37,120 --> 00:22:40,799
+so the tools run on CPUs and GPUs and
+
+366
+00:22:40,799 --> 00:22:43,360
+large language models. The security
+
+367
+00:22:43,360 --> 00:22:47,440
+harness runs on CPUs and a security
+
+368
+00:22:47,440 --> 00:22:50,480
+processor called the DPU. Nvidia's blue
+
+369
+00:22:50,480 --> 00:22:52,960
+field. The orchestration of all this
+
+370
+00:22:52,960 --> 00:22:55,520
+runs on a CPU. This is the entire
+
+371
+00:22:55,520 --> 00:22:58,159
+harness and the CPU is orchestrating all
+
+372
+00:22:58,159 --> 00:23:01,520
+of the work. One of the hardest parts is
+
+373
+00:23:01,520 --> 00:23:04,080
+memory. You could just imagine the
+
+374
+00:23:04,080 --> 00:23:06,559
+working memory is called KV caching.
+
+375
+00:23:06,559 --> 00:23:09,360
+What to remember? Compaction. Not just
+
+376
+00:23:09,360 --> 00:23:12,640
+compression but how to retrieve. Do you
+
+377
+00:23:12,640 --> 00:23:14,640
+retrieve structured data? Do you
+
+378
+00:23:14,640 --> 00:23:17,520
+retrieve unstructured data? What is the
+
+379
+00:23:17,520 --> 00:23:20,000
+ontology? The relationship of all of
+
+380
+00:23:20,000 --> 00:23:22,720
+these different data to itself.
+
+381
+00:23:22,720 --> 00:23:24,960
+That entire processing is incredibly
+
+382
+00:23:24,960 --> 00:23:27,840
+complicated. The memory system, the
+
+383
+00:23:27,840 --> 00:23:30,960
+memory system of AIS is going to cause
+
+384
+00:23:30,960 --> 00:23:33,280
+the storage system to be completely
+
+385
+00:23:33,280 --> 00:23:36,960
+revolutionized. As you can see, every
+
+386
+00:23:36,960 --> 00:23:40,000
+aspect of this computing
+
+387
+00:23:40,000 --> 00:23:42,640
+model, this computing pattern, this new
+
+388
+00:23:42,640 --> 00:23:44,559
+application called an agent is
+
+389
+00:23:44,559 --> 00:23:46,640
+fundamentally different than the way
+
+390
+00:23:46,640 --> 00:23:49,280
+that applications used to run. A whole
+
+391
+00:23:49,280 --> 00:23:51,280
+bunch of software sitting inside a
+
+392
+00:23:51,280 --> 00:23:53,440
+binary, sitting inside an operating
+
+393
+00:23:53,440 --> 00:23:56,799
+system. This is the reason this
+
+394
+00:23:56,799 --> 00:23:58,400
+disagregated,
+
+395
+00:23:58,400 --> 00:24:01,679
+this distributed, this heterogeneous
+
+396
+00:24:01,679 --> 00:24:04,159
+computing problem is precisely the
+
+397
+00:24:04,159 --> 00:24:08,240
+reason we built our next generation.
+
+398
+00:24:08,240 --> 00:24:12,799
+Vera Rubin, Vera Rubin is not one chip.
+
+399
+00:24:12,799 --> 00:24:16,320
+Vera Rubin is not a GPU only. It starts
+
+400
+00:24:16,320 --> 00:24:19,520
+with the GPU. But Vera Rubin is
+
+401
+00:24:19,520 --> 00:24:22,159
+incredible.
+
+402
+00:24:22,159 --> 00:24:26,159
+This entire thing is Vera Rubin
+
+403
+00:24:26,159 --> 00:24:30,880
+from end to end. It has GPUs Vera Rubin
+
+404
+00:24:30,880 --> 00:24:32,880
+MVLink72.
+
+405
+00:24:32,880 --> 00:24:35,360
+It is orchestrated by Vera CPUs that I'm
+
+406
+00:24:35,360 --> 00:24:37,520
+going to tell you more about the storage
+
+407
+00:24:37,520 --> 00:24:41,760
+systems revolutionary Vera along with
+
+408
+00:24:41,760 --> 00:24:45,760
+CX9 our software stack called DOA the
+
+409
+00:24:45,760 --> 00:24:48,159
+security processor that's inside so that
+
+410
+00:24:48,159 --> 00:24:52,480
+everything is encrypted at rest
+
+411
+00:24:52,480 --> 00:24:56,880
+in motion as well as in use.
+
+412
+00:24:56,880 --> 00:24:59,360
+Everything across this is secure because
+
+413
+00:24:59,360 --> 00:25:02,320
+the AI model is so precious. This is the
+
+414
+00:25:02,320 --> 00:25:05,440
+reason why this entire system obeys
+
+415
+00:25:05,440 --> 00:25:07,679
+confidential computing.
+
+416
+00:25:07,679 --> 00:25:09,840
+Each one of these systems would be a
+
+417
+00:25:09,840 --> 00:25:12,640
+complete revolution in itself. Vera
+
+418
+00:25:12,640 --> 00:25:15,919
+Rubin is the most ambitious endeavor in
+
+419
+00:25:15,919 --> 00:25:18,640
+the history of our company.
+
+420
+00:25:18,640 --> 00:25:21,039
+The whole company worked on Vera Rubin
+
+421
+00:25:21,039 --> 00:25:24,559
+across all 40,000 engineers. Not to
+
+422
+00:25:24,559 --> 00:25:27,039
+mention all of you. All of you
+
+423
+00:25:27,039 --> 00:25:29,279
+participated in the creation of this
+
+424
+00:25:29,279 --> 00:25:32,720
+entire system. Vera Rubin is really a
+
+425
+00:25:32,720 --> 00:25:34,880
+miracle and it's not just one chip. It
+
+426
+00:25:34,880 --> 00:25:36,799
+is so many.
+
+427
+00:25:36,799 --> 00:25:39,760
+Well, it's even beyond that. A long time
+
+428
+00:25:39,760 --> 00:25:42,880
+ago, Nvidia used to be a GPU company,
+
+429
+00:25:42,880 --> 00:25:46,240
+but over the years, we've evolved
+
+430
+00:25:46,240 --> 00:25:48,720
+to become a systems company. You're
+
+431
+00:25:48,720 --> 00:25:51,360
+looking here now for the most complex
+
+432
+00:25:51,360 --> 00:25:54,320
+system, most complex and groundup system
+
+433
+00:25:54,320 --> 00:25:56,240
+ever designed.
+
+434
+00:25:56,240 --> 00:25:59,360
+But ultimately our customers, our
+
+435
+00:25:59,360 --> 00:26:03,120
+partners don't want to buy computers.
+
+436
+00:26:03,120 --> 00:26:06,159
+They want to build AI factories. Which
+
+437
+00:26:06,159 --> 00:26:08,080
+is the reason why Nvidia has really
+
+438
+00:26:08,080 --> 00:26:11,039
+started to transform oursel yet again.
+
+439
+00:26:11,039 --> 00:26:13,840
+You could see so much of our technology
+
+440
+00:26:13,840 --> 00:26:16,320
+is now at the entire infrastructure
+
+441
+00:26:16,320 --> 00:26:18,799
+scale. Our partners are at
+
+442
+00:26:18,799 --> 00:26:21,760
+infrastructure scale. Power generators,
+
+443
+00:26:21,760 --> 00:26:25,360
+cooling systems, the grid providers.
+
+444
+00:26:25,360 --> 00:26:28,640
+So many industrial companies are now
+
+445
+00:26:28,640 --> 00:26:31,279
+part of our ecosystem because ultimately
+
+446
+00:26:31,279 --> 00:26:33,760
+we're trying to build an entire stack
+
+447
+00:26:33,760 --> 00:26:36,559
+just like GPUs just like when we were
+
+448
+00:26:36,559 --> 00:26:39,919
+building Grace Blackwell MVLink 72 just
+
+449
+00:26:39,919 --> 00:26:43,120
+like now we are building a full stack
+
+450
+00:26:43,120 --> 00:26:47,120
+system so that our customers could build
+
+451
+00:26:47,120 --> 00:26:49,279
+amazing AI infrastructure. Let's take a
+
+452
+00:26:49,279 --> 00:26:52,159
+look.
+
+453
+00:26:52,159 --> 00:26:53,919
+>> The world is racing to build AI
+
+454
+00:26:53,919 --> 00:26:56,240
+factories. The largest infrastructure
+
+455
+00:26:56,240 --> 00:26:59,440
+buildout in human history. AI factories
+
+456
+00:26:59,440 --> 00:27:01,840
+are incredibly complex. Every layer,
+
+457
+00:27:01,840 --> 00:27:06,080
+chip, rack, network, power, cooling,
+
+458
+00:27:06,080 --> 00:27:08,320
+grid must be designed together from end
+
+459
+00:27:08,320 --> 00:27:13,080
+to end because compute is revenues.
+
+460
+00:27:13,679 --> 00:27:17,039
+NVIDIA DSX is the blueprint, a reference
+
+461
+00:27:17,039 --> 00:27:19,279
+design for building and operating AI
+
+462
+00:27:19,279 --> 00:27:21,520
+factories at maximum efficiency and
+
+463
+00:27:21,520 --> 00:27:23,520
+profitability.
+
+464
+00:27:23,520 --> 00:27:27,120
+It starts with DSX SIM. With the DSX SIM
+
+465
+00:27:27,120 --> 00:27:29,120
+Omniverse blueprint, partners design and
+
+466
+00:27:29,120 --> 00:27:31,840
+validate an NVIDIA Vera Rubin AI factory
+
+467
+00:27:31,840 --> 00:27:34,960
+before a single rack lands.
+
+468
+00:27:34,960 --> 00:27:38,760
+They plan the layout,
+
+469
+00:27:39,440 --> 00:27:43,600
+simulate the power and cooling,
+
+470
+00:27:43,600 --> 00:27:45,760
+design the network, validate every
+
+471
+00:27:45,760 --> 00:27:48,080
+integration, test every change in the
+
+472
+00:27:48,080 --> 00:27:50,720
+digital twin.
+
+473
+00:27:50,720 --> 00:27:54,240
+The factory powers on. DSXOSS takes over
+
+474
+00:27:54,240 --> 00:27:56,960
+and provisions, operates, monitors, and
+
+475
+00:27:56,960 --> 00:27:59,600
+remediates the infrastructure,
+
+476
+00:27:59,600 --> 00:28:01,600
+turning the installed systems into
+
+477
+00:28:01,600 --> 00:28:04,799
+trusted, multi-tenant, resilient, AI
+
+478
+00:28:04,799 --> 00:28:08,120
+ready capacity.
+
+479
+00:28:08,320 --> 00:28:10,720
+Today's AI factories overprovision power
+
+480
+00:28:10,720 --> 00:28:15,120
+by up to 40%. DSX Max LPS lets operators
+
+481
+00:28:15,120 --> 00:28:17,840
+safely deploy more GPUs inside the same
+
+482
+00:28:17,840 --> 00:28:21,120
+power budget, adding billions in annual
+
+483
+00:28:21,120 --> 00:28:24,120
+revenue.
+
+484
+00:28:24,799 --> 00:28:28,240
+Breakthrough hot liquid cooling at 45° C
+
+485
+00:28:28,240 --> 00:28:31,440
+uses less water and energy. More power
+
+486
+00:28:31,440 --> 00:28:34,240
+going to revenue generating compute.
+
+487
+00:28:34,240 --> 00:28:36,320
+Incredible.
+
+488
+00:28:36,320 --> 00:28:38,880
+Dynamic power allocation steers power
+
+489
+00:28:38,880 --> 00:28:41,120
+from rack to rack, recovering stranded
+
+490
+00:28:41,120 --> 00:28:42,960
+watts, sending them where work is
+
+491
+00:28:42,960 --> 00:28:45,039
+happening.
+
+492
+00:28:45,039 --> 00:28:47,520
+In rack power smoothing flattens peak
+
+493
+00:28:47,520 --> 00:28:52,120
+current spikes and power surges
+
+494
+00:28:53,200 --> 00:28:55,120
+throughout the factory. Teams of AI
+
+495
+00:28:55,120 --> 00:28:58,000
+agents work with DSX Max LPS,
+
+496
+00:28:58,000 --> 00:28:59,840
+continuously coordinating to balance
+
+497
+00:28:59,840 --> 00:29:01,760
+cooling and power to meet workload
+
+498
+00:29:01,760 --> 00:29:03,600
+demand.
+
+499
+00:29:03,600 --> 00:29:06,080
+DSX AI factories are flexible energy
+
+500
+00:29:06,080 --> 00:29:08,159
+assets that operate cooperatively with
+
+501
+00:29:08,159 --> 00:29:11,919
+the grid. DSX Flex reads real-time grid
+
+502
+00:29:11,919 --> 00:29:14,559
+signals and dynamically adjusts factory
+
+503
+00:29:14,559 --> 00:29:19,000
+power when the grid needs relief.
+
+504
+00:29:20,240 --> 00:29:22,640
+100 gawatts of AI factories will come
+
+505
+00:29:22,640 --> 00:29:25,120
+online before the end of the decade.
+
+506
+00:29:25,120 --> 00:29:27,840
+NVIDIA DSX AI factories run at highest
+
+507
+00:29:27,840 --> 00:29:30,159
+efficiency, produce the lowest cost
+
+508
+00:29:30,159 --> 00:29:34,720
+tokens, and make the grid stronger.
+
+509
+00:29:41,679 --> 00:29:44,080
+I've shown you ecosystem slides of the
+
+510
+00:29:44,080 --> 00:29:45,840
+past
+
+511
+00:29:45,840 --> 00:29:48,399
+where Nvidia's computing layers and
+
+512
+00:29:48,399 --> 00:29:50,320
+software and software and computing
+
+513
+00:29:50,320 --> 00:29:52,880
+stacks are integrated into other
+
+514
+00:29:52,880 --> 00:29:54,320
+people's platforms, third party
+
+515
+00:29:54,320 --> 00:29:56,880
+platforms and libraries that serves end
+
+516
+00:29:56,880 --> 00:30:00,720
+markets. That was a computing ecosystem.
+
+517
+00:30:00,720 --> 00:30:04,240
+This is an AI factory ecosystem. This is
+
+518
+00:30:04,240 --> 00:30:07,520
+way downstream of all of you. Upstream
+
+519
+00:30:07,520 --> 00:30:10,799
+of me is all of you and downstream of us
+
+520
+00:30:10,799 --> 00:30:13,520
+is this ecosystem. Because Nvidia
+
+521
+00:30:13,520 --> 00:30:17,120
+ultimately is not just building a GPU,
+
+522
+00:30:17,120 --> 00:30:19,360
+not just building a system. We're
+
+523
+00:30:19,360 --> 00:30:21,279
+helping customers build these AI
+
+524
+00:30:21,279 --> 00:30:23,840
+factories, these AI infrastructure that
+
+525
+00:30:23,840 --> 00:30:27,039
+is so immensely complex. Each one of
+
+526
+00:30:27,039 --> 00:30:30,960
+these at one gigawatt level started at
+
+527
+00:30:30,960 --> 00:30:35,440
+30 2030 billion dollars. It is at 5060
+
+528
+00:30:35,440 --> 00:30:39,279
+billion and soon it will be 80 hundred
+
+529
+00:30:39,279 --> 00:30:42,799
+billion per gigawatt
+
+530
+00:30:42,799 --> 00:30:47,200
+$100 billion into an AI factory.
+
+531
+00:30:47,200 --> 00:30:49,440
+It must work the first time and it must
+
+532
+00:30:49,440 --> 00:30:52,240
+work right away. The cost of capital is
+
+533
+00:30:52,240 --> 00:30:54,320
+incredible. The complexity is
+
+534
+00:30:54,320 --> 00:30:57,440
+incredible. So as you see we used to
+
+535
+00:30:57,440 --> 00:31:00,720
+design a chip inside a computer
+
+536
+00:31:00,720 --> 00:31:04,080
+and then we simulated a system inside a
+
+537
+00:31:04,080 --> 00:31:08,399
+computer. Today you saw just now
+
+538
+00:31:08,399 --> 00:31:11,520
+everything was built in Omniverse.
+
+539
+00:31:11,520 --> 00:31:13,120
+I've been working with Omniverse with
+
+540
+00:31:13,120 --> 00:31:15,679
+all of you for a long time. This was the
+
+541
+00:31:15,679 --> 00:31:18,559
+dream come true so that we can build
+
+542
+00:31:18,559 --> 00:31:21,360
+these gigantic systems as large as the
+
+543
+00:31:21,360 --> 00:31:23,919
+world wants to build inside a digital
+
+544
+00:31:23,919 --> 00:31:27,039
+framework inside a digital simulator in
+
+545
+00:31:27,039 --> 00:31:30,960
+a digital world long before we build the
+
+546
+00:31:30,960 --> 00:31:33,279
+first break ground and put our money to
+
+547
+00:31:33,279 --> 00:31:36,480
+work. So this is our ecosystem our we
+
+548
+00:31:36,480 --> 00:31:38,399
+call it DSX.
+
+549
+00:31:38,399 --> 00:31:41,679
+RTX is for our GPU, DGX is for our
+
+550
+00:31:41,679 --> 00:31:44,720
+systems and now DSX basically
+
+551
+00:31:44,720 --> 00:31:47,120
+infrastructure because of the work that
+
+552
+00:31:47,120 --> 00:31:49,679
+we do here across this entire stack
+
+553
+00:31:49,679 --> 00:31:51,679
+including our systems and software. It's
+
+554
+00:31:51,679 --> 00:31:53,360
+the reason why we could work with small
+
+555
+00:31:53,360 --> 00:31:55,360
+companies and enable them to be
+
+556
+00:31:55,360 --> 00:31:59,600
+worldclass AI clouds. Every one of these
+
+557
+00:31:59,600 --> 00:32:01,360
+I'm about to show you are small
+
+558
+00:32:01,360 --> 00:32:03,840
+companies just recently and now
+
+559
+00:32:03,840 --> 00:32:06,880
+Coreweave is worth 50 60 70 billion
+
+560
+00:32:06,880 --> 00:32:09,760
+dollars and growing incredibly fast.
+
+561
+00:32:09,760 --> 00:32:12,320
+Recently we worked with Nbius and again
+
+562
+00:32:12,320 --> 00:32:14,960
+they're growing incredibly fast. Each
+
+563
+00:32:14,960 --> 00:32:17,679
+one of these clouds have incredible
+
+564
+00:32:17,679 --> 00:32:20,080
+customers. Cursor, the software coding
+
+565
+00:32:20,080 --> 00:32:22,960
+company, Black Mountain Labs, Image
+
+566
+00:32:22,960 --> 00:32:26,159
+Generation, World Labs, World Foundation
+
+567
+00:32:26,159 --> 00:32:28,720
+model, Revolute, the leading uh
+
+568
+00:32:28,720 --> 00:32:30,799
+financial services AI company, and
+
+569
+00:32:30,799 --> 00:32:33,840
+Shopify. Here's another one. This is
+
+570
+00:32:33,840 --> 00:32:36,559
+NScale, and their customers are British
+
+571
+00:32:36,559 --> 00:32:40,720
+Telecom, Google. Google is using one of
+
+572
+00:32:40,720 --> 00:32:43,840
+our AI clouds, Thinking Machines, a
+
+573
+00:32:43,840 --> 00:32:46,399
+Frontier Labs company. Super exciting.
+
+574
+00:32:46,399 --> 00:32:49,600
+Here's neighbor cloud in Korea, Bank of
+
+575
+00:32:49,600 --> 00:32:52,640
+Korea, Hyundai.
+
+576
+00:32:52,640 --> 00:32:54,960
+So many incredible companies. Here's one
+
+577
+00:32:54,960 --> 00:32:58,080
+in in India, Yoda.
+
+578
+00:32:58,080 --> 00:33:00,640
+Incredible companies. Here's one uh
+
+579
+00:33:00,640 --> 00:33:03,039
+based in Singapore building in a
+
+580
+00:33:03,039 --> 00:33:07,440
+Australia. Together AI AI Singapore.
+
+581
+00:33:07,440 --> 00:33:10,080
+This is one in Indonesia. Each one of
+
+582
+00:33:10,080 --> 00:33:12,159
+these companies, each one of these
+
+583
+00:33:12,159 --> 00:33:15,120
+companies are serving regional as well
+
+584
+00:33:15,120 --> 00:33:18,640
+as global customers. AI is going to run
+
+585
+00:33:18,640 --> 00:33:20,640
+everywhere. Every company will be
+
+586
+00:33:20,640 --> 00:33:24,880
+powered by it. Every region will build
+
+587
+00:33:24,880 --> 00:33:28,640
+it. Indoat here in Indonesia. Here in
+
+588
+00:33:28,640 --> 00:33:31,760
+Taiwan, GMI
+
+589
+00:33:31,760 --> 00:33:38,120
+here in Taiwan, GMI, it's okay to clap.
+
+590
+00:33:41,360 --> 00:33:44,880
+So incredible, incredible uh incredible
+
+591
+00:33:44,880 --> 00:33:47,039
+companies, incredible opportunity, but
+
+592
+00:33:47,039 --> 00:33:49,440
+all of them need several things. Of
+
+593
+00:33:49,440 --> 00:33:51,440
+course, they need the computing stack.
+
+594
+00:33:51,440 --> 00:33:53,600
+This entire stack underneath this is
+
+595
+00:33:53,600 --> 00:33:56,399
+what made Nvidia famous. All of our
+
+596
+00:33:56,399 --> 00:33:59,360
+hardware and software and libraries, our
+
+597
+00:33:59,360 --> 00:34:01,679
+connection into the world's ecosystem of
+
+598
+00:34:01,679 --> 00:34:04,799
+thirdparty developers makes it possible
+
+599
+00:34:04,799 --> 00:34:08,399
+for anyone to stand up an AI cloud.
+
+600
+00:34:08,399 --> 00:34:12,480
+However, the AI cloud is so complex now.
+
+601
+00:34:12,480 --> 00:34:14,320
+This is the software version. This is
+
+602
+00:34:14,320 --> 00:34:17,040
+the computer science version,
+
+603
+00:34:17,040 --> 00:34:21,040
+the money version, the asset version is
+
+604
+00:34:21,040 --> 00:34:23,760
+what I showed you earlier. It's a giant
+
+605
+00:34:23,760 --> 00:34:27,280
+factory. Having this ability alone is
+
+606
+00:34:27,280 --> 00:34:29,200
+not enough which is the reason why
+
+607
+00:34:29,200 --> 00:34:31,919
+Nvidia has become an AI infrastructure
+
+608
+00:34:31,919 --> 00:34:35,760
+company. Now doing this well and
+
+609
+00:34:35,760 --> 00:34:38,800
+becoming incredibly good at dep at
+
+610
+00:34:38,800 --> 00:34:41,760
+helping customers build AI factories and
+
+611
+00:34:41,760 --> 00:34:44,320
+deploying AI factories is incredibly
+
+612
+00:34:44,320 --> 00:34:45,599
+important. And the reason for that is
+
+613
+00:34:45,599 --> 00:34:50,320
+this. Compute is revenue. Now compute is
+
+614
+00:34:50,320 --> 00:34:53,119
+profit. the absence of revenues and
+
+615
+00:34:53,119 --> 00:34:56,879
+profit is loss. And so it's really
+
+616
+00:34:56,879 --> 00:35:00,720
+important to realize that this is when
+
+617
+00:35:00,720 --> 00:35:03,599
+this is an example of
+
+618
+00:35:03,599 --> 00:35:06,480
+an AI infrastructure coming online. It
+
+619
+00:35:06,480 --> 00:35:09,119
+could take it could be coming online
+
+620
+00:35:09,119 --> 00:35:12,000
+quickly. It could take a while. Its
+
+621
+00:35:12,000 --> 00:35:13,760
+throughput could be high. It could be
+
+622
+00:35:13,760 --> 00:35:16,480
+low. Its resilience and reliability
+
+623
+00:35:16,480 --> 00:35:19,680
+could be good or bad. And its lifetime
+
+624
+00:35:19,680 --> 00:35:23,440
+of usefulness could be long or short
+
+625
+00:35:23,440 --> 00:35:26,560
+because this represents
+
+626
+00:35:26,560 --> 00:35:29,760
+50 60 going to a hundred billion
+
+627
+00:35:29,760 --> 00:35:31,920
+dollars.
+
+628
+00:35:31,920 --> 00:35:35,280
+This curve matters greatly which is the
+
+629
+00:35:35,280 --> 00:35:37,040
+reason why Nvidia is such a great
+
+630
+00:35:37,040 --> 00:35:40,480
+partner working with us because of our
+
+631
+00:35:40,480 --> 00:35:43,280
+fully integrated capability. We didn't
+
+632
+00:35:43,280 --> 00:35:46,400
+just come up with a PowerPoint slide. We
+
+633
+00:35:46,400 --> 00:35:48,560
+created the entire infrastructure. We
+
+634
+00:35:48,560 --> 00:35:50,640
+connected everything together. We built
+
+635
+00:35:50,640 --> 00:35:52,400
+out billions and billions of it
+
+636
+00:35:52,400 --> 00:35:55,680
+ourselves to make sure that everything
+
+637
+00:35:55,680 --> 00:35:58,560
+works well. As a result of that, our
+
+638
+00:35:58,560 --> 00:36:03,359
+time our time to first token, our time
+
+639
+00:36:03,359 --> 00:36:05,359
+to first token, our time to first
+
+640
+00:36:05,359 --> 00:36:07,200
+inference,
+
+641
+00:36:07,200 --> 00:36:11,520
+our time to training turned on is much
+
+642
+00:36:11,520 --> 00:36:16,960
+faster. Second, because our
+
+643
+00:36:16,960 --> 00:36:20,640
+throughput per watt, our tokens per watt
+
+644
+00:36:20,640 --> 00:36:23,599
+is utterly world class. And the reason
+
+645
+00:36:23,599 --> 00:36:25,040
+for that is because we integrate
+
+646
+00:36:25,040 --> 00:36:26,720
+everything. We design everything from
+
+647
+00:36:26,720 --> 00:36:28,480
+the ground up. We simulate the entire
+
+648
+00:36:28,480 --> 00:36:31,359
+system and we use extreme code design.
+
+649
+00:36:31,359 --> 00:36:32,880
+Just like I showed you just now with the
+
+650
+00:36:32,880 --> 00:36:36,000
+Vera Rubin rack, everything was designed
+
+651
+00:36:36,000 --> 00:36:38,160
+in order to deliver on this incredible
+
+652
+00:36:38,160 --> 00:36:40,160
+throughput.
+
+653
+00:36:40,160 --> 00:36:44,800
+If your data center, if your factory has
+
+654
+00:36:44,800 --> 00:36:46,880
+one gigawatt,
+
+655
+00:36:46,880 --> 00:36:50,160
+it will not have more. One gawatt means
+
+656
+00:36:50,160 --> 00:36:52,720
+1 gawatt. That's all the power
+
+657
+00:36:52,720 --> 00:36:55,440
+generation you could do. If you have one
+
+658
+00:36:55,440 --> 00:36:59,200
+gawatt of power, then throughput per
+
+659
+00:36:59,200 --> 00:37:03,839
+watt is revenues because every token is
+
+660
+00:37:03,839 --> 00:37:08,160
+profitable. Every token is revenues.
+
+661
+00:37:08,160 --> 00:37:11,839
+This is the future. Compute is revenues.
+
+662
+00:37:11,839 --> 00:37:14,560
+Performance per watt is your revenues.
+
+663
+00:37:14,560 --> 00:37:17,200
+Choosing the wrong architecture
+
+664
+00:37:17,200 --> 00:37:20,160
+just because the chips are cheaper
+
+665
+00:37:20,160 --> 00:37:23,839
+doesn't translate doesn't make sense.
+
+666
+00:37:23,839 --> 00:37:26,000
+You need to make sure that your revenues
+
+667
+00:37:26,000 --> 00:37:29,359
+per watt the more you buy the more you
+
+668
+00:37:29,359 --> 00:37:31,040
+make.
+
+669
+00:37:31,040 --> 00:37:35,119
+And so tokens per wide. And then lastly,
+
+670
+00:37:35,119 --> 00:37:39,359
+very li oh second, third is reliability.
+
+671
+00:37:39,359 --> 00:37:41,040
+If you ever get a chance to see these
+
+672
+00:37:41,040 --> 00:37:42,880
+data centers, there are so many moving
+
+673
+00:37:42,880 --> 00:37:46,320
+parts, millions of cables.
+
+674
+00:37:46,320 --> 00:37:48,560
+The ability for all of those computers
+
+675
+00:37:48,560 --> 00:37:51,280
+to work harmoniously,
+
+676
+00:37:51,280 --> 00:37:54,560
+reliably is extremely low. It is just
+
+677
+00:37:54,560 --> 00:37:56,800
+extremely difficult. We have now been
+
+678
+00:37:56,800 --> 00:37:59,359
+operating very large scale for a very
+
+679
+00:37:59,359 --> 00:38:02,800
+long time. That experience matters. That
+
+680
+00:38:02,800 --> 00:38:05,119
+difference meanantime time between
+
+681
+00:38:05,119 --> 00:38:08,320
+interrupts extremely important. And then
+
+682
+00:38:08,320 --> 00:38:09,839
+lastly,
+
+683
+00:38:09,839 --> 00:38:12,400
+this is very hard.
+
+684
+00:38:12,400 --> 00:38:14,880
+The lifetime of these systems, the
+
+685
+00:38:14,880 --> 00:38:17,200
+lifetime of these systems, the software
+
+686
+00:38:17,200 --> 00:38:19,920
+is changing all the time. Four years
+
+687
+00:38:19,920 --> 00:38:23,920
+ago, which is in the time of Hopper, AI
+
+688
+00:38:23,920 --> 00:38:26,400
+has completely changed.
+
+689
+00:38:26,400 --> 00:38:29,119
+Six years ago, this is the time frame of
+
+690
+00:38:29,119 --> 00:38:33,200
+Ampear. AI has completely changed.
+
+691
+00:38:33,200 --> 00:38:36,400
+We started out talking about CNN's here.
+
+692
+00:38:36,400 --> 00:38:38,480
+We are then we talked about transformers
+
+693
+00:38:38,480 --> 00:38:40,000
+and then we talked about mixture of
+
+694
+00:38:40,000 --> 00:38:42,800
+experts. Now we're talking about agentic
+
+695
+00:38:42,800 --> 00:38:44,320
+systems.
+
+696
+00:38:44,320 --> 00:38:47,839
+Every single generation, every single
+
+697
+00:38:47,839 --> 00:38:50,640
+few months, the software industry is
+
+698
+00:38:50,640 --> 00:38:53,200
+coming up with new technology. If your
+
+699
+00:38:53,200 --> 00:38:54,800
+architecture
+
+700
+00:38:54,800 --> 00:38:58,240
+is not flexible, if your ecosystem is
+
+701
+00:38:58,240 --> 00:39:01,839
+not rich, then this curve cannot be
+
+702
+00:39:01,839 --> 00:39:05,599
+long. You cannot predict how long your
+
+703
+00:39:05,599 --> 00:39:10,400
+system can last. I can Nvidia systems is
+
+704
+00:39:10,400 --> 00:39:12,880
+all over the world. Software developers
+
+705
+00:39:12,880 --> 00:39:15,920
+start with Nvidia CUDA and by definition
+
+706
+00:39:15,920 --> 00:39:19,760
+therefore the life the ecosystem
+
+707
+00:39:19,760 --> 00:39:22,400
+the useful asset is going to be much
+
+708
+00:39:22,400 --> 00:39:25,040
+longer. The difference is essentially
+
+709
+00:39:25,040 --> 00:39:27,520
+cost. You could think of it as revenues
+
+710
+00:39:27,520 --> 00:39:30,320
+but the other side of revenues is cost.
+
+711
+00:39:30,320 --> 00:39:33,200
+If the life of the asset is long, the
+
+712
+00:39:33,200 --> 00:39:35,760
+TCO is low.
+
+713
+00:39:35,760 --> 00:39:38,800
+This is the difference. This is what it
+
+714
+00:39:38,800 --> 00:39:42,800
+looks like when compute
+
+715
+00:39:44,880 --> 00:39:50,040
+The more you buy, the more you make
+
+716
+00:39:55,119 --> 00:39:58,160
+now. All of you are experiencing this
+
+717
+00:39:58,160 --> 00:40:01,520
+with me. Isn't that right? all of your
+
+718
+00:40:01,520 --> 00:40:04,320
+demand, your factories are working so
+
+719
+00:40:04,320 --> 00:40:07,680
+hard, your people are working so hard
+
+720
+00:40:07,680 --> 00:40:10,640
+all across Taiwan because everybody
+
+721
+00:40:10,640 --> 00:40:14,079
+wants to make money. They realize that
+
+722
+00:40:14,079 --> 00:40:19,359
+AI, useful AI is here. Profitable AI is
+
+723
+00:40:19,359 --> 00:40:24,400
+here. Compute demand is incredibly high
+
+724
+00:40:24,400 --> 00:40:27,040
+and compute demand is the constraint.
+
+725
+00:40:27,040 --> 00:40:29,920
+And so let's go work super super hard
+
+726
+00:40:29,920 --> 00:40:32,320
+and help the world stand up AI factories
+
+727
+00:40:32,320 --> 00:40:34,560
+everywhere. This is why it's so
+
+728
+00:40:34,560 --> 00:40:37,680
+important I am so happy here I am
+
+729
+00:40:37,680 --> 00:40:41,359
+standing in front of you. Vera Rubin is
+
+730
+00:40:41,359 --> 00:40:44,920
+in full production.
+
+731
+00:40:47,440 --> 00:40:51,520
+Vera Rubin is in full production.
+
+732
+00:40:51,520 --> 00:40:54,400
+It the um the the supply chain we
+
+733
+00:40:54,400 --> 00:40:58,640
+created for Vera Rubin is twice as large
+
+734
+00:40:58,640 --> 00:41:01,200
+as Grace Blackwell.
+
+735
+00:41:01,200 --> 00:41:05,599
+Not Yeah, it's incredible. And And what
+
+736
+00:41:05,599 --> 00:41:08,880
+used to take two hours to assemble one
+
+737
+00:41:08,880 --> 00:41:11,440
+Grace Blackwell rack now only takes five
+
+738
+00:41:11,440 --> 00:41:14,400
+minutes. So not only is the capacity
+
+739
+00:41:14,400 --> 00:41:17,440
+higher, the throughput is a lot faster
+
+740
+00:41:17,440 --> 00:41:20,240
+and we need it all to support the
+
+741
+00:41:20,240 --> 00:41:21,839
+demand.
+
+742
+00:41:21,839 --> 00:41:25,119
+This ecosystem is extraordinary.
+
+743
+00:41:25,119 --> 00:41:27,440
+Millions of square feet has been put
+
+744
+00:41:27,440 --> 00:41:30,640
+online to support Grace Blackwell and
+
+745
+00:41:30,640 --> 00:41:33,599
+preparing now ramping up now Vera Rubin.
+
+746
+00:41:33,599 --> 00:41:35,680
+I want to thank all of you. Vera Rubin
+
+747
+00:41:35,680 --> 00:41:40,280
+is now in full production. Thank you.
+
+748
+00:41:41,599 --> 00:41:45,240
+Let's take a look.
+
+749
+00:41:45,920 --> 00:41:49,520
+Large language models generate answers.
+
+750
+00:41:49,520 --> 00:41:52,480
+Now AI agents can do work. But
+
+751
+00:41:52,480 --> 00:41:55,119
+processing agentic AI is a whole
+
+752
+00:41:55,119 --> 00:41:57,200
+different kind of problem. Agents
+
+753
+00:41:57,200 --> 00:42:00,800
+observe, reason, plan, use tools. They
+
+754
+00:42:00,800 --> 00:42:03,200
+manage massive context, juggling working
+
+755
+00:42:03,200 --> 00:42:05,280
+memory and long-term memory. They spin
+
+756
+00:42:05,280 --> 00:42:08,720
+up sub aents, specialists on demand.
+
+757
+00:42:08,720 --> 00:42:11,200
+NVIDIA Vera Rubin is a multi-rackck
+
+758
+00:42:11,200 --> 00:42:14,160
+podcale system built to process Agentic
+
+759
+00:42:14,160 --> 00:42:17,200
+AI and is now in full production. The
+
+760
+00:42:17,200 --> 00:42:19,040
+manufacturing, automation and
+
+761
+00:42:19,040 --> 00:42:21,440
+orchestration across the supply chain, a
+
+762
+00:42:21,440 --> 00:42:24,079
+miracle to witness. Our journey started
+
+763
+00:42:24,079 --> 00:42:25,680
+when we launched the first AI
+
+764
+00:42:25,680 --> 00:42:28,880
+supercomputer, Nvidia DGX1.
+
+765
+00:42:28,880 --> 00:42:31,200
+Over the next decade, we pushed every
+
+766
+00:42:31,200 --> 00:42:33,520
+chip and system to the limit. from
+
+767
+00:42:33,520 --> 00:42:36,319
+Pascal and the first MVLink to Grace
+
+768
+00:42:36,319 --> 00:42:38,560
+Blackwell, the first rack scale AI
+
+769
+00:42:38,560 --> 00:42:42,240
+supercomputer. And now Vera Rubin, the
+
+770
+00:42:42,240 --> 00:42:44,640
+first multirack pod scale supercomputer
+
+771
+00:42:44,640 --> 00:42:47,680
+built for the agentic age. It starts at
+
+772
+00:42:47,680 --> 00:42:50,480
+TSMC, the seven new chips that make up
+
+773
+00:42:50,480 --> 00:42:52,560
+Vera Rubin takes shape through hundreds
+
+774
+00:42:52,560 --> 00:42:55,119
+of processing steps. 3 nanometer
+
+775
+00:42:55,119 --> 00:42:58,079
+process, co-was R and co-was L
+
+776
+00:42:58,079 --> 00:43:02,160
+packaging, HBM4 memory from Micron SKH
+
+777
+00:43:02,160 --> 00:43:04,720
+and Samsung. The Vera Rubin compute
+
+778
+00:43:04,720 --> 00:43:08,079
+board 6 trillion transistors with over
+
+779
+00:43:08,079 --> 00:43:11,359
+18,000 components on one board. Vera
+
+780
+00:43:11,359 --> 00:43:14,400
+Rubin NVL72 does the thinking, prompt
+
+781
+00:43:14,400 --> 00:43:16,640
+and context understanding, reasoning,
+
+782
+00:43:16,640 --> 00:43:20,720
+and planning. Next, a new modular comput
+
+783
+00:43:20,720 --> 00:43:23,280
+streamlined with a new PCB midplane
+
+784
+00:43:23,280 --> 00:43:26,960
+design, super chips, connect X9 super
+
+785
+00:43:26,960 --> 00:43:30,480
+nicks, and Bluefield 4 DPUs, all made in
+
+786
+00:43:30,480 --> 00:43:33,359
+place with no cables for resiliency at
+
+787
+00:43:33,359 --> 00:43:37,040
+AI factory scale, 18 compute trays, nine
+
+788
+00:43:37,040 --> 00:43:40,319
+hot swappable NVLink switch trays, new
+
+789
+00:43:40,319 --> 00:43:42,800
+high efficiency manifolds, liquid cooled
+
+790
+00:43:42,800 --> 00:43:46,079
+bus bars carrying over 5,000 amps, the
+
+791
+00:43:46,079 --> 00:43:48,480
+equivalent of 20 electric cars at full
+
+792
+00:43:48,480 --> 00:43:51,920
+acceleration. Together, 1.3 million
+
+793
+00:43:51,920 --> 00:43:54,160
+components formed this third generation
+
+794
+00:43:54,160 --> 00:43:56,960
+MGX rack design. Congratulations to
+
+795
+00:43:56,960 --> 00:43:59,280
+Microsoft for their operational Vera
+
+796
+00:43:59,280 --> 00:44:01,920
+Rubin MVL72 engineering rack.
+
+797
+00:44:01,920 --> 00:44:03,839
+Congratulations to Dell and Coreweave as
+
+798
+00:44:03,839 --> 00:44:06,000
+well for standing up their Vera Rubin
+
+799
+00:44:06,000 --> 00:44:10,000
+MVL72 engineering rack. Then the Vera
+
+800
+00:44:10,000 --> 00:44:14,640
+CPU rack. 256 CPUs in a single liquid
+
+801
+00:44:14,640 --> 00:44:17,760
+cooled rack. Orchestrating the models,
+
+802
+00:44:17,760 --> 00:44:20,880
+shuffling memory, launching tools. At
+
+803
+00:44:20,880 --> 00:44:24,319
+Foxcon and Quanta, Gro 3 LPX takes
+
+804
+00:44:24,319 --> 00:44:30,079
+shape. 256 Gro 3 LUS across 16 trays, 40
+
+805
+00:44:30,079 --> 00:44:32,319
+pabytes per second of SRAMM bandwidth
+
+806
+00:44:32,319 --> 00:44:34,720
+for ultra low latency.
+
+807
+00:44:34,720 --> 00:44:37,760
+While MVL72 generates tokens at the
+
+808
+00:44:37,760 --> 00:44:40,720
+highest throughput, Grock LPX generates
+
+809
+00:44:40,720 --> 00:44:43,200
+them at the lowest latency.
+
+810
+00:44:43,200 --> 00:44:46,400
+Vera Bluefield 4 STX where AI keeps its
+
+811
+00:44:46,400 --> 00:44:49,520
+memory. Storage processing accelerated
+
+812
+00:44:49,520 --> 00:44:52,480
+by Bluefield 4, connecting memory,
+
+813
+00:44:52,480 --> 00:44:56,079
+storage, and insilicon security.
+
+814
+00:44:56,079 --> 00:44:59,440
+and NVIDIA Spectrum X Ethernet photonix.
+
+815
+00:44:59,440 --> 00:45:02,000
+The world's first Ethernet switch with
+
+816
+00:45:02,000 --> 00:45:05,599
+200 gigabit co-packaged optics. TSMC's
+
+817
+00:45:05,599 --> 00:45:08,800
+coupe process chip scale packaging and
+
+818
+00:45:08,800 --> 00:45:11,440
+ultra highowered laser dies on indium
+
+819
+00:45:11,440 --> 00:45:13,280
+phosphide.
+
+820
+00:45:13,280 --> 00:45:16,079
+Vera Rubin five connected rack scale
+
+821
+00:45:16,079 --> 00:45:20,160
+systems. A supercomput for AI agents.
+
+822
+00:45:20,160 --> 00:45:23,280
+150 supply chain partners across Taiwan.
+
+823
+00:45:23,280 --> 00:45:25,119
+Millions of square feet of factory
+
+824
+00:45:25,119 --> 00:45:28,319
+floor, hundreds of sites, chips,
+
+825
+00:45:28,319 --> 00:45:31,119
+packages, systems, and data centers
+
+826
+00:45:31,119 --> 00:45:33,760
+pushed to the limits of size, power, and
+
+827
+00:45:33,760 --> 00:45:36,400
+scale. This is what we call extreme code
+
+828
+00:45:36,400 --> 00:45:38,960
+design. We did this with Taiwan.
+
+829
+00:45:38,960 --> 00:45:41,280
+Together, we reinvented computing for
+
+830
+00:45:41,280 --> 00:45:44,240
+the age of AI. Taiwan was with us at the
+
+831
+00:45:44,240 --> 00:45:46,480
+beginning and here today as we bring
+
+832
+00:45:46,480 --> 00:45:49,200
+Vera Rubin to the world. Thank you,
+
+833
+00:45:49,200 --> 00:45:52,200
+Taiwan.
+
+834
+00:45:57,680 --> 00:46:02,000
+Ladies and gentlemen, Vera Rubin.
+
+835
+00:46:02,000 --> 00:46:04,000
+Vera Rubin
+
+836
+00:46:04,000 --> 00:46:07,520
+was not just built for AI. AI. Vera
+
+837
+00:46:07,520 --> 00:46:10,480
+Rubin was not built just to run AI. Vera
+
+838
+00:46:10,480 --> 00:46:14,720
+Rubin was built to run agents. This is
+
+839
+00:46:14,720 --> 00:46:17,839
+an agentic system. Imagine the
+
+840
+00:46:17,839 --> 00:46:20,240
+complexity which is the reason why
+
+841
+00:46:20,240 --> 00:46:23,760
+agents is the last computer science
+
+842
+00:46:23,760 --> 00:46:26,160
+breakthrough. It has taken this many
+
+843
+00:46:26,160 --> 00:46:28,160
+years for agents to realize its
+
+844
+00:46:28,160 --> 00:46:30,480
+potential and become useful. It stands
+
+845
+00:46:30,480 --> 00:46:33,040
+to reason that the computer that runs it
+
+846
+00:46:33,040 --> 00:46:35,359
+is the most advanced in the world. This
+
+847
+00:46:35,359 --> 00:46:38,079
+is Vera Rubin. Let's take a look. Can we
+
+848
+00:46:38,079 --> 00:46:42,040
+bring out Vera Rubin, please?
+
+849
+00:46:59,520 --> 00:47:01,359
+And Janine, do we have the Do we have
+
+850
+00:47:01,359 --> 00:47:05,079
+the racks, the systems?
+
+851
+00:47:07,359 --> 00:47:10,720
+It looks heavy.
+
+852
+00:47:10,720 --> 00:47:14,160
+This is This is Vera Rubin. Vera Rubin
+
+853
+00:47:14,160 --> 00:47:16,560
+MVLink 72.
+
+854
+00:47:16,560 --> 00:47:20,640
+This is the Gro LPX. At the next GTC,
+
+855
+00:47:20,640 --> 00:47:21,920
+I'm going to talk to you about a lot
+
+856
+00:47:21,920 --> 00:47:24,160
+more of this today. We have so much to
+
+857
+00:47:24,160 --> 00:47:28,160
+talk to you about. This is Vera CPU
+
+858
+00:47:28,160 --> 00:47:32,400
+rack. 256 CPUs, all liquid cooled. Let
+
+859
+00:47:32,400 --> 00:47:34,400
+me tell you about Vera in just a moment.
+
+860
+00:47:34,400 --> 00:47:38,560
+This is the Vera blue field storage
+
+861
+00:47:38,560 --> 00:47:41,440
+processing system and also security
+
+862
+00:47:41,440 --> 00:47:44,000
+system. And of course this is our
+
+863
+00:47:44,000 --> 00:47:47,359
+Melanox networking the world's first
+
+864
+00:47:47,359 --> 00:47:49,280
+CPO.
+
+865
+00:47:49,280 --> 00:47:51,359
+This is Vera Rubin. Incredible
+
+866
+00:47:51,359 --> 00:47:53,839
+technology all coming together. Now when
+
+867
+00:47:53,839 --> 00:47:56,640
+we built when we built Hopper we built
+
+868
+00:47:56,640 --> 00:48:00,319
+Hopper as you know for pre-training.
+
+869
+00:48:00,319 --> 00:48:02,240
+pre-training was the most important
+
+870
+00:48:02,240 --> 00:48:03,920
+application, the most important workload
+
+871
+00:48:03,920 --> 00:48:06,000
+we were working on at the time. Then
+
+872
+00:48:06,000 --> 00:48:08,640
+when we worked on Grace Blackwell,
+
+873
+00:48:08,640 --> 00:48:10,800
+everybody said, "Jensen, you know,
+
+874
+00:48:10,800 --> 00:48:14,160
+Nvidia is really good at pre-training.
+
+875
+00:48:14,160 --> 00:48:16,560
+Inference is so easy." Do you remember
+
+876
+00:48:16,560 --> 00:48:19,359
+that? People used to say inference is so
+
+877
+00:48:19,359 --> 00:48:22,000
+easy. We could do that, too. But as you
+
+878
+00:48:22,000 --> 00:48:25,599
+know, inference equals money. And the mo
+
+879
+00:48:25,599 --> 00:48:27,119
+models
+
+880
+00:48:27,119 --> 00:48:29,520
+are so complicated and to do it at
+
+881
+00:48:29,520 --> 00:48:33,599
+incredibly high response time, fast
+
+882
+00:48:33,599 --> 00:48:35,760
+interactivity and high throughput at the
+
+883
+00:48:35,760 --> 00:48:38,720
+same time is incredibly hard which is
+
+884
+00:48:38,720 --> 00:48:41,920
+the reason why we created MVLink 72.
+
+885
+00:48:41,920 --> 00:48:45,680
+Today NVIDIA's token cost is the lowest
+
+886
+00:48:45,680 --> 00:48:49,839
+in the world. Not by 10% by X factors,
+
+887
+00:48:49,839 --> 00:48:52,079
+orders of magnitude.
+
+888
+00:48:52,079 --> 00:48:55,119
+All because we did extreme code design.
+
+889
+00:48:55,119 --> 00:48:57,440
+All because we understood the computing
+
+890
+00:48:57,440 --> 00:48:59,839
+model, the computing pattern of
+
+891
+00:48:59,839 --> 00:49:02,559
+inference and we were able to create
+
+892
+00:49:02,559 --> 00:49:07,440
+MVLink 72. Now with Vera Rubin, it is
+
+893
+00:49:07,440 --> 00:49:10,559
+beyond inference. It is now inference in
+
+894
+00:49:10,559 --> 00:49:14,880
+an agent agentic system. This is Vera
+
+895
+00:49:14,880 --> 00:49:18,400
+Rubin. No cables,
+
+896
+00:49:18,400 --> 00:49:22,079
+no hoses, no fans.
+
+897
+00:49:22,079 --> 00:49:24,240
+What used to take the last time when I
+
+898
+00:49:24,240 --> 00:49:26,400
+showed this to you, we had cables
+
+899
+00:49:26,400 --> 00:49:28,240
+everywhere.
+
+900
+00:49:28,240 --> 00:49:31,119
+The cables were amazing to look at, but
+
+901
+00:49:31,119 --> 00:49:34,559
+now there's a PCB in the middle which
+
+902
+00:49:34,559 --> 00:49:37,280
+connects both sides. What used to take
+
+903
+00:49:37,280 --> 00:49:40,160
+two hours now takes 5 minutes. The
+
+904
+00:49:40,160 --> 00:49:42,800
+reliability and the resilience of Vera
+
+905
+00:49:42,800 --> 00:49:46,000
+Rubin is going to be off the charts.
+
+906
+00:49:46,000 --> 00:49:49,839
+This is our Vera CPU tray. the most
+
+907
+00:49:49,839 --> 00:49:53,200
+advanced CPUs that has ever been built.
+
+908
+00:49:53,200 --> 00:49:54,800
+I'm going to show you that in just a
+
+909
+00:49:54,800 --> 00:50:00,000
+second. And this is our storage tray.
+
+910
+00:50:00,000 --> 00:50:02,240
+Two Vera CPUs,
+
+911
+00:50:02,240 --> 00:50:05,680
+four CX9. Incredible amounts of
+
+912
+00:50:05,680 --> 00:50:07,920
+software.
+
+913
+00:50:07,920 --> 00:50:12,720
+This is our new LPX LPU30,
+
+914
+00:50:12,720 --> 00:50:15,440
+the Gro system designed for very low
+
+915
+00:50:15,440 --> 00:50:18,640
+latency inference. The throughput is
+
+916
+00:50:18,640 --> 00:50:21,760
+delivered by Vera Rubin and extended
+
+917
+00:50:21,760 --> 00:50:24,800
+with MVLink 72. If you want to extend
+
+918
+00:50:24,800 --> 00:50:28,400
+that even further, you can have Grock
+
+919
+00:50:28,400 --> 00:50:29,920
+LPUs.
+
+920
+00:50:29,920 --> 00:50:32,800
+Here we have the Vera Rubin MVLink the
+
+921
+00:50:32,800 --> 00:50:36,160
+switch tray. This is the switches in the
+
+922
+00:50:36,160 --> 00:50:38,720
+middle. And this is revolutionary
+
+923
+00:50:38,720 --> 00:50:40,960
+because of Vera Rubin's because of
+
+924
+00:50:40,960 --> 00:50:44,559
+MVLink72 and the MVLink switches that we
+
+925
+00:50:44,559 --> 00:50:48,640
+created and invented. And this is our
+
+926
+00:50:48,640 --> 00:50:52,640
+Ethernet switches for scale out. What's
+
+927
+00:50:52,640 --> 00:50:56,079
+amazing is we introduced these two
+
+928
+00:50:56,079 --> 00:50:59,760
+systems for Grace Blackwell. These two
+
+929
+00:50:59,760 --> 00:51:01,920
+systems were created for Grace Blackwell
+
+930
+00:51:01,920 --> 00:51:04,880
+and today Nvidia is the largest
+
+931
+00:51:04,880 --> 00:51:08,000
+networking company in the world. I'm so
+
+932
+00:51:08,000 --> 00:51:10,960
+proud of the networking team. This is
+
+933
+00:51:10,960 --> 00:51:12,960
+such an incredible enabler for
+
+934
+00:51:12,960 --> 00:51:15,359
+everything that we do. I'm going to now
+
+935
+00:51:15,359 --> 00:51:17,839
+talk to you about the next major
+
+936
+00:51:17,839 --> 00:51:21,359
+industry we're going to be part of.
+
+937
+00:51:21,359 --> 00:51:24,640
+Thank you, Janine.
+
+938
+00:51:24,640 --> 00:51:27,880
+Thank you.
+
+939
+00:51:36,000 --> 00:51:38,160
+I think there are 2,000 people back
+
+940
+00:51:38,160 --> 00:51:41,800
+there pulling that.
+
+941
+00:51:44,720 --> 00:51:48,760
+Okay, let's talk about CPUs.
+
+942
+00:51:49,680 --> 00:51:54,640
+Vera CPUs. CPUs built for the age of AI.
+
+943
+00:51:54,640 --> 00:51:58,000
+All of the CPUs until now
+
+944
+00:51:58,000 --> 00:52:01,119
+were created for people. We were the
+
+945
+00:52:01,119 --> 00:52:02,800
+users.
+
+946
+00:52:02,800 --> 00:52:06,480
+We were the users. We were the renters.
+
+947
+00:52:06,480 --> 00:52:09,920
+The way we use CPUs, we live in a world
+
+948
+00:52:09,920 --> 00:52:12,319
+counted by seconds.
+
+949
+00:52:12,319 --> 00:52:15,520
+The way we rent CPUs in the cloud, each
+
+950
+00:52:15,520 --> 00:52:18,640
+one of them more you can more CPU cores
+
+951
+00:52:18,640 --> 00:52:21,599
+you have, the more you can rent. the
+
+952
+00:52:21,599 --> 00:52:24,240
+economics of the old the use case of the
+
+953
+00:52:24,240 --> 00:52:27,520
+old CPU and the economics of the old CPU
+
+954
+00:52:27,520 --> 00:52:30,400
+fundamentally different than agents.
+
+955
+00:52:30,400 --> 00:52:32,400
+Agents
+
+956
+00:52:32,400 --> 00:52:34,960
+are impatient. They don't live in a
+
+957
+00:52:34,960 --> 00:52:36,880
+world that is in seconds. They live in a
+
+958
+00:52:36,880 --> 00:52:39,280
+world that's in nanoseconds.
+
+959
+00:52:39,280 --> 00:52:42,720
+When it uses a tool, it wants the
+
+960
+00:52:42,720 --> 00:52:45,680
+response time to be as fast as possible.
+
+961
+00:52:45,680 --> 00:52:48,160
+When it access database, it has to come
+
+962
+00:52:48,160 --> 00:52:51,440
+back as soon as possible. Every moment
+
+963
+00:52:51,440 --> 00:52:54,240
+that the agent is waiting
+
+964
+00:52:54,240 --> 00:52:56,400
+keeps it from going to the next step,
+
+965
+00:52:56,400 --> 00:52:59,200
+the next step, the next step. It is
+
+966
+00:52:59,200 --> 00:53:03,520
+vital that we make the CPUs as low
+
+967
+00:53:03,520 --> 00:53:06,800
+latency as possible, as interactive as
+
+968
+00:53:06,800 --> 00:53:10,640
+possible. So, we created Vera CPU for
+
+969
+00:53:10,640 --> 00:53:13,920
+the age of AI. Now, inside our system,
+
+970
+00:53:13,920 --> 00:53:16,559
+it's used for three different ways. The
+
+971
+00:53:16,559 --> 00:53:21,960
+first way of course is Vera Rubin
+
+972
+00:53:22,000 --> 00:53:25,200
+for thinking and inside the Vera Rubin
+
+973
+00:53:25,200 --> 00:53:28,880
+rack there are already two CPUs as you
+
+974
+00:53:28,880 --> 00:53:32,559
+know we are building and selling
+
+975
+00:53:32,559 --> 00:53:36,160
+millions of Vera Rubins. We have sold
+
+976
+00:53:36,160 --> 00:53:38,960
+millions of Grace black walls. Nvidia
+
+977
+00:53:38,960 --> 00:53:41,119
+already is one of the largest CPU makers
+
+978
+00:53:41,119 --> 00:53:44,160
+in the world. Vera in the Vera Rubin
+
+979
+00:53:44,160 --> 00:53:48,800
+rack are two CPUs. One for orchestrating
+
+980
+00:53:48,800 --> 00:53:51,359
+and managing the GPUs,
+
+981
+00:53:51,359 --> 00:53:54,559
+managing the KV cache,
+
+982
+00:53:54,559 --> 00:53:56,800
+dealing with all of the software that
+
+983
+00:53:56,800 --> 00:54:00,319
+runs in the rack. We also have the grace
+
+984
+00:54:00,319 --> 00:54:03,440
+blue field that is used for security and
+
+985
+00:54:03,440 --> 00:54:05,280
+isolation.
+
+986
+00:54:05,280 --> 00:54:08,400
+The Vera compute is used for the
+
+987
+00:54:08,400 --> 00:54:11,359
+harness, the orchestration of the AI
+
+988
+00:54:11,359 --> 00:54:14,079
+models, tool use, accessing the
+
+989
+00:54:14,079 --> 00:54:18,000
+database. And the data servers are right
+
+990
+00:54:18,000 --> 00:54:21,359
+here. Vera Bluefield, the fastest
+
+991
+00:54:21,359 --> 00:54:23,920
+storage, fastest storage servers, the
+
+992
+00:54:23,920 --> 00:54:26,079
+fastest storage system the world has
+
+993
+00:54:26,079 --> 00:54:28,480
+ever made. And the reason why this is so
+
+994
+00:54:28,480 --> 00:54:31,359
+vital is because agents are accessing
+
+995
+00:54:31,359 --> 00:54:33,920
+memory, accessing memory so incredibly
+
+996
+00:54:33,920 --> 00:54:39,440
+fast. These systems, the storage server
+
+997
+00:54:39,440 --> 00:54:41,440
+and the CPUs
+
+998
+00:54:41,440 --> 00:54:44,079
+are now the critical path of the most
+
+999
+00:54:44,079 --> 00:54:46,960
+expensive part of the data center. This
+
+1000
+00:54:46,960 --> 00:54:50,640
+is the most expensive for a good reason.
+
+1001
+00:54:50,640 --> 00:54:54,800
+The economics, the economics of the AI
+
+1002
+00:54:54,800 --> 00:54:57,440
+factory is tokens
+
+1003
+00:54:57,440 --> 00:55:00,720
+and the tokens are created here. And so
+
+1004
+00:55:00,720 --> 00:55:02,960
+of course you want to manufacture and
+
+1005
+00:55:02,960 --> 00:55:05,440
+generate as many tokens as possible.
+
+1006
+00:55:05,440 --> 00:55:06,880
+This is where you put all of your
+
+1007
+00:55:06,880 --> 00:55:10,319
+economics and this has to not be in the
+
+1008
+00:55:10,319 --> 00:55:14,240
+way. And so Vera CPU has great pressure
+
+1009
+00:55:14,240 --> 00:55:16,559
+on the Vera on the CPU architecture
+
+1010
+00:55:16,559 --> 00:55:19,200
+which is the reason why we built a brand
+
+1011
+00:55:19,200 --> 00:55:21,520
+new architecture from the ground up. A
+
+1012
+00:55:21,520 --> 00:55:24,559
+CPU the world has never seen before. We
+
+1013
+00:55:24,559 --> 00:55:26,640
+call it Vera.
+
+1014
+00:55:26,640 --> 00:55:28,800
+This is CPU
+
+1015
+00:55:28,800 --> 00:55:32,800
+for agents. All the CPUs of the past we
+
+1016
+00:55:32,800 --> 00:55:36,160
+built for humans. This CPU is built for
+
+1017
+00:55:36,160 --> 00:55:38,880
+agents. Well, there are four things to
+
+1018
+00:55:38,880 --> 00:55:42,240
+keep in mind. The four takeaways. The
+
+1019
+00:55:42,240 --> 00:55:45,520
+first takeaway is that the instructions
+
+1020
+00:55:45,520 --> 00:55:48,720
+per clock of Vera has to be incredibly
+
+1021
+00:55:48,720 --> 00:55:51,040
+good because we need the latency to be
+
+1022
+00:55:51,040 --> 00:55:54,000
+short. We need the processing time.
+
+1023
+00:55:54,000 --> 00:55:57,040
+Singlethreaded performance, not
+
+1024
+00:55:57,040 --> 00:55:59,280
+throughput. Singlethreaded performance
+
+1025
+00:55:59,280 --> 00:56:01,440
+has to be world class. Absolutely the
+
+1026
+00:56:01,440 --> 00:56:03,839
+best singlethreaded performance. Which
+
+1027
+00:56:03,839 --> 00:56:06,880
+is the reason why the IPC, the
+
+1028
+00:56:06,880 --> 00:56:09,200
+instructions per clock of Vera is so
+
+1029
+00:56:09,200 --> 00:56:11,839
+high. It's the highest in the world. 10
+
+1030
+00:56:11,839 --> 00:56:14,079
+instructions fetched, decoded, and
+
+1031
+00:56:14,079 --> 00:56:18,240
+executed per clock. Number one. Number
+
+1032
+00:56:18,240 --> 00:56:19,760
+two,
+
+1033
+00:56:19,760 --> 00:56:23,200
+the bandwidth necessary to move data in
+
+1034
+00:56:23,200 --> 00:56:25,680
+and out for the CPU has to be utterly
+
+1035
+00:56:25,680 --> 00:56:28,640
+world class. The second thing is
+
+1036
+00:56:28,640 --> 00:56:32,079
+bandwidth per core. The third is just
+
+1037
+00:56:32,079 --> 00:56:35,920
+bandwidth period. We're moving. Remember
+
+1038
+00:56:35,920 --> 00:56:39,359
+I said earlier agentic systems is
+
+1039
+00:56:39,359 --> 00:56:42,240
+fundamentally disagregated and
+
+1040
+00:56:42,240 --> 00:56:45,040
+distributed disagregated and
+
+1041
+00:56:45,040 --> 00:56:47,119
+distributed. When computing is
+
+1042
+00:56:47,119 --> 00:56:50,400
+disagregated and distributed networking
+
+1043
+00:56:50,400 --> 00:56:53,119
+becomes the problem. Therefore, we have
+
+1044
+00:56:53,119 --> 00:56:55,280
+to move the data around as fast as
+
+1045
+00:56:55,280 --> 00:56:58,000
+possible between the CPU cores and
+
+1046
+00:56:58,000 --> 00:57:00,480
+between the CPU and the storage, the CPU
+
+1047
+00:57:00,480 --> 00:57:02,400
+and the GPU.
+
+1048
+00:57:02,400 --> 00:57:05,040
+The bandwidth around the system and
+
+1049
+00:57:05,040 --> 00:57:07,599
+inside the CPU core has to be utterly
+
+1050
+00:57:07,599 --> 00:57:09,520
+world class.
+
+1051
+00:57:09,520 --> 00:57:11,520
+This is the first CPU that's been built
+
+1052
+00:57:11,520 --> 00:57:14,559
+a long time that is literally at retical
+
+1053
+00:57:14,559 --> 00:57:17,839
+limits with a fabric that connects all
+
+1054
+00:57:17,839 --> 00:57:20,880
+of the CPU cores. That is speed of light
+
+1055
+00:57:20,880 --> 00:57:24,960
+3.6 terabytes per second.
+
+1056
+00:57:24,960 --> 00:57:28,000
+No chiplet attacks, no chip boundary
+
+1057
+00:57:28,000 --> 00:57:30,640
+crossings because we need to have
+
+1058
+00:57:30,640 --> 00:57:33,520
+everything because the CPU cores are
+
+1059
+00:57:33,520 --> 00:57:35,520
+talking to each other with extremely
+
+1060
+00:57:35,520 --> 00:57:38,400
+high bandwidth. They're not rented core
+
+1061
+00:57:38,400 --> 00:57:40,400
+per core per core. They're all working
+
+1062
+00:57:40,400 --> 00:57:41,920
+together.
+
+1063
+00:57:41,920 --> 00:57:44,240
+The cross-sectional bandwidth of Vera is
+
+1064
+00:57:44,240 --> 00:57:46,640
+off the charts. It's the first one to be
+
+1065
+00:57:46,640 --> 00:57:49,280
+PCI Express Gen 6.
+
+1066
+00:57:49,280 --> 00:57:53,280
+It is also the first one to have LPDDR
+
+1067
+00:57:53,280 --> 00:57:57,119
+DDR5 with 1.2 terabytes per second.
+
+1068
+00:57:57,119 --> 00:57:59,119
+Three times two to three times the
+
+1069
+00:57:59,119 --> 00:58:01,119
+bandwidth of the highest performance
+
+1070
+00:58:01,119 --> 00:58:04,880
+CPUs on the outside, three times the
+
+1071
+00:58:04,880 --> 00:58:08,000
+bandwidth on the inside. The bandwidth
+
+1072
+00:58:08,000 --> 00:58:10,640
+per core and the bandwidth period is
+
+1073
+00:58:10,640 --> 00:58:12,880
+world class. Now remember I showed you
+
+1074
+00:58:12,880 --> 00:58:14,880
+earlier
+
+1075
+00:58:14,880 --> 00:58:17,119
+the number of CPU cores the number of
+
+1076
+00:58:17,119 --> 00:58:20,079
+CPUs is going to be quite high and the
+
+1077
+00:58:20,079 --> 00:58:23,440
+reason for that is very simple
+
+1078
+00:58:23,440 --> 00:58:26,079
+we created CPUs
+
+1079
+00:58:26,079 --> 00:58:29,599
+for humans in the past and humans there
+
+1080
+00:58:29,599 --> 00:58:32,240
+only 1 billion of us
+
+1081
+00:58:32,240 --> 00:58:36,079
+there will be billions of agents and
+
+1082
+00:58:36,079 --> 00:58:38,559
+these agents are going to be using the
+
+1083
+00:58:38,559 --> 00:58:41,359
+CPUs with very little patience
+
+1084
+00:58:41,359 --> 00:58:43,440
+because the cost of the GPU they sit
+
+1085
+00:58:43,440 --> 00:58:47,119
+next to is too high and therefore
+
+1086
+00:58:47,119 --> 00:58:50,240
+too valuable, too precious. Therefore,
+
+1087
+00:58:50,240 --> 00:58:53,920
+these CPUs are going to be both
+
+1088
+00:58:53,920 --> 00:58:55,440
+performant,
+
+1089
+00:58:55,440 --> 00:58:57,760
+but they also have to be extremely
+
+1090
+00:58:57,760 --> 00:59:00,799
+energy efficient so that we can cram as
+
+1091
+00:59:00,799 --> 00:59:04,160
+much CPU as we can into the factory
+
+1092
+00:59:04,160 --> 00:59:07,520
+without taking away power from the token
+
+1093
+00:59:07,520 --> 00:59:10,000
+generation, which we know is how we make
+
+1094
+00:59:10,000 --> 00:59:12,799
+money. These four properties,
+
+1095
+00:59:12,799 --> 00:59:14,400
+instructions per clock or single
+
+1096
+00:59:14,400 --> 00:59:16,480
+threaded performance,
+
+1097
+00:59:16,480 --> 00:59:18,880
+bandwidth per core,
+
+1098
+00:59:18,880 --> 00:59:21,119
+the total bandwidth around the chip and
+
+1099
+00:59:21,119 --> 00:59:24,720
+inside the chip and energy efficiency
+
+1100
+00:59:24,720 --> 00:59:27,599
+defines Vera. It is absolutely world
+
+1101
+00:59:27,599 --> 00:59:29,599
+class. When you compare it to the
+
+1102
+00:59:29,599 --> 00:59:32,319
+highest performance x86, it is just off
+
+1103
+00:59:32,319 --> 00:59:35,760
+the charts. When you compare it in real
+
+1104
+00:59:35,760 --> 00:59:38,480
+singlethreaded performance, real
+
+1105
+00:59:38,480 --> 00:59:42,799
+performance, it's off the charts.
+
+1106
+00:59:42,799 --> 00:59:45,119
+It is incredible to be able to deliver
+
+1107
+00:59:45,119 --> 00:59:48,640
+5% improvement on CPUs. It is incredible
+
+1108
+00:59:48,640 --> 00:59:51,680
+to be able to deliver 10%. But this kind
+
+1109
+00:59:51,680 --> 00:59:53,920
+of performance speed up is just unheard
+
+1110
+00:59:53,920 --> 00:59:58,720
+of. This is Nvidia Vera.
+
+1111
+00:59:58,720 --> 01:00:02,119
+What do you think?
+
+1112
+01:00:05,760 --> 01:00:08,240
+Let's take a look.
+
+1113
+01:00:08,240 --> 01:00:11,680
+>> Aentic AI changes the role of the CPU.
+
+1114
+01:00:11,680 --> 01:00:14,480
+The CPU is now the conductor and the GPU
+
+1115
+01:00:14,480 --> 01:00:17,839
+is the orchestra. Traditional CPUs were
+
+1116
+01:00:17,839 --> 01:00:20,319
+built for a different era. Maximizing
+
+1117
+01:00:20,319 --> 01:00:22,960
+cores per socket. Slice them up,
+
+1118
+01:00:22,960 --> 01:00:26,480
+virtualize, rent by the hour. In the age
+
+1119
+01:00:26,480 --> 01:00:29,440
+of agents, the CPU is now a bottleneck
+
+1120
+01:00:29,440 --> 01:00:32,480
+to GPU utilization. directly affecting
+
+1121
+01:00:32,480 --> 01:00:35,119
+token throughput, latency, and user
+
+1122
+01:00:35,119 --> 01:00:36,640
+experience.
+
+1123
+01:00:36,640 --> 01:00:39,359
+NVIDIA Vera is the CPU built for the
+
+1124
+01:00:39,359 --> 01:00:41,839
+agentic loop, combining NVIDIA's custom
+
+1125
+01:00:41,839 --> 01:00:44,559
+data center CPU core with a scalable
+
+1126
+01:00:44,559 --> 01:00:46,720
+coherency fabric for the right balance
+
+1127
+01:00:46,720 --> 01:00:48,880
+of performance cores and bandwidth to
+
+1128
+01:00:48,880 --> 01:00:51,680
+maximize AI factory output. At the heart
+
+1129
+01:00:51,680 --> 01:00:54,960
+of Vera is the NVIDIA Olympus core built
+
+1130
+01:00:54,960 --> 01:00:57,280
+for modern data center workloads,
+
+1131
+01:00:57,280 --> 01:01:00,160
+branchheavy Python runtimes, tool calls,
+
+1132
+01:01:00,160 --> 01:01:03,839
+and sandbox code execution. Each core is
+
+1133
+01:01:03,839 --> 01:01:06,319
+tuned for throughput. A neural branch
+
+1134
+01:01:06,319 --> 01:01:08,720
+predictor evaluating two taken branches
+
+1135
+01:01:08,720 --> 01:01:11,440
+per cycle. A 10 wide decode engine
+
+1136
+01:01:11,440 --> 01:01:14,160
+brings in more work each cycle. A large
+
+1137
+01:01:14,160 --> 01:01:16,000
+out of order engine keeps instructions
+
+1138
+01:01:16,000 --> 01:01:18,400
+moving. Advanced prefetchers with a
+
+1139
+01:01:18,400 --> 01:01:20,720
+novel graph engine anticipating the next
+
+1140
+01:01:20,720 --> 01:01:23,839
+data path. But fast cores only matter
+
+1141
+01:01:23,839 --> 01:01:27,280
+when data arrives correctly and on time.
+
+1142
+01:01:27,280 --> 01:01:31,119
+Vera is the first CPU to use LPDDR5X
+
+1143
+01:01:31,119 --> 01:01:33,440
+memory while correcting multiple errors
+
+1144
+01:01:33,440 --> 01:01:35,599
+simultaneously without compromising
+
+1145
+01:01:35,599 --> 01:01:38,720
+bandwidth. Vera achieves 40% lower peak
+
+1146
+01:01:38,720 --> 01:01:42,000
+memory latency versus x86,
+
+1147
+01:01:42,000 --> 01:01:44,079
+keeping cores fed on time through
+
+1148
+01:01:44,079 --> 01:01:46,319
+retrieval, analytics, and sandbox
+
+1149
+01:01:46,319 --> 01:01:49,040
+execution. NVIDIA's second generation
+
+1150
+01:01:49,040 --> 01:01:52,400
+scalable coherency fabric unifies all 88
+
+1151
+01:01:52,400 --> 01:01:55,440
+Olympus cores on a monolithic mesh with
+
+1152
+01:01:55,440 --> 01:01:58,880
+separate dies for memory and IO. cores
+
+1153
+01:01:58,880 --> 01:02:01,839
+are not split across chiplets, enabling
+
+1154
+01:02:01,839 --> 01:02:04,559
+50% faster core to core communication
+
+1155
+01:02:04,559 --> 01:02:07,280
+than traditional CPUs. And memory
+
+1156
+01:02:07,280 --> 01:02:09,839
+coherent NVLink chip to chip connects
+
+1157
+01:02:09,839 --> 01:02:13,040
+GPUs directly to the fabric. Beyond
+
+1158
+01:02:13,040 --> 01:02:16,640
+GPUs, NVLink chip to chip can scale Vera
+
+1159
+01:02:16,640 --> 01:02:19,359
+up to multiple sockets, enabling massive
+
+1160
+01:02:19,359 --> 01:02:23,040
+bandwidth between CPUs. Vera delivers
+
+1161
+01:02:23,040 --> 01:02:25,280
+1.8 Eight times the agentic sandbox
+
+1162
+01:02:25,280 --> 01:02:29,119
+performance of x86 CPUs. Standalone Vera
+
+1163
+01:02:29,119 --> 01:02:32,559
+racks run agent sandboxes, tools, code,
+
+1164
+01:02:32,559 --> 01:02:35,280
+and data pipelines. Tightly coupled to
+
+1165
+01:02:35,280 --> 01:02:38,240
+Reuben GPUs, Vera keeps accelerated
+
+1166
+01:02:38,240 --> 01:02:41,119
+workflows moving. Nvidia Vera Bluefield
+
+1167
+01:02:41,119 --> 01:02:44,480
+4 STX powers context memory and AI
+
+1168
+01:02:44,480 --> 01:02:46,640
+storage,
+
+1169
+01:02:46,640 --> 01:02:50,720
+compute, networking, storage. Vera is
+
+1170
+01:02:50,720 --> 01:02:56,119
+the CPU for the age of agents.
+
+1171
+01:03:01,119 --> 01:03:03,760
+This is going to be our new major growth
+
+1172
+01:03:03,760 --> 01:03:05,839
+driver. The reviews are already coming
+
+1173
+01:03:05,839 --> 01:03:10,160
+out and it's pretty good.
+
+1174
+01:03:10,160 --> 01:03:13,960
+That's pretty good stuff.
+
+1175
+01:03:18,799 --> 01:03:22,119
+Now remember,
+
+1176
+01:03:22,319 --> 01:03:24,799
+Grace and Vera
+
+1177
+01:03:24,799 --> 01:03:28,720
+are also the most highly qualified
+
+1178
+01:03:28,720 --> 01:03:31,119
+CPUs in the world of AI because every
+
+1179
+01:03:31,119 --> 01:03:34,079
+single data center, every single cloud,
+
+1180
+01:03:34,079 --> 01:03:35,839
+every single enterprise, every company
+
+1181
+01:03:35,839 --> 01:03:39,440
+that works with Nvidia on AI has already
+
+1182
+01:03:39,440 --> 01:03:41,119
+qualified
+
+1183
+01:03:41,119 --> 01:03:43,839
+Grace. The entire software stack has
+
+1184
+01:03:43,839 --> 01:03:46,319
+already been optimized for grace. Every
+
+1185
+01:03:46,319 --> 01:03:49,520
+company will be qualifying Vera.
+
+1186
+01:03:49,520 --> 01:03:52,240
+Vera will be the most optimized agentic
+
+1187
+01:03:52,240 --> 01:03:55,520
+CPU in the world simply because it's
+
+1188
+01:03:55,520 --> 01:03:57,520
+going to go with Vera Rubin simply
+
+1189
+01:03:57,520 --> 01:04:00,880
+because we made the the big hard switch.
+
+1190
+01:04:00,880 --> 01:04:02,319
+In fact, during Grace Blackwell
+
+1191
+01:04:02,319 --> 01:04:04,880
+transition, the biggest risk was going
+
+1192
+01:04:04,880 --> 01:04:07,920
+from external CPU x86
+
+1193
+01:04:07,920 --> 01:04:10,480
+into Grace Blackwell.
+
+1194
+01:04:10,480 --> 01:04:13,599
+That transition was extremely dangerous,
+
+1195
+01:04:13,599 --> 01:04:16,880
+but we did it with incredible execution.
+
+1196
+01:04:16,880 --> 01:04:20,160
+Now Grace is literally synonymous with
+
+1197
+01:04:20,160 --> 01:04:22,319
+Grace Blackwell. When people say
+
+1198
+01:04:22,319 --> 01:04:24,319
+Blackwell, they say Grace Blackwell
+
+1199
+01:04:24,319 --> 01:04:26,799
+because it is utterly now everywhere.
+
+1200
+01:04:26,799 --> 01:04:29,039
+Every company's software stack has been
+
+1201
+01:04:29,039 --> 01:04:31,039
+optimized for it. Everybody's security
+
+1202
+01:04:31,039 --> 01:04:33,440
+stack has been optimized for it. And now
+
+1203
+01:04:33,440 --> 01:04:35,839
+here comes Vera. I'm super excited about
+
+1204
+01:04:35,839 --> 01:04:37,200
+that. Now look at some of the
+
+1205
+01:04:37,200 --> 01:04:39,359
+performance numbers.
+
+1206
+01:04:39,359 --> 01:04:42,319
+Speed up says one thing. It is extremely
+
+1207
+01:04:42,319 --> 01:04:46,000
+hard to speed up SQL.
+
+1208
+01:04:46,000 --> 01:04:50,480
+SQL the most famous
+
+1209
+01:04:50,480 --> 01:04:54,000
+domainspecific language DSL that has
+
+1210
+01:04:54,000 --> 01:04:57,920
+ever been created. Before SQL, you know,
+
+1211
+01:04:57,920 --> 01:05:00,640
+before CUDA, there was SQL. Before
+
+1212
+01:05:00,640 --> 01:05:05,280
+OpenGL, there was SQL invented by IBM.
+
+1213
+01:05:05,280 --> 01:05:07,520
+Today it is the structured database
+
+1214
+01:05:07,520 --> 01:05:09,520
+engine of the planet. Everybody uses
+
+1215
+01:05:09,520 --> 01:05:13,760
+SQL. This is SQL running three times
+
+1216
+01:05:13,760 --> 01:05:18,400
+faster. Not 10% faster. Not 25% faster.
+
+1217
+01:05:18,400 --> 01:05:20,960
+10 times f three times faster.
+
+1218
+01:05:20,960 --> 01:05:24,160
+Incredible. This is
+
+1219
+01:05:24,160 --> 01:05:26,720
+real time. The next one is real time
+
+1220
+01:05:26,720 --> 01:05:30,319
+stream processing. Remember your AI is
+
+1221
+01:05:30,319 --> 01:05:33,280
+going to be not just reading documents.
+
+1222
+01:05:33,280 --> 01:05:35,440
+Your AI is going to be watching for
+
+1223
+01:05:35,440 --> 01:05:38,319
+telemetry, especially inside a factory,
+
+1224
+01:05:38,319 --> 01:05:41,200
+inside a stock exchange.
+
+1225
+01:05:41,200 --> 01:05:42,960
+You're going to be looking for telemetry
+
+1226
+01:05:42,960 --> 01:05:45,760
+continuously. The burst of data that's
+
+1227
+01:05:45,760 --> 01:05:49,920
+coming in goes into a CPU. This is Vera
+
+1228
+01:05:49,920 --> 01:05:53,280
+CPU running real time stream processing
+
+1229
+01:05:53,280 --> 01:05:55,280
+for New York Stock Exchange. Lynn
+
+1230
+01:05:55,280 --> 01:05:57,440
+Martin, the president of New York Stock
+
+1231
+01:05:57,440 --> 01:05:59,119
+Exchange, has been so gracious to
+
+1232
+01:05:59,119 --> 01:06:02,640
+partner with us. This system is run all
+
+1233
+01:06:02,640 --> 01:06:04,720
+over the world in real time real time
+
+1234
+01:06:04,720 --> 01:06:08,480
+stream processing vera CPU six times all
+
+1235
+01:06:08,480 --> 01:06:10,960
+because of the bandwidth the single
+
+1236
+01:06:10,960 --> 01:06:13,920
+single threaded instruction execution
+
+1237
+01:06:13,920 --> 01:06:16,000
+the bandwidth inside between the cores
+
+1238
+01:06:16,000 --> 01:06:19,280
+the bandwidth outside Vera is completely
+
+1239
+01:06:19,280 --> 01:06:21,039
+revolutionary
+
+1240
+01:06:21,039 --> 01:06:24,280
+that's vera
+
+1241
+01:06:28,720 --> 01:06:30,799
+you know X factors is something you you
+
+1242
+01:06:30,799 --> 01:06:32,240
+talk about when you're talking about
+
+1243
+01:06:32,240 --> 01:06:35,359
+GPUs. It is quite rare that somebody
+
+1244
+01:06:35,359 --> 01:06:38,640
+talks about X factors on real workload
+
+1245
+01:06:38,640 --> 01:06:41,359
+real workload that is associated with
+
+1246
+01:06:41,359 --> 01:06:43,599
+CPU. So I'm so proud of the team. You
+
+1247
+01:06:43,599 --> 01:06:45,359
+guys did such a great job. We have an
+
+1248
+01:06:45,359 --> 01:06:48,400
+extraordinary road map coming.
+
+1249
+01:06:48,400 --> 01:06:51,760
+But what's really exciting is almost
+
+1250
+01:06:51,760 --> 01:06:55,119
+everybody is supporting Vera. They're as
+
+1251
+01:06:55,119 --> 01:06:58,079
+excited as we are. This is Vera opening
+
+1252
+01:06:58,079 --> 01:07:02,720
+up. It's opened up a brand new market.
+
+1253
+01:07:02,720 --> 01:07:06,720
+Agents, agents is a new workload. We
+
+1254
+01:07:06,720 --> 01:07:09,760
+built CPUs for humans in the past. We
+
+1255
+01:07:09,760 --> 01:07:13,839
+need CPUs for agents. Agentic systems.
+
+1256
+01:07:13,839 --> 01:07:15,200
+Their properties are different. Why
+
+1257
+01:07:15,200 --> 01:07:18,799
+would the old CPUs be the same? We are
+
+1258
+01:07:18,799 --> 01:07:22,000
+building millions and millions of
+
+1259
+01:07:22,000 --> 01:07:25,599
+errors. Millions of errors. and to go to
+
+1260
+01:07:25,599 --> 01:07:28,799
+market with us. Taiwan's ODMs and
+
+1261
+01:07:28,799 --> 01:07:32,559
+computer makers, all the OEMs, and you
+
+1262
+01:07:32,559 --> 01:07:34,880
+could see the early adopters.
+
+1263
+01:07:34,880 --> 01:07:37,280
+The early adopters are the agentic
+
+1264
+01:07:37,280 --> 01:07:40,319
+companies. This is the beginning of a
+
+1265
+01:07:40,319 --> 01:07:43,039
+new market, a market that never existed
+
+1266
+01:07:43,039 --> 01:07:45,280
+before. It's not going to take away from
+
+1267
+01:07:45,280 --> 01:07:47,680
+the old markets, but this is a new
+
+1268
+01:07:47,680 --> 01:07:49,359
+market.
+
+1269
+01:07:49,359 --> 01:07:53,039
+CPU for agents. And this will this c
+
+1270
+01:07:53,039 --> 01:07:55,440
+this market will surely be larger than
+
+1271
+01:07:55,440 --> 01:07:57,440
+the last and the reason for that is
+
+1272
+01:07:57,440 --> 01:07:59,119
+because there'll be a lot more agents
+
+1273
+01:07:59,119 --> 01:08:01,280
+than there are people and then there the
+
+1274
+01:08:01,280 --> 01:08:05,039
+agents are very impatient. So Nvidia
+
+1275
+01:08:05,039 --> 01:08:09,400
+Vera CPU thank you.
+
+1276
+01:08:13,839 --> 01:08:16,239
+This is the most important slide really.
+
+1277
+01:08:16,239 --> 01:08:18,880
+This is the takeaway. The takeaway here
+
+1278
+01:08:18,880 --> 01:08:21,679
+is that this is the application pattern.
+
+1279
+01:08:21,679 --> 01:08:24,000
+This is the computing pattern of the
+
+1280
+01:08:24,000 --> 01:08:26,480
+next decade.
+
+1281
+01:08:26,480 --> 01:08:28,000
+Agents,
+
+1282
+01:08:28,000 --> 01:08:30,480
+harnesses
+
+1283
+01:08:30,480 --> 01:08:33,359
+orchestrating large language models.
+
+1284
+01:08:33,359 --> 01:08:37,199
+Every company will run it. Every company
+
+1285
+01:08:37,199 --> 01:08:40,319
+will be an agent company. Every company
+
+1286
+01:08:40,319 --> 01:08:43,120
+will have agents running inside.
+
+1287
+01:08:43,120 --> 01:08:47,679
+Every company will see that agents will
+
+1288
+01:08:47,679 --> 01:08:50,400
+need its own operating system. Every
+
+1289
+01:08:50,400 --> 01:08:53,759
+company's asking us how do we run agents
+
+1290
+01:08:53,759 --> 01:08:57,520
+safely? How do we build agents for our
+
+1291
+01:08:57,520 --> 01:09:01,679
+own workloads? And so we have the NVIDIA
+
+1292
+01:09:01,679 --> 01:09:05,440
+agent toolkit for enterprise AI. You've
+
+1293
+01:09:05,440 --> 01:09:08,319
+seen me build this in plain sight.
+
+1294
+01:09:08,319 --> 01:09:10,080
+Almost everything that Nvidia does, as
+
+1295
+01:09:10,080 --> 01:09:11,920
+you know, at every GTC, if you go back
+
+1296
+01:09:11,920 --> 01:09:14,080
+and look at my GTC five years ago or 10
+
+1297
+01:09:14,080 --> 01:09:16,799
+years ago, you will see today.
+
+1298
+01:09:16,799 --> 01:09:20,080
+This you've seen me talking about for
+
+1299
+01:09:20,080 --> 01:09:21,839
+several years now because we've been
+
+1300
+01:09:21,839 --> 01:09:24,560
+building for this moment. There are four
+
+1301
+01:09:24,560 --> 01:09:27,920
+things that companies need in order to
+
+1302
+01:09:27,920 --> 01:09:30,480
+build agents as a service or build
+
+1303
+01:09:30,480 --> 01:09:32,880
+agents to operate.
+
+1304
+01:09:32,880 --> 01:09:34,480
+The first thing you need is you need
+
+1305
+01:09:34,480 --> 01:09:37,600
+models. Of course, large language
+
+1306
+01:09:37,600 --> 01:09:39,920
+models, the smarter the better, the
+
+1307
+01:09:39,920 --> 01:09:41,759
+cheaper the better, the faster the
+
+1308
+01:09:41,759 --> 01:09:46,080
+better. The second is you need a harness
+
+1309
+01:09:46,080 --> 01:09:48,159
+to orchestrate the whole thing. The
+
+1310
+01:09:48,159 --> 01:09:51,520
+third, these a these models want to use
+
+1311
+01:09:51,520 --> 01:09:54,080
+tools and these tools come with its
+
+1312
+01:09:54,080 --> 01:09:56,480
+skills and I showed you CUDA X
+
+1313
+01:09:56,480 --> 01:09:58,400
+libraries. Those are going to be amazing
+
+1314
+01:09:58,400 --> 01:10:01,760
+tools for the agents in the future. And
+
+1315
+01:10:01,760 --> 01:10:05,120
+then lastly, you need a runtime. You
+
+1316
+01:10:05,120 --> 01:10:06,960
+need the operating system that holds it
+
+1317
+01:10:06,960 --> 01:10:11,040
+all together. This is the Nvidia toolkit
+
+1318
+01:10:11,040 --> 01:10:14,400
+for agents. It includes
+
+1319
+01:10:14,400 --> 01:10:16,480
+it includes
+
+1320
+01:10:16,480 --> 01:10:19,760
+models that you can modify NVIDIA's
+
+1321
+01:10:19,760 --> 01:10:21,679
+worldclass open models. And I want to
+
+1322
+01:10:21,679 --> 01:10:25,440
+show you more. You can run agents from
+
+1323
+01:10:25,440 --> 01:10:28,480
+anybody. You could run uh cloud code
+
+1324
+01:10:28,480 --> 01:10:30,800
+incredible agent codeex incredible
+
+1325
+01:10:30,800 --> 01:10:33,520
+agent. You could run it inside this
+
+1326
+01:10:33,520 --> 01:10:35,920
+harness called open shell which will be
+
+1327
+01:10:35,920 --> 01:10:37,840
+highly secure for your inside the
+
+1328
+01:10:37,840 --> 01:10:42,719
+enterprise. The shell protects the agent
+
+1329
+01:10:42,719 --> 01:10:46,880
+keeps it grounded in security policies.
+
+1330
+01:10:46,880 --> 01:10:49,679
+Privacy is protected. Its rights and
+
+1331
+01:10:49,679 --> 01:10:52,480
+privileges are given its identities
+
+1332
+01:10:52,480 --> 01:10:55,679
+protected. And so this open shell is
+
+1333
+01:10:55,679 --> 01:10:57,760
+being adopted all over the world. Nvidia
+
+1334
+01:10:57,760 --> 01:11:00,400
+open shell is open source. You're going
+
+1335
+01:11:00,400 --> 01:11:02,239
+to see so many companies adopt it. Red
+
+1336
+01:11:02,239 --> 01:11:06,080
+Hat, Canonical, Microsoft, it's going to
+
+1337
+01:11:06,080 --> 01:11:08,640
+be adopted everywhere. This is an
+
+1338
+01:11:08,640 --> 01:11:12,000
+important this is the runtime and this
+
+1339
+01:11:12,000 --> 01:11:14,480
+runtime is fully optimized for the
+
+1340
+01:11:14,480 --> 01:11:17,840
+Nvidia AI platform which is everywhere.
+
+1341
+01:11:17,840 --> 01:11:21,199
+So you can run open shell in any cloud
+
+1342
+01:11:21,199 --> 01:11:25,280
+on prem and even on device. So you have
+
+1343
+01:11:25,280 --> 01:11:28,560
+you have now tools and libraries that
+
+1344
+01:11:28,560 --> 01:11:31,360
+they can use. You have models that you
+
+1345
+01:11:31,360 --> 01:11:34,320
+can modify or use asis or you have
+
+1346
+01:11:34,320 --> 01:11:39,600
+agents. This be open claw hermes another
+
+1347
+01:11:39,600 --> 01:11:42,080
+incredible another incredible uh
+
+1348
+01:11:42,080 --> 01:11:46,320
+harness. These agentic harnesses can now
+
+1349
+01:11:46,320 --> 01:11:49,360
+run on prem or for you anywhere. Okay.
+
+1350
+01:11:49,360 --> 01:11:52,560
+So four things and this represents the
+
+1351
+01:11:52,560 --> 01:11:54,320
+operating system of the modern
+
+1352
+01:11:54,320 --> 01:11:57,920
+enterprise. Now how do we use this? One
+
+1353
+01:11:57,920 --> 01:12:01,360
+of my favorite use cases of agents
+
+1354
+01:12:01,360 --> 01:12:04,960
+is chip designers. It is the single most
+
+1355
+01:12:04,960 --> 01:12:07,920
+important thing that Nvidia does. And so
+
+1356
+01:12:07,920 --> 01:12:09,760
+of course we have to partner with
+
+1357
+01:12:09,760 --> 01:12:14,080
+cadence to build super agent a chip
+
+1358
+01:12:14,080 --> 01:12:18,000
+design super agent. It is orchestrated
+
+1359
+01:12:18,000 --> 01:12:23,199
+by codecs or clock code. It has RTL and
+
+1360
+01:12:23,199 --> 01:12:25,760
+architecture di diagrams or schematics
+
+1361
+01:12:25,760 --> 01:12:28,880
+or uh specifications as input and
+
+1362
+01:12:28,880 --> 01:12:31,760
+whatever you need to fix. And together
+
+1363
+01:12:31,760 --> 01:12:35,760
+we created some super agents
+
+1364
+01:12:35,760 --> 01:12:38,080
+that are optimized for the Nvidia
+
+1365
+01:12:38,080 --> 01:12:42,000
+runtime with Neotron. And let's take a
+
+1366
+01:12:42,000 --> 01:12:45,719
+look. It's really incredible.
+
+1367
+01:12:46,480 --> 01:12:48,880
+Cadence and Nvidia are partnering to
+
+1368
+01:12:48,880 --> 01:12:51,600
+build chip design agents.
+
+1369
+01:12:51,600 --> 01:12:53,840
+Hundreds of thousands of NVIDIA chips
+
+1370
+01:12:53,840 --> 01:12:56,000
+come together to make the AI factories
+
+1371
+01:12:56,000 --> 01:12:58,159
+that power the world's frontier AI
+
+1372
+01:12:58,159 --> 01:13:01,199
+models. Designing these chips and the
+
+1373
+01:13:01,199 --> 01:13:03,120
+systems they run in is one of the
+
+1374
+01:13:03,120 --> 01:13:05,280
+hardest engineering challenges.
+
+1375
+01:13:05,280 --> 01:13:07,120
+Trillions of transistors,
+
+1376
+01:13:07,120 --> 01:13:09,840
+three-dimensional circuits, microscopic
+
+1377
+01:13:09,840 --> 01:13:12,880
+scale. Every gate, every wire
+
+1378
+01:13:12,880 --> 01:13:15,520
+synchronized to picos seconds must work
+
+1379
+01:13:15,520 --> 01:13:18,000
+in perfect harmony with no margin for
+
+1380
+01:13:18,000 --> 01:13:20,480
+error. Physical prototypes are too slow
+
+1381
+01:13:20,480 --> 01:13:23,199
+and too costly. So engineers work in the
+
+1382
+01:13:23,199 --> 01:13:25,760
+digital realm. Each chip begins as a set
+
+1383
+01:13:25,760 --> 01:13:28,080
+of architectural specifications, then
+
+1384
+01:13:28,080 --> 01:13:30,560
+translated into RTL, the language of
+
+1385
+01:13:30,560 --> 01:13:33,760
+chip design. RTL must be verified in
+
+1386
+01:13:33,760 --> 01:13:36,239
+simulation. A single bug can delay a
+
+1387
+01:13:36,239 --> 01:13:39,360
+chip by months. At NVIDIA, thousands of
+
+1388
+01:13:39,360 --> 01:13:41,840
+engineers, billions of compute hours per
+
+1389
+01:13:41,840 --> 01:13:44,560
+year, millions of tests written, run,
+
+1390
+01:13:44,560 --> 01:13:47,040
+and debugged. A cycle that takes teams
+
+1391
+01:13:47,040 --> 01:13:49,920
+weeks. To compress this cycle, Cadence
+
+1392
+01:13:49,920 --> 01:13:52,000
+and NVIDIA built a design verification
+
+1393
+01:13:52,000 --> 01:13:55,360
+agent. Codex orchestrates the process.
+
+1394
+01:13:55,360 --> 01:13:57,840
+Cadence chipstack launches the RTL
+
+1395
+01:13:57,840 --> 01:14:00,960
+verification loop powered by Neatron and
+
+1396
+01:14:00,960 --> 01:14:04,000
+secured by Nvidia OpenShell. Calling on
+
+1397
+01:14:04,000 --> 01:14:07,040
+expert sub agents in RTL generation,
+
+1398
+01:14:07,040 --> 01:14:09,679
+test bench creation, regression testing
+
+1399
+01:14:09,679 --> 01:14:13,280
+and debug, the system drives itself. The
+
+1400
+01:14:13,280 --> 01:14:14,960
+chipstack agents run hundreds of
+
+1401
+01:14:14,960 --> 01:14:17,040
+simulations with Cadence Excelium.
+
+1402
+01:14:17,040 --> 01:14:20,159
+Formal verification with Jasper. Design
+
+1403
+01:14:20,159 --> 01:14:24,000
+flaws revealed. Bugs in the code fixed.
+
+1404
+01:14:24,000 --> 01:14:26,880
+What once took weeks now takes hours.
+
+1405
+01:14:26,880 --> 01:14:29,600
+Verification cycles over 40 times
+
+1406
+01:14:29,600 --> 01:14:32,880
+faster. Together, Nvidia and Cadence are
+
+1407
+01:14:32,880 --> 01:14:38,040
+reinventing chip design with AI agents.
+
+1408
+01:14:38,560 --> 01:14:42,239
+From weeks, from weeks to hours, from
+
+1409
+01:14:42,239 --> 01:14:45,040
+weeks to hours, from weeks to hours,
+
+1410
+01:14:45,040 --> 01:14:47,679
+Nvidia has thousands of chip designers.
+
+1411
+01:14:47,679 --> 01:14:49,920
+We are going to hire hundreds of
+
+1412
+01:14:49,920 --> 01:14:53,280
+thousands of cadence super agents that
+
+1413
+01:14:53,280 --> 01:14:55,679
+work with us so that we can accelerate
+
+1414
+01:14:55,679 --> 01:14:58,560
+our company so that we can be even more
+
+1415
+01:14:58,560 --> 01:15:00,880
+ambitious, create even more amazing
+
+1416
+01:15:00,880 --> 01:15:04,560
+things, run even faster. You saw earlier
+
+1417
+01:15:04,560 --> 01:15:09,600
+that the toolkit with models harness
+
+1418
+01:15:09,600 --> 01:15:12,640
+tools. The tools in this case are
+
+1419
+01:15:12,640 --> 01:15:15,120
+cadence simulators and verifiers formal
+
+1420
+01:15:15,120 --> 01:15:17,040
+verification systems. It is the reason
+
+1421
+01:15:17,040 --> 01:15:19,679
+why we're working with Cadence so hard
+
+1422
+01:15:19,679 --> 01:15:22,960
+to accelerate all of their tools on CUDA
+
+1423
+01:15:22,960 --> 01:15:25,280
+because the agents are impatient. The
+
+1424
+01:15:25,280 --> 01:15:28,239
+agents want the answer immediately. And
+
+1425
+01:15:28,239 --> 01:15:32,640
+so models, harnesses,
+
+1426
+01:15:32,640 --> 01:15:34,960
+accelerated CUDA accelerated libraries
+
+1427
+01:15:34,960 --> 01:15:38,320
+and tools and then the runtime. What you
+
+1428
+01:15:38,320 --> 01:15:40,880
+saw just now is all of that coming
+
+1429
+01:15:40,880 --> 01:15:43,040
+together. Now, one of the things that it
+
+1430
+01:15:43,040 --> 01:15:46,400
+starts with is a great model that
+
+1431
+01:15:46,400 --> 01:15:49,760
+Cadence could modify and tune to be
+
+1432
+01:15:49,760 --> 01:15:51,920
+expert at the cadence workflow at the
+
+1433
+01:15:51,920 --> 01:15:54,480
+cadence expertise so that they could
+
+1434
+01:15:54,480 --> 01:15:57,840
+create super agents that are proprietary
+
+1435
+01:15:57,840 --> 01:16:00,400
+to cadence with their proprietary
+
+1436
+01:16:00,400 --> 01:16:02,159
+knowledge.
+
+1437
+01:16:02,159 --> 01:16:03,760
+They have to start with an excellent
+
+1438
+01:16:03,760 --> 01:16:06,640
+model. We call it Neotron. NVIDIA is
+
+1439
+01:16:06,640 --> 01:16:09,360
+dedicated to build open models for the
+
+1440
+01:16:09,360 --> 01:16:12,320
+world so that all of you, all of us
+
+1441
+01:16:12,320 --> 01:16:14,880
+could create our own agents. Today,
+
+1442
+01:16:14,880 --> 01:16:17,199
+we're announcing
+
+1443
+01:16:17,199 --> 01:16:19,920
+the Neotron
+
+1444
+01:16:19,920 --> 01:16:22,239
+3 Ultra.
+
+1445
+01:16:22,239 --> 01:16:25,440
+Yep. Our next open model, and it is
+
+1446
+01:16:25,440 --> 01:16:28,440
+smart.
+
+1447
+01:16:30,880 --> 01:16:35,199
+The Neotron models not only give you the
+
+1448
+01:16:35,199 --> 01:16:38,400
+model, we give you all the data that we
+
+1449
+01:16:38,400 --> 01:16:40,800
+use to train the model. And because we
+
+1450
+01:16:40,800 --> 01:16:43,440
+have a coalition of incredible partners,
+
+1451
+01:16:43,440 --> 01:16:44,880
+you can see all of our partners down
+
+1452
+01:16:44,880 --> 01:16:49,199
+here. We work together, contribute data
+
+1453
+01:16:49,199 --> 01:16:52,719
+to each other. Neotron is trained on one
+
+1454
+01:16:52,719 --> 01:16:55,440
+of the largest suites of longunning
+
+1455
+01:16:55,440 --> 01:16:58,640
+reasoning models, longunning tool task
+
+1456
+01:16:58,640 --> 01:17:02,080
+solving tool using data sets in the
+
+1457
+01:17:02,080 --> 01:17:04,320
+world because of all of our great
+
+1458
+01:17:04,320 --> 01:17:07,679
+partnerships. All of this from the
+
+1459
+01:17:07,679 --> 01:17:11,440
+model, the training script and the data
+
+1460
+01:17:11,440 --> 01:17:14,080
+made completely available to you. This
+
+1461
+01:17:14,080 --> 01:17:17,520
+is open models at its best. the best
+
+1462
+01:17:17,520 --> 01:17:20,960
+open model system policies in the world.
+
+1463
+01:17:20,960 --> 01:17:23,360
+Simple goal is so that you can take all
+
+1464
+01:17:23,360 --> 01:17:26,080
+of it, add to it, make it even better,
+
+1465
+01:17:26,080 --> 01:17:31,600
+make it yours. Neotron 3 Ultra is five
+
+1466
+01:17:31,600 --> 01:17:33,600
+times faster.
+
+1467
+01:17:33,600 --> 01:17:35,679
+This is the world's first model based on
+
+1468
+01:17:35,679 --> 01:17:39,600
+a hybrid architecture of SSM state space
+
+1469
+01:17:39,600 --> 01:17:43,760
+models with mixture of experts. The
+
+1470
+01:17:43,760 --> 01:17:46,480
+architecture is incredibly fast. We made
+
+1471
+01:17:46,480 --> 01:17:48,400
+a fast so that you could think fast.
+
+1472
+01:17:48,400 --> 01:17:49,760
+When you think fast, you could think
+
+1473
+01:17:49,760 --> 01:17:53,920
+longer at the same cost. So five times
+
+1474
+01:17:53,920 --> 01:17:56,960
+faster. It is also
+
+1475
+01:17:56,960 --> 01:18:00,800
+30% cheaper. 30% lower cost to run in
+
+1476
+01:18:00,800 --> 01:18:03,199
+total flops and total inference time
+
+1477
+01:18:03,199 --> 01:18:05,520
+than even the most cost effective in the
+
+1478
+01:18:05,520 --> 01:18:07,920
+world. We're comparing against the
+
+1479
+01:18:07,920 --> 01:18:10,800
+world's best open models. Frontier
+
+1480
+01:18:10,800 --> 01:18:12,560
+Smart,
+
+1481
+01:18:12,560 --> 01:18:17,280
+five times faster, 30 30% cheaper,
+
+1482
+01:18:17,280 --> 01:18:19,920
+completely open. We're completely
+
+1483
+01:18:19,920 --> 01:18:22,320
+dedicated to this. This is now Neotron
+
+1484
+01:18:22,320 --> 01:18:26,080
+3. We're currently working on Neotron 4.
+
+1485
+01:18:26,080 --> 01:18:29,920
+So this entire toolkit from models,
+
+1486
+01:18:29,920 --> 01:18:31,760
+harnesses,
+
+1487
+01:18:31,760 --> 01:18:35,600
+tools and skills and runtimes is the
+
+1488
+01:18:35,600 --> 01:18:39,040
+reason why every enterprise company in
+
+1489
+01:18:39,040 --> 01:18:42,159
+the world has the ability now to create
+
+1490
+01:18:42,159 --> 01:18:44,800
+their own agents just like Cadence did
+
+1491
+01:18:44,800 --> 01:18:46,400
+with their super agents. And we're
+
+1492
+01:18:46,400 --> 01:18:48,239
+working with so many companies, Cadence
+
+1493
+01:18:48,239 --> 01:18:50,880
+and Crowdstrike and Disso and Palunteer,
+
+1494
+01:18:50,880 --> 01:18:54,320
+SAP and Service Now. People were always
+
+1495
+01:18:54,320 --> 01:18:57,040
+said Jensen the agents are going to
+
+1496
+01:18:57,040 --> 01:19:00,480
+disrupt these markets. I said completely
+
+1497
+01:19:00,480 --> 01:19:02,800
+the opposite and you can now see it.
+
+1498
+01:19:02,800 --> 01:19:04,880
+Agents is going to create the largest
+
+1499
+01:19:04,880 --> 01:19:07,679
+opportunity ever for my partners and
+
+1500
+01:19:07,679 --> 01:19:10,880
+friends and we have the Nemo the the
+
+1501
+01:19:10,880 --> 01:19:14,800
+NVIDIA agentic toolkit for enterprise AI
+
+1502
+01:19:14,800 --> 01:19:17,280
+to help them.
+
+1503
+01:19:17,280 --> 01:19:21,880
+So there you go.
+
+1504
+01:19:23,920 --> 01:19:27,440
+First, Vera Rubin in full production.
+
+1505
+01:19:27,440 --> 01:19:30,640
+Two, Vera CPU CPU built for a new
+
+1506
+01:19:30,640 --> 01:19:34,239
+generation for agents. And three,
+
+1507
+01:19:34,239 --> 01:19:38,880
+Nvidia's enterprise AI toolkits so that
+
+1508
+01:19:38,880 --> 01:19:41,040
+every enterprise and every enterprise
+
+1509
+01:19:41,040 --> 01:19:45,560
+software company can build agents.
+
+1510
+01:19:53,920 --> 01:19:58,719
+My relationship with you started here.
+
+1511
+01:19:58,719 --> 01:20:01,520
+And many of you, many of you, many of my
+
+1512
+01:20:01,520 --> 01:20:03,679
+friends and partners here in Taiwan,
+
+1513
+01:20:03,679 --> 01:20:07,440
+your companies started here.
+
+1514
+01:20:07,440 --> 01:20:10,640
+This is in a lot of ways the beginning
+
+1515
+01:20:10,640 --> 01:20:12,960
+of the modern computer industry. 40
+
+1516
+01:20:12,960 --> 01:20:16,719
+years now. Nvidia is 33 years old.
+
+1517
+01:20:16,719 --> 01:20:18,880
+the PC industry was already starting to
+
+1518
+01:20:18,880 --> 01:20:22,239
+get to P Windows one and Windows 2 and
+
+1519
+01:20:22,239 --> 01:20:25,679
+Apple M Apple Apple one and Apple 2 and
+
+1520
+01:20:25,679 --> 01:20:28,640
+by the time that we came along Windows
+
+1521
+01:20:28,640 --> 01:20:33,120
+3.1 was the PC and as you know Windows
+
+1522
+01:20:33,120 --> 01:20:38,239
+95 made PC personal it took PC from
+
+1523
+01:20:38,239 --> 01:20:41,360
+enterprises companies and made it into a
+
+1524
+01:20:41,360 --> 01:20:44,320
+consumer electronics device. Everybody
+
+1525
+01:20:44,320 --> 01:20:46,880
+should have one and everybody does. This
+
+1526
+01:20:46,880 --> 01:20:49,199
+is the beginning. This computing
+
+1527
+01:20:49,199 --> 01:20:51,600
+platform did several things incredibly
+
+1528
+01:20:51,600 --> 01:20:53,440
+smart.
+
+1529
+01:20:53,440 --> 01:20:55,679
+Windows was not just disagregated. As
+
+1530
+01:20:55,679 --> 01:20:58,640
+you know, Windows was properly
+
+1531
+01:20:58,640 --> 01:21:00,800
+abstracted. It was architected just
+
+1532
+01:21:00,800 --> 01:21:03,920
+right. systems BIOSes,
+
+1533
+01:21:03,920 --> 01:21:06,640
+open chipsets,
+
+1534
+01:21:06,640 --> 01:21:11,040
+the operating system with drivers,
+
+1535
+01:21:11,040 --> 01:21:12,880
+drivers that could be connected and
+
+1536
+01:21:12,880 --> 01:21:15,280
+installed at runtime
+
+1537
+01:21:15,280 --> 01:21:17,760
+and an abstraction layer with a
+
+1538
+01:21:17,760 --> 01:21:22,560
+multimedia API that was that opened up
+
+1539
+01:21:22,560 --> 01:21:26,159
+the PC to what we all know today. Each
+
+1540
+01:21:26,159 --> 01:21:29,040
+one of these elements were essential in
+
+1541
+01:21:29,040 --> 01:21:32,239
+making the PC so popular.
+
+1542
+01:21:32,239 --> 01:21:34,719
+40 years later,
+
+1543
+01:21:34,719 --> 01:21:37,440
+Microsoft and Nvidia are going to
+
+1544
+01:21:37,440 --> 01:21:39,920
+reinvent the PC.
+
+1545
+01:21:39,920 --> 01:21:43,280
+This is going to be the new PC. Now,
+
+1546
+01:21:43,280 --> 01:21:45,040
+tomorrow night, tomorrow night, I think
+
+1547
+01:21:45,040 --> 01:21:47,840
+it's tomorrow night our time, but I'm
+
+1548
+01:21:47,840 --> 01:21:49,600
+going to be with Satya where we're going
+
+1549
+01:21:49,600 --> 01:21:51,600
+to talk a lot more about the work that
+
+1550
+01:21:51,600 --> 01:21:54,480
+we're doing together. Microsoft Nvidia
+
+1551
+01:21:54,480 --> 01:21:57,360
+over the last three years. It took this
+
+1552
+01:21:57,360 --> 01:22:00,639
+long to completely reinvent how the PC
+
+1553
+01:22:00,639 --> 01:22:02,239
+is going to work so that we could be
+
+1554
+01:22:02,239 --> 01:22:04,960
+ready for this moment. As I mentioned
+
+1555
+01:22:04,960 --> 01:22:08,000
+earlier, that compute pattern called the
+
+1556
+01:22:08,000 --> 01:22:11,920
+agent is going to run in AI clouds. It's
+
+1557
+01:22:11,920 --> 01:22:15,040
+going to run inside enterprises. It is
+
+1558
+01:22:15,040 --> 01:22:18,480
+also going to run on your PC.
+
+1559
+01:22:18,480 --> 01:22:20,560
+What's going to happen to that PC when
+
+1560
+01:22:20,560 --> 01:22:23,520
+it has an autonomous agent? an agent
+
+1561
+01:22:23,520 --> 01:22:25,440
+that's helping you, that understands
+
+1562
+01:22:25,440 --> 01:22:27,840
+you. You could talk to it. It could look
+
+1563
+01:22:27,840 --> 01:22:30,400
+at you. You could
+
+1564
+01:22:30,400 --> 01:22:34,080
+ask it to read files, go help you, do
+
+1565
+01:22:34,080 --> 01:22:36,320
+some research. It could do a lot more
+
+1566
+01:22:36,320 --> 01:22:38,480
+that I'll show you. But the new
+
+1567
+01:22:38,480 --> 01:22:41,520
+operating system is, of course, the old
+
+1568
+01:22:41,520 --> 01:22:44,560
+operating system plus large language
+
+1569
+01:22:44,560 --> 01:22:47,040
+models. Large language models in a lot
+
+1570
+01:22:47,040 --> 01:22:50,000
+of ways is the modern version of
+
+1571
+01:22:50,000 --> 01:22:51,520
+DirectX.
+
+1572
+01:22:51,520 --> 01:22:54,239
+It has of course input and output.
+
+1573
+01:22:54,239 --> 01:22:56,159
+Understands prompts. It understands
+
+1574
+01:22:56,159 --> 01:22:58,159
+computer vision. It can generate video.
+
+1575
+01:22:58,159 --> 01:23:00,719
+It can generate sounds. It is the modern
+
+1576
+01:23:00,719 --> 01:23:04,480
+extension, the intelligence extension of
+
+1577
+01:23:04,480 --> 01:23:07,440
+the PC, of a computer.
+
+1578
+01:23:07,440 --> 01:23:10,000
+On top of that, the application as I
+
+1579
+01:23:10,000 --> 01:23:13,199
+mentioned before is going to be replaced
+
+1580
+01:23:13,199 --> 01:23:16,159
+by now an agentic runtime. And that is
+
+1581
+01:23:16,159 --> 01:23:19,760
+the modern application, an agent. Let's
+
+1582
+01:23:19,760 --> 01:23:23,520
+now take a look at what it can do.
+
+1583
+01:23:23,520 --> 01:23:26,239
+It started with a spark,
+
+1584
+01:23:26,239 --> 01:23:29,840
+an idea to reimagine the PC for the
+
+1585
+01:23:29,840 --> 01:23:33,600
+first time in 40 years. For the age of
+
+1586
+01:23:33,600 --> 01:23:36,639
+AI, what becomes of our personal
+
+1587
+01:23:36,639 --> 01:23:39,760
+computer in a world of agents?
+
+1588
+01:23:39,760 --> 01:23:42,320
+Agents running natively, connected to
+
+1589
+01:23:42,320 --> 01:23:45,600
+models, local or in the cloud. Our
+
+1590
+01:23:45,600 --> 01:23:48,960
+personal AI sandboxed for security,
+
+1591
+01:23:48,960 --> 01:23:52,560
+running continuously, getting work done.
+
+1592
+01:23:52,560 --> 01:23:56,800
+The chips and the OS must evolve.
+
+1593
+01:23:56,800 --> 01:24:00,800
+Introducing RTX Spark. Everything we've
+
+1594
+01:24:00,800 --> 01:24:04,080
+learned over 33 years distilled into one
+
+1595
+01:24:04,080 --> 01:24:06,000
+chip.
+
+1596
+01:24:06,000 --> 01:24:10,560
+Blackwell RTX GPU with 6,144
+
+1597
+01:24:10,560 --> 01:24:13,360
+CUDA cores. One pedlop of AI
+
+1598
+01:24:13,360 --> 01:24:17,600
+performance. A custom 20 core Grace CPU
+
+1599
+01:24:17,600 --> 01:24:21,120
+built in partnership with MediaTek fused
+
+1600
+01:24:21,120 --> 01:24:24,080
+by MVLink.
+
+1601
+01:24:24,080 --> 01:24:28,400
+128 GB of unified memory. TSMC3
+
+1602
+01:24:28,400 --> 01:24:34,000
+nanometer process 70 billion transistors
+
+1603
+01:24:34,000 --> 01:24:35,440
+and in close collaboration with
+
+1604
+01:24:35,440 --> 01:24:40,239
+Microsoft a Windows platform for agents.
+
+1605
+01:24:40,239 --> 01:24:44,320
+We're reinventing the personal computer,
+
+1606
+01:24:44,320 --> 01:24:47,040
+for creating,
+
+1607
+01:24:47,040 --> 01:24:50,159
+for gaming,
+
+1608
+01:24:50,159 --> 01:24:53,679
+for agents. This is the dawn of a new
+
+1609
+01:24:53,679 --> 01:24:56,159
+personal computing revolution,
+
+1610
+01:24:56,159 --> 01:25:02,040
+and it starts with NVIDIA RTX Smart.
+
+1611
+01:25:07,520 --> 01:25:10,520
+Here
+
+1612
+01:25:14,639 --> 01:25:17,120
+it is.
+
+1613
+01:25:17,120 --> 01:25:19,199
+Of course, I got to show you the most
+
+1614
+01:25:19,199 --> 01:25:22,239
+beautiful part, which is video games.
+
+1615
+01:25:22,239 --> 01:25:24,000
+It is It's also the closest to our
+
+1616
+01:25:24,000 --> 01:25:28,080
+heart. This is Forza. This is 007, by
+
+1617
+01:25:28,080 --> 01:25:31,199
+the way. The new 007 game. I'm looking
+
+1618
+01:25:31,199 --> 01:25:33,440
+forward to playing it. I look a little
+
+1619
+01:25:33,440 --> 01:25:35,520
+bit like him.
+
+1620
+01:25:35,520 --> 01:25:39,679
+Ladies and gentlemen, Nvidia's RTX Spark
+
+1621
+01:25:39,679 --> 01:25:43,800
+laptops. Now,
+
+1622
+01:25:46,400 --> 01:25:49,560
+thank you.
+
+1623
+01:25:51,840 --> 01:25:56,040
+I have too many things in my pocket.
+
+1624
+01:25:57,440 --> 01:26:00,000
+Okay. All right. This is the most
+
+1625
+01:26:00,000 --> 01:26:02,639
+amazing chip the world has ever built.
+
+1626
+01:26:02,639 --> 01:26:06,400
+This is the N1X that we built in
+
+1627
+01:26:06,400 --> 01:26:08,800
+partnership with MediaTek. I think I saw
+
+1628
+01:26:08,800 --> 01:26:11,360
+I saw Rick earlier. This is N1X. This is
+
+1629
+01:26:11,360 --> 01:26:15,440
+a beautiful chip. This is this is a a
+
+1630
+01:26:15,440 --> 01:26:18,800
+chip that frankly would take 33 years to
+
+1631
+01:26:18,800 --> 01:26:20,960
+build. And the reason for that is
+
+1632
+01:26:20,960 --> 01:26:24,239
+because 100% of Nvidia software stack
+
+1633
+01:26:24,239 --> 01:26:27,679
+runs here. If you want to run uh uh
+
+1634
+01:26:27,679 --> 01:26:29,760
+digital biology, no problem. If you want
+
+1635
+01:26:29,760 --> 01:26:31,920
+to do seismic processing, no problem.
+
+1636
+01:26:31,920 --> 01:26:33,920
+You want astrophysics, no problem.
+
+1637
+01:26:33,920 --> 01:26:36,159
+Everything associated with CUDA, all the
+
+1638
+01:26:36,159 --> 01:26:37,840
+physics, all the biology, all the
+
+1639
+01:26:37,840 --> 01:26:40,560
+genomics, all the AI, no problem. All
+
+1640
+01:26:40,560 --> 01:26:43,440
+the computer graphics, no problem. Every
+
+1641
+01:26:43,440 --> 01:26:46,159
+single application Nvidia has ever
+
+1642
+01:26:46,159 --> 01:26:49,040
+created and every single application
+
+1643
+01:26:49,040 --> 01:26:52,480
+that Windows has ever run,
+
+1644
+01:26:52,480 --> 01:26:55,199
+Microsoft and Nvidia meticulously
+
+1645
+01:26:55,199 --> 01:26:57,520
+optimized everything so that this
+
+1646
+01:26:57,520 --> 01:27:00,960
+computer literally runs everything the
+
+1647
+01:27:00,960 --> 01:27:04,639
+world has ever created. Plus,
+
+1648
+01:27:04,639 --> 01:27:07,760
+it now runs agents. An incredible
+
+1649
+01:27:07,760 --> 01:27:11,880
+computer. I'm so proud of it.
+
+1650
+01:27:15,679 --> 01:27:17,199
+Okay.
+
+1651
+01:27:17,199 --> 01:27:19,840
+Now, I want you to keep that in mind in
+
+1652
+01:27:19,840 --> 01:27:21,600
+the next video. I just I'm going to show
+
+1653
+01:27:21,600 --> 01:27:24,480
+you. Just imagine everything here is
+
+1654
+01:27:24,480 --> 01:27:26,320
+going to run on your PC. Now that
+
+1655
+01:27:26,320 --> 01:27:30,159
+computer could have a local Neotron 3
+
+1656
+01:27:30,159 --> 01:27:34,400
+Ultra model or Neotron 3 super model or
+
+1657
+01:27:34,400 --> 01:27:38,719
+it could have a quad code or codeex or
+
+1658
+01:27:38,719 --> 01:27:40,560
+some other model in the cloud or
+
+1659
+01:27:40,560 --> 01:27:42,560
+something on the network and it's going
+
+1660
+01:27:42,560 --> 01:27:44,239
+to it's going to work and do something
+
+1661
+01:27:44,239 --> 01:27:48,120
+amazing. Let's play it.
+
+1662
+01:27:48,239 --> 01:27:51,199
+>> Every house starts as an idea. Getting
+
+1663
+01:27:51,199 --> 01:27:54,239
+from idea to design takes a myriad of
+
+1664
+01:27:54,239 --> 01:27:59,760
+tools, expertise, and a lot of time.
+
+1665
+01:27:59,760 --> 01:28:02,880
+Now, an agent running locally on RTX
+
+1666
+01:28:02,880 --> 01:28:05,040
+Spark can help me design a house using
+
+1667
+01:28:05,040 --> 01:28:07,520
+the tools on my laptop with an open
+
+1668
+01:28:07,520 --> 01:28:10,719
+shell sandbox running the Hermes harness
+
+1669
+01:28:10,719 --> 01:28:13,280
+connected to Claude Sonnet in the cloud.
+
+1670
+01:28:13,280 --> 01:28:15,600
+I select the site, share my concept,
+
+1671
+01:28:15,600 --> 01:28:17,920
+sketches, and mood board of styles to
+
+1672
+01:28:17,920 --> 01:28:21,120
+inspire my design. and the prompt, a
+
+1673
+01:28:21,120 --> 01:28:24,239
+text description of the requirements
+
+1674
+01:28:24,239 --> 01:28:28,040
+and the design intent.
+
+1675
+01:28:28,080 --> 01:28:30,320
+My agent goes to work using the tools on
+
+1676
+01:28:30,320 --> 01:28:33,280
+my laptop. It opens Rhino and starts
+
+1677
+01:28:33,280 --> 01:28:36,480
+modeling the site, shaping terrain,
+
+1678
+01:28:36,480 --> 01:28:39,120
+setbacks, and the building envelope.
+
+1679
+01:28:39,120 --> 01:28:41,280
+Then it proposes building forms
+
+1680
+01:28:41,280 --> 01:28:43,440
+optimized for cost, comfort, and
+
+1681
+01:28:43,440 --> 01:28:45,760
+quality.
+
+1682
+01:28:45,760 --> 01:28:47,760
+With the form defined, my agent
+
+1683
+01:28:47,760 --> 01:28:50,560
+generates the interior layout. Walls,
+
+1684
+01:28:50,560 --> 01:28:53,440
+circulation, rooms begin to take shape.
+
+1685
+01:28:53,440 --> 01:28:56,400
+I jump in whenever I want to adjust to
+
+1686
+01:28:56,400 --> 01:28:59,400
+change.
+
+1687
+01:29:00,400 --> 01:29:03,199
+Doors, windows, and structural elements
+
+1688
+01:29:03,199 --> 01:29:05,520
+are placed automatically. My agent
+
+1689
+01:29:05,520 --> 01:29:11,400
+detects its own mistakes and fixes them.
+
+1690
+01:29:11,920 --> 01:29:14,400
+When I approve, the agent exports the
+
+1691
+01:29:14,400 --> 01:29:16,960
+model from Rhino into Blender. Materials
+
+1692
+01:29:16,960 --> 01:29:19,520
+and object properties transfer with the
+
+1693
+01:29:19,520 --> 01:29:22,000
+design context intact.
+
+1694
+01:29:22,000 --> 01:29:24,480
+I fine-tune the materials, get the look
+
+1695
+01:29:24,480 --> 01:29:27,600
+just right. Then I pick the shots.
+
+1696
+01:29:27,600 --> 01:29:30,239
+Blender renders the house. My agent
+
+1697
+01:29:30,239 --> 01:29:32,560
+using generative AI with the Flux 2
+
+1698
+01:29:32,560 --> 01:29:34,960
+model makes them photoreal. Multiple
+
+1699
+01:29:34,960 --> 01:29:37,679
+viewpoints, lighting conditions. What
+
+1700
+01:29:37,679 --> 01:29:39,920
+was once a complex workflow is now
+
+1701
+01:29:39,920 --> 01:29:43,199
+guided and simplified by my agent.
+
+1702
+01:29:43,199 --> 01:29:47,280
+Working with me on RTX Spark design at
+
+1703
+01:29:47,280 --> 01:29:50,920
+the speed of imagination.
+
+1704
+01:29:55,679 --> 01:29:58,639
+PC in the world of agents. The
+
+1705
+01:29:58,639 --> 01:30:00,560
+developers are so excited about it. This
+
+1706
+01:30:00,560 --> 01:30:02,960
+is an incredible computer. all of the
+
+1707
+01:30:02,960 --> 01:30:04,480
+acceleration, all the software
+
+1708
+01:30:04,480 --> 01:30:06,800
+capabilities associated with it, working
+
+1709
+01:30:06,800 --> 01:30:08,880
+with every developer to make it
+
+1710
+01:30:08,880 --> 01:30:12,880
+incredible for all of you. The next one,
+
+1711
+01:30:12,880 --> 01:30:16,080
+Adobe, incredible tool suite of course
+
+1712
+01:30:16,080 --> 01:30:17,679
+used by tens of millions of people
+
+1713
+01:30:17,679 --> 01:30:19,120
+around the world. They have
+
+1714
+01:30:19,120 --> 01:30:20,719
+re-engineered
+
+1715
+01:30:20,719 --> 01:30:22,880
+the architecture, the core of Adobe
+
+1716
+01:30:22,880 --> 01:30:24,719
+Photoshop and Premiere, and they're
+
+1717
+01:30:24,719 --> 01:30:27,360
+going to release it for RTX Spark. It is
+
+1718
+01:30:27,360 --> 01:30:29,520
+twice as fast. It's already fast. Now
+
+1719
+01:30:29,520 --> 01:30:31,600
+it's going to be twice as fast and it
+
+1720
+01:30:31,600 --> 01:30:34,639
+it's also designed to be agent friendly
+
+1721
+01:30:34,639 --> 01:30:37,600
+with its MCP server. It can now interact
+
+1722
+01:30:37,600 --> 01:30:40,400
+with agents on your laptop.
+
+1723
+01:30:40,400 --> 01:30:42,239
+The number of customers, the number of
+
+1724
+01:30:42,239 --> 01:30:44,880
+partners that are so excited to bring
+
+1725
+01:30:44,880 --> 01:30:47,840
+RTX RTX Spark to the market is just
+
+1726
+01:30:47,840 --> 01:30:51,600
+incredible. You know, this is the first
+
+1727
+01:30:51,600 --> 01:30:55,679
+across the lineup of PC reinvention for
+
+1728
+01:30:55,679 --> 01:30:58,480
+40 years. And I'm just so happy that all
+
+1729
+01:30:58,480 --> 01:31:01,040
+of you and the ecosystem around the
+
+1730
+01:31:01,040 --> 01:31:03,920
+world has joined us. This is basically
+
+1731
+01:31:03,920 --> 01:31:07,280
+everybody. Everybody will support RTX
+
+1732
+01:31:07,280 --> 01:31:09,600
+Spark and we'll be building incredibly
+
+1733
+01:31:09,600 --> 01:31:12,239
+smart and powerful and beautiful laptops
+
+1734
+01:31:12,239 --> 01:31:16,679
+with all of us. Thank you very much.
+
+1735
+01:31:20,080 --> 01:31:24,000
+But that's not all. That's not all.
+
+1736
+01:31:24,000 --> 01:31:28,159
+RTX Spark is a reinvention of laptop,
+
+1737
+01:31:28,159 --> 01:31:30,880
+but in fact, Microsoft NVIDIA is
+
+1738
+01:31:30,880 --> 01:31:33,840
+reinventing all of PC. And today, we're
+
+1739
+01:31:33,840 --> 01:31:37,280
+announcing a whole new line.
+
+1740
+01:31:37,280 --> 01:31:40,080
+Three revolutionary Windows machines,
+
+1741
+01:31:40,080 --> 01:31:42,159
+covering desktop,
+
+1742
+01:31:42,159 --> 01:31:46,080
+laptop, and workstations. All 100%
+
+1743
+01:31:46,080 --> 01:31:50,080
+Windows compatible, 100% CUDA, 100%
+
+1744
+01:31:50,080 --> 01:31:53,440
+Nvidia AI Tensor Core. Everything that
+
+1745
+01:31:53,440 --> 01:31:55,920
+runs that you see that runs on Nvidia in
+
+1746
+01:31:55,920 --> 01:31:57,360
+all these different platforms around the
+
+1747
+01:31:57,360 --> 01:32:00,159
+world runs here.
+
+1748
+01:32:00,159 --> 01:32:03,679
+This is the first completely
+
+1749
+01:32:03,679 --> 01:32:06,800
+re-engineered, reinvented line of PCs
+
+1750
+01:32:06,800 --> 01:32:09,120
+that has happened in 40 years. Now,
+
+1751
+01:32:09,120 --> 01:32:10,880
+what's really amazing is this. So, this
+
+1752
+01:32:10,880 --> 01:32:16,080
+is this is the RTX Spark laptop. This
+
+1753
+01:32:16,080 --> 01:32:20,000
+is the desktop. So, this one's from MSI.
+
+1754
+01:32:20,000 --> 01:32:22,239
+Joseph, this one's yours.
+
+1755
+01:32:22,239 --> 01:32:24,960
+Okay, look how beautiful it is. This
+
+1756
+01:32:24,960 --> 01:32:27,920
+agent could run 24/7,
+
+1757
+01:32:27,920 --> 01:32:30,880
+meter free. And you could download your
+
+1758
+01:32:30,880 --> 01:32:33,280
+agent. You could raise your lobster in
+
+1759
+01:32:33,280 --> 01:32:36,280
+here.
+
+1760
+01:32:36,719 --> 01:32:39,360
+This is your clock. It's running all the
+
+1761
+01:32:39,360 --> 01:32:43,120
+time. No meter anxiety. And it's sitting
+
+1762
+01:32:43,120 --> 01:32:45,520
+here connected to your whole house,
+
+1763
+01:32:45,520 --> 01:32:48,320
+connected to your laptop, connected to
+
+1764
+01:32:48,320 --> 01:32:52,159
+your display, all the cameras, your your
+
+1765
+01:32:52,159 --> 01:32:54,960
+dryer, your water cooler, your water
+
+1766
+01:32:54,960 --> 01:32:56,639
+heater, your everything, whatever you
+
+1767
+01:32:56,639 --> 01:32:58,639
+want, your security system, all
+
+1768
+01:32:58,639 --> 01:33:01,360
+connected to this. And this becomes your
+
+1769
+01:33:01,360 --> 01:33:05,040
+personal AI, your personal AI agent. And
+
+1770
+01:33:05,040 --> 01:33:06,960
+it gets smarter and smarter and smarter
+
+1771
+01:33:06,960 --> 01:33:09,360
+over time because today we have Neotron
+
+1772
+01:33:09,360 --> 01:33:12,560
+3 Ultra. Tomorrow we have Neotron 4 and
+
+1773
+01:33:12,560 --> 01:33:15,040
+then Neotron 5, Neotron 6. And we just
+
+1774
+01:33:15,040 --> 01:33:16,400
+keep getting it smarter and smarter and
+
+1775
+01:33:16,400 --> 01:33:18,320
+smarter. And meanwhile, this is sitting
+
+1776
+01:33:18,320 --> 01:33:20,480
+at home helping you do things. If you
+
+1777
+01:33:20,480 --> 01:33:24,000
+want to book a travel, no problem. And
+
+1778
+01:33:24,000 --> 01:33:26,239
+if you
+
+1779
+01:33:26,239 --> 01:33:30,239
+if you want an incredible system, this
+
+1780
+01:33:30,239 --> 01:33:34,560
+is a DGX station for Windows.
+
+1781
+01:33:34,560 --> 01:33:36,080
+compatible with Windows, runs,
+
+1782
+01:33:36,080 --> 01:33:40,560
+everything in Windows, and and it has
+
+1783
+01:33:40,560 --> 01:33:45,440
+768 GB of memory. And so you could run a
+
+1784
+01:33:45,440 --> 01:33:48,000
+trillion parameter model. This is
+
+1785
+01:33:48,000 --> 01:33:51,280
+unbelievable. 20 pedlops,
+
+1786
+01:33:51,280 --> 01:33:53,280
+8 terabytes per second of memory
+
+1787
+01:33:53,280 --> 01:33:57,920
+bandwidth, and this sits by your desk.
+
+1788
+01:33:57,920 --> 01:34:00,080
+You basically if you're a developer of
+
+1789
+01:34:00,080 --> 01:34:01,679
+large language models, you're a
+
+1790
+01:34:01,679 --> 01:34:05,040
+developer of agents, having this sit by
+
+1791
+01:34:05,040 --> 01:34:07,440
+your desk gives you all the compute you
+
+1792
+01:34:07,440 --> 01:34:09,120
+need and then when you deploy it, you
+
+1793
+01:34:09,120 --> 01:34:11,600
+put it into the cloud. Now there's
+
+1794
+01:34:11,600 --> 01:34:13,679
+something that if you look at this and
+
+1795
+01:34:13,679 --> 01:34:15,760
+think about this, something is happening
+
+1796
+01:34:15,760 --> 01:34:18,159
+here.
+
+1797
+01:34:18,159 --> 01:34:21,040
+Remember
+
+1798
+01:34:21,040 --> 01:34:23,280
+15, 20 years ago, we used to have an
+
+1799
+01:34:23,280 --> 01:34:26,080
+idea called a phone.
+
+1800
+01:34:26,080 --> 01:34:30,560
+Today we have an idea called a PC.
+
+1801
+01:34:30,560 --> 01:34:33,440
+Today when you think about your phone,
+
+1802
+01:34:33,440 --> 01:34:35,199
+the one thing you don't do with it is
+
+1803
+01:34:35,199 --> 01:34:38,679
+make phone calls.
+
+1804
+01:34:39,840 --> 01:34:42,560
+You do just about everything else. And
+
+1805
+01:34:42,560 --> 01:34:44,800
+so that phone means something very
+
+1806
+01:34:44,800 --> 01:34:46,880
+different to you than a phone of the
+
+1807
+01:34:46,880 --> 01:34:49,199
+past.
+
+1808
+01:34:49,199 --> 01:34:51,760
+I am certain what's going to happen here
+
+1809
+01:34:51,760 --> 01:34:54,400
+is that the PC 10 years from now and the
+
+1810
+01:34:54,400 --> 01:34:57,600
+PC that you think about today a tool
+
+1811
+01:34:57,600 --> 01:35:01,040
+whether you launch applications
+
+1812
+01:35:01,040 --> 01:35:05,120
+click and type and this PC is going to
+
+1813
+01:35:05,120 --> 01:35:07,600
+be completely different. Here's my
+
+1814
+01:35:07,600 --> 01:35:09,280
+theory.
+
+1815
+01:35:09,280 --> 01:35:12,159
+I can totally imagine just as every
+
+1816
+01:35:12,159 --> 01:35:14,960
+house today has a home theater where
+
+1817
+01:35:14,960 --> 01:35:19,120
+many houses have home theaters, big TVs,
+
+1818
+01:35:19,120 --> 01:35:20,960
+lawnmowers,
+
+1819
+01:35:20,960 --> 01:35:22,960
+dishwashers.
+
+1820
+01:35:22,960 --> 01:35:25,199
+I could totally imagine that someday
+
+1821
+01:35:25,199 --> 01:35:27,199
+there's actually an AI supercomput in
+
+1822
+01:35:27,199 --> 01:35:30,320
+your house and it's running all of your
+
+1823
+01:35:30,320 --> 01:35:32,000
+agents. that's running all of your
+
+1824
+01:35:32,000 --> 01:35:34,320
+assistants and they're doing all kinds
+
+1825
+01:35:34,320 --> 01:35:37,520
+of things for you all the time and you
+
+1826
+01:35:37,520 --> 01:35:39,280
+have to have it in your house just like
+
+1827
+01:35:39,280 --> 01:35:40,639
+you have a home theater in your house,
+
+1828
+01:35:40,639 --> 01:35:42,400
+you have stereoss in your house, you
+
+1829
+01:35:42,400 --> 01:35:44,719
+have game consoles in your house, you
+
+1830
+01:35:44,719 --> 01:35:47,600
+want to assist AI agent computers
+
+1831
+01:35:47,600 --> 01:35:50,800
+running in your house and these
+
+1832
+01:35:50,800 --> 01:35:54,960
+in time becomes a lot more like R2-D2 to
+
+1833
+01:35:54,960 --> 01:35:59,440
+you. It becomes more like C3PO to you
+
+1834
+01:35:59,440 --> 01:36:03,040
+than it feels like a PC to you.
+
+1835
+01:36:03,040 --> 01:36:05,679
+There is no question this reinvention of
+
+1836
+01:36:05,679 --> 01:36:08,800
+the computer is as big of a deal as the
+
+1837
+01:36:08,800 --> 01:36:10,880
+reinvention of the phone into what we
+
+1838
+01:36:10,880 --> 01:36:13,360
+now know as the smartphone. And so this
+
+1839
+01:36:13,360 --> 01:36:15,600
+is the beginning of that journey. This
+
+1840
+01:36:15,600 --> 01:36:18,480
+is the beginning of a new line. And so
+
+1841
+01:36:18,480 --> 01:36:20,639
+we have a roadmap for this. This is a
+
+1842
+01:36:20,639 --> 01:36:23,199
+brand new product family for us.
+
+1843
+01:36:23,199 --> 01:36:26,000
+every single generation of architecture,
+
+1844
+01:36:26,000 --> 01:36:29,360
+we will have a desktop, a laptop, a
+
+1845
+01:36:29,360 --> 01:36:31,920
+workstation, and then a desktop, a
+
+1846
+01:36:31,920 --> 01:36:34,080
+laptop and workstation. And the thing
+
+1847
+01:36:34,080 --> 01:36:36,320
+that I am just incredibly pleased,
+
+1848
+01:36:36,320 --> 01:36:40,159
+incredibly honored is that 100% of the
+
+1849
+01:36:40,159 --> 01:36:43,040
+world's PC industry has joined us to
+
+1850
+01:36:43,040 --> 01:36:46,719
+reinvent the PC. A new line, a new
+
+1851
+01:36:46,719 --> 01:36:50,679
+beginning. Thank you.
+
+1852
+01:37:01,520 --> 01:37:04,000
+As you know,
+
+1853
+01:37:04,000 --> 01:37:08,880
+agentic AI is just a digital robot.
+
+1854
+01:37:08,880 --> 01:37:13,199
+It understands, it reasons, it plans,
+
+1855
+01:37:13,199 --> 01:37:15,920
+and it acts and use tools.
+
+1856
+01:37:15,920 --> 01:37:18,880
+Agented AI is going to run across all of
+
+1857
+01:37:18,880 --> 01:37:21,520
+these computers and you've seen me talk
+
+1858
+01:37:21,520 --> 01:37:23,119
+about each and every one of these over
+
+1859
+01:37:23,119 --> 01:37:26,000
+time. We're working on human or robotics
+
+1860
+01:37:26,000 --> 01:37:28,159
+computers, robotics computers of all
+
+1861
+01:37:28,159 --> 01:37:30,159
+kinds. We're working on self-driving car
+
+1862
+01:37:30,159 --> 01:37:33,679
+computers. We're working on satellites.
+
+1863
+01:37:33,679 --> 01:37:35,840
+You have GeForce which is has tensor
+
+1864
+01:37:35,840 --> 01:37:37,520
+cores. I just talked about a whole new
+
+1865
+01:37:37,520 --> 01:37:40,800
+line of PCs. agriculture equipment,
+
+1866
+01:37:40,800 --> 01:37:42,719
+manufacturing equipment, heavy industry
+
+1867
+01:37:42,719 --> 01:37:45,840
+equipment will all be agentic. You'll
+
+1868
+01:37:45,840 --> 01:37:48,400
+even have a little agentic
+
+1869
+01:37:48,400 --> 01:37:50,639
+helper for yourself.
+
+1870
+01:37:50,639 --> 01:37:52,800
+Even your base stations, the radio
+
+1871
+01:37:52,800 --> 01:37:54,560
+stations of the future are going to be
+
+1872
+01:37:54,560 --> 01:37:56,400
+agentic.
+
+1873
+01:37:56,400 --> 01:37:59,679
+understanding traffic and thinking about
+
+1874
+01:37:59,679 --> 01:38:01,760
+how to coordinate with the other base
+
+1875
+01:38:01,760 --> 01:38:04,159
+stations so that you could use as little
+
+1876
+01:38:04,159 --> 01:38:06,880
+energy as possible increase the
+
+1877
+01:38:06,880 --> 01:38:08,639
+utilization the efficiency of the
+
+1878
+01:38:08,639 --> 01:38:11,760
+spectral efficiency and so everything
+
+1879
+01:38:11,760 --> 01:38:14,800
+will run agents today Nvidia is largely
+
+1880
+01:38:14,800 --> 01:38:18,320
+in the center but I am pretty certain
+
+1881
+01:38:18,320 --> 01:38:21,840
+that there will be tens of billions
+
+1882
+01:38:21,840 --> 01:38:24,159
+hundreds of billions over time of
+
+1883
+01:38:24,159 --> 01:38:26,880
+agentic systems agentic computers that
+
+1884
+01:38:26,880 --> 01:38:28,080
+are going to be running around the
+
+1885
+01:38:28,080 --> 01:38:32,159
+world. The biggest problem is data.
+
+1886
+01:38:32,159 --> 01:38:34,719
+In the case of language models, all the
+
+1887
+01:38:34,719 --> 01:38:36,239
+English and all the language that we
+
+1888
+01:38:36,239 --> 01:38:38,000
+have on the internet that we trained on
+
+1889
+01:38:38,000 --> 01:38:40,719
+was from the perspective of us. We wrote
+
+1890
+01:38:40,719 --> 01:38:43,840
+it and we're reading it. However, in
+
+1891
+01:38:43,840 --> 01:38:47,920
+order to create a data for AI robotics,
+
+1892
+01:38:47,920 --> 01:38:50,080
+it has to be in the perception, the
+
+1893
+01:38:50,080 --> 01:38:53,440
+perspective of the robot. And most of
+
+1894
+01:38:53,440 --> 01:38:55,760
+the world's video data is from a third
+
+1895
+01:38:55,760 --> 01:38:59,199
+person, not first person. And so agentic
+
+1896
+01:38:59,199 --> 01:39:02,320
+systems, robotic systems,
+
+1897
+01:39:02,320 --> 01:39:05,040
+physical AI, the data is the hardest
+
+1898
+01:39:05,040 --> 01:39:07,920
+problem. You've seen us move up this
+
+1899
+01:39:07,920 --> 01:39:10,639
+ladder. We started with tea operations,
+
+1900
+01:39:10,639 --> 01:39:12,960
+which is basically human demonstration.
+
+1901
+01:39:12,960 --> 01:39:14,639
+This is no different than the big
+
+1902
+01:39:14,639 --> 01:39:16,800
+breakthrough of reinforcement learning,
+
+1903
+01:39:16,800 --> 01:39:19,679
+human feedback. This then we use
+
+1904
+01:39:19,679 --> 01:39:21,520
+simulation. This is where omniverse
+
+1905
+01:39:21,520 --> 01:39:23,600
+comes in. This is no different than
+
+1906
+01:39:23,600 --> 01:39:26,320
+reinforcement learning ver verifiable
+
+1907
+01:39:26,320 --> 01:39:29,280
+rewards. Okay. And so we use these
+
+1908
+01:39:29,280 --> 01:39:33,119
+systems to bootstrap
+
+1909
+01:39:33,119 --> 01:39:36,000
+the AI model, the physical AI model.
+
+1910
+01:39:36,000 --> 01:39:38,960
+Eventually we're able to learn from
+
+1911
+01:39:38,960 --> 01:39:42,000
+third per third person reproing it into
+
+1912
+01:39:42,000 --> 01:39:45,440
+first person. And now eventually through
+
+1913
+01:39:45,440 --> 01:39:48,400
+bootstrapping we have a world foundation
+
+1914
+01:39:48,400 --> 01:39:50,880
+model that can understand the physical
+
+1915
+01:39:50,880 --> 01:39:53,679
+world from any perspective you want.
+
+1916
+01:39:53,679 --> 01:39:55,920
+Third third third person first person
+
+1917
+01:39:55,920 --> 01:39:58,800
+outside in inside out doesn't matter.
+
+1918
+01:39:58,800 --> 01:40:01,840
+This is a big breakthrough indeed. And
+
+1919
+01:40:01,840 --> 01:40:05,600
+today we are announcing
+
+1920
+01:40:05,600 --> 01:40:11,040
+Cosmos 3. Cosmos 3 is the frontier of
+
+1921
+01:40:11,040 --> 01:40:13,360
+physical AI.
+
+1922
+01:40:13,360 --> 01:40:15,760
+We are at the frontier with language
+
+1923
+01:40:15,760 --> 01:40:17,440
+models. There are so many people working
+
+1924
+01:40:17,440 --> 01:40:21,040
+on it. However, in physical AI, we are
+
+1925
+01:40:21,040 --> 01:40:23,280
+absolutely the world's best. I am so
+
+1926
+01:40:23,280 --> 01:40:25,199
+proud of the team for doing this. This
+
+1927
+01:40:25,199 --> 01:40:27,679
+is the foundation model for all of your
+
+1928
+01:40:27,679 --> 01:40:29,920
+work. Whenever you want to create a
+
+1929
+01:40:29,920 --> 01:40:31,920
+robot, whenever you want to create a
+
+1930
+01:40:31,920 --> 01:40:33,760
+factory robot or a robot that works in a
+
+1931
+01:40:33,760 --> 01:40:38,320
+factory, any kind of robot that in that
+
+1932
+01:40:38,320 --> 01:40:41,280
+involves physical world, you now have a
+
+1933
+01:40:41,280 --> 01:40:44,000
+companion, a Cosmos 3 that can
+
+1934
+01:40:44,000 --> 01:40:47,280
+understand and reason, it can generate,
+
+1935
+01:40:47,280 --> 01:40:50,080
+it can simulate in the loop, it can even
+
+1936
+01:40:50,080 --> 01:40:52,719
+be the policy itself. It is on the top
+
+1937
+01:40:52,719 --> 01:40:54,639
+of leaderboards all over the all over
+
+1938
+01:40:54,639 --> 01:40:56,560
+the world. I am incredibly proud of
+
+1939
+01:40:56,560 --> 01:40:58,800
+Cosmos and today we're announcing Cosmos
+
+1940
+01:40:58,800 --> 01:41:01,920
+3. Let's take a look.
+
+1941
+01:41:01,920 --> 01:41:03,840
+>> The real world is infinite and
+
+1942
+01:41:03,840 --> 01:41:05,520
+unpredictable.
+
+1943
+01:41:05,520 --> 01:41:08,560
+Physical AI needs data, but real world
+
+1944
+01:41:08,560 --> 01:41:11,199
+data is impossible to scale. For
+
+1945
+01:41:11,199 --> 01:41:15,760
+physical AI, compute is data. This is
+
+1946
+01:41:15,760 --> 01:41:18,800
+Cosmos, an open frontier omniodel for
+
+1947
+01:41:18,800 --> 01:41:21,600
+physical AI built on a new mixture of
+
+1948
+01:41:21,600 --> 01:41:24,080
+transformers architecture. Pixels,
+
+1949
+01:41:24,080 --> 01:41:26,560
+action, sound, and language flow into
+
+1950
+01:41:26,560 --> 01:41:28,639
+the auto reggressive transformer, which
+
+1951
+01:41:28,639 --> 01:41:30,719
+reasons, plans, and instructs the
+
+1952
+01:41:30,719 --> 01:41:33,199
+diffusion transformer, which generates
+
+1953
+01:41:33,199 --> 01:41:35,280
+what comes next.
+
+1954
+01:41:35,280 --> 01:41:37,520
+Developers post-train Cosmos across
+
+1955
+01:41:37,520 --> 01:41:41,119
+embodiment and use cases. As a VLM,
+
+1956
+01:41:41,119 --> 01:41:43,679
+Cosmos watches the physical world,
+
+1957
+01:41:43,679 --> 01:41:46,560
+understands what's happening, describing
+
+1958
+01:41:46,560 --> 01:41:50,159
+scenes, and flagging what matters.
+
+1959
+01:41:50,159 --> 01:41:52,719
+As a world model, Cosmos generates
+
+1960
+01:41:52,719 --> 01:41:55,520
+physics accurate synthetic video from an
+
+1961
+01:41:55,520 --> 01:41:58,719
+image, text, or video.
+
+1962
+01:41:58,719 --> 01:42:01,600
+As a simulator, Cosmos closes the loop
+
+1963
+01:42:01,600 --> 01:42:04,159
+for policy training and evaluation. And
+
+1964
+01:42:04,159 --> 01:42:06,800
+as the foundation of NVIDIA Omnidreams,
+
+1965
+01:42:06,800 --> 01:42:09,360
+an action conditioned world model,
+
+1966
+01:42:09,360 --> 01:42:12,000
+Cosmos predicts the future frame by
+
+1967
+01:42:12,000 --> 01:42:13,600
+frame.
+
+1968
+01:42:13,600 --> 01:42:16,159
+Post-train Cosmos and it becomes a world
+
+1969
+01:42:16,159 --> 01:42:20,000
+action model. Perceiving, reasoning,
+
+1970
+01:42:20,000 --> 01:42:23,360
+planning, generating actions
+
+1971
+01:42:23,360 --> 01:42:26,639
+for robots of every kind.
+
+1972
+01:42:26,639 --> 01:42:30,719
+for everything that moves.
+
+1973
+01:42:30,719 --> 01:42:33,040
+A new kind of data, a new kind of
+
+1974
+01:42:33,040 --> 01:42:37,960
+teacher generated by compute.
+
+1975
+01:42:38,080 --> 01:42:41,119
+Cosmos, the foundation for developers of
+
+1976
+01:42:41,119 --> 01:42:45,480
+the age of physical AI.
+
+1977
+01:42:55,520 --> 01:42:58,880
+It's takes data plus compute gives you
+
+1978
+01:42:58,880 --> 01:43:00,719
+AI.
+
+1979
+01:43:00,719 --> 01:43:03,040
+Now that we have AI,
+
+1980
+01:43:03,040 --> 01:43:07,199
+compute is data. And so use Cosmos 3,
+
+1981
+01:43:07,199 --> 01:43:09,199
+train a whole bunch of AI models. Cosmos
+
+1982
+01:43:09,199 --> 01:43:11,199
+is such an incredible open model system.
+
+1983
+01:43:11,199 --> 01:43:12,880
+It's exactly the same as Neotron. We
+
+1984
+01:43:12,880 --> 01:43:15,760
+open model, we open the data, and we
+
+1985
+01:43:15,760 --> 01:43:18,080
+even opened how we trained it so that
+
+1986
+01:43:18,080 --> 01:43:20,480
+you could enhance it for yourself and
+
+1987
+01:43:20,480 --> 01:43:23,280
+turn Cosmos into your proprietary model.
+
+1988
+01:43:23,280 --> 01:43:25,040
+We have such incredible partners working
+
+1989
+01:43:25,040 --> 01:43:27,600
+with us in so many different industries.
+
+1990
+01:43:27,600 --> 01:43:30,480
+Now the model itself is the most of
+
+1991
+01:43:30,480 --> 01:43:32,800
+course the most understandable part of
+
+1992
+01:43:32,800 --> 01:43:35,119
+the AI stack. But the AI stack is very
+
+1993
+01:43:35,119 --> 01:43:39,360
+complicated. It has generators
+
+1994
+01:43:39,360 --> 01:43:43,199
+the model simulators and the runtime
+
+1995
+01:43:43,199 --> 01:43:45,360
+just as just as it is for agentic
+
+1996
+01:43:45,360 --> 01:43:48,080
+systems. these cars or essentially a
+
+1997
+01:43:48,080 --> 01:43:53,199
+physical AI agentic robot that is a is a
+
+1998
+01:43:53,199 --> 01:43:55,920
+autonomous vehicle has also this
+
+1999
+01:43:55,920 --> 01:43:57,600
+complicated stack. Today we're
+
+2000
+01:43:57,600 --> 01:44:02,080
+announcing Alpamo 2, an open model for
+
+2001
+01:44:02,080 --> 01:44:05,520
+self-driving cars. We're working with
+
+2002
+01:44:05,520 --> 01:44:07,920
+car companies across the world. If you
+
+2003
+01:44:07,920 --> 01:44:09,760
+look at these brands that have signed up
+
+2004
+01:44:09,760 --> 01:44:11,600
+for the Nvidia Hyperion that are
+
+2005
+01:44:11,600 --> 01:44:14,639
+building Nvidia Hyperion cars, this
+
+2006
+01:44:14,639 --> 01:44:18,080
+represents about 80%
+
+2007
+01:44:18,080 --> 01:44:21,040
+of the world's cars. The manufacturers
+
+2008
+01:44:21,040 --> 01:44:23,520
+represent 80% of the world's cars. We
+
+2009
+01:44:23,520 --> 01:44:26,320
+are going to have a whole lot of Nvidia
+
+2010
+01:44:26,320 --> 01:44:28,800
+Hyperion systems that are able to run
+
+2011
+01:44:28,800 --> 01:44:32,159
+Alpha Mayo or anybody else's AV stack.
+
+2012
+01:44:32,159 --> 01:44:34,400
+We are also connected into mobility
+
+2013
+01:44:34,400 --> 01:44:37,119
+services. Approximately 97% of the
+
+2014
+01:44:37,119 --> 01:44:39,360
+world's mobility services are connecting
+
+2015
+01:44:39,360 --> 01:44:43,040
+with us. So that when we deploy Alpaio
+
+2016
+01:44:43,040 --> 01:44:47,360
+on the Hyperion runtime with the Halos
+
+2017
+01:44:47,360 --> 01:44:49,199
+operating system, we will be able to
+
+2018
+01:44:49,199 --> 01:44:50,719
+connect to all of these services across
+
+2019
+01:44:50,719 --> 01:44:54,840
+the world. Let's take a look at this.
+
+2020
+01:44:55,760 --> 01:44:57,760
+>> Hey Mercedes, let's go to my favorite
+
+2021
+01:44:57,760 --> 01:45:00,000
+sandwich shop.
+
+2022
+01:45:00,000 --> 01:45:03,440
+>> Routing to your destination.
+
+2023
+01:45:03,440 --> 01:45:05,280
+Lane is clear. pulling out to start
+
+2024
+01:45:05,280 --> 01:45:07,760
+drive. Nudge left due to the stationary
+
+2025
+01:45:07,760 --> 01:45:10,239
+leave vehicle ahead blocking our lane.
+
+2026
+01:45:10,239 --> 01:45:12,159
+Slow down to stop at the stop sign
+
+2027
+01:45:12,159 --> 01:45:14,480
+controlling the intersection. Stop to
+
+2028
+01:45:14,480 --> 01:45:16,320
+yield to the pedestrian since the person
+
+2029
+01:45:16,320 --> 01:45:19,040
+is in our lane. Yield to the cut in
+
+2030
+01:45:19,040 --> 01:45:20,719
+vehicle from the left. Nudge left to
+
+2031
+01:45:20,719 --> 01:45:22,239
+clear the stopped vehicle blocking on
+
+2032
+01:45:22,239 --> 01:45:24,000
+the right. Keep distance to the cut in
+
+2033
+01:45:24,000 --> 01:45:25,520
+vehicle since it is merging into our
+
+2034
+01:45:25,520 --> 01:45:27,520
+lane. Nudge left due to the stopped van
+
+2035
+01:45:27,520 --> 01:45:30,880
+blocking our lane crossing ahead. Stop
+
+2036
+01:45:30,880 --> 01:45:32,159
+to keep distance to the lead vehicle.
+
+2037
+01:45:32,159 --> 01:45:33,440
+distance to the vehicle directly ahead
+
+2038
+01:45:33,440 --> 01:45:34,480
+in our lane. Keep distance to the
+
+2039
+01:45:34,480 --> 01:45:35,760
+vehicle directly ahead in our lane. Stop
+
+2040
+01:45:35,760 --> 01:45:36,960
+to the stop sign since the intersection
+
+2041
+01:45:36,960 --> 01:45:39,920
+is controlled. Stop the cross traffic.
+
+2042
+01:45:39,920 --> 01:45:41,600
+Keep distance due to the truck blocking
+
+2043
+01:45:41,600 --> 01:45:42,719
+the right side of our lane. Right due to
+
+2044
+01:45:42,719 --> 01:45:43,760
+the truck blocking the left side of our
+
+2045
+01:45:43,760 --> 01:45:45,440
+lane due to the trucking side of our
+
+2046
+01:45:45,440 --> 01:45:47,920
+lane.
+
+2047
+01:45:47,920 --> 01:45:52,199
+>> Your destination is on the right.
+
+2048
+01:45:57,280 --> 01:46:00,280
+Alpao,
+
+2049
+01:46:00,400 --> 01:46:03,600
+the world's first reasoning autonomous
+
+2050
+01:46:03,600 --> 01:46:05,520
+vehicle.
+
+2051
+01:46:05,520 --> 01:46:08,480
+If you let it talk all the time, it will
+
+2052
+01:46:08,480 --> 01:46:10,560
+drive you crazy.
+
+2053
+01:46:10,560 --> 01:46:13,760
+But we're very happy that it's talking
+
+2054
+01:46:13,760 --> 01:46:16,239
+to itself all the time. That's called
+
+2055
+01:46:16,239 --> 01:46:18,639
+thinking. And so Alpamo is a reasoning
+
+2056
+01:46:18,639 --> 01:46:21,760
+car. The technology that we've created
+
+2057
+01:46:21,760 --> 01:46:24,239
+also applies to humanoids. Of course,
+
+2058
+01:46:24,239 --> 01:46:25,679
+there are many new breakthroughs that
+
+2059
+01:46:25,679 --> 01:46:29,119
+has to happen. The NVIDIA Isaac Groot is
+
+2060
+01:46:29,119 --> 01:46:33,760
+our humanoid robotic stack model
+
+2061
+01:46:33,760 --> 01:46:36,320
+data generation
+
+2062
+01:46:36,320 --> 01:46:38,639
+simulation
+
+2063
+01:46:38,639 --> 01:46:41,280
+the run the runtime including the
+
+2064
+01:46:41,280 --> 01:46:44,639
+operating system this represents
+
+2065
+01:46:44,639 --> 01:46:46,239
+group
+
+2066
+01:46:46,239 --> 01:46:48,960
+platform the Isaac group platform every
+
+2067
+01:46:48,960 --> 01:46:51,280
+one of our systems as you can see the
+
+2068
+01:46:51,280 --> 01:46:53,520
+exact same pattern whether it's a gentic
+
+2069
+01:46:53,520 --> 01:46:56,080
+system for the cloud agentic system for
+
+2070
+01:46:56,080 --> 01:46:59,040
+the PC, a robotic system for a
+
+2071
+01:46:59,040 --> 01:47:01,440
+self-driving car, a robotic system for a
+
+2072
+01:47:01,440 --> 01:47:04,320
+human or robot, all the same. And of
+
+2073
+01:47:04,320 --> 01:47:07,920
+course, in every single case, we build
+
+2074
+01:47:07,920 --> 01:47:10,560
+everything completely.
+
+2075
+01:47:10,560 --> 01:47:13,440
+We build everything vertically,
+
+2076
+01:47:13,440 --> 01:47:15,199
+completely
+
+2077
+01:47:15,199 --> 01:47:17,440
+integrated with code design, extreme
+
+2078
+01:47:17,440 --> 01:47:20,159
+code design, and then we open it up for
+
+2079
+01:47:20,159 --> 01:47:21,840
+everybody to use whichever part you
+
+2080
+01:47:21,840 --> 01:47:24,880
+like. And whatever you want to use, we
+
+2081
+01:47:24,880 --> 01:47:27,440
+even help you modify. But the one thing
+
+2082
+01:47:27,440 --> 01:47:30,800
+that is missing is we need a reference
+
+2083
+01:47:30,800 --> 01:47:33,600
+platform for robotic systems. These
+
+2084
+01:47:33,600 --> 01:47:35,840
+robotic systems are so complicated. So
+
+2085
+01:47:35,840 --> 01:47:38,000
+many motors, so many sensors, so
+
+2086
+01:47:38,000 --> 01:47:41,920
+fragile. And yet we need to have a way
+
+2087
+01:47:41,920 --> 01:47:43,840
+to deliver these reference platforms.
+
+2088
+01:47:43,840 --> 01:47:47,119
+Just like we do with PCs and DGXs and
+
+2089
+01:47:47,119 --> 01:47:49,920
+clouds and self-driving cars, we now are
+
+2090
+01:47:49,920 --> 01:47:51,840
+going to do it for robots. Today we're
+
+2091
+01:47:51,840 --> 01:47:54,239
+announcing the NVIDIA Isaac Group, a
+
+2092
+01:47:54,239 --> 01:47:57,280
+reference humanoid robot, all fully
+
+2093
+01:47:57,280 --> 01:48:00,320
+integrated. 25 degrees of freedom on the
+
+2094
+01:48:00,320 --> 01:48:04,000
+on each hand made by Sharpa. 31 degrees
+
+2095
+01:48:04,000 --> 01:48:08,880
+of freedom on the robot. 6 feet 150 lbs.
+
+2096
+01:48:08,880 --> 01:48:12,360
+Just like me.
+
+2097
+01:48:14,239 --> 01:48:16,239
+The first number is shorter. The second
+
+2098
+01:48:16,239 --> 01:48:18,719
+number is bigger.
+
+2099
+01:48:18,719 --> 01:48:21,760
+Otherwise, pretty close. and and this
+
+2100
+01:48:21,760 --> 01:48:24,239
+platform runs the new Thor and our
+
+2101
+01:48:24,239 --> 01:48:27,199
+entire software stack, data generation
+
+2102
+01:48:27,199 --> 01:48:29,280
+stack, data simulation stack, the
+
+2103
+01:48:29,280 --> 01:48:33,040
+runtime, all integrated into a robot
+
+2104
+01:48:33,040 --> 01:48:35,679
+that is designed for everyone to use.
+
+2105
+01:48:35,679 --> 01:48:38,480
+Now, we built this for higher education
+
+2106
+01:48:38,480 --> 01:48:40,880
+and university researchers because for
+
+2107
+01:48:40,880 --> 01:48:43,360
+them to build this is in insanely hard
+
+2108
+01:48:43,360 --> 01:48:44,880
+to do. And so, let's take a look at
+
+2109
+01:48:44,880 --> 01:48:46,400
+that.
+
+2110
+01:48:46,400 --> 01:48:48,880
+The next leap in AI is generalpurpose
+
+2111
+01:48:48,880 --> 01:48:51,760
+robots, humanoids. But building one is
+
+2112
+01:48:51,760 --> 01:48:54,239
+hard. Every team starts from scratch,
+
+2113
+01:48:54,239 --> 01:48:56,719
+stitching together simulators, teleyops
+
+2114
+01:48:56,719 --> 01:48:59,440
+systems, data pipelines, and training
+
+2115
+01:48:59,440 --> 01:49:01,920
+infrastructure. Months of setup before
+
+2116
+01:49:01,920 --> 01:49:05,199
+research can start. NVIDIA Isaac Group,
+
+2117
+01:49:05,199 --> 01:49:07,199
+an open development platform for
+
+2118
+01:49:07,199 --> 01:49:11,040
+humanoid robots. Open models, simulation
+
+2119
+01:49:11,040 --> 01:49:12,719
+and training libraries, and data
+
+2120
+01:49:12,719 --> 01:49:14,320
+generators.
+
+2121
+01:49:14,320 --> 01:49:17,760
+Plus the robot computer fully pipe
+
+2122
+01:49:17,760 --> 01:49:21,040
+clean, ready to go in hours. First, set
+
+2123
+01:49:21,040 --> 01:49:22,960
+up the simulation environment in Isaac
+
+2124
+01:49:22,960 --> 01:49:25,960
+lab.
+
+2125
+01:49:26,960 --> 01:49:29,840
+Capture demonstrations with Isaac teleop
+
+2126
+01:49:29,840 --> 01:49:34,400
+on a real or simulated robot.
+
+2127
+01:49:34,400 --> 01:49:36,880
+Generate synthetic data with Omniverse
+
+2128
+01:49:36,880 --> 01:49:38,639
+and Cosmos.
+
+2129
+01:49:38,639 --> 01:49:40,719
+Scaling one demonstration into
+
+2130
+01:49:40,719 --> 01:49:42,239
+thousands.
+
+2131
+01:49:42,239 --> 01:49:45,520
+Train policies. Evaluate them in Isaac
+
+2132
+01:49:45,520 --> 01:49:48,760
+Lab Arena.
+
+2133
+01:49:49,040 --> 01:49:51,520
+Deploy through Isaac Ross. Running on
+
+2134
+01:49:51,520 --> 01:49:54,920
+Jets and Thor.
+
+2135
+01:50:03,679 --> 01:50:08,000
+Every element modular. Open. Use ours or
+
+2136
+01:50:08,000 --> 01:50:10,960
+swap in your own.
+
+2137
+01:50:10,960 --> 01:50:13,280
+Groot is powering robotics research
+
+2138
+01:50:13,280 --> 01:50:16,480
+across every discipline for every domain
+
+2139
+01:50:16,480 --> 01:50:20,159
+from research labs to factory floors.
+
+2140
+01:50:20,159 --> 01:50:23,960
+One open platform
+
+2141
+01:50:27,840 --> 01:50:31,199
+and now a new addition is Groot
+
+2142
+01:50:31,199 --> 01:50:33,920
+reference design robots built on
+
+2143
+01:50:33,920 --> 01:50:36,480
+Nvidia's open platform ready for
+
+2144
+01:50:36,480 --> 01:50:40,480
+frontier research for any lab anywhere.
+
+2145
+01:50:40,480 --> 01:50:43,679
+The age of robotics starts here. Nvidia
+
+2146
+01:50:43,679 --> 01:50:47,080
+Isaac Groot.
+
+2147
+01:50:48,880 --> 01:50:52,600
+So many robots.
+
+2148
+01:50:56,000 --> 01:50:57,199
+We're working with just about everybody
+
+2149
+01:50:57,199 --> 01:50:58,960
+who's working on robots in the world or
+
+2150
+01:50:58,960 --> 01:51:01,760
+robotic systems in world. Let me tell
+
+2151
+01:51:01,760 --> 01:51:04,320
+you what I told you. The computer
+
+2152
+01:51:04,320 --> 01:51:07,440
+industry has been completely changed
+
+2153
+01:51:07,440 --> 01:51:09,360
+in the last six months. Everything
+
+2154
+01:51:09,360 --> 01:51:10,880
+changed.
+
+2155
+01:51:10,880 --> 01:51:13,199
+Everything changed because agents were
+
+2156
+01:51:13,199 --> 01:51:15,840
+realized and it converged with the
+
+2157
+01:51:15,840 --> 01:51:18,639
+latest frontier models and it made
+
+2158
+01:51:18,639 --> 01:51:22,480
+possible the AI to now do useful work.
+
+2159
+01:51:22,480 --> 01:51:24,960
+The computing pattern will repeat over
+
+2160
+01:51:24,960 --> 01:51:27,760
+and over and over again. This computing
+
+2161
+01:51:27,760 --> 01:51:30,480
+pattern of an agent that's a model, a
+
+2162
+01:51:30,480 --> 01:51:34,000
+harness that uses tools with skills and
+
+2163
+01:51:34,000 --> 01:51:36,880
+runs in a runtime. That runtime depends
+
+2164
+01:51:36,880 --> 01:51:38,719
+on whether it's in the cloud or on prim
+
+2165
+01:51:38,719 --> 01:51:41,840
+on a PC or in a robot. But the computing
+
+2166
+01:51:41,840 --> 01:51:43,840
+pattern is exactly the same for all of
+
+2167
+01:51:43,840 --> 01:51:46,400
+them. You will use different harnesses
+
+2168
+01:51:46,400 --> 01:51:48,159
+because of your preference. You'll use
+
+2169
+01:51:48,159 --> 01:51:49,520
+different models because of your
+
+2170
+01:51:49,520 --> 01:51:51,840
+preference. You will improve them for
+
+2171
+01:51:51,840 --> 01:51:54,080
+your proprietary use. You would create
+
+2172
+01:51:54,080 --> 01:51:56,639
+sub super agents that you can rent to
+
+2173
+01:51:56,639 --> 01:51:59,119
+other people to help them do their work.
+
+2174
+01:51:59,119 --> 01:52:01,360
+This agentic platform, this agentic
+
+2175
+01:52:01,360 --> 01:52:04,639
+pattern, Nvidia has an enterprise AI
+
+2176
+01:52:04,639 --> 01:52:07,840
+toolkit. This is a wonderful way for all
+
+2177
+01:52:07,840 --> 01:52:10,480
+of you to engage AIS and for us it's a
+
+2178
+01:52:10,480 --> 01:52:13,199
+wonderful growth opportunity.
+
+2179
+01:52:13,199 --> 01:52:16,320
+Vera Rubin is in full production
+
+2180
+01:52:16,320 --> 01:52:19,440
+whereas Grace Blackwell was created to
+
+2181
+01:52:19,440 --> 01:52:23,119
+process AI particularly inference. Vera
+
+2182
+01:52:23,119 --> 01:52:26,560
+Rubin was created to run agents. It is
+
+2183
+01:52:26,560 --> 01:52:28,800
+in full production. It is much much more
+
+2184
+01:52:28,800 --> 01:52:32,719
+than a GPU. It is an entire disagregated
+
+2185
+01:52:32,719 --> 01:52:35,920
+distributed agent processing system.
+
+2186
+01:52:35,920 --> 01:52:37,599
+Nvidia has really become an
+
+2187
+01:52:37,599 --> 01:52:40,400
+infrastructure company. Not just a GPU
+
+2188
+01:52:40,400 --> 01:52:42,480
+company, not just a systems company, but
+
+2189
+01:52:42,480 --> 01:52:44,719
+an infrastructure company to help you
+
+2190
+01:52:44,719 --> 01:52:47,119
+generate the maximum revenues, the
+
+2191
+01:52:47,119 --> 01:52:49,199
+maximum profit, and to get there as soon
+
+2192
+01:52:49,199 --> 01:52:51,040
+as possible.
+
+2193
+01:52:51,040 --> 01:52:53,520
+the agent world.
+
+2194
+01:52:53,520 --> 01:52:55,760
+This new way of doing computing where
+
+2195
+01:52:55,760 --> 01:52:58,159
+you build CPUs now for agents not for
+
+2196
+01:52:58,159 --> 01:52:59,760
+people
+
+2197
+01:52:59,760 --> 01:53:01,920
+CPUs for agents has its own special
+
+2198
+01:53:01,920 --> 01:53:05,119
+requirement and our Nvidia Vera is
+
+2199
+01:53:05,119 --> 01:53:07,040
+revolutionary. I'm so happy about its
+
+2200
+01:53:07,040 --> 01:53:10,000
+ramp the orders already. It's going to
+
+2201
+01:53:10,000 --> 01:53:12,239
+make it the fastest and the most
+
+2202
+01:53:12,239 --> 01:53:14,159
+successful product launch in our
+
+2203
+01:53:14,159 --> 01:53:16,960
+company's history. Nvidia and Microsoft
+
+2204
+01:53:16,960 --> 01:53:19,520
+has created a whole new line of PCs.
+
+2205
+01:53:19,520 --> 01:53:21,920
+This is a new beginning. And of course,
+
+2206
+01:53:21,920 --> 01:53:24,560
+that exact same agentic pattern that I
+
+2207
+01:53:24,560 --> 01:53:26,480
+agentic processing pattern, computing
+
+2208
+01:53:26,480 --> 01:53:29,760
+pattern that I just described is also
+
+2209
+01:53:29,760 --> 01:53:32,639
+going to run on all kinds of devices. I
+
+2210
+01:53:32,639 --> 01:53:35,360
+mentioned PCs, but in the future, it'll
+
+2211
+01:53:35,360 --> 01:53:37,360
+be robots and satellites and base
+
+2212
+01:53:37,360 --> 01:53:40,880
+stations and factories in the cloud, on
+
+2213
+01:53:40,880 --> 01:53:44,320
+prim at the edge. This pattern, agentic
+
+2214
+01:53:44,320 --> 01:53:47,040
+AI system, this agentic computing
+
+2215
+01:53:47,040 --> 01:53:49,280
+pattern will be replicated in computers
+
+2216
+01:53:49,280 --> 01:53:51,520
+all over. How we think about the
+
+2217
+01:53:51,520 --> 01:53:53,599
+personal computer will very likely
+
+2218
+01:53:53,599 --> 01:53:56,719
+change. I want to thank all of you for
+
+2219
+01:53:56,719 --> 01:53:58,960
+your partnership, your friendship. We
+
+2220
+01:53:58,960 --> 01:54:00,880
+couldn't be here without everything that
+
+2221
+01:54:00,880 --> 01:54:03,119
+we do together. I am so proud of how
+
+2222
+01:54:03,119 --> 01:54:05,119
+you've been so successful this last
+
+2223
+01:54:05,119 --> 01:54:08,719
+year. The next year is going to be even
+
+2224
+01:54:08,719 --> 01:54:10,719
+more. I have one more thing for you.
+
+2225
+01:54:10,719 --> 01:54:13,679
+Let's take a look.
+
+2226
+01:54:32,239 --> 01:54:35,639
+You ready, Taiwan?
+
+2227
+01:54:36,480 --> 01:54:39,520
+>> Let's do this. The keynotes done at
+
+2228
+01:54:39,520 --> 01:54:42,560
+Computex Jensen. Show the world what's
+
+2229
+01:54:42,560 --> 01:54:46,400
+next. Useful AI has arrived. Agents
+
+2230
+01:54:46,400 --> 01:54:48,560
+working by your side. But in case you
+
+2231
+01:54:48,560 --> 01:54:50,560
+miss things we said today, we're going
+
+2232
+01:54:50,560 --> 01:54:53,199
+to break it all down for you. Taipei.
+
+2233
+01:54:53,199 --> 01:54:55,679
+Agents used to be misunderstood. Only
+
+2234
+01:54:55,679 --> 01:54:57,920
+movie stars had them in Hollywood. Now
+
+2235
+01:54:57,920 --> 01:54:59,920
+we all got teams making dreams come
+
+2236
+01:54:59,920 --> 01:55:02,320
+true. Building companies from living
+
+2237
+01:55:02,320 --> 01:55:04,800
+rooms, but they need so much comput. We
+
+2238
+01:55:04,800 --> 01:55:08,000
+hear you. That's why we created Vera.
+
+2239
+01:55:08,000 --> 01:55:10,159
+>> Reuben stole the show. It's true. The
+
+2240
+01:55:10,159 --> 01:55:12,400
+cheapest tokens coming through.
+
+2241
+01:55:12,400 --> 01:55:14,960
+>> 10 times faster inference heaven. More
+
+2242
+01:55:14,960 --> 01:55:17,440
+special agents than 0007.
+
+2243
+01:55:17,440 --> 01:55:20,159
+>> Blue field keeps agents memory. True.
+
+2244
+01:55:20,159 --> 01:55:22,480
+>> Now let's talk about it. CPU
+
+2245
+01:55:22,480 --> 01:55:24,719
+>> 50% faster. That's outrageous.
+
+2246
+01:55:24,719 --> 01:55:25,679
+>> Not for Ver.
+
+2247
+01:55:25,679 --> 01:55:28,080
+>> It's built for agents. Envy link fusion
+
+2248
+01:55:28,080 --> 01:55:29,760
+blends A6 smartly.
+
+2249
+01:55:29,760 --> 01:55:31,840
+>> Everyone's welcome to the Envy Link
+
+2250
+01:55:31,840 --> 01:55:32,480
+party.
+
+2251
+01:55:32,480 --> 01:55:35,280
+>> Well, if you like that introduction,
+
+2252
+01:55:35,280 --> 01:55:38,960
+Ruben in full production. Neotron Ultra
+
+2253
+01:55:38,960 --> 01:55:42,239
+leave the run. 5x faster work gets done.
+
+2254
+01:55:42,239 --> 01:55:44,719
+Mimo claw keeps the guard rails right.
+
+2255
+01:55:44,719 --> 01:55:47,199
+Open shell keeps the sandbox tight.
+
+2256
+01:55:47,199 --> 01:55:49,920
+>> Your code migrated and reviewed
+
+2257
+01:55:49,920 --> 01:55:53,920
+>> all before this song is
+
+2258
+01:55:53,920 --> 01:55:56,560
+a five layer cake.
+
+2259
+01:55:56,560 --> 01:55:57,679
+Make no mistake.
+
+2260
+01:55:57,679 --> 01:56:00,560
+>> Global AI class with lots of gigawx
+
+2261
+01:56:00,560 --> 01:56:02,639
+keeps power lean connecting dots
+
+2262
+01:56:02,639 --> 01:56:05,199
+>> every optimized for you. So you can have
+
+2263
+01:56:05,199 --> 01:56:06,000
+your cake,
+
+2264
+01:56:06,000 --> 01:56:08,159
+>> can eat it too.
+
+2265
+01:56:08,159 --> 01:56:10,239
+>> RTX is finally here.
+
+2266
+01:56:10,239 --> 01:56:12,639
+>> Biggest PC moment in 40 years.
+
+2267
+01:56:12,639 --> 01:56:15,520
+>> Ages powering our workflow. Running
+
+2268
+01:56:15,520 --> 01:56:17,119
+anywhere Windows go.
+
+2269
+01:56:17,119 --> 01:56:19,679
+>> Harnesses run on CPU.
+
+2270
+01:56:19,679 --> 01:56:22,000
+>> Models fly on GPU.
+
+2271
+01:56:22,000 --> 01:56:24,400
+>> Cosmos world that robots need.
+
+2272
+01:56:24,400 --> 01:56:27,960
+>> Turning comput
+
+2273
+01:56:28,159 --> 01:56:29,679
+and reasons through.
+
+2274
+01:56:29,679 --> 01:56:32,400
+>> Understands roads like people do. Food
+
+2275
+01:56:32,400 --> 01:56:34,480
+is how they learn to move.
+
+2276
+01:56:34,480 --> 01:56:36,960
+>> Learning skills and finding growth
+
+2277
+01:56:36,960 --> 01:56:39,520
+through the trees powered by thought.
+
+2278
+01:56:39,520 --> 01:56:43,320
+>> The future is humanoid.
+
+2279
+01:56:56,159 --> 01:57:00,000
+Oh yeah. Oh
+
+2280
+01:57:00,000 --> 01:57:04,960
+yeah. Oh yeah. Oh
+
+2281
+01:57:04,960 --> 01:57:10,119
+yeah. Oh he sing.
+
+2282
+01:57:13,040 --> 01:57:16,800
+The future's bright. Come see what's
+
+2283
+01:57:16,800 --> 01:57:19,520
+next.
+
+2284
+01:57:19,520 --> 01:57:22,320
+Thank you, Taiwan.
+
+2285
+01:57:22,320 --> 01:57:26,520
+>> Welcome to Computics.
+
+2286
+01:57:36,400 --> 01:57:38,719
+Have a great Computex.
+
+2287
+01:57:38,719 --> 01:57:41,040
+Thanks for an amazing year. Thank you
+
+2288
+01:57:41,040 --> 01:57:43,440
+for all your friendship and support.
+
+2289
+01:57:43,440 --> 01:57:45,840
+Thank you. Take care. Have a great
+
+2290
+01:57:45,840 --> 01:57:48,960
+Comput text.

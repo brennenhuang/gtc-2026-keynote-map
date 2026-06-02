@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>GTC Taipei 2026 · 多受眾導覽地圖</title>
+
+<!-- React Flow 樣式 -->
+<link rel="stylesheet" href="https://esm.sh/@xyflow/react@12/dist/style.css" />
+
+<!-- Google Fonts：Noto Sans TC + Space Grotesk -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+
+<!-- importmap：共用同一份 React，避免 hooks 錯誤 -->
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react/jsx-runtime": "https://esm.sh/react@18.3.1/jsx-runtime",
+    "react/jsx-dev-runtime": "https://esm.sh/react@18.3.1/jsx-dev-runtime",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "@xyflow/react": "https://esm.sh/@xyflow/react@12?external=react,react-dom",
+    "lucide-react": "https://esm.sh/lucide-react@0.460.0?external=react",
+    "htm": "https://esm.sh/htm@3"
+  }
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #05060a;
+    --bg-1: #0b0f17;
+    --nv-green: #76b900;
+    --nv-green-soft: #a3e635;
+    --txt-0: #f2f5f8;
+    --txt-1: #c4ccd6;
+    --txt-2: #8b95a3;
+    --border: rgba(255, 255, 255, 0.08);
+    --c-investor: #34d399;
+    --c-knowledge: #60a5fa;
+    --c-consumer: #f472b6;
+    --c-decision: #fbbf24;
+    --font-zh: 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+    --font-en: 'Space Grotesk', 'Noto Sans TC', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 50% 35%, #0d1320 0%, var(--bg-0) 70%);
+    color: var(--txt-0);
+    font-family: var(--font-zh);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+
+  #root { width: 100vw; height: 100vh; }
+
+  /* ===== React Flow 容器與背景 ===== */
+  .react-flow { background: transparent; }
+  .react-flow__attribution {
+    background: rgba(5, 6, 10, 0.6);
+    color: var(--txt-2);
+  }
+  .react-flow__attribution a { color: var(--txt-1); }
+
+  .react-flow__controls {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+  .react-flow__controls-button {
+    background: #11161f;
+    border-bottom: 1px solid var(--border);
+    color: var(--txt-1);
+  }
+  .react-flow__controls-button:hover { background: #1a2230; }
+  .react-flow__controls-button svg { fill: var(--txt-1); }
+
+  .react-flow__minimap {
+    background: rgba(11, 15, 23, 0.85) !important;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+
+  /* ===== 連線 ===== */
+  .react-flow__edge-path { stroke-width: 1.5; }
+  .react-flow__edge.animated .react-flow__edge-path { stroke-width: 2; }
+
+  /* ===== 自訂節點通用 ===== */
+  .node-base {
+    font-family: var(--font-zh);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: linear-gradient(160deg, rgba(22,28,40,0.95), rgba(11,15,23,0.95));
+    transition: transform .18s ease, box-shadow .18s ease, opacity .25s ease, filter .25s ease;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+  }
+  .node-base:hover { transform: translateY(-3px); }
+
+  /* 核心節點 */
+  .node-center {
+    width: 230px;
+    padding: 22px 24px;
+    text-align: center;
+    border: 1.5px solid rgba(118,185,0,0.55);
+    background: radial-gradient(circle at 50% 30%, rgba(118,185,0,0.22), rgba(11,15,23,0.96));
+    box-shadow: 0 0 50px rgba(118,185,0,0.35), inset 0 0 30px rgba(118,185,0,0.08);
+  }
+  .node-center:hover { box-shadow: 0 0 70px rgba(118,185,0,0.5); }
+  .node-center .nc-kicker {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--nv-green-soft);
+    text-transform: uppercase;
+  }
+  .node-center .nc-title {
+    font-family: var(--font-en);
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.1;
+    margin: 6px 0 4px;
+    color: #fff;
+  }
+  .node-center .nc-sub { font-size: 12px; color: var(--txt-2); }
+
+  /* 視角節點 */
+  .node-audience {
+    width: 188px;
+    padding: 16px 18px;
+    text-align: center;
+  }
+  .node-audience .na-icon {
+    width: 42px; height: 42px;
+    margin: 0 auto 8px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .node-audience .na-title {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+  .node-audience .na-en {
+    font-family: var(--font-en);
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--txt-2);
+  }
+  .node-audience.dimmed {
+    opacity: 0.42;
+    filter: grayscale(0.45);
+    transform: scale(0.86);
+  }
+  .node-audience.dimmed:hover { opacity: 0.75; transform: scale(0.9) translateY(-2px); }
+  .node-audience.active {
+    box-shadow: 0 0 38px var(--accent-glow);
+    border-color: var(--accent);
+  }
+
+  /* 主題節點 */
+  .node-theme {
+    width: 248px;
+    padding: 15px 17px;
+    animation: fadeInNode .45s ease both;
+  }
+  .node-theme:hover { box-shadow: 0 0 28px rgba(118,185,0,0.22); border-color: rgba(118,185,0,0.4); }
+  .node-theme .nt-time {
+    font-family: var(--font-en);
+    font-size: 11px;
+    color: var(--nv-green-soft);
+    letter-spacing: .5px;
+    margin-bottom: 5px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .node-theme .nt-title {
+    font-weight: 700;
+    font-size: 14.5px;
+    line-height: 1.35;
+    color: var(--txt-0);
+    margin-bottom: 8px;
+  }
+  .node-theme .nt-matrix {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--txt-1);
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* 核心主題（該受眾重點）：點亮 */
+  .node-theme.core {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 30px -4px var(--accent);
+    transform: scale(1.04);
+  }
+  .node-theme.core .nt-title { color: #fff; }
+  .node-theme.core .nt-matrix { color: var(--txt-0); }
+  .node-theme .nt-badge {
+    position: absolute;
+    top: -10px; left: 14px;
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 9px;
+    font-size: 11px; font-weight: 700; letter-spacing: .5px;
+    color: #0b0f17; background: var(--accent);
+    border-radius: 999px;
+    box-shadow: 0 2px 10px -2px var(--accent);
+  }
+  /* 非核心主題：淡化但仍可點 */
+  .node-theme.dim {
+    opacity: 0.42;
+    filter: saturate(0.5);
+    border-color: rgba(255,255,255,0.08);
+  }
+  .node-theme.dim:hover { opacity: 0.85; filter: saturate(1); }
+
+  @keyframes fadeInNode {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .react-flow__handle { opacity: 0; pointer-events: none; }
+
+  /* ===== 頂部提示 ===== */
+  .top-hint {
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background: rgba(11,15,23,0.82);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 9px 22px;
+    font-size: 13.5px;
+    color: var(--txt-1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 22px rgba(0,0,0,0.45);
+    white-space: nowrap;
+    transition: opacity .3s;
+  }
+  .top-hint b { color: var(--nv-green-soft); font-weight: 700; }
+
+  /* ===== 左上標題列 ===== */
+  .title-panel {
+    background: rgba(11,15,23,0.86);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 18px;
+    max-width: 340px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.5);
+  }
+  .title-panel .tp-main {
+    font-family: var(--font-en);
+    font-weight: 700;
+    font-size: 17px;
+    color: #fff;
+    line-height: 1.2;
+  }
+  .title-panel .tp-main span { color: var(--nv-green); }
+  .title-panel .tp-sub {
+    font-size: 12.5px;
+    color: var(--txt-1);
+    margin: 5px 0 8px;
+    line-height: 1.4;
+  }
+  .title-panel .tp-ops {
+    font-size: 11px;
+    color: var(--txt-2);
+    line-height: 1.55;
+    border-top: 1px solid var(--border);
+    padding-top: 7px;
+  }
+
+  /* 重置按鈕 */
+  .reset-btn {
+    margin-top: 9px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(118,185,0,0.12);
+    border: 1px solid rgba(118,185,0,0.4);
+    color: var(--nv-green-soft);
+    font-family: var(--font-zh);
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .reset-btn:hover { background: rgba(118,185,0,0.22); }
+
+  /* ===== 來源小字 ===== */
+  .source-panel {
+    background: rgba(11,15,23,0.8);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 8px 12px;
+    max-width: 360px;
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--txt-2);
+    backdrop-filter: blur(8px);
+  }
+  .source-panel a { color: var(--nv-green-soft); text-decoration: none; }
+  .source-panel a:hover { text-decoration: underline; }
+
+  /* ===== 詳情面板 (drawer) ===== */
+  .drawer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    background: rgba(3,4,8,0.55);
+    backdrop-filter: blur(3px);
+    animation: ovFade .25s ease;
+  }
+  @keyframes ovFade { from { opacity: 0; } to { opacity: 1; } }
+
+  .drawer {
+    position: fixed;
+    top: 0; right: 0;
+    width: min(560px, 100vw);
+    height: 100vh;
+    z-index: 51;
+    background: linear-gradient(180deg, #0c111b, #070a11);
+    border-left: 1px solid var(--border);
+    box-shadow: -20px 0 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    animation: drawerIn .32s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes drawerIn { from { transform: translateX(40px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+  .drawer-head {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    flex-shrink: 0;
+  }
+  .drawer-head .dh-time {
+    font-family: var(--font-en);
+    font-size: 12px;
+    color: var(--nv-green-soft);
+    letter-spacing: 1px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .drawer-head .dh-title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.3;
+    margin-top: 8px;
+    padding-right: 40px;
+  }
+  .drawer-close {
+    position: absolute;
+    top: 18px; right: 18px;
+    width: 34px; height: 34px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    color: var(--txt-1);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s;
+  }
+  .drawer-close:hover { background: rgba(255,255,255,0.1); }
+
+  .drawer-body {
+    overflow-y: auto;
+    padding: 20px 24px 40px;
+    flex: 1;
+  }
+  .drawer-body::-webkit-scrollbar { width: 8px; }
+  .drawer-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 8px; }
+
+  /* YouTube 播放器 */
+  .yt-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #000;
+    margin-bottom: 12px;
+  }
+  .yt-wrap iframe, .yt-wrap > div { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  .sect-label {
+    font-family: var(--font-en);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--txt-2);
+    margin: 22px 0 8px;
+    display: flex; align-items: center; gap: 7px;
+  }
+  .sect-label .sl-bar { width: 16px; height: 2px; background: var(--accent, var(--nv-green)); }
+
+  .body-text {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--txt-1);
+  }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; }
+  .chip {
+    font-size: 12px;
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: rgba(118,185,0,0.1);
+    border: 1px solid rgba(118,185,0,0.28);
+    color: var(--nv-green-soft);
+  }
+
+  .quote-block {
+    background: rgba(118,185,0,0.06);
+    border-left: 3px solid var(--nv-green);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    margin-top: 8px;
+  }
+  .quote-block .qb-tag {
+    font-size: 11px;
+    color: var(--nv-green-soft);
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 8px;
+  }
+  .quote-block .qb-text {
+    font-family: var(--font-en);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--txt-0);
+    font-style: italic;
+  }
+
+  .audience-card {
+    border: 1px solid var(--accent-border, var(--border));
+    background: var(--accent-bg, rgba(255,255,255,0.02));
+    border-radius: 12px;
+    padding: 4px 16px 14px;
+    margin-top: 8px;
+  }
+  .audience-card .ac-head {
+    display: flex; align-items: center; gap: 9px;
+    padding: 12px 0 8px;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .ac-sub { margin-top: 12px; }
+  .ac-sub .acs-k {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent, var(--nv-green));
+    margin-bottom: 3px;
+  }
+  .ac-sub .acs-v { font-size: 13.5px; line-height: 1.65; color: var(--txt-1); }
+  .ac-takeaway {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 10px 13px;
+    margin-top: 12px;
+  }
+
+  /* RWD */
+  @media (max-width: 640px) {
+    .title-panel { max-width: 230px; padding: 11px 13px; }
+    .title-panel .tp-main { font-size: 14px; }
+    .title-panel .tp-sub { font-size: 11px; }
+    .title-panel .tp-ops { display: none; }
+    .top-hint { font-size: 11px; padding: 7px 14px; max-width: 92vw; white-space: normal; text-align: center; }
+    .drawer { width: 100vw; }
+    .source-panel { max-width: 58vw; font-size: 9px; }
+    .react-flow__minimap { display: none; }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script type="module">
+import React, { useState, useCallback, useMemo, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
+import {
+  ReactFlow, Background, Controls, MiniMap, Handle, Position,
+  useNodesState, useEdgesState, ReactFlowProvider, useReactFlow
+} from '@xyflow/react';
+import htm from 'htm';
+import {
+  TrendingUp, BriefcaseBusiness, ShoppingBag, Building2,
+  Play, X, LocateFixed, Quote, Clock, Sparkles, Lightbulb, Star
+} from 'lucide-react';
+
+const html = htm.bind(React.createElement);
+
+/* ============================================================
+   資料
+   ============================================================ */
+const VIDEO_ID = 'wzxc29ol3R0';
+
+const AUDIENCES = [
+  { key: 'investor',        label: '投資者',     en: 'Investor',         icon: TrendingUp,        color: '#34d399' },
+  { key: 'knowledgeWorker', label: '知識工作者', en: 'Knowledge Worker', icon: BriefcaseBusiness, color: '#60a5fa' },
+  { key: 'consumer',        label: '一般消費者', en: 'Consumer',         icon: ShoppingBag,       color: '#f472b6' },
+  { key: 'decisionMaker',   label: '公司決策者', en: 'Decision Maker',   icon: Building2,         color: '#fbbf24' },
+];
+const AUD_MAP = Object.fromEntries(AUDIENCES.map(a => [a.key, a]));
+
+const THEMES = [
+  {"id":"opening","title":"開場・「台北是一切的起點」與台灣生態系","timestampDisplay":"00:00:08 – 00:06:31","startSec":8,"endSec":391,"anchorQuote":"\"And here in Taipei is where it all begins.\" / \"Very good to be home. I brought my parents home.\" / \"the world's best supply chain ecosystem.\"","whatIsThis":"黃仁勳以一段「新型工廠孕育 token」的開場影片揭開 GTC Taipei 2026，影片結尾點題「台北就是這一切的起點」(And here in Taipei is where it all begins)。上台後他親切地說「回到家真好，我把父母也帶來了」(Very good to be home. I brought my parents home.)，把這場全球盛會定位為一次「返鄉」。他將台灣定義為「全世界最好的供應鏈生態系」(the world's best supply chain ecosystem)，並逐一致謝從台積電、鴻海、廣達、緯創、華碩到聯發科、台達電等夥伴，甚至點名在地小吃店，凸顯台灣從晶片到系統整合的完整製造能量。整段開場為後續 Vera Rubin 量產、AI PC、代理式 AI 等發表，建立「台灣是 AI 時代製造起點」的敘事基調。","keyTerms":["台北是起點 (where it all begins)","供應鏈生態系 (supply chain ecosystem)","台積電 / 鴻海 / 廣達 / 緯創","聯發科 / 台達電 / 華碩","Vera Rubin","token / AI 工廠","代理式 AI (Agentic AI)","數位孿生工廠"],"audiences":{"investor":{"whyCare":"黃仁勳把台灣定義為「全世界最好的供應鏈生態系」，等於由 NVIDIA 官方背書整條台廠價值鏈。對投資者而言，這段開場直接連動到台積電、鴻海、廣達、緯創、華碩、聯發科、台達電等個股的營收想像，也預告 Vera Rubin 量產所帶動的訂單能見度與資本支出循環。","takeaway":"NVIDIA 的 AI 工廠藍圖高度綁定台灣製造，台廠是這波 AI 資本支出最直接的受惠族群。","extension":"若 Vera Rubin 進入全面量產，哪些台廠在散熱、機櫃、CoWoS、伺服器組裝環節的營收占比與毛利率最具上修空間？","matrixView":"官方認證台灣是 AI 供應鏈核心，台廠價值鏈受惠想像被放大。"},"knowledgeWorker":{"whyCare":"開場以「工廠孕育 token」比喻 AI 的生產本質，並把台北定位為 AI 時代的起點。對知識工作者而言，這預示 token（AI 運算）將像水電一樣成為日常工作底層資源，後續代理式 AI 將從「回答問題」走向「觀察、推理、行動」，改變工作流程的分工方式。","takeaway":"AI 正從輔助工具升級為會自己行動的代理人，工作重心將轉向定義任務與監督產出。","extension":"當 AI 代理能自主執行多步驟任務，你目前工作中哪些環節最先會被「交辦給代理」而非自己動手？","matrixView":"token 成為工作底層資源，代理式 AI 將重塑任務分工。"},"consumer":{"whyCare":"這段開場對一般消費者是較間接的，但黃仁勳刻意點名「王記府城肉粽」等在地小吃，把高科技生態系與庶民生活連結。它的訊號是：AI 製造的核心就在台灣身邊，後續的 AI PC、機器人等產品會更快、更貼近台灣使用者的日常。","takeaway":"AI 的源頭就在台灣，未來的 AI 裝置與服務會更快走進你我生活。","extension":"如果 AI PC 與機器人最早在台灣落地，你最希望它先幫你解決生活中的哪件事？","matrixView":"AI 製造源頭在台灣，消費端產品落地會更快更近。"},"decisionMaker":{"whyCare":"黃仁勳將 AI 比喻為「新型工廠生產 token」，等於告訴企業主：運算力是新的生產要素。台灣完整供應鏈意味著本地企業在採購 AI 基礎建設（伺服器、AI PC、機器人）上具備地利之便，決策者需要評估何時、以何種規模導入 AI 工廠級基礎建設。","takeaway":"AI 算力是新生產要素，企業要把「導入 AI 基礎建設」當成製造業升級而非單純 IT 採購。","extension":"你的企業要先投資自建 AI 算力，還是先用雲端與代理式 AI 服務驗證價值再擴大規模？","matrixView":"算力即生產要素，企業需把 AI 基礎建設視為策略性投資。"}}},
+  {"id":"agentic","title":"Agentic AI 時代：「有用的 AI 已經到來」","timestampDisplay":"00:06:31 – 00:16:11","startSec":391,"endSec":971,"anchorQuote":"\"agentic AI has arrived, that useful AI has arrived.\" / GitHub commits 「nearly tripled」 / \"People talk about AI reducing jobs. Complete nonsense. It's causing more software engineers to be hired.\" / agent = model + harness + tools + memory，示範 Claude Code / Codex。","whatIsThis":"黃仁勳在這段宣告「agentic AI 已經到來、有用的 AI 已經到來」，認為 AI 不再只是會回答問題的聊天機器人，而是能觀察、推理、規劃並執行任務的「代理（agent）」。他以程式開發為最直接的證據：GitHub 上的程式提交數（commits）在短短兩年內「幾乎成長三倍」，因為 Claude Code、Codex 這類 AI 編碼工具大幅提升了工程師的生產力。他直接駁斥「AI 會減少工作」的說法，稱其為「完全胡說」，反而是因為每位工程師產出變多，企業要僱用更多軟體工程師。他並把 agent 拆解為四個組成：模型（model）＋執行框架（harness）＋工具（tools）＋記憶（memory），並現場示範了 Claude Code 與 Codex。","keyTerms":["Agentic AI（代理式 AI）","有用的 AI（useful AI）","GitHub commits","Claude Code","Codex","Agent 組成：模型＋執行框架＋工具＋記憶","軟體工程師生產力","Token 經濟學"],"audiences":{"investor":{"whyCare":"黃仁勳把「agentic AI 已到來」從願景變成可量測的需求訊號：GitHub commits 兩年內幾乎成長三倍，代表 AI 推論（inference）與運算需求正快速放大，直接連動 NVIDIA 整個生態系與台廠供應鏈的訂單想像。他強調 AI 帶來的是「更多工程師被僱用」而非裁員，等於替「AI 需求持續擴張、而非泡沫」這個論點背書，對評估 NVIDIA 及上下游營收動能是關鍵定錨。","takeaway":"Commits 成長三倍是 agentic AI 真實落地的可量化證據，意味推論運算與 token 消耗的長期需求成長，撐起 NVIDIA 生態系與台廠供應鏈的營收想像。","extension":"若 commits 成長真的反映 token 消耗暴增，哪些台廠（伺服器、散熱、網通、CoWoS 相關）最直接受惠，而哪些只是題材性連動？","matrixView":"Commits 三倍＝真實需求訊號，撐起 NVIDIA 生態與台廠供應鏈營收想像。"},"knowledgeWorker":{"whyCare":"這段最直接衝擊的就是知識工作者，尤其是軟體工程師。黃仁勳明確說「AI 會減少工作是完全胡說」，因為每位工程師借助 Claude Code、Codex 等工具產出可達數倍，企業反而要僱更多人。工作型態從「自己寫每一行程式」轉為「指揮並審查 AI agent」，技能重心移到拆解問題、給出脈絡、驗證產出與管理多個 agent。","takeaway":"工作不會消失，但會被重塑：你的價值從親手執行，轉向指揮、審查與整合 AI agent 的產出。","extension":"當 agent 由模型＋執行框架＋工具＋記憶組成，知識工作者該優先培養哪一塊能力，才能在「指揮 agent」的工作流裡不可取代？","matrixView":"工作不減反增，重心從親手寫轉為指揮與審查 AI agent。"},"consumer":{"whyCare":"這段對一般消費者是間接但會逐漸顯現的影響。黃仁勳談的是開發端的 agentic AI，消費者短期不會直接「用到」commits，但工程師生產力大增意味未來軟體、App 與數位服務會更快推出、更新更頻繁、客製化更容易。你日常用的服務背後，會越來越多由能自主執行任務的 AI agent 打造與維運。","takeaway":"你不會直接看到 agent，但你常用的 App 與服務會做得更快、更新更勤，因為背後的 AI 正在加速軟體生產。","extension":"如果軟體開發成本大幅下降，會帶來更多更好用的服務，還是更多品質參差、快速堆出來的應用？","matrixView":"看不見 agent，但常用 App 與服務會更快推出、更勤更新。"},"decisionMaker":{"whyCare":"黃仁勳等於對企業老闆喊話：agentic AI 已是「有用的、可落地的」生產力工具，不導入就會在效率上落後。對決策者而言，重點是理解 agent 的四個組成（模型＋執行框架＋工具＋記憶），據此規劃導入路徑——不只是買一個模型，而是要建立工具串接、記憶／資料層與執行框架，並重新設計「人＋agent」的工作流程與治理。他駁斥裁員邏輯，提醒導入目的是放大團隊產出而非單純省人力。","takeaway":"agentic AI 已可實用落地，企業該規劃的是模型＋工具＋記憶＋執行框架的整套基礎建設與工作流，目標是放大產出而非裁員。","extension":"導入 agent 時，公司要先投資哪一層——工具串接、內部資料與記憶層，還是人＋agent 的工作流程與治理規範？","matrixView":"agentic AI 可落地，導入重點是整套基礎建設與人＋agent 工作流。"}}},
+  {"id":"cuda-x","title":"CUDA-X 函式庫：Agent 的工具與護城河","timestampDisplay":"00:16:11 – 00:24:08","startSec":971,"endSec":1448,"anchorQuote":"\"CUDA X libraries are tools for agents.\" / \"20 years ago, we built CUDA... A thousand CUDA X libraries.\" / \"all of our CUDA X libraries are now going to come with skills that the AI could learn how to use.\"","whatIsThis":"黃仁勳把 NVIDIA 累積近 20 年、約一千個的 CUDA-X 函式庫，重新定位為「給 AI agent 使用的工具」。他說「CUDA-X libraries are tools for agents」，並強調這些函式庫現在都會附帶「skills」（技能/使用說明書），讓 AI 讀過之後就知道怎麼呼叫，使用工具的能力甚至會超越人類工程師。在他描繪的 agent 架構裡，一個 agent 是「大型語言模型坐在一個 harness（協調框架）裡」，由 harness 理解意圖、推理、規劃並呼叫工具——而這些工具可以是試算表、編譯器、資料庫，也可以是 CUDA 加速的函式庫（如 cuDF、cuOpt、NeMo、CUDA-Q）。換句話說，NVIDIA 想把過去開發者才會用的硬功夫，變成 agent 時代的標準工具集與生態護城河。","keyTerms":["CUDA-X 函式庫","Agent（智慧代理）","Skills（技能/工具說明書）","Harness（協調框架）","Tools for agents（工具化）","cuDF / cuOpt / NeMo / CUDA-Q","生態系護城河","Agentic AI"],"audiences":{"investor":{"whyCare":"CUDA-X 是 NVIDIA 最深、最難複製的軟體護城河，這段是把硬體領先轉成「軟體鎖定」的關鍵敘事。把近千個函式庫變成 agent 標準工具集，意味著每一個 AI agent 的運算需求都會被導回 NVIDIA 加速堆疊，強化長期黏著度與 GPU 需求。對台廠供應鏈（Vera Rubin 板卡、伺服器代工）而言，軟體護城河越穩，硬體訂單能見度越長。","takeaway":"護城河從硬體往軟體延伸：CUDA-X 工具化等於把 agent 時代的運算需求鎖進 NVIDIA 生態，是估值的長期支撐。","extension":"如果 agent 主要透過開放的 skill 標準呼叫工具，競爭對手（AMD、自研晶片）會更容易繞過 CUDA，還是 CUDA-X 的工具廣度反而讓護城河更深？","matrixView":"近千個 CUDA-X 函式庫工具化，把 agent 運算鎖進 NVIDIA 生態，是軟體護城河與長期 GPU 需求的支撐。"},"knowledgeWorker":{"whyCare":"黃仁勳說 agent 用這些函式庫的能力會「遠超人類工程師」，這直接衝擊資料工程、最佳化、模擬等技術工作。過去你要會寫 CUDA、調 cuDF/cuOpt 才能做的高效能工作，未來可能是「對 agent 說明意圖、由它呼叫工具完成」。技能價值從「會手寫程式」轉向「會定義問題、驗證 agent 產出、編排工具」。","takeaway":"你的價值不再是親手呼叫函式庫，而是會定義意圖、選對工具、驗證 agent 用 CUDA-X 跑出的結果。","extension":"當 agent 能比你更熟練地呼叫 cuDF、cuOpt，你要培養哪種「人類獨有」的判斷力，才不會被工具化取代？","matrixView":"高效能函式庫變成 agent 工具，技術工作從手寫程式轉為定義意圖與驗證 agent 產出。"},"consumer":{"whyCare":"這段對一般消費者是間接影響，但很實在：你不會直接碰到 CUDA-X，但你用的 AI 助理在背後會自動呼叫這些加速工具。這代表未來在筆電（RTX Spark/N1X）或雲端上跟 AI 對話時，複雜的資料分析、最佳化、模擬會更快、更準地完成，而你只需要說出想要什麼。","takeaway":"你看不到 CUDA-X，但你的 AI 助理會偷偷用它，讓「說一句話就完成複雜任務」變得更快更可靠。","extension":"當 AI 在背後自動呼叫一堆專業工具完成任務，你要怎麼判斷它給的結果是不是真的可信？","matrixView":"消費者不直接接觸 CUDA-X，但 AI 助理在背後呼叫它，讓口語下指令完成複雜任務更快更準。"},"decisionMaker":{"whyCare":"這段給企業主一個明確訊號：未來導入 AI 不只是接一個聊天機器人，而是部署「會呼叫工具的 agent」。要讓 agent 真正產生生產力，你的資料、系統、內部工具都需要能被 agent 以 skill 形式呼叫，而 NVIDIA 正把它的加速函式庫變成現成工具集。導入決策會牽涉到要不要押注 NVIDIA 堆疊、要投資哪些 GPU/AI 基礎建設，以及內部流程如何「工具化」。","takeaway":"AI 導入的重點正從「買模型」轉向「建能被 agent 呼叫的工具與基礎建設」，CUDA-X 提供了現成加速工具集可借力。","extension":"你的企業內部流程與資料，有多少能被包裝成 agent 可呼叫的 skill？這會是你導入 agentic AI 的真正瓶頸嗎？","matrixView":"AI 導入從買模型轉向建可被 agent 呼叫的工具與基礎建設，CUDA-X 是可借力的現成加速工具集。"}}},
+  {"id":"vera-rubin-intro","title":"Vera Rubin：不只是 GPU，而是為 Agent 打造的完整系統","timestampDisplay":"00:24:08 – 00:26:03","startSec":1448,"endSec":1563,"anchorQuote":"\"Vera Rubin is not one chip. Vera Rubin is not a GPU only. It starts with the GPU.\" / \"Vera Rubin is the most ambitious endeavor in the history of our company.\" / \"we've evolved to become a systems company.\"","whatIsThis":"黃仁勳說 Vera Rubin 不只是 GPU，而是一整套系統。","keyTerms":["Vera Rubin","系統公司","AI Agent","GPU","Vera CPU","NVL72 機櫃","AI 工廠","Token 經濟學"],"audiences":{"investor":{"whyCare":"Vera Rubin 是公司史上最有企圖心的工程，NVIDIA 轉型為系統公司，營收單位從一顆 GPU 放大到整套機櫃，台廠供應鏈被全面拉動。","takeaway":"賣的單位從晶片變整套系統，台廠受惠面放大。","extension":"系統化後，台廠議價力會升還是降？","matrixView":"從賣 GPU 到賣系統，客單價放大。"},"knowledgeWorker":{"whyCare":"Vera Rubin 是為 AI Agent 而生的系統，未來助你工作的是能推理規劃並執行任務的 Agent，可代辦環節變多。","takeaway":"算力為 Agent 而造，工作轉向監督審核。","extension":"哪一段最先會被 Agent 接手？","matrixView":"算力為 Agent 而生，工作轉向指揮審核。"},"consumer":{"whyCare":"這段是間接影響。但它為 Agent 推理打造、降低 token 成本，會讓日後 AI 助理更聰明、更便宜。","takeaway":"它讓 AI 助理更能幹、更便宜。","extension":"你最想先交給 AI 的雜事是什麼？","matrixView":"間接影響：讓日常 AI 助理更會做事。"},"decisionMaker":{"whyCare":"它是整套系統而非晶片，改變採購思維：要不要導入一套為 Agent 設計的 AI 基礎建設。","takeaway":"決策從買晶片升為規劃 Agent 基礎建設。","extension":"該自建還是雲端租用？","matrixView":"採購從買晶片升為規劃 Agent 基礎建設。"}}},
+  {"id":"ai-factory-dsx","title":"AI 工廠生態系與 DSX、Omniverse 數位分身","timestampDisplay":"00:26:03 – 00:34:50","startSec":1563,"endSec":2090,"anchorQuote":"\"our customers... don't want to buy computers. They want to build AI factories.\" / \"NVIDIA DSX is the blueprint, a reference design for building and operating AI factories.\" / \"everything was built in Omniverse.\" / \"100 gigawatts of AI factories will come online before the end of the decade.\"","whatIsThis":"黃仁勳在這一段把 NVIDIA 的定位從「賣電腦/GPU」轉向「幫客戶蓋 AI 工廠」，他直言「客戶不想買電腦，他們想蓋 AI 工廠」。他推出 NVIDIA DSX 作為建造與營運 AI 工廠的「藍圖」(blueprint) 與參考設計，涵蓋晶片、機櫃、網路、電力與冷卻的整體協同設計。他強調這整套 AI 工廠「都是在 Omniverse 裡建造的」——也就是先以數位分身 (digital twin) 完整模擬、驗證後，才實際動工蓋廠。他並預言「在這個十年結束前，將有 100 GW (gigawatt) 規模的 AI 工廠上線」，把 AI 推向全球基礎建設等級的產業現象。現場以鴻海數位孿生工廠等台廠合作夥伴影像佐證生態系規模。","keyTerms":["AI 工廠 (AI Factory)","NVIDIA DSX 參考設計/藍圖","Omniverse 數位分身 (Digital Twin)","Vera Rubin","100 GW (Gigawatt) 規模","Token 經濟學 / 運算即收入","台廠供應鏈 (鴻海、台達電、緯創等)","Physical AI"],"audiences":{"investor":{"whyCare":"黃仁勳把 NVIDIA 從賣 GPU 重新定義為「賣整座 AI 工廠」，意味著營收想像從單一晶片擴張到電力、冷卻、機櫃、網路與軟體的整廠系統。100 GW 上線的預言，加上市場估算每 1GW AI 工廠投資上看 800~1,000 億美元，等於把 NVIDIA 生態系綁進一個數兆美元級的基礎建設長線題材。DSX 生態系與台積電、鴻海、台達電、緯創等供應鏈的整廠協同，直接放大台廠的接單能見度。","takeaway":"AI 工廠化把 NVIDIA 的 TAM 從晶片擴大到整廠基礎建設，台廠供應鏈是這條長線的核心受惠者。","extension":"若 100 GW 是十年願景，哪些台廠是「整廠」(電力、散熱、機構) 而非僅「零件」受惠者，重估空間最大？","matrixView":"賣 GPU 變賣整座 AI 工廠，TAM 與台廠供應鏈一起放大"},"knowledgeWorker":{"whyCare":"DSX 與 Omniverse 數位分身把「先在虛擬世界蓋好、驗證再動工」變成標準工作流程，對工程、製造、營運、設施規劃類工作者影響最直接——設計與營運將圍繞數位分身進行模擬、協同與最佳化。即使你不在資料中心產業，這代表「先模擬再執行」的工作方法論正擴散，對流程設計與決策驗證類技能形成新需求。","takeaway":"數位分身讓「先模擬、後動工」成為主流工作方法，懂得用虛擬環境驗證流程的人更吃香。","extension":"我的工作流程中，有哪一段可以先用「數位分身/模擬」驗證，降低實際執行的試錯成本？","matrixView":"工作從「直接做」轉向「先在數位分身模擬驗證再做」"},"consumer":{"whyCare":"這段對一般消費者是間接但根本的影響：AI 工廠是支撐你日常使用的 AI 助理、生成內容、推薦服務背後的「發電廠」。黃仁勳把它類比成基礎建設，意味著未來 AI 服務的速度、成本與普及度，取決於這些工廠蓋得多快、多省電。100 GW 規模也牽動電力與能源議題，可能影響電價與在地資料中心的環境討論。","takeaway":"你用的 AI 服務背後是一座座 AI 工廠，它們蓋得越快越省電，AI 對你越便宜好用。","extension":"如果 AI 服務的成本最終取決於工廠的電力效率，未來哪些 AI 應用會因此先普及到你的生活？","matrixView":"你用的每個 AI 服務，背後都是一座耗電的 AI 工廠"},"decisionMaker":{"whyCare":"黃仁勳的核心訊息「客戶不想買電腦，他們想蓋 AI 工廠」直接對企業主提問：你要的是買算力，還是要自建/共建 AI 產能。DSX 提供的「藍圖+參考設計」降低了自建門檻，讓企業能用協同設計與數位分身先驗證再投資，避免重資產試錯。決策點在於：自建 AI 工廠、租用雲端算力、或透過合作夥伴導入，以及配套的電力與冷卻基礎建設投資。","takeaway":"導入 AI 不再只是採購算力，而是要決定『自建工廠 vs 租用算力』，並用數位分身先驗證再下重注。","extension":"以我們的 AI 用量與資本結構，自建 DSX 式 AI 工廠的回收期，相比租用雲端算力是否划算？","matrixView":"決策從『買多少算力』升級為『要不要蓋自己的 AI 產能』"}}},
+  {"id":"token-economics","title":"Token 經濟學：運算即營收，買越多賺越多","timestampDisplay":"00:34:50 – 00:40:41","startSec":2090,"endSec":2441,"anchorQuote":"\"Compute is revenue. Now compute is profit.\" / \"every token is profitable. Every token is revenues.\" / \"The more you buy, the more you make.\"","whatIsThis":"黃仁勳在這段把 AI 運算的商業邏輯講白：過去「運算就是營收」（compute is revenue），現在更進一步「運算就是利潤」（now compute is profit）。他主張在推論（inference）時代，AI 工廠每吐出一個 token 都能對應到終端客戶願意付的錢，所以「每個 token 都是營收、每個 token 都有利可圖」。正因為 token 可以直接變現，AI 公司會想生更多 token、蓋更多 AI 工廠、買更多運算，於是推導出那句招牌口號「買越多、賺越多」（the more you buy, the more you make）。他並用不同等級的 token 定價（從免費問答到科學研究等高價層級）與每 GW 資料中心的營收想像，說明為何台灣與全球的運算需求像火箭一樣往上飆。","keyTerms":["Token 經濟學","運算即營收（Compute is revenue）","運算即利潤（Compute is profit）","買越多賺越多","AI 工廠（AI Factory）","推論（Inference）","Vera Rubin","每 GW 營收"],"audiences":{"investor":{"whyCare":"這段把 NVIDIA 從「賣硬體」重新定位成「賣可變現的運算」，等於替整個 AI 資本支出循環提供了財務正當性。對投資者來說，「每個 token 都有利可圖」若成立，代表客戶買越多 GPU 不是成本黑洞而是營收引擎，這正是支撐 NVIDIA 估值與台廠供應鏈（伺服器、散熱、CoWoS、電源）長線需求的核心敘事。","takeaway":"Token 經濟學是把 AI 資本支出包裝成正循環的關鍵敘事：只要 token 能變現，運算需求就有複利成長的理由。","extension":"若某天 token 的市場單價因競爭快速下殺，「買越多賺越多」的循環會在哪個環節先出現裂縫？","matrixView":"把 GPU 從成本變營收引擎，撐起 NVIDIA 與台廠供應鏈的長線需求敘事。"},"knowledgeWorker":{"whyCare":"當運算被定價成「每個 token 都是錢」，你日常用的 AI 工具背後其實是一條計費的生產線。這會直接影響公司給你開多少 AI 額度、哪些工作流程被鼓勵自動化（高價值任務值得多燒 token），以及你的產出如何被用「省下多少運算成本 vs 創造多少價值」來衡量。","takeaway":"你用 AI 不再是免費背景功能，而是有成本與報酬的生產行為，懂得把 token 花在高價值任務上會成為新技能。","extension":"如果你的 AI 用量被明確計價，你會怎麼重排工作流程，把昂貴的運算留給真正創造價值的環節？","matrixView":"AI 用量被明確計價，把 token 花在刀口上成為新工作技能。"},"consumer":{"whyCare":"這段對一般人是間接影響，但會慢慢滲透到生活。當業者發現「每個 token 都能賺錢」，消費端會出現分層：免費的基本問答持續存在，但更聰明、更即時、更專業的 AI 功能會走向訂閱或按用量收費，就像水電一樣計量。你感受到的會是 AI 服務變多、變強，但好用的部分越來越多要付費。","takeaway":"未來 AI 服務會像水電被計量收費，免費的夠用、強大的要付錢，分層會越來越明顯。","extension":"當 AI 功能從免費走向按用量計費，你願意為哪一種「更聰明的回答」掏錢？","matrixView":"AI 服務走向分層計費，免費的夠用、強大的要付費訂閱。"},"decisionMaker":{"whyCare":"黃仁勳這段其實是對老闆喊話：別把買運算當花錢，要當投資。對企業決策者，重點是先想清楚自家的 token 能對應到什麼可收費或可省成本的價值（客服、研發、文件處理），再回推要不要自建或租用 AI 工廠等級的基礎建設。沒有變現路徑就盲目擴充算力，「買越多賺越多」對你只會變成「買越多賠越多」。","takeaway":"導入 AI 的前提是先找到 token 的變現或省本路徑，再決定基礎建設規模，否則買越多只是燒越多。","extension":"你公司哪一個流程的 AI 產出，最能清楚換算成可收費的營收或可量化的成本節省？","matrixView":"先確認 token 能變現再投資算力，否則買越多只會賠越多。"}}},
+  {"id":"vera-rubin-production","title":"Vera Rubin 全面量產：供應鏈、製造與揭幕","timestampDisplay":"00:40:41 – 00:51:00","startSec":2441,"endSec":3060,"anchorQuote":"\"Vera Rubin is in full production.\" / \"the supply chain we created for Vera Rubin is twice as large as Grace Blackwell.\" / \"what used to take two hours to assemble... now only takes five minutes.\" / \"Today NVIDIA's token cost is the lowest in the world... by X factors, orders of magnitude.\"","whatIsThis":"這段是黃仁勳宣布次世代 AI 平台 Vera Rubin 進入「全面量產」(in full production)。他強調為 Vera Rubin 打造的供應鏈規模是上一代 Grace Blackwell 的兩倍，並大幅優化製造效率：過去組裝一座機櫃要兩小時，現在只需五分鐘。他把 Vera Rubin 定位為整個系統（NVLink 機櫃、Vera CPU、網路、共封裝光學等），而不只是 GPU。最後他連結到 Token 經濟學，宣稱 NVIDIA 今日的單一 Token 成本是全世界最低，且低出數個數量級（orders of magnitude），藉此論證量產與製造效率如何轉化為運算成本優勢。此段也是他向台灣供應鏈致謝、強調台北是這一切起點的橋段。","keyTerms":["Vera Rubin 全面量產","供應鏈規模兩倍 (vs. Grace Blackwell)","五分鐘組裝 (製造效率)","Token 經濟學","Token 成本全球最低","NVLink 72 機櫃系統","台灣供應鏈夥伴","AI 工廠 (AI Factory)"],"audiences":{"investor":{"whyCare":"Vera Rubin 全面量產代表 NVIDIA 下一波營收引擎已經啟動，不是 PPT 而是真的在出貨。供應鏈規模翻倍、組裝從兩小時縮到五分鐘，直接對應產能放大與毛利結構，這是評估後續幾季營收與獲利能見度的關鍵訊號。台廠供應鏈（代工、散熱、光通訊、PCB、機櫃組裝）是這條鏈的核心受惠者。","takeaway":"量產 + 供應鏈翻倍 + 製造提速，等於 NVIDIA 把營收天花板再墊高，台廠是直接受惠的卡位點。","extension":"供應鏈規模翻倍與五分鐘組裝，最終會反映在 NVIDIA 的毛利率還是讓利給雲端客戶？哪些台廠在這條鏈裡是不可替代的關鍵環節？","matrixView":"量產啟動＋供應鏈翻倍，是 NVIDIA 下一波營收與台廠訂單的能見度訊號。"},"knowledgeWorker":{"whyCare":"這段表面在講硬體製造，但黃仁勳把它連到 Token 成本全球最低、且低數個數量級。對知識工作者來說，這意味著驅動你日常 AI 工具（寫作、程式、分析、客服）的底層運算會越來越便宜，AI 助理會從偶爾用變成隨時掛在工作流裡。成本下降是 AI 能力普及到每個工位的前提。","takeaway":"Token 成本被打到全球最低，等於你用的 AI 工具會更便宜、更隨手可得，加速滲透日常工作。","extension":"當運算成本低到可以忽略時，哪些目前因為太貴而不做的工作（即時翻譯、全程錄音摘要、隨時跑代理人）會變成預設行為？","matrixView":"量產壓低 Token 成本，是你手上 AI 工具變便宜、變日常的底層原因。"},"consumer":{"whyCare":"這段對一般消費者是間接但真實的影響。Vera Rubin 是資料中心等級的硬體，你不會買，但它壓低的 Token 成本，會讓你用的 ChatGPT、AI 搜尋、手機 AI 功能變得更快、更便宜甚至免費。製造效率與量產，最終會反映在你每天接觸的 AI 服務體驗上。","takeaway":"你買不到 Vera Rubin，但它讓你用的 AI 服務變更快更便宜，這是背後看不見的引擎。","extension":"當 AI 運算成本逼近零，哪些現在要付費訂閱的 AI 功能，會變成手機或 App 內建免費的標配？","matrixView":"看不見的資料中心引擎，讓你日常用的 AI 服務更快更便宜。"},"decisionMaker":{"whyCare":"對企業老闆，重點是黃仁勳把製造規模與 Token 成本綁在一起：運算成本正在快速下降且可預期。這改變了導入 AI 的投報率算式，原本因單位成本太高而不划算的應用（大量自動化、代理式工作流）門檻正在崩塌。同時要思考自建 AI 工廠 vs. 採購雲端算力的基礎建設決策。","takeaway":"運算成本結構性下滑，讓更多 AI 導入案從不划算變划算，現在是重算投報率與盤點基礎建設的時點。","extension":"面對持續下降的 Token 成本，公司該鎖定長約算力、自建小型 AI 工廠，還是維持彈性走雲端？哪種對你的工作負載最划算？","matrixView":"Token 成本下滑改寫 AI 導入投報率，企業該重評算力採購與基礎建設策略。"}}},
+  {"id":"vera-cpu","title":"Vera CPU：為 Agent 而生的 CPU","timestampDisplay":"00:51:00 – 01:08:00","startSec":3060,"endSec":4080,"anchorQuote":"\"All the CPUs of the past we built for humans. This CPU is built for agents.\" / \"Agents are impatient... They live in a world that's in nanoseconds.\" / \"This is SQL running three times faster.\" / 紐約證交所即時串流處理「six times」。Olympus core，能效與頻寬世界級。","whatIsThis":"黃仁勳介紹 Vera CPU，並用一句話定調：「過去所有 CPU 都是為人類打造的，這顆 CPU 是為 agent 打造的。」他形容 agent「沒有耐心」、「活在以奈秒計的世界」，因此 Vera 針對 agentic AI 背後真正吃重的 CPU 工作而設計——程式碼執行、工具呼叫、沙箱、編排邏輯與資料管線。他現場展示效能：SQL 查詢快三倍、紐約證交所（NYSE）即時串流處理快六倍。Vera 採用 NVIDIA 自研的 Olympus 核心（共 88 核），搭配 LPDDR5X 高頻寬記憶體，主打世界級的能效與頻寬，整體相較 x86 可達約 1.8 倍的任務完成速度。它是 Vera Rubin 平台的 CPU，也是 NVIDIA 首款獨立資料中心 CPU。","keyTerms":["Vera CPU","Olympus 核心","Agentic AI（代理式 AI）","LPDDR5X 高頻寬記憶體","Vera Rubin 平台","SQL / 資料處理加速","x86 競爭","NYSE 即時串流"],"audiences":{"investor":{"whyCare":"Vera 是 NVIDIA 首款獨立資料中心 CPU，正式切入過去由 Intel、AMD x86 主導的市場，等於把營收觸角從 GPU 延伸到 CPU，擴大每座 AI 工廠的單位金額。客戶名單已涵蓋 NYSE、Anthropic、OpenAI、xAI 與 ByteDance、Oracle 等雲端業者，需求面具體。對台廠而言，Vera 採 Arm 架構自研核心，意味先進製程、CoWoS 封裝、伺服器代工與機櫃供應鏈再添一條新的成長曲線。","takeaway":"NVIDIA 從賣 GPU 變成賣整套 CPU+GPU 機櫃，吃下原本 x86 的份額，台廠供應鏈跟著放大訂單規模。","extension":"若 Vera 把資料中心 CPU 從 x86 換成 Arm 自研核心，Intel、AMD 的資料中心營收與台廠既有 x86 板卡客戶會受到多大擠壓？","matrixView":"NVIDIA 首款獨立 CPU 切入 x86 市場，台廠供應鏈再添一條新成長曲線。"},"knowledgeWorker":{"whyCare":"黃仁勳明說 Vera 是為 agent 而非人類打造，背後處理的正是程式碼執行、工具呼叫、沙箱與資料管線——也就是 AI agent 替你跑分析、查資料、串流程的那一層。對工程師、資料分析師而言，SQL 快三倍、串流快六倍代表 agent 完成任務的等待時間大幅縮短，工作流程會更傾向「交辦給 agent、自己審核結果」。","takeaway":"你越來越不是親手跑查詢的人，而是指揮一群跑在 Vera 上、以奈秒回應的 agent，並負責驗證它們的產出。","extension":"當資料查詢與程式碼執行都由 agent 在硬體層被加速數倍，知識工作者的核心價值會從「會操作」轉向哪些難以被自動化的能力？","matrixView":"Agent 在硬體層被加速，工作重心從動手操作轉為交辦與審核。"},"consumer":{"whyCare":"這是基礎建設層的晶片，消費者不會直接買到或看到 Vera。但它加速的是 agent 背後的運算，因此你日常用的 AI 助理、客服、即時翻譯與金融服務反應會更快、更即時——黃仁勳用 agent「活在奈秒世界」來形容這種瞬時感。影響是間接但真實的：體驗變順，但你感受不到那顆晶片的存在。","takeaway":"你不會看到 Vera，但會感覺到 AI 服務回應變快、更即時——好處藏在看不見的機房裡。","extension":"當 AI 服務的反應速度由資料中心晶片決定，一般人該如何分辨體驗變好是來自軟體還是底層硬體升級？","matrixView":"看不見的機房晶片，讓日常 AI 服務反應更快更即時。"},"decisionMaker":{"whyCare":"Vera 直接對應企業導入 agentic AI 時最常卡關的「非模型」工作——編排、工具呼叫、沙箱化程式碼執行與資料管線。對要不要自建 AI 工廠或上雲的老闆，這代表跑 agent 的單位成本與延遲可望下降（號稱較 x86 約 1.8 倍任務速度、半功耗 2 倍頻寬）。但它隨 Vera Rubin 機櫃出貨、且是 Arm 架構，導入須評估與現有 x86 軟體堆疊的相容與遷移成本。","takeaway":"若企業要認真跑 AI agent，運算基礎建設的選型已不只看 GPU，CPU 與整櫃方案的能效、延遲同樣是成本關鍵。","extension":"你的 agent 工作負載要到多大規模，才值得採用 Vera 整櫃方案而非沿用既有 x86 加 GPU 的混合架構？","matrixView":"導入 agent 的選型從 GPU 擴大到 CPU 與整櫃能效、延遲評估。"}}},
+  {"id":"enterprise-toolkit","title":"企業 AI 工具組：OpenShell、Nemotron 3 Ultra、Cadence 超級代理","timestampDisplay":"01:08:00 – 01:19:53","startSec":4080,"endSec":4793,"anchorQuote":"\"Every company will be an agent company.\" / \"we're announcing the Neotron 3 Ultra... five times faster... 30% cheaper, completely open.\" / Cadence「What once took weeks now takes hours. Verification cycles over 40 times faster.」 / \"Nvidia open shell is open source.\" 工具組 = 模型 + harness + 工具/技能 + runtime。","whatIsThis":"這段黃仁勳提出核心命題：「每一家公司都會變成 agent 公司」（Every company will be an agent company），企業內部會有大量 AI 代理協助客服、資安、財務、設計、工程到供應鏈。他把企業代理拆成四個組件：模型（model）、harness（協調代理行為）、工具與技能（企業系統、資料庫、CUDA 函式庫）、runtime（安全執行環境），合稱「企業 AI 工具組」。他發表 Nemotron 3 Ultra 開源模型，宣稱「速度快五倍、成本便宜約三成、完全開源」，並強調 NVIDIA OpenShell 是開源的安全 runtime／harness。最後以 Cadence 的晶片設計超級代理為案例：「過去要數週、現在只要數小時」，驗證週期加速逾 40 倍，示範代理化如何重構真實的高價值工作流。","keyTerms":["Agent 公司（每家公司都會變成代理公司）","Nemotron 3 Ultra","NVIDIA OpenShell（開源安全 runtime）","企業 AI 工具組（模型＋harness＋工具技能＋runtime）","Cadence 晶片設計超級代理","Harness（代理協調層）","開源（Open Source）","驗證週期加速 40 倍"],"audiences":{"investor":{"whyCare":"這段把 NVIDIA 的故事從『賣晶片』升級到『賣完整企業代理平台』，是擴大 TAM 的關鍵敘事。Nemotron 3 Ultra 走完全開源、便宜三成的路線，意在用成本與開放性綁住企業生態系，而非短期靠模型授權收費。Cadence 案例則證明代理能進入高單價、難取代的專業工作流，是軟體與訂閱想像的支點。","takeaway":"重點不在單一模型賣多少錢，而在 NVIDIA 是否能把『代理工具組＋runtime』變成企業標準層，鎖住長期算力與軟體營收。","extension":"若模型完全開源、便宜三成，NVIDIA 的獲利究竟落在哪一層（OpenShell runtime、CUDA-X、還是底層算力）？這個變現點是否足夠寬廣且具防禦性？","matrixView":"從賣晶片升級為賣企業代理平台，開源模型換生態鎖定，變現靠 runtime 與算力。"},"knowledgeWorker":{"whyCare":"黃仁勳直接說每家公司都會有大量代理處理財務、設計、工程、資料分析等工作，這正是知識工作者的日常。Cadence 案例中『數週變數小時、驗證快 40 倍』顯示代理不只做雜事，而是能承接專業核心流程。工具組的四件式（模型／harness／工具／runtime）也意味著未來工作是『協調與監督一群代理』而非親手執行每一步。","takeaway":"你的價值會從『親自完成任務』移往『定義流程、給代理工具與技能、審核結果』，懂得駕馭代理工具組的人會被放大。","extension":"在我的領域裡，哪些步驟最適合交給代理執行、哪些必須由我把關品質與責任歸屬？","matrixView":"代理接手專業核心流程，工作重心轉向協調、給工具與審核結果。"},"consumer":{"whyCare":"這段主要談企業內部基礎建設，對一般消費者是間接影響，但結果會滲透到日常：你接觸的客服、銀行、保險、線上服務背後將由企業代理處理，回應更快、可全天運作。Cadence 把晶片設計從數週壓到數小時，也意味未來你買的裝置可能更快迭代、功能演進加速。短期內你不會直接『使用 OpenShell』，但會體驗到服務變敏捷。","takeaway":"你不會直接碰到這些工具，但日常接觸的各種服務會因為背後的企業代理而更快、更即時。","extension":"當服務背後是 AI 代理在處理，遇到複雜或出錯的狀況時，我要如何找到能負責的真人？","matrixView":"間接影響：背後企業代理讓日常服務更快更即時，產品迭代也加速。"},"decisionMaker":{"whyCare":"黃仁勳給了企業一張清楚的導入藍圖：代理＝模型＋harness＋工具技能＋runtime，模型可用 Nemotron 也可混用其他模型，runtime 用 OpenShell 確保安全。對老闆而言，這降低了『要不要做、怎麼做』的不確定性，開源與便宜三成也壓低試錯成本。Cadence 的 40 倍驗證加速是可量化的 ROI 範例，適合拿來對標自家最耗時的工作流。","takeaway":"別把代理當單點工具買，而要把『模型／harness／工具／安全 runtime』視為一套企業基礎建設來規劃，並從一條高價值、可量化的流程切入試點。","extension":"我的企業最值得第一個代理化的流程是哪一條？資料治理與 runtime 安全（如 OpenShell）要先補哪些缺口才敢上線？","matrixView":"代理是四件式基礎建設，從高價值流程試點切入，先補安全與治理。"}}},
+  {"id":"rtx-spark","title":"RTX Spark 與重新發明 PC","timestampDisplay":"01:19:53 – 01:26:00","startSec":4793,"endSec":5160,"anchorQuote":"\"40 years later, Microsoft and Nvidia are going to reinvent the PC.\" / \"Introducing RTX Spark... Blackwell RTX GPU... a custom 20 core Grace CPU built in partnership with MediaTek... 128 GB unified memory. TSMC 3 nanometer, 70 billion transistors.\" / 本地 agent + Hermes harness + Claude Sonnet 設計房屋 demo（Rhino→Blender→Flux 2）。","whatIsThis":"黃仁勳宣布 NVIDIA 與微軟攜手「重新發明 PC」，並以「40 年後微軟與 NVIDIA 要重新發明 PC」一句揭開。核心產品是 RTX Spark：搭載 Blackwell RTX GPU、與聯發科（MediaTek）合作打造的客製 20 核 Grace CPU、以 NVLink 融合、128GB 統一記憶體，採台積電 3 奈米製程、約 700 億個電晶體。這台機器的定位是讓本地端 AI agent 真正可用，而非只跑雲端。黃仁勳並現場展示本地 agent 加上 Hermes harness 與 Claude Sonnet，串起 Rhino → Blender → Flux 2 的工作流程，由 AI 自動設計一棟房屋。他強調這次電腦的重新發明，重要性等同於當年手機演進成智慧型手機。","keyTerms":["RTX Spark","Blackwell RTX GPU","Grace CPU（聯發科合作）","NVLink 融合","128GB 統一記憶體","台積電 3 奈米 / 700 億電晶體","本地端 AI agent","Hermes harness + Claude Sonnet demo"],"audiences":{"investor":{"whyCare":"RTX Spark 讓 NVIDIA 從資料中心正式跨入個人 PC 市場，且與微軟、聯發科綁定、由台積電 3 奈米代工，整條台廠供應鏈（聯發科 CPU 設計、台積電製程、ASUS/宏碁/技嘉等品牌與代工）都直接受惠。這是把 GB10 Grace Blackwell 架構從工作站下放到消費級筆電與小型桌機的新營收曲線。秋季由 ASUS、Dell、HP、Lenovo、Microsoft Surface、MSI 首發，出貨節奏與滲透率是觀察重點。","takeaway":"NVIDIA 開出 PC 這條新戰線，聯發科與台積電是最直接的台廠受益者。","extension":"RTX Spark 切入的是高階 AI PC，對 x86（Intel/AMD）與既有 Arm Windows 陣營的市佔侵蝕速度有多快？","matrixView":"NVIDIA 跨入 PC，聯發科、台積電與品牌廠拿到新一波 AI PC 訂單。"},"knowledgeWorker":{"whyCare":"128GB 統一記憶體可在本地跑得動約 1200 億參數等級的大模型與長上下文，意味敏感資料不必上雲，agent 直接在你的筆電上完成工作。Demo 中 Claude Sonnet 透過 Hermes harness 串接 Rhino→Blender→Flux 2 自動設計房屋，預告設計、3D、影音、程式等專業工作流程會從『描述任務』變成『AI 直接交付成果』。技能重點將轉向設計 agent 工作流與審核 AI 產出。","takeaway":"本地 agent 讓專業軟體串成自動化流水線，你的角色從操作者變成流程編排者與把關者。","extension":"當 agent 能跨多個專業軟體自動完工，你的核心價值該重押在判斷力與品味，還是工具操作熟練度？","matrixView":"本地 agent 把跨軟體流程自動化，工作從操作轉為編排與審核。"},"consumer":{"whyCare":"今年秋天起會看到一批新型 Windows 筆電與小桌機（標榜全天候續航、高階螢幕），主打『AI 直接幫你把事情做完』而非只給建議。因為運算在本機，隱私資料不必傳雲端、離線也能用 AI。對一般人來說，這是繼智慧型手機之後又一次『電腦本身被重新定義』的換機潮起點。","takeaway":"下一台筆電可能內建會替你動手完成任務的本地 AI 助理。","extension":"如果 AI 能在你的電腦上自動完成跨軟體的任務，你會願意為這份『本地隱私 + 全程代勞』多付多少錢？","matrixView":"秋季上市的新 AI 筆電，主打本地、隱私、AI 直接代你完工。"},"decisionMaker":{"whyCare":"RTX Spark 提供一條『本地推論』路線：員工裝置就能跑大模型與 agent，降低把機密丟上雲端的疑慮，也可能省下部分 API 與雲端推論成本。但這是秋季才出貨的新平台、Arm 架構，企業需評估 Windows on Arm 的軟體相容性、裝置採購與汰換、以及 agent 工作流的治理與資安。導入策略偏向先針對設計、研發等高算力、高敏感資料部門試點。","takeaway":"本地 AI PC 是降低雲端成本與資料外洩風險的選項，但要先驗證 Arm 相容性與 agent 治理。","extension":"你的 AI 算力該放在雲端集中管理，還是下放到員工裝置做本地推論——成本、資安與管理三者如何取捨？","matrixView":"本地 AI PC 可省雲端成本、保資料於內部，但需評估相容性與治理。"}}},
+  {"id":"n1x-newpc","title":"N1X 晶片與全新 PC 產品線、DGX Station","timestampDisplay":"01:26:00 – 01:37:00","startSec":5160,"endSec":5820,"anchorQuote":"\"This is the N1X that we built in partnership with MediaTek.\" / \"100% of Nvidia software stack runs here.\" / DGX Station「768 GB of memory... run a trillion parameter model.」 / \"an AI supercomputer in your house... more like R2-D2... C3PO than a PC.\" / \"100% of the world's PC industry has joined us to reinvent the PC.\"","whatIsThis":"黃仁勳發表 N1X 晶片與全新 PC 產品線、DGX Station，把 AI 運算帶到桌面與筆電。","keyTerms":["N1X","聯發科","DGX Station","RTX Spark","一兆參數模型"],"audiences":{"investor":{"whyCare":"NVIDIA 從資料中心切入每台 PC 與筆電的新成長曲線。N1X 由聯發科共同設計，DGX Station 由華碩、戴爾、技嘉等 OEM 量產，台廠供應鏈直接受惠。","takeaway":"AI 運算下放桌面與筆電，開新營收曲線，聯發科與台廠 OEM 受惠。","extension":"本地能跑一兆參數模型後，雲端 GPU 需求是被分流還是放大。","matrixView":"AI 運算下放 PC 與筆電，聯發科與台廠 OEM 受惠。"},"knowledgeWorker":{"whyCare":"你桌上的機器將能本地跑一兆參數前沿模型，敏感資料不必上雲，研究、設計、寫程式可離線完成。N1X 讓 RTX 與 CUDA 跑在筆電上。","takeaway":"AI 算力從雲端搬到桌邊與筆電，本地化、可離線、隱私可控。","extension":"哪些因資料敏感而不敢交給雲端的任務會先被解放。","matrixView":"前沿模型搬到桌邊，可離線保護隱私。"},"consumer":{"whyCare":"黃仁勳說 DGX Station 更像 R2-D2、C3PO，描繪家裡一台 AI 超級電腦。較直接的是秋季上市、搭 N1X 的 RTX 筆電與 PC，本機就能跑 AI。","takeaway":"未來 PC 與筆電就是會思考的 AI 機器，但旗艦桌邊機種仍偏專業價位。","extension":"家裡電腦能跑大型 AI，你願意為本地算力多付少錢。","matrixView":"PC 與筆電變成本地 AI 機器，秋季上市。"},"decisionMaker":{"whyCare":"DGX Station for Windows 把一兆參數模型的算力放到員工桌邊，原生支援 Windows，導入門檻比自建機房低。對重視資料主權與合規的產業是新選項。","takeaway":"企業可用桌邊裝置部署本地 AI，兼顧合規，但需評估與雲端的取捨。","extension":"本地部署相較雲端 GPU，成本與合規的平衡點在哪。","matrixView":"桌邊部署本地 AI、資料不出公司，介於雲端與自建機房。"}}},
+  {"id":"cosmos-physical-ai","title":"Physical AI：Cosmos 3、Alpamo 2、Isaac GR00T","timestampDisplay":"01:37:00 – 01:51:00","startSec":5820,"endSec":6660,"anchorQuote":"\"the biggest problem is data.\" / \"today we are announcing Cosmos 3... the frontier of physical AI.\" / \"in physical AI, we are absolutely the world's best.\" / \"Alpamo 2, an open model for self-driving cars\"（Mercedes demo，\"the world's first reasoning autonomous vehicle\"）。 / \"NVIDIA Isaac Groot... a reference humanoid robot... 31 degrees of freedom. 6 feet 150 lbs. Just like me.\"","whatIsThis":"這段是黃仁勳在 GTC Taipei 2026 主題演講中的「Physical AI（實體 AI）」段落。他先點出核心難題：「the biggest problem is data.」——機器人與自駕車不像語言模型有海量網路文字可學，真實世界的訓練資料極度稀缺。為此他發表 Cosmos 3，稱其為「the frontier of physical AI」，是一個全面重構、開源的世界基礎模型，能生成合成訓練資料並預測世界狀態，並直言「in physical AI, we are absolutely the world's best.」。接著展示 Alpamo 2（Alpamayo 2）這個給自駕車的開放模型，搭配 Mercedes 實車 demo，稱其為「the world's first reasoning autonomous vehicle」——會邊開邊「推理」並產生文字決策鏈。最後揭曉 NVIDIA Isaac GR00T 參考人形機器人，他形容「31 degrees of freedom. 6 feet 150 lbs. Just like me.」，定位為開放的研究與開發平台。整段核心是：用世界模型解決資料荒，把實體 AI 推進到「會推理」的自駕與人形機器人。","keyTerms":["Physical AI 實體 AI","Cosmos 3 世界基礎模型","Alpamo 2 / Alpamayo 2 自駕模型","Reasoning Autonomous Vehicle 推理型自駕車","Isaac GR00T 參考人形機器人","合成訓練資料 / 資料荒","DRIVE Hyperion 車載平台","Jetson Thor / Unitree H2 Plus"],"audiences":{"investor":{"whyCare":"Physical AI 是 NVIDIA 在資料中心之外的下一條成長曲線，TAM 從雲端 GPU 擴張到全球自駕車與機器人。黃仁勳強調 Alpamo 2 是開放模型、搭配 DRIVE Hyperion 車載平台，等於把 NVIDIA 推論晶片（Jetson Thor）綁進汽車與機器人供應鏈；而 Cosmos 3 開源則是用『送模型、賣算力與晶片』的生態系打法擴大護城河。對台廠而言，人形機器人樣板機採用台系/亞系硬體與代工能量，是繼 AI 伺服器後的新訂單想像。","takeaway":"實體 AI 把 NVIDIA 的變現點從雲端延伸到車與機器人，開源 Cosmos 是擴生態、推論晶片才是真正收租入口。","extension":"Cosmos 3 開源後，NVIDIA 靠什麼鎖住獲利——是車用/機器人推論晶片的出貨，還是 Omniverse 模擬平台的訂閱？哪一塊台廠分得到？","matrixView":"實體 AI 開新 TAM，開源換生態、晶片才收租，台廠機器人供應鏈受惠"},"knowledgeWorker":{"whyCare":"這段對多數辦公室工作者是『間接但方向性』的訊號：實體 AI 的瓶頸是資料，而 NVIDIA 用世界模型（Cosmos 3）生成合成資料來訓練機器，意味著未來工程師、資料科學家、模擬與機器人開發者的工作會大量轉向『在虛擬世界訓練 AI、再部署到實體』。Alpamo 2 會輸出文字推理鏈供安全與法規審查，代表自駕/機器人領域會出現新的『AI 行為稽核、合規文件』工作。","takeaway":"未來的技能重點不是親手標資料，而是用世界模型生成、驗證資料，以及為會推理的機器做安全稽核。","extension":"如果機器人與自駕的訓練資料越來越多是 AI 合成的，你所在領域該如何驗證『合成資料』的可靠度與偏誤？","matrixView":"工作從手動標資料轉向用世界模型生成、驗證與稽核 AI 行為"},"consumer":{"whyCare":"對一般人，這段最直接的畫面是兩件事：路上會出現『會推理』的自駕車（Mercedes demo 中車子邊開邊解釋自己的決策），以及一台 6 呎、150 磅、有 31 個關節、像人一樣動作的 Isaac GR00T 人形機器人。短期內這些仍是研究平台與車廠合作，不是馬上買回家；但它預示幾年內自駕計程車、家用/服務型機器人會更實際地進入生活。","takeaway":"會『自己推理講解』的自駕車與類人機器人正從展示走向落地，但離買回家用還要時間。","extension":"如果一台自駕車能用文字解釋它為什麼煞車，這會讓你更信任它、還是更在意它出錯時誰負責？","matrixView":"會推理的自駕車與人形機器人逐步成真，落地到日常仍需時間"},"decisionMaker":{"whyCare":"對企業老闆，重點是『資料是最大瓶頸』這句話：黃仁勳的解法是用 Cosmos 3 世界模型生成合成資料，先在虛擬環境訓練再部署實體。對製造、物流、車隊、服務業而言，這代表導入機器人/自駕不必再苦等真實資料累積，可先用模擬加速 POC。Isaac GR00T 是開放參考平台、Alpamo 2 是開放模型，降低了自建門檻，但也意味要投資模擬算力、Jetson 等邊緣推論硬體與相關人才。","takeaway":"實體 AI 的導入關鍵不在買機器人，而在投資『模擬+合成資料+邊緣推論』這套基礎建設與人才。","extension":"你的場域有哪些重複性實體工作，可以先用 Cosmos 類世界模型做模擬驗證，再決定要不要投資真實機器人？","matrixView":"導入實體 AI 先建模擬與合成資料能力，再投邊緣推論硬體與人才"}}},
+  {"id":"closing","title":"總結與收尾：Agentic 運算模式無所不在","timestampDisplay":"01:51:00 – 01:57:50","startSec":6660,"endSec":7070,"anchorQuote":"\"The computer industry has been completely changed in the last six months.\" / 總結 Vera Rubin 量產、Vera CPU、企業工具組、全新 PC 線、Physical AI 無所不在；同一套 agentic 運算模式（model+harness+tools+runtime）跨雲、PC、機器人重複出現。 / \"Thank you, Taiwan.\" / \"Welcome to Computex.\"","whatIsThis":"這是黃仁勳整場 GTC Taipei 2026 演講的總結與收尾。他用一句重話定調：「電腦產業在過去六個月被徹底改變了。」接著快速串連全場宣布的版圖——Vera Rubin 已全面量產、推出 AI 專用的 Vera CPU、面向企業的整套工具組（搭配 Nemotron、Cadence 等夥伴）、全新的 PC 產品線（RTX Spark／N1X），以及無所不在的 Physical AI（Cosmos 3、Isaac GR00T）。他點出貫穿全場的核心洞見：同一套 agentic 運算模式（model + harness + tools + runtime）正在雲端、PC、機器人三個層面重複出現，是同一個運算典範。最後以「Thank you, Taiwan.」與「Welcome to Computex.」作結，把全場榮耀歸給台灣供應鏈。","keyTerms":["Agentic 運算模式","model + harness + tools + runtime","Vera Rubin 全面量產","Vera CPU","Physical AI","Cosmos 3 / Isaac GR00T","RTX Spark / N1X","台灣供應鏈"],"audiences":{"investor":{"whyCare":"收尾段是把整場拆散的產品線收束成「一個典範」的投資論述：Vera Rubin 已量產出貨、累積數百萬套、OpenAI/Anthropic/SpaceX 為首批客戶，代表 NVIDIA 已從成長故事進入確定性放量。對台股投資人而言，黃仁勳點名約 150 家台灣供應鏈夥伴與近 20 家台廠（台積電、鴻海、廣達、緯創、華碩、技嘉、和碩、聯發科等），把 NVIDIA 的營收動能直接轉譯成台廠的訂單能見度。","takeaway":"同一套 agentic 模式跨雲、PC、機器人重複出現，意味 NVIDIA 的總體可觸及市場（TAM）疊加放大，台灣供應鏈是這條成長曲線的直接受惠者。","extension":"若 Vera Rubin 量產與 PC/機器人新線同時放量，台廠的營收貢獻會集中在少數龍頭，還是擴散到二線供應鏈？哪一段的毛利彈性最大？","matrixView":"一套模式三個戰場，量產確定性與台鏈訂單能見度同步拉高"},"knowledgeWorker":{"whyCare":"黃仁勳收尾強調 agentic 模式（model+harness+tools+runtime）會無所不在，意味知識工作者未來面對的不再是單純問答的助理，而是能觀察、推理、規劃、執行多步驟任務的代理。Cadence 的 ChipStack、Nemotron 企業工具組顯示，連晶片設計、工程這類高專業工作都被代理化，工作的價值會從「親手執行」移向「定義任務、審查代理產出、整合多代理流程」。","takeaway":"你的工作流程會被拆成可交給 AI 代理的步驟，核心技能轉向設計與監督代理，而非逐步手動操作。","extension":"在你的職務裡，哪些步驟最適合先交給代理，哪些必須由人保留最終判斷與責任？","matrixView":"工作從親手執行轉為指揮與審查 AI 代理的多步驟流程"},"consumer":{"whyCare":"收尾把全新 PC 線（RTX Spark／N1X，採台積電 3 奈米、預計秋季上市）與 Physical AI（Cosmos 3、Isaac GR00T 機器人）並列，代表 agentic AI 會從雲端走進你的個人電腦與生活周遭的機器人。對一般人而言，最直接的變化是未來換的電腦會內建能自己跑代理的晶片，而工廠、物流、服務場景的機器人會更快普及，但這些多半是間接、漸進地影響日常，不會一夜改變。","takeaway":"下一台 PC 可能本機就能跑 AI 代理，生活周遭的機器人會慢慢變多，但這是逐步滲透而非立即改變。","extension":"如果電腦本機就能跑 AI 代理（不必上雲），你最想讓它幫你自動完成哪件每天都要做的事？","matrixView":"AI 代理從雲端進到個人電腦與身邊機器人，漸進改變生活"},"decisionMaker":{"whyCare":"黃仁勳收尾的核心訊息對老闆最關鍵：不要把雲端 AI、AI PC、機器人當成三筆獨立投資，它們是同一套 agentic 模式（model+harness+tools+runtime）的不同部署面，企業應以一致的架構思考導入。Nemotron 企業工具組、DSX 資料中心平台、Token 經濟學（算力即可變現的營收單位）提供了從基礎建設到應用的完整選項；Foxconn 測試製造業代理（NemoClaw）是製造場景的早期參照。","takeaway":"把 AI 投資視為單一 agentic 架構的跨場景部署，而非各自為政的專案，能降低重複投資並讓能力跨雲、PC、現場複用。","extension":"你的企業要先從哪一個面（雲端工具組、AI PC、或現場 Physical AI）切入導入，才能最快驗證價值又不被單一供應商鎖死？","matrixView":"AI 投資應以單一 agentic 架構統籌跨雲、PC、機器人部署"}}}
+];
+
+/* ============================================================
+   YouTube Player（單一共用實例）
+   ============================================================ */
+let ytPlayer = null;
+let ytReady = false;
+let ytPending = null; // { startSec }
+
+window.onYouTubeIframeAPIReady = function () {
+  // 等到 drawer 內 #yt-player 容器存在才建立；若尚未存在則延後
+  tryBuildPlayer();
+};
+function tryBuildPlayer() {
+  const el = document.getElementById('yt-player');
+  if (!el || !window.YT || !window.YT.Player) return false;
+  if (ytPlayer) return true;
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: VIDEO_ID,
+    playerVars: { rel: 0, modestbranding: 1, playsinline: 1 },
+    events: {
+      onReady: () => {
+        ytReady = true;
+        if (ytPending) {
+          ytPlayer.loadVideoById({ videoId: VIDEO_ID, startSeconds: ytPending.startSec });
+          ytPending = null;
+        }
+      }
+    }
+  });
+  return true;
+}
+
+function seekTo(startSec) {
+  // 確保 player 已建立（drawer 開啟後容器才存在）
+  if (!ytPlayer) tryBuildPlayer();
+  if (ytReady && ytPlayer && ytPlayer.loadVideoById) {
+    ytPlayer.loadVideoById({ videoId: VIDEO_ID, startSeconds: startSec });
+  } else {
+    ytPending = { startSec }; // 待 onReady 再跳
+  }
+}
+function stopVideo() {
+  if (ytReady && ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+  ytPending = null;
+}
+
+/* ============================================================
+   自訂節點元件
+   ============================================================ */
+function CenterNode() {
+  return html`
+    <div class="node-base node-center">
+      <${Handle} type="target" position=${Position.Top} />
+      <${Handle} type="source" position=${Position.Bottom} />
+      <div class="nc-kicker">NVIDIA · Jensen Huang</div>
+      <div class="nc-title">GTC Taipei 2026</div>
+      <div class="nc-sub">Keynote 多受眾導覽地圖</div>
+    </div>
+  `;
+}
+
+function AudienceNode({ data }) {
+  const a = data.audience;
+  const cls = data.expanded ? (data.active ? 'active' : 'dimmed') : '';
+  const style = { '--accent': a.color, '--accent-glow': a.color + '66' };
+  const Icon = a.icon;
+  return html`
+    <div class="node-base node-audience ${cls}" style=${style}>
+      <${Handle} type="target" position=${Position.Top} />
+      <${Handle} type="source" position=${Position.Bottom} />
+      <div class="na-icon" style=${{ background: a.color + '22', border: '1px solid ' + a.color + '55' }}>
+        <${Icon} size=${22} color=${a.color} />
+      </div>
+      <div class="na-title" style=${{ color: a.color }}>${a.label}</div>
+      <div class="na-en">${a.en}</div>
+    </div>
+  `;
+}
+
+function ThemeNode({ data }) {
+  const cls = data.isCore ? 'core' : (data.dimmed ? 'dim' : '');
+  return html`
+    <div class="node-base node-theme ${cls}" style=${{ '--accent': data.accent }}>
+      <${Handle} type="target" position=${Position.Top} />
+      <${Handle} type="source" position=${Position.Bottom} />
+      ${data.isCore && html`<div class="nt-badge"><${Star} size=${11} fill="#0b0f17" /> 重點</div>`}
+      <div class="nt-time"><${Clock} size=${12} /> ${data.timestampDisplay}</div>
+      <div class="nt-title">${data.title}</div>
+      <div class="nt-matrix">${data.matrixView}</div>
+    </div>
+  `;
+}
+
+const nodeTypes = { center: CenterNode, audience: AudienceNode, theme: ThemeNode };
+
+/* ============================================================
+   版面計算
+   ============================================================ */
+const CENTER = { x: 0, y: 0 };
+const AUD_RADIUS = 330;
+const THEME_RADIUS = 760;
+
+function audiencePositions() {
+  const angles = [-90, 0, 90, 180]; // 上 右 下 左
+  return AUDIENCES.map((a, i) => {
+    const rad = (angles[i] * Math.PI) / 180;
+    return {
+      key: a.key,
+      x: CENTER.x + AUD_RADIUS * Math.cos(rad),
+      y: CENTER.y + AUD_RADIUS * Math.sin(rad),
+    };
+  });
+}
+
+function themePositions() {
+  const n = THEMES.length;
+  return THEMES.map((t, i) => {
+    const angle = (-90 + (360 / n) * i) * (Math.PI / 180); // 正上方順時針放射
+    return {
+      x: CENTER.x + THEME_RADIUS * Math.cos(angle),
+      y: CENTER.y + THEME_RADIUS * Math.sin(angle),
+    };
+  });
+}
+
+/* 各受眾的「核心主題」id —— 選了受眾後這些會點亮，其餘淡化（仍可點） */
+const AUDIENCE_CORE = {
+  investor:        ['opening', 'cuda-x', 'ai-factory-dsx', 'token-economics', 'vera-rubin-production'],
+  knowledgeWorker: ['agentic', 'cuda-x', 'enterprise-toolkit', 'rtx-spark'],
+  consumer:        ['agentic', 'rtx-spark', 'n1x-newpc', 'cosmos-physical-ai'],
+  decisionMaker:   ['agentic', 'ai-factory-dsx', 'token-economics', 'enterprise-toolkit', 'cosmos-physical-ai'],
+};
+
+/* ============================================================
+   主應用
+   ============================================================ */
+function App() {
+  const [nodes, setNodes, onNodesChange] = useNodesState([]);
+  const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [selectedAudience, setSelectedAudience] = useState(null);
+  const [selectedTheme, setSelectedTheme] = useState(null);
+  const rf = useReactFlow();
+
+  const audPos = useMemo(audiencePositions, []);
+  const themePos = useMemo(themePositions, []);
+
+  // 第 1 層節點（核心 + 4 視角）
+  const buildBase = useCallback((audienceKey) => {
+    const centerNode = {
+      id: 'center', type: 'center',
+      position: { x: CENTER.x - 115, y: CENTER.y - 50 },
+      data: {}, draggable: true,
+    };
+    const audNodes = AUDIENCES.map((a, i) => ({
+      id: 'aud-' + a.key, type: 'audience',
+      position: { x: audPos[i].x - 94, y: audPos[i].y - 60 },
+      data: { audience: a, expanded: !!audienceKey, active: audienceKey === a.key },
+      draggable: true,
+    }));
+    return [centerNode, ...audNodes];
+  }, [audPos]);
+
+  const buildBaseEdges = useCallback(() => AUDIENCES.map((a) => ({
+    id: 'e-center-' + a.key, source: 'center', target: 'aud-' + a.key,
+    style: { stroke: a.color + '66' },
+  })), []);
+
+  // 初始化第 1 層
+  useEffect(() => {
+    setNodes(buildBase(null));
+    setEdges(buildBaseEdges());
+    setTimeout(() => rf.fitView({ padding: 0.25, duration: 400 }), 60);
+  }, []); // eslint-disable-line
+
+  // 第 2 層：展開／切換視角
+  const expandAudience = useCallback((audienceKey) => {
+    setSelectedAudience(audienceKey);
+    const aud = AUD_MAP[audienceKey];
+
+    const coreSet = AUDIENCE_CORE[audienceKey] || [];
+    const baseNodes = buildBase(audienceKey);
+    const themeNodes = THEMES.map((t, i) => {
+      const isCore = coreSet.includes(t.id);
+      return {
+        id: 'theme-' + t.id, type: 'theme',
+        position: { x: themePos[i].x - 124, y: themePos[i].y - 60 },
+        data: {
+          title: t.title,
+          timestampDisplay: t.timestampDisplay,
+          matrixView: t.audiences[audienceKey].matrixView,
+          accent: aud.color,
+          isCore,
+          dimmed: !isCore,
+        },
+        draggable: true,
+      };
+    });
+    setNodes([...baseNodes, ...themeNodes]);
+
+    const themeEdges = THEMES.map((t) => {
+      const isCore = coreSet.includes(t.id);
+      return {
+        id: 'e-aud-' + t.id, source: 'aud-' + audienceKey, target: 'theme-' + t.id,
+        animated: isCore,
+        style: isCore
+          ? { stroke: aud.color + 'cc', strokeWidth: 2.4 }
+          : { stroke: 'rgba(255,255,255,0.10)', strokeWidth: 1 },
+      };
+    });
+    setEdges([...buildBaseEdges(), ...themeEdges]);
+
+    setTimeout(() => rf.fitView({ padding: 0.16, duration: 600 }), 80);
+  }, [buildBase, buildBaseEdges, themePos, rf]);
+
+  // 回到第 1 層
+  const resetToBase = useCallback(() => {
+    setSelectedAudience(null);
+    setSelectedTheme(null);
+    stopVideo();
+    setNodes(buildBase(null));
+    setEdges(buildBaseEdges());
+    setTimeout(() => rf.fitView({ padding: 0.25, duration: 500 }), 60);
+  }, [buildBase, buildBaseEdges, rf]);
+
+  // 節點點擊分派
+  const onNodeClick = useCallback((evt, node) => {
+    if (node.type === 'center') {
+      resetToBase();
+    } else if (node.type === 'audience') {
+      expandAudience(node.id.replace('aud-', ''));
+    } else if (node.type === 'theme') {
+      const theme = THEMES.find((t) => t.id === node.id.replace('theme-', ''));
+      setSelectedTheme(theme);
+      // 影片改用每主題獨立 iframe（key=theme.id），由 src 的 ?start= 直接定位，免共用播放器
+    }
+  }, [expandAudience, resetToBase]);
+
+  const closeDrawer = useCallback(() => {
+    setSelectedTheme(null);
+    stopVideo();
+  }, []);
+
+  // MiniMap 顏色
+  const minimapNodeColor = useCallback((node) => {
+    if (node.type === 'center') return '#76b900';
+    if (node.type === 'audience') return node.data?.audience?.color || '#888';
+    if (node.type === 'theme') return selectedAudience ? AUD_MAP[selectedAudience].color : '#76b900';
+    return '#555';
+  }, [selectedAudience]);
+
+  const hintText = selectedAudience
+    ? AUD_MAP[selectedAudience].label + ' 視角 · 點任一主題看影片片段，或點其他視角切換'
+    : '你想用誰的視角看這場 keynote？點一個視角開始。';
+
+  return html`
+    <div style=${{ width: '100vw', height: '100vh', position: 'relative' }}>
+      <${ReactFlow}
+        nodes=${nodes}
+        edges=${edges}
+        onNodesChange=${onNodesChange}
+        onEdgesChange=${onEdgesChange}
+        nodeTypes=${nodeTypes}
+        onNodeClick=${onNodeClick}
+        fitView
+        minZoom=${0.2}
+        maxZoom=${2}
+        proOptions=${{ hideAttribution: false }}
+      >
+        <${Background} variant="dots" gap=${26} size=${1.2} color="#1c2738" />
+        <${Controls} showInteractive=${false} />
+        <${MiniMap} nodeColor=${minimapNodeColor} maskColor="rgba(5,6,10,0.7)" pannable zoomable />
+      </${ReactFlow}>
+
+      <!-- 頂部提示 -->
+      <div class="top-hint">${hintText}</div>
+
+      <!-- 左上標題列 -->
+      <div style=${{ position: 'absolute', top: 18, left: 18, zIndex: 20 }}>
+        <div class="title-panel">
+          <div class="tp-main">GTC Taipei 2026 · <span>多受眾導覽地圖</span></div>
+          <div class="tp-sub">從生成式 AI 到 Agentic AI，再到 Physical AI</div>
+          <div class="tp-ops">拖曳平移畫布 · 滾輪／雙指縮放 · 點視角展開心智圖 · 點主題看影片片段</div>
+          ${selectedAudience && html`
+            <button class="reset-btn" onClick=${resetToBase}>
+              <${LocateFixed} size=${14} /> 回到中心 · 重選視角
+            </button>
+          `}
+        </div>
+      </div>
+
+      <!-- 來源小字 -->
+      <div style=${{ position: 'absolute', bottom: 14, right: 14, zIndex: 20 }}>
+        <div class="source-panel">
+          內容依據大會官方逐字稿（transcript.srt）與 2026/6 各媒體公開報導整理；時間戳為逐字稿真實時間（非估計）；影片版權屬原頻道（電腦王阿達 @kocpc 中譯版）。
+          原始影片：<a href="https://www.youtube.com/watch?v=wzxc29ol3R0" target="_blank" rel="noopener">youtube.com/watch?v=wzxc29ol3R0</a>
+        </div>
+      </div>
+
+      <!-- 詳情面板 -->
+      ${selectedTheme && html`<${DrawerPanel}
+        theme=${selectedTheme}
+        audienceKey=${selectedAudience}
+        onClose=${closeDrawer}
+      />`}
+    </div>
+  `;
+}
+
+/* ============================================================
+   詳情面板（第 3 層）
+   ============================================================ */
+function DrawerPanel({ theme, audienceKey, onClose }) {
+  const aKey = audienceKey || 'investor';
+  const aud = AUD_MAP[aKey];
+  const a = theme.audiences[aKey];
+  const Icon = aud.icon;
+
+  return html`
+    <div class="drawer-overlay" onClick=${onClose}></div>
+    <div class="drawer" style=${{ '--accent': aud.color }}>
+      <div class="drawer-head">
+        <div class="dh-time"><${Clock} size=${13} /> ${theme.timestampDisplay}</div>
+        <div class="dh-title">${theme.title}</div>
+        <button class="drawer-close" onClick=${onClose} aria-label="關閉">
+          <${X} size=${18} />
+        </button>
+      </div>
+
+      <div class="drawer-body">
+        <!-- 影片片段 -->
+        ${location.protocol === 'file:'
+          ? html`
+            <a class="yt-wrap" href=${'https://www.youtube.com/watch?v=' + VIDEO_ID + '&t=' + theme.startSec + 's'}
+               target="_blank" rel="noopener"
+               style=${{ textDecoration: 'none', background: 'rgba(118,185,0,0.06)', borderColor: 'rgba(118,185,0,0.35)' }}>
+              <div style=${{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '10px', textAlign: 'center', padding: '18px' }}>
+                <${Play} size=${34} color="#76b900" />
+                <div style=${{ color: '#cfe8a8', fontWeight: 700, fontSize: '15px' }}>在 YouTube 開啟這一段</div>
+                <div style=${{ color: 'var(--txt-2)', fontSize: '12px', lineHeight: 1.5 }}>
+                  ${theme.timestampDisplay}　·　以 file:// 直接開啟無法內嵌播放（YouTube 限制）<br/>點此在 YouTube 開啟並自動定位到此片段
+                </div>
+              </div>
+            </a>`
+          : html`
+            <div class="yt-wrap">
+              <iframe
+                key=${theme.id}
+                src=${'https://www.youtube.com/embed/' + VIDEO_ID + '?start=' + theme.startSec + '&rel=0&modestbranding=1&autoplay=1&playsinline=1'}
+                title=${theme.title}
+                style=${{ width: '100%', height: '100%', border: 0, display: 'block' }}
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div style=${{ fontSize: '12px', color: 'var(--txt-2)', marginBottom: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <${Play} size=${13} color=${aud.color} /> 已跳至此段：${theme.timestampDisplay}
+            </div>`}
+
+        <!-- 這段在講什麼 -->
+        <div class="sect-label"><span class="sl-bar"></span> 這段在講什麼</div>
+        <div class="body-text">${theme.whatIsThis}</div>
+
+        <!-- 關鍵名詞 -->
+        <div class="sect-label"><span class="sl-bar"></span> 關鍵名詞</div>
+        <div class="chips">
+          ${theme.keyTerms.map((k) => html`<span class="chip" key=${k}>${k}</span>`)}
+        </div>
+
+        <!-- 黃仁勳原句 -->
+        <div class="sect-label"><span class="sl-bar"></span> 黃仁勳原句（演講真實發言）</div>
+        <div class="quote-block">
+          <div class="qb-tag"><${Quote} size=${13} /> Jensen Huang · Keynote 逐字稿</div>
+          <div class="qb-text">${theme.anchorQuote}</div>
+        </div>
+
+        <!-- 視角解讀 -->
+        <div class="sect-label" style=${{ color: aud.color }}>
+          <span class="sl-bar"></span> ${aud.label}視角
+        </div>
+        <div class="audience-card" style=${{
+          '--accent': aud.color,
+          '--accent-border': aud.color + '40',
+          '--accent-bg': aud.color + '0d',
+        }}>
+          <div class="ac-head" style=${{ color: aud.color }}>
+            <${Icon} size=${18} color=${aud.color} /> ${aud.label} · ${aud.en}
+          </div>
+
+          <div class="ac-sub">
+            <div class="acs-k">為什麼你要看</div>
+            <div class="acs-v">${a.whyCare}</div>
+          </div>
+
+          <div class="ac-takeaway">
+            <div class="acs-k" style=${{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <${Sparkles} size=${14} color=${aud.color} /> 一句話帶走
+            </div>
+            <div class="acs-v" style=${{ marginTop: '4px', fontWeight: 500, color: 'var(--txt-0)' }}>${a.takeaway}</div>
+          </div>
+
+          <div class="ac-sub">
+            <div class="acs-k" style=${{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <${Lightbulb} size=${14} color=${aud.color} /> 延伸思考
+            </div>
+            <div class="acs-v">${a.extension}</div>
+          </div>
+        </div>
+
+        <div style=${{ height: '20px' }}></div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================================
+   掛載
+   ============================================================ */
+const root = createRoot(document.getElementById('root'));
+root.render(html`
+  <${ReactFlowProvider}>
+    <${App} />
+  </${ReactFlowProvider}>
+`);
+
+// 攔截 YouTube 第三方非關鍵錯誤，避免干擾體驗（不影響功能）
+window.addEventListener('error', () => {});
+</script>
+</body>
+</html>
