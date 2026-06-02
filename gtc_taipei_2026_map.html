@@ -459,6 +459,29 @@
     color: var(--nv-green-soft);
   }
 
+  /* 投資者專屬：關聯公司 / 參考資料 / 聲明 */
+  .comp-groups { display: flex; flex-direction: column; gap: 11px; margin-bottom: 4px; }
+  .comp-group .cg-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 9px; border-radius: 6px;
+    border: 1px solid; margin-bottom: 7px;
+  }
+  .comp-chip {
+    background: rgba(255,255,255,0.04);
+    color: var(--txt-0);
+    cursor: help;
+  }
+  .src-list { margin: 4px 0 8px; padding-left: 18px; }
+  .src-list li { margin: 5px 0; font-size: 12.5px; line-height: 1.4; }
+  .src-list a { color: var(--nv-green-soft); text-decoration: none; }
+  .src-list a:hover { text-decoration: underline; }
+  .disclaimer {
+    font-size: 11px; color: var(--txt-2);
+    border-left: 2px solid var(--border);
+    padding: 4px 0 4px 9px; margin-top: 4px;
+  }
+
   .quote-block {
     background: rgba(118,185,0,0.06);
     border-left: 3px solid var(--nv-green);
@@ -730,6 +753,947 @@ const AUDIENCE_CORE = {
   decisionMaker:   ['agentic', 'ai-factory-dsx', 'token-economics', 'enterprise-toolkit', 'cosmos-physical-ai'],
 };
 
+/* 受眾專屬補充維度（可擴充：目前僅 investor；之後可加 knowledgeWorker / consumer / decisionMaker）
+   investor 每主題：companies[{name,tag,note}]、growth、sources[{title,url}] */
+const AUDIENCE_EXTRA = {
+  "investor": {
+    "opening": {
+      "companies": [
+        {
+          "name": "台積電 (TSMC)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名 Vera Rubin「從 TSMC 開始」，七顆晶片採 3 奈米製程與 CoWoS-R/L 先進封裝，是整條 AI 工廠供應鏈的源頭"
+        },
+        {
+          "name": "鴻海／富士康 (Foxconn)",
+          "tag": "台廠供應鏈",
+          "note": "影片明確點名 Vera CPU 機櫃在 Foxconn 與廣達成形，是 NVIDIA AI 伺服器與機櫃組裝的核心代工夥伴"
+        },
+        {
+          "name": "廣達 (Quanta)",
+          "tag": "台廠供應鏈",
+          "note": "與富士康並列為 Vera CPU 機櫃的製造地，是 AI 伺服器 ODM 主力之一"
+        },
+        {
+          "name": "聯發科 (MediaTek)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名 RTX Spark／N1X 晶片中的 20 核 Grace CPU 由 NVIDIA 與聯發科合作打造，是 AI PC 新平台關鍵夥伴"
+        },
+        {
+          "name": "緯創 (Wistron)",
+          "tag": "台廠供應鏈",
+          "note": "屬黃仁勳所述「150 家台灣供應鏈夥伴」之一，為 AI 伺服器與系統組裝代工夥伴"
+        },
+        {
+          "name": "華碩 (ASUS)",
+          "tag": "終端·品牌",
+          "note": "台灣 OEM／品牌廠，對應 keynote 所述 Vera CPU、RTX Spark 將透過台灣 ODM/OEM 進入市場的終端生態"
+        },
+        {
+          "name": "台達電 (Delta)",
+          "tag": "台廠供應鏈",
+          "note": "AI 工廠對電源與散熱（液冷、匯流排）需求大增，台達電為電源與散熱供應鏈受惠者，屬台灣 AI 工廠生態系一環"
+        },
+        {
+          "name": "GMI Cloud",
+          "tag": "雲端·AI Cloud",
+          "note": "keynote 現場點名「here in Taiwan, GMI」，為台灣 AI 雲新創、NVIDIA NCP 認證夥伴，呼應其扶植小型 AI cloud 的策略"
+        },
+        {
+          "name": "鑫蘊林科 (Linker Vision)",
+          "tag": "軟體·企業夥伴",
+          "note": "開場台灣生態系影片聚焦的四家 AI 新創之一，主攻智慧城市 Physical AI、數位分身與合成資料生成"
+        },
+        {
+          "name": "廣運機械 (KENMEC)",
+          "tag": "台廠供應鏈",
+          "note": "開場影片聚焦新創之一，由自動化老廠轉向 AI 基礎設施，切入資料中心液冷與半導體材料"
+        },
+        {
+          "name": "Red Pill Lab",
+          "tag": "軟體·企業夥伴",
+          "note": "開場影片聚焦新創之一，以 AI 動作捕捉技術切入虛擬世界／虛擬人，呼應 Physical AI 與虛擬世界主軸"
+        }
+      ],
+      "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。黃仁勳將台灣定位為「世界最好的供應鏈生態系」與一切的起點，並表示為 Vera Rubin 打造的供應鏈規模是 Grace Blackwell 的兩倍、組裝一個機櫃時間由兩小時縮短到五分鐘，全程動員約 150 家台灣供應鏈夥伴與數百萬平方英尺廠房。他主張「有用的 AI」已到來、token 成為可獲利的營收單位，因此 AI 工廠需求大增，並稱單一 1GW AI 工廠的資本支出正從 300-500 億美元朝 800-1000 億美元規模成長（公司說法，數字為演講口述）。NVIDIA 強調其護城河在於 CUDA 軟體生態、整機到資料中心的全棧整合與「每瓦吞吐量」優勢，並把 Vera Rubin 全面量產與 Vera 代理式 CPU 視為新的主要成長動能。黃仁勳並引述他人轉述稱台灣年度 GDP 可望成長近 10%（演講中引用、非經查證的官方數據，宜保守看待）。",
+      "sources": [
+        {
+          "title": "Yahoo 股市：黃仁勳「台北是一切的起點」！不只鴻海富士康 台北GTC影片聚焦台灣4家AI新創",
+          "url": "https://tw.stock.yahoo.com/news/%E9%BB%83%E4%BB%81%E5%8B%B3%E5%96%8A%E3%80%8C%E5%8F%B0%E5%8C%97%E5%B0%B1%E6%98%AF%E4%B8%80%E5%88%87%E7%9A%84%E8%B5%B7%E9%BB%9E%E3%80%8D%EF%BC%81%E4%B8%8D%E5%8F%AA%E9%B4%BB%E6%B5%B7%E5%AF%8C%E5%A3%AB%E5%BA%B7-%E5%8F%B0%E5%8C%97gtc%E5%BD%B1%E7%89%87%E8%81%9A%E7%84%A6%E5%8F%B0%E7%81%A34%E5%AE%B6ai%E6%96%B0%E5%89%B5-050215837.html"
+        },
+        {
+          "title": "Domino Theory：World's Best Supply Chain — Jensen Huang Praises Taiwan at NVIDIA GTC Keynote",
+          "url": "https://dominotheory.com/worlds-best-supply-chain-jensen-huang-praises-taiwan-at-nvidia-gtc-keynote/"
+        },
+        {
+          "title": "數位時代 bnext：GMI Cloud × NVIDIA",
+          "url": "https://www.bnext.com.tw/article/91102/gmi-cloud-nvidia-gtc-taipei-ai-cloud-mining-to-gpu"
+        },
+        {
+          "title": "DIGITIMES：NVIDIA Rubin 與台灣供應鏈量產",
+          "url": "https://www.digitimes.com/news/a20260529PD249/nvidia-rubin-jensen-huang-taiwan-supply-chain-production.html"
+        }
+      ]
+    },
+    "agentic": {
+      "companies": [
+        {
+          "name": "GitHub（微軟 Microsoft）",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳以 GitHub 的 commit 數作為 Agentic AI 已到來的證據：2023 約 3 億、2025 約 5 億，2026 前幾個月近乎三倍；GitHub 與 Copilot 隸屬微軟，是 keynote 點名的代理式軟體開發第一個應用。"
+        },
+        {
+          "name": "Anthropic（Claude Code / Claude Sonnet）",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 示範 RTX Spark 在 OpenShell 沙盒中以 Hermes harness 連接雲端 Claude Sonnet 設計房屋，並把 Claude Code 列為可在 NVIDIA agent toolkit 中執行的代理之一。"
+        },
+        {
+          "name": "OpenAI（Codex）",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳點名 Codex 為可在 NVIDIA OpenShell harness 內運行的代理；Cadence 晶片設計超級代理也由 Codex 或 Claude Code 來編排。"
+        },
+        {
+          "name": "Cadence",
+          "tag": "軟體·企業夥伴",
+          "note": "與 NVIDIA 合作打造晶片設計超級代理：以 Codex 編排、ChipStack 跑 RTL 驗證迴圈，搭配 Excelium、Jasper 形式驗證，驗證週期號稱加速逾 40 倍。"
+        },
+        {
+          "name": "Cursor",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 把 Cursor 列為 NVIDIA AI 雲（如 CoreWeave）上的代表性軟體編碼公司客戶，是代理式編碼商業化的指標性新創。"
+        },
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "處理代理式 AI 的 Vera Rubin 平台起點在台積電：3 奈米製程、CoWoS-R/CoWoS-L 封裝、CouPe 矽光子封裝，是支撐 Agentic AI 算力的最上游。"
+        },
+        {
+          "name": "美光 Micron",
+          "tag": "記憶體",
+          "note": "代理需管理龐大上下文與長短期記憶，記憶體頻寬是瓶頸；Vera Rubin 採用的 HBM4 由美光、SK 海力士、三星供應。"
+        },
+        {
+          "name": "鴻海 Foxconn / 廣達 Quanta",
+          "tag": "台廠供應鏈",
+          "note": "keynote 提到 Grace LPX 等系統在鴻海、廣達成形；Vera Rubin 號稱由台灣約 150 家供應鏈夥伴共同完成，是代理式 AI 工廠的組裝主力。"
+        },
+        {
+          "name": "CoreWeave",
+          "tag": "雲端·AI Cloud",
+          "note": "keynote 點名 CoreWeave 已成長至約 500 至 700 億美元規模，並率先建置 Vera Rubin NVL72 工程機櫃，承載 Cursor 等代理式應用的雲端算力。"
+        },
+        {
+          "name": "Red Hat / Canonical",
+          "tag": "軟體·企業夥伴",
+          "note": "NVIDIA OpenShell 為開源代理執行環境（runtime），黃仁勳點名 Red Hat、Canonical、Microsoft 等將廣泛採用，是企業安全執行代理的作業系統層夥伴。"
+        }
+      ],
+      "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 主題演講中的說法與展望，非投資建議，數字以演講口述為準、僅供參考。NVIDIA 主張「代理式 AI（Agentic AI）已經到來」，並以軟體開發為首個爆發場景：全球約 3,000 萬至 4,000 萬名專業軟體開發者、約 3 兆美元年薪規模，因 AI 而把產出推升至近三倍，等同「以 3 兆美元薪資創造約 9 兆美元生產力」，且工程師需求是增加而非減少。NVIDIA 將代理式 AI 定義為下一個十年的運算型態——「每家公司都會是代理公司、每家公司都會有自己的代理作業系統」，並以四件套（模型 Nemotron、harness、工具 CUDA-X、runtime OpenShell）構成企業代理堆疊作為護城河。在硬體面，公司宣稱專為代理式 AI 打造的 Vera Rubin 已進入全面量產，供應鏈規模是 Grace Blackwell 的兩倍、組裝時間由兩小時縮短至五分鐘，並以「算力即營收、每瓦吞吐量即營收（the more you buy, the more you make）」描述 AI 工廠的成長邏輯，單一 1GW 工廠資本支出據其說法正朝 800 億至 1,000 億美元規模邁進。NVIDIA 同時強調 CUDA 生態的相容性與資產壽命，主張其平台 TCO 較低、護城河更深。上述為公司觀點與目標，實際落地與財務結果仍有不確定性。",
+      "sources": [
+        {
+          "title": "三竹 RichClub：黃仁勳 GTC Taipei 2026 主題演講宣告代理式 AI 時代引爆、Vera Rubin 全面量產",
+          "url": "https://www.sinotrade.com.tw/richclub/hotstock/%E9%BB%83%E4%BB%81%E5%8B%B3-GTC-Taipei-2026-%E4%B8%BB%E9%A1%8C%E6%BC%94%E8%AC%9B%E5%AE%A3%E5%91%8A-%E4%BB%A3%E7%90%86%E5%BC%8F-AI-%E6%99%82%E4%BB%A3%E5%BC%95%E7%88%86-Vera-Rubin-%E5%85%A8%E9%9D%A2%E9%87%8F%E7%94%A2-%E6%94%9C%E6%89%8B%E8%81%AF%E7%99%BC%E7%A7%91%E6%8E%A8%E9%A6%96%E6%AC%BE-AI-PC-%E6%99%B6%E7%89%87-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a1d2702660bc5bfd236d6d0"
+        },
+        {
+          "title": "TechNews 科技新報：NVIDIA GTC Taipei 2026 Keynote",
+          "url": "https://technews.tw/2026/06/01/nvidia-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "HK Money Club：黃仁勳 GTC Taipei 2026 演講—AI 邁入代理式時代、Vera Rubin 平台",
+          "url": "https://www.hkmoneyclub.com/2026/06/01/%E9%BB%83%E4%BB%81%E5%8B%B3-gtc-taipei-2026-%E6%BC%94%E8%AC%9B%EF%BC%9Aai-%E9%82%81%E5%85%A5%E4%BB%A3%E7%90%86%E5%BC%8F%E6%99%82%E4%BB%A3%EF%BC%8Cvera-rubin-%E5%B9%B3%E5%8F%B0%E5%8F%8A%E5%85%A9/"
+        },
+        {
+          "title": "SiliconANGLE：Five thoughts on Jensen Huang's GTC Taipei 2026 keynote",
+          "url": "https://siliconangle.com/2026/06/01/five-thoughts-nvidia-ceo-jensen-huangs-gtc-taipei-2026-keynote/"
+        }
+      ]
+    },
+    "cuda-x": {
+      "companies": [
+        {
+          "name": "NVIDIA",
+          "tag": "其他",
+          "note": "CUDA-X 函式庫的擁有者，黃仁勳稱其為 NVIDIA 的「寶藏(treasure)」，是上千個 CUDA-X 函式庫構成的生態鎖定核心。"
+        },
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "CUDA 護城河需有對應硬體承載；cuLitho 運算微影直接加速台積電晶片製造流程，Vera Rubin 七顆晶片亦由台積電 3 奈米製程打造。"
+        },
+        {
+          "name": "益華電腦 Cadence",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名共同打造晶片設計 super agent，NVIDIA 與其密切合作把 Cadence 模擬與驗證工具加速到 CUDA 上，是 CUDA-X 工具化給代理人的代表案例。"
+        },
+        {
+          "name": "CrowdStrike",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳列為以 NVIDIA agentic 工具組(含 CUDA-X 工具)打造企業代理人的軟體夥伴之一。"
+        },
+        {
+          "name": "Palantir",
+          "tag": "軟體·企業夥伴",
+          "note": "演講中點名的企業 AI 代理人夥伴，藉 Nemo/CUDA-X 工具鏈在自身工作流中部署代理人。"
+        },
+        {
+          "name": "SAP",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 列名企業軟體夥伴，黃仁勳主張代理人浪潮對企業軟體是機會而非顛覆，將串接 NVIDIA 工具與函式庫。"
+        },
+        {
+          "name": "ServiceNow",
+          "tag": "軟體·企業夥伴",
+          "note": "演講點名的企業代理人夥伴之一，利用 NVIDIA agentic toolkit 與 CUDA-X 工具建構服務型代理人。"
+        },
+        {
+          "name": "Red Hat",
+          "tag": "軟體·企業夥伴",
+          "note": "被點名為 NVIDIA open shell(代理人 runtime)的採用者之一，與 CUDA-X 工具同屬企業代理人作業系統堆疊。"
+        },
+        {
+          "name": "AMD",
+          "tag": "競爭對手",
+          "note": "正面競爭者；其 GPU 與軟體堆疊(如 ROCm)須設法繞過 CUDA 生態，CUDA-X 的開發者鎖定效應是 NVIDIA 對其的護城河。"
+        },
+        {
+          "name": "雲端業者與自研晶片陣營(如 Google TPU、Amazon Trainium 等)",
+          "tag": "競爭對手",
+          "note": "以自研 AI 晶片試圖降低對 NVIDIA 依賴，但須繞過上千個 CUDA-X 函式庫與既有開發者生態，這正是 keynote 強調的護城河所在。"
+        }
+      ],
+      "growth": "根據黃仁勳在 GTC Taipei 2026 演講的說法(非投資建議)，他將 CUDA-X 函式庫稱為 NVIDIA 的「寶藏(treasure)」，並指出 20 年來累積上千個 CUDA-X 函式庫(如 cuLitho 運算微影、cuOpt 決策最佳化、cuDSS 稀疏求解、AIQ 深度研究、Aerial、Warp、Parabricks 等)構成跨各科學與工程領域的開發者鎖定效應。NVIDIA 的成長敘事是：在代理式 AI(agentic AI)時代，這些函式庫不再只給人類使用，而是成為「給代理人的工具」，代理人數量遠超人類，因此會比以往使用更多工具，反而擴大 CUDA-X 的需求面。公司主張這對軟體業是「機會而非被顛覆」，並以與 Cadence 共建晶片設計 super agent、推出 Neotron(Nemo)開放模型與企業 agentic toolkit 作為落地路徑。護城河論點在於：競爭者(AMD、自研晶片)的硬體即使追上，仍須繞過龐大的 CUDA-X 軟體生態與開發者習慣，遷移成本構成防禦縱深。以上市場規模、roadmap 與生態優勢均為 NVIDIA 演講中的公司觀點，實際商業成果仍待後續財報與第三方驗證，本文不構成投資建議。",
+      "sources": [
+        {
+          "title": "［中譯］黃仁勳 GTC Taipei 演講全紀錄（電腦王阿達 @kocpc）",
+          "url": "https://www.youtube.com/watch?v=wzxc29ol3R0"
+        },
+        {
+          "title": "TechNews 科技新報：NVIDIA GTC Taipei 2026 Keynote",
+          "url": "https://technews.tw/2026/06/01/nvidia-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "SiliconANGLE：Five thoughts on Jensen Huang's GTC Taipei 2026 keynote",
+          "url": "https://siliconangle.com/2026/06/01/five-thoughts-nvidia-ceo-jensen-huangs-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "經濟日報：整理包／黃仁勳演講重點一次看",
+          "url": "https://money.udn.com/money/story/5612/9538995"
+        }
+      ]
+    },
+    "vera-rubin-intro": {
+      "companies": [
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "keynote 影片明言 Vera Rubin「starts at TSMC」，7 顆晶片以 3 奈米製程、CoWoS-R/CoWoS-L 先進封裝製造，是整套系統的製造起點"
+        },
+        {
+          "name": "美光 Micron",
+          "tag": "記憶體",
+          "note": "演講點名 Vera Rubin 運算板採用的 HBM4 高頻寬記憶體供應商之一（與 SK Hynix、三星並列）"
+        },
+        {
+          "name": "SK 海力士 SK Hynix",
+          "tag": "記憶體",
+          "note": "keynote 列為 Vera Rubin HBM4 記憶體三大供應商之一，直接受惠於系統級記憶體用量提升"
+        },
+        {
+          "name": "三星電子 Samsung",
+          "tag": "記憶體",
+          "note": "演講提及的 HBM4 供應商之一，隨 Vera Rubin 量產帶動高階記憶體需求"
+        },
+        {
+          "name": "鴻海／富士康 Foxconn",
+          "tag": "台廠供應鏈",
+          "note": "黃仁勳長期感謝的台廠生態系夥伴，承接 Vera Rubin NVL72 多機櫃系統的伺服器與機櫃級組裝（AI factory 製造），是客單價由晶片變整套系統的主要組裝受惠者"
+        },
+        {
+          "name": "廣達 Quanta",
+          "tag": "台廠供應鏈",
+          "note": "演講點名的生態系夥伴，AI 伺服器/系統代工廠，受惠於 NVL72 機櫃級整機出貨價值放大"
+        },
+        {
+          "name": "微星 MSI",
+          "tag": "台廠供應鏈",
+          "note": "黃仁勳在台上展示 RTX Spark 筆電/桌機時直接點名 MSI，代表台廠 PC 品牌與系統整合也納入新產品線"
+        },
+        {
+          "name": "聯發科 MediaTek",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的合作夥伴，與 NVIDIA 在 N1X/AI PC 晶片合作；屬 NVIDIA 由純 GPU 走向系統與終端整合的台廠夥伴"
+        },
+        {
+          "name": "鎧俠／Cadence",
+          "tag": "軟體·企業夥伴",
+          "note": "演講展示與 Cadence 共建晶片設計驗證 AI agent（ChipStack、Excelium、Jasper），驗證週期加速逾 40 倍，屬系統設計工具鏈夥伴"
+        },
+        {
+          "name": "微軟 Microsoft",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 多次點名，與 NVIDIA 共同「重新發明 PC」推出三款 Windows 機種（RTX Spark），代表系統向 PC 終端延伸的軟體與作業系統夥伴"
+        }
+      ],
+      "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。NVIDIA 表示 Vera Rubin NVL72 是首款專為代理式 AI（Agentic AI）打造的「多機櫃 pod 等級」系統，且已進入全面量產（full production），強調公司正從賣 GPU 晶片轉為交付整套 AI factory 系統，使單一機櫃整合運算板（6 兆顆電晶體、逾 18,000 個零件）、ConnectX-9 SuperNIC、Bluefield-4 DPU、NVLink 交換機與液冷匯流排等，客單價由晶片放大到整套系統。NVIDIA 將此供應鏈製造稱為「橫跨整條供應鏈的奇蹟」，並表示一切始於台積電與台灣供應鏈，是其護城河的一部分。公司另以軟體生態擴張佐證需求：宣稱 CUDA 相關開發提交數在 2026 年初已近三倍成長，並把全球 PC 產業「100% 加入」重新發明 PC 視為新的成長曲線。公司同時提出每代架構皆推出桌機、筆電、工作站的產品 roadmap（搭配 Nemotron 3/4/5 持續迭代），描繪長期成長路徑。上述規模與量產時程屬公司展望，實際落地與數字仍有不確定性，宜保守看待。",
+      "sources": [
+        {
+          "title": "DIGITIMES：Rubin & Taiwan supply chain production",
+          "url": "https://www.digitimes.com/news/a20260529PD249/nvidia-rubin-jensen-huang-taiwan-supply-chain-production.html"
+        },
+        {
+          "title": "TechTimes：Vera Rubin ramp & Taiwan supply chain",
+          "url": "https://www.techtimes.com/articles/317079/20260524/nvidia-computex-2026-jensen-huang-flies-tsmc-vera-rubin-ramp-strains-taiwan-supply-chain.htm"
+        },
+        {
+          "title": "Domino Theory：World's best supply chain — Jensen Huang praises Taiwan at NVIDIA GTC keynote",
+          "url": "https://dominotheory.com/worlds-best-supply-chain-jensen-huang-praises-taiwan-at-nvidia-gtc-keynote/"
+        },
+        {
+          "title": "工商時報：輝達供應鏈背板來了",
+          "url": "https://www.ctee.com.tw/news/20260601700800-430502"
+        }
+      ]
+    },
+    "ai-factory-dsx": {
+      "companies": [
+        {
+          "name": "達梭系統 Dassault Systèmes",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名的 DSX 設計與數位孿生夥伴，與 QCT、和碩合作，在 Omniverse 中為 AI 工廠建模、模擬與規劃，是把實體工廠虛擬化的核心軟體之一。"
+        },
+        {
+          "name": "廣達雲達科技 QCT (Quanta Cloud Technology)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的 DSX 系統製造夥伴，與達梭、Cadence、PTC、Siemens 合作打造 AI 工廠藍圖，是把 NVIDIA 機櫃級設計落地量產的台廠主力之一。"
+        },
+        {
+          "name": "和碩 Pegatron",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的 DSX 系統製造與數位孿生夥伴，與達梭系統合作以 Omniverse 規劃 AI 工廠產線，受惠於 AI 工廠機櫃與伺服器代工需求。"
+        },
+        {
+          "name": "台達電 Delta",
+          "tag": "台廠供應鏈",
+          "note": "AI 工廠的電力與散熱關鍵供應商（電源、配電、液冷），隨每座 GW 級 AI 工廠資本支出上升而受惠；屬供應鏈角色，演講主軸強調電力與散熱是 AI 工廠瓶頸。"
+        },
+        {
+          "name": "CoreWeave",
+          "tag": "雲端·AI Cloud",
+          "note": "NVIDIA 點名的 AI cloud（neocloud）夥伴，採用 DSX 架構建置 GPU 雲，是 AI 工廠生態系下游算力租賃的代表業者之一。"
+        },
+        {
+          "name": "Nebius",
+          "tag": "雲端·AI Cloud",
+          "note": "DSX 生態系列名的 AI cloud 夥伴，提供 NVIDIA GPU 雲端算力，受惠於 AI 工廠標準化建置帶動的雲端擴張。"
+        },
+        {
+          "name": "Nscale",
+          "tag": "雲端·AI Cloud",
+          "note": "DSX 生態系列名的 AI cloud 夥伴，專注大規模 GPU 叢集與 AI 工廠部署。"
+        },
+        {
+          "name": "GMI Cloud",
+          "tag": "雲端·AI Cloud",
+          "note": "黃仁勳 keynote 親口點名「在台灣，這裡的 GMI」的 NVIDIA Reference Platform Cloud Partner，台灣本土 GPU 雲業者；其關聯母公司鴻翊國際在演講後股價反應強烈。"
+        },
+        {
+          "name": "緯穎 Wiwynn / 緯創 Wistron",
+          "tag": "台廠供應鏈",
+          "note": "DSX 系統製造夥伴名單中的台廠，承接 AI 工廠機櫃與伺服器代工，受惠於 GW 級資料中心建置潮。"
+        },
+        {
+          "name": "Emerald AI",
+          "tag": "其他",
+          "note": "與 Silicon Valley Power 合作，在 DSX 框架下示範「對電網友善」(grid-responsive) 的 AI 工廠試點，回應演講中電力供應為 AI 工廠關鍵限制的主題。"
+        }
+      ],
+      "growth": "根據 NVIDIA 在這場演講的說法（非投資建議），DSX 被定位為「打造 AI 工廠的公式」，把過去客製化的資料中心建置標準化、模組化，讓系統廠、軟體商與 AI cloud 業者能依同一藍圖快速複製產能。NVIDIA 強調 AI 工廠的競爭已從單一晶片延伸到整座工廠的設計、電力、散熱與營運（DSX OS），並以 Dassault、QCT、和碩等夥伴在 Omniverse 中先做數位孿生再實體興建，作為縮短建廠時間的護城河。公司方面描繪 AI 工廠走向 GW 級規模，並提及每 GW 投資金額顯著放大的趨勢（演講提及的 100GW 與每 GW 數十億至上看百億美元等級屬 NVIDIA 願景數字，具體金額請保守看待）。對台廠而言，NVIDIA 的敘事是供應鏈深度綁定：從系統代工、電力散熱到本土 AI cloud（如被點名的 GMI）皆被納入生態系。以上為 NVIDIA 與相關公司在演講中的展望與說法，存在執行與總體環境風險，非投資建議。",
+      "sources": [
+        {
+          "title": "GamesBeat：NVIDIA DSX gives infrastructure builds a formula to create AI factories",
+          "url": "https://gamesbeat.com/nvidia-dsx-gives-infrastructure-builds-a-formula-to-create-ai-factories/"
+        },
+        {
+          "title": "數位時代 bnext：GMI Cloud × NVIDIA（黃仁勳 keynote 點名）",
+          "url": "https://www.bnext.com.tw/article/91102/gmi-cloud-nvidia-gtc-taipei-ai-cloud-mining-to-gpu"
+        },
+        {
+          "title": "NVIDIA Blog：GTC Taipei / COMPUTEX 2026 News",
+          "url": "https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/"
+        },
+        {
+          "title": "工商時報：輝達供應鏈背板來了",
+          "url": "https://www.ctee.com.tw/news/20260601700800-430502"
+        }
+      ]
+    },
+    "token-economics": {
+      "companies": [
+        {
+          "name": "NVIDIA 輝達",
+          "tag": "其他",
+          "note": "Token 經濟學論述主角，主張運算即營收、AI 工廠每瓦產出的 token 越多越賺，GPU 從成本中心轉為獲利引擎，是整套敘事與 Vera Rubin roadmap 的提出者。"
+        },
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "Vera Rubin GPU 與 Vera CPU 先進製程代工核心，運算需求放大直接拉動晶圓與 CoWoS 先進封裝產能，是台廠供應鏈最上游受惠者。"
+        },
+        {
+          "name": "鴻海 Foxconn",
+          "tag": "台廠供應鏈",
+          "note": "AI 伺服器與整櫃式系統（NVL72）組裝主力，keynote 點名的 150 家台灣供應鏈夥伴之一，運算規模放大直接帶動代工出貨。"
+        },
+        {
+          "name": "廣達 Quanta",
+          "tag": "台廠供應鏈",
+          "note": "AI 伺服器與整機櫃系統組裝大廠，Vera Rubin 世代供應鏈規模約為 Grace Blackwell 兩倍，組裝量隨之擴張。"
+        },
+        {
+          "name": "台達電 Delta",
+          "tag": "台廠供應鏈",
+          "note": "AI 工廠電源與電力轉換供應商；Token 經濟學強調每瓦營收，電源效率與供電方案成為整櫃升級戰的關鍵環節。"
+        },
+        {
+          "name": "奇鋐 AVC／雙鴻 Auras",
+          "tag": "台廠供應鏈",
+          "note": "伺服器散熱（含液冷）供應商，高功耗 Rubin 機櫃推升散熱需求，屬 keynote 提到的散熱升級受惠族群。"
+        },
+        {
+          "name": "台光電／欣興／臻鼎-KY",
+          "tag": "台廠供應鏈",
+          "note": "高階 PCB 與載板供應鏈，AI 伺服器整櫃化帶動 PCB 用量與層數升級，為背板供應鏈一環。"
+        },
+        {
+          "name": "Groq",
+          "tag": "競爭對手",
+          "note": "LPU 推理晶片廠商；在 Token 經濟學脈絡中以解耦式推理（disaggregated inference）搭配 Vera Rubin 被提及，是推理運算市場的另一路線與比較對象，晶片由三星代工。"
+        },
+        {
+          "name": "三星 Samsung",
+          "tag": "其他",
+          "note": "Groq LPU 晶片代工方，在推理運算供應鏈中被點名，屬非台廠的關聯製造夥伴。"
+        }
+      ],
+      "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。NVIDIA 主張「運算即營收、買越多賺越多」：以同樣 1GW 功耗的 AI 工廠為例，公司宣稱年營收可從 Blackwell 世代的約 300 億美元，提升至 Vera Rubin 世代約 1,500 億美元（約 5 倍），若再搭配解耦式推理更上看約 3,000 億美元（約 10 倍）——這些為 NVIDIA 提出的情境性數字，實際結果未必如此。NVIDIA 並表示 Vera Rubin 供應鏈規模約為 Grace Blackwell 的兩倍，且有超過 150 家台灣供應鏈夥伴參與，將算力擴張的成長直接外溢到台廠的晶圓、封裝、組裝、散熱、電源、PCB 與連接器等環節。公司將護城河定位在 token 產出效率（每瓦、每元的 token 數）與 roadmap 的世代式躍升上。上述市場規模與倍數皆為公司展望，數字具不確定性，投資人應自行查證並審慎評估。",
+      "sources": [
+        {
+          "title": "動區動趨 BlockTempo：黃仁勳 GTC Taipei 2026 Token 經濟學",
+          "url": "https://www.blocktempo.com/jensen-huang-gtc-taipei-2026-token-economy/"
+        },
+        {
+          "title": "工商時報：輝達供應鏈背板來了（台廠受惠名單）",
+          "url": "https://www.ctee.com.tw/news/20260601700800-430502"
+        },
+        {
+          "title": "經濟日報：整理包／黃仁勳演講重點一次看",
+          "url": "https://money.udn.com/money/story/5612/9538995"
+        },
+        {
+          "title": "DIGITIMES：NVIDIA Rubin 與台灣供應鏈量產",
+          "url": "https://www.digitimes.com/news/a20260529PD249/nvidia-rubin-jensen-huang-taiwan-supply-chain-production.html"
+        }
+      ]
+    },
+    "vera-rubin-production": {
+      "companies": [
+        {
+          "name": "台積電 (TSMC)",
+          "tag": "台廠供應鏈",
+          "note": "Vera Rubin 採用其 3nm 製程與 CoWoS-R/L 先進封裝，是整個量產鏈的核心代工與封裝來源，keynote 點名。"
+        },
+        {
+          "name": "鴻海 (Foxconn)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的系統組裝與機櫃整合夥伴，承接 Vera Rubin AI 伺服器/機櫃量產。"
+        },
+        {
+          "name": "廣達 (Quanta)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的 AI 伺服器與機櫃代工夥伴，受惠於 Rubin 機櫃出貨放量。"
+        },
+        {
+          "name": "緯創 (Wistron)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名的伺服器代工夥伴，參與 Vera Rubin engineering rack 與量產供應。"
+        },
+        {
+          "name": "美光 (Micron)",
+          "tag": "記憶體",
+          "note": "HBM4 供應商之一，Vera Rubin 高頻寬記憶體需求的關鍵來源，keynote 提及。"
+        },
+        {
+          "name": "SK 海力士 (SK Hynix)",
+          "tag": "記憶體",
+          "note": "HBM4 主力供應商，提供 Vera Rubin 所需高頻寬記憶體，keynote 提及。"
+        },
+        {
+          "name": "三星 (Samsung)",
+          "tag": "記憶體",
+          "note": "HBM4 供應商之一，參與 Vera Rubin 記憶體供應，keynote 提及。"
+        },
+        {
+          "name": "Microsoft",
+          "tag": "雲端·AI Cloud",
+          "note": "keynote 展示其 Vera Rubin engineering rack，是早期雲端部署與採購夥伴。"
+        },
+        {
+          "name": "Dell",
+          "tag": "終端·品牌",
+          "note": "keynote 展示其 Vera Rubin engineering rack，整機系統與企業出貨夥伴。"
+        },
+        {
+          "name": "CoreWeave",
+          "tag": "雲端·AI Cloud",
+          "note": "keynote 點名展示 engineering rack 的 AI 雲端業者，Rubin 平台早期採用者。"
+        }
+      ],
+      "growth": "以下為 NVIDIA / 黃仁勳於 GTC Taipei 2026 演講中的說法與展望，非投資建議。NVIDIA 表示 Vera Rubin 已進入全面量產，其供應鏈規模約為前代 Grace Blackwell 的兩倍，並由約 150 家台灣供應鏈夥伴共同支撐製造、封裝與系統組裝。黃仁勳強調此等級的複雜度「只有台灣能做得到」，並稱台灣為「全世界最好的供應鏈生態系」。NVIDIA 描述每座 Vera Rubin 機櫃整合上百萬個零件、採無線纜 (cable-free) 設計可在數分鐘內完成組裝，藉以拉高量產速度與良率，構成其在代理式 AI (agentic AI) 浪潮下的供給護城河。上述供應鏈倍增與量產規模均為公司於演講中提出的數字與敘述，實際出貨、營收與市場規模仍需以官方財報與後續揭露為準，投資人應自行查證。",
+      "sources": [
+        {
+          "title": "DIGITIMES：Rubin & Taiwan supply chain",
+          "url": "https://www.digitimes.com/news/a20260529PD249/nvidia-rubin-jensen-huang-taiwan-supply-chain-production.html"
+        },
+        {
+          "title": "Domino Theory：Jensen praises Taiwan supply chain (Vera Rubin、150 家夥伴、2 倍 Grace Blackwell)",
+          "url": "https://dominotheory.com/worlds-best-supply-chain-jensen-huang-praises-taiwan-at-nvidia-gtc-keynote/"
+        },
+        {
+          "title": "TechTimes：Vera Rubin ramp & Taiwan supply chain",
+          "url": "https://www.techtimes.com/articles/317079/20260524/nvidia-computex-2026-jensen-huang-flies-tsmc-vera-rubin-ramp-strains-taiwan-supply-chain.htm"
+        },
+        {
+          "title": "工商時報：輝達供應鏈背板來了",
+          "url": "https://www.ctee.com.tw/news/20260601700800-430502"
+        }
+      ]
+    },
+    "vera-cpu": {
+      "companies": [
+        {
+          "name": "輝達 NVIDIA",
+          "tag": "其他",
+          "note": "Vera CPU 與內部 Olympus 自研核心的設計者，主打「為 Agent 而生」的全新 CPU 架構，定位為公司新的主要成長驅動"
+        },
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "keynote 提到 Vera Rubin 採 3 奈米製程、6 兆顆電晶體共封裝，Vera CPU 屬同一系統，先進製程由台積電代工"
+        },
+        {
+          "name": "台灣 ODM/OEM（如鴻海、廣達、緯創、英業達等）",
+          "tag": "台廠供應鏈",
+          "note": "黃仁勳明言 Vera CPU「與台灣的 ODM、電腦製造商與所有 OEM 一起進入市場」，是 Vera 量產與系統組裝的供應鏈主力"
+        },
+        {
+          "name": "紐約證交所 NYSE",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名與 NYSE（總裁 Lynn Martin）合作，用 Vera CPU 跑即時串流處理（telemetry），宣稱效能達 x86 的約 6 倍，為旗艦客戶案例"
+        },
+        {
+          "name": "戴爾 Dell",
+          "tag": "終端·品牌",
+          "note": "演講中提到 Dell 與 CoreWeave 完成 Vera Rubin NVL72 工程機架，屬 Vera 系統的伺服器/部署夥伴"
+        },
+        {
+          "name": "CoreWeave",
+          "tag": "雲端·AI Cloud",
+          "note": "與 Dell 並列為 Vera Rubin NVL72 工程機架的早期落地夥伴，AI 雲端業者導入 Vera CPU 機架"
+        },
+        {
+          "name": "益華 Cadence",
+          "tag": "軟體·企業夥伴",
+          "note": "與 NVIDIA 共建晶片設計 super agent（Chipstack + Excelium/Jasper），是「CPU for agents」新工作負載的代表性企業夥伴與早期採用者"
+        },
+        {
+          "name": "英特爾 Intel / 超微 AMD（x86 陣營）",
+          "tag": "競爭對手",
+          "note": "Vera 全程以 x86 為對標對象，宣稱單執行緒效能、記憶體延遲（低約 40%）、agentic sandbox（約 1.8 倍）均勝出，直接挑戰資料中心 x86 CPU 地盤"
+        },
+        {
+          "name": "Arm",
+          "tag": "其他",
+          "note": "Vera 的 Olympus 自研核心採 Arm 指令集生態（NVIDIA 自研核心、非聯發科），對應其資料中心 CPU 與 PC（N1X）布局的底層架構授權方"
+        },
+        {
+          "name": "Red Hat / Canonical / Microsoft",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳點名其 OpenShell 開源 runtime 將被 Red Hat、Canonical、Microsoft 等廣泛採用，構成 Vera/agent 作業系統的軟體生態夥伴"
+        }
+      ],
+      "growth": "根據 NVIDIA 在這場 GTC Taipei 2026 keynote 的說法（以下為公司自述，非投資建議）：黃仁勳將 Vera CPU 定位為公司「新的主要成長驅動」，主張 agent 工作負載是一個「過去不存在的全新市場」，並斷言因為「agent 數量會遠多於人類、而且 agent 很沒耐心」，這個 CPU-for-agents 市場「肯定會比上一個（為人類設計的 CPU）市場更大」。他並強調護城河來自生態慣性：NVIDIA 已售出數百萬顆 Grace、宣稱自己已是全球最大 CPU 製造商之一，每家雲端與企業都已為 Grace 完成軟體最佳化，Vera 將沿著 Vera Rubin 出貨而成為「全球最被最佳化的 agentic CPU」。供應鏈面，他點名與台灣 ODM、電腦製造商與 OEM 一起進入市場，Vera Rubin 系統有約 150 家供應鏈夥伴、Vera Rubin 已進入全量產且規模約為 Grace Blackwell 的兩倍。技術賣點上 NVIDIA 宣稱 Olympus 核心達全球最高 IPC（每時脈 10 條指令）、3.6 TB/s 內部 fabric、相較 x86 記憶體延遲低約 40%、agentic sandbox 效能約 1.8 倍、SQL 與即時串流分別約 3 倍與 6 倍，並表示有「相當可觀的 roadmap」即將推出。上述數字與市場規模均為 NVIDIA 演講中的單方說法，未經第三方驗證，投資前請自行查證。",
+      "sources": [
+        {
+          "title": "動區動趨 BlockTempo：Vera Rubin / Agentic CPU / RTX Spark",
+          "url": "https://www.blocktempo.com/jensen-huang-gtc2026-vera-rubin-agentic-cpu-rtx-spark/"
+        },
+        {
+          "title": "NewsX：NVIDIA introduces RTX Spark, Agentic AI, Vera Rubin chip and future plans",
+          "url": "https://www.newsx.com/tech-and-auto/nvidia-introduces-new-ai-technologies-rtx-spark-agentic-ai-vera-rubin-chip-and-more-check-details-and-future-plans-229010/"
+        },
+        {
+          "title": "經濟日報：整理包／黃仁勳演講重點一次看",
+          "url": "https://money.udn.com/money/story/5612/9538995"
+        },
+        {
+          "title": "TechTimes：Vera Rubin ramp & Taiwan supply chain",
+          "url": "https://www.techtimes.com/articles/317079/20260524/nvidia-computex-2026-jensen-huang-flies-tsmc-vera-rubin-ramp-strains-taiwan-supply-chain.htm"
+        }
+      ]
+    },
+    "enterprise-toolkit": {
+      "companies": [
+        {
+          "name": "Cadence (益華電腦)",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名核心夥伴，與 NVIDIA 共同打造晶片設計『超級代理（super agent）』，以 Codex 編排、Cadence ChipStack/Xcelium/Jasper 工具搭配 Nemotron，將驗證週期從數週縮短到數小時、號稱快逾 40 倍。"
+        },
+        {
+          "name": "CrowdStrike",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳點名的企業 AI 代理夥伴之一；屬資安領域，被列為運用 NVIDIA 企業 AI 工具組打造自家代理（agents）的企業軟體公司。"
+        },
+        {
+          "name": "Palantir",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名的企業軟體夥伴之一，被歸為將以代理創造市場機會而非被代理顛覆的合作對象。"
+        },
+        {
+          "name": "SAP",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳點名的企業應用軟體夥伴，屬於運用 NVIDIA 代理工具組在自家工作流中建構 AI 代理的陣營。"
+        },
+        {
+          "name": "ServiceNow",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名的企業軟體夥伴，被列為以 NVIDIA 企業 AI 工具組打造代理服務的代表公司之一。"
+        },
+        {
+          "name": "Red Hat",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳點名為 NVIDIA OpenShell（開源代理執行環境/runtime）的採用者，協助企業在地端、雲端或裝置上安全運行代理。"
+        },
+        {
+          "name": "Canonical",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名為 OpenShell 採用者之一（Ubuntu 母公司），擴大開源代理執行環境在企業與雲端的落地。"
+        },
+        {
+          "name": "Microsoft",
+          "tag": "雲端·AI Cloud",
+          "note": "被點名為 OpenShell 採用者；同時與 NVIDIA 在新一代 PC（代理式 AI PC）合作，是企業代理在雲端與裝置端落地的關鍵夥伴。"
+        },
+        {
+          "name": "OpenAI / Anthropic（Codex、Claude Code 等代理）",
+          "tag": "軟體·企業夥伴",
+          "note": "黃仁勳在示範中提到可在 OpenShell harness 內運行 Codex、Claude Code 等代理；這些前沿模型/代理是工具組『harness 編排模型』模式的實際範例（依 keynote 描述）。"
+        }
+      ],
+      "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 主題演講中的說法與展望，非投資建議。黃仁勳主張『代理（agents）』是未來十年的運算模式，並斷言每一家公司都會是代理公司、每家公司內部都會運行代理，因此每家企業都需要『模型＋harness 編排＋工具/技能＋runtime』四要素，這正是 NVIDIA 企業 AI 工具組（含開源模型 Nemotron、開源執行環境 OpenShell）的定位。他發布的 Nemotron 3 Ultra 採用 SSM 狀態空間模型與 MoE 混合架構，宣稱比前一代快 5 倍、推論成本低約 30%，且模型、訓練腳本與資料全面開源，目標是降低企業自建專屬代理的門檻（並透露已在開發 Nemotron 4）。他以 Cadence 晶片設計超級代理為旗艦案例，稱 NVIDIA 自身將『雇用數十萬個 Cadence 超級代理』加速研發，驗證效率較傳統流程提升逾 40 倍。黃仁勳並反駁外界認為代理會顛覆企業軟體市場的看法，主張代理反而會為 SAP、ServiceNow、CrowdStrike、Palantir 等夥伴創造『史上最大的機會』，並將此工具組視為 NVIDIA 自身的成長動能；上述數字與市場判斷均為公司宣稱，實際表現仍待驗證。",
+      "sources": [
+        {
+          "title": "ExplainX：NVIDIA COMPUTEX 2026 Nemotron 3 Ultra 完整回顧",
+          "url": "https://www.explainx.ai/blog/nvidia-computex-2026-nemotron-3-ultra-complete-recap"
+        },
+        {
+          "title": "TechNews 科技新報：NVIDIA GTC Taipei 2026 Keynote",
+          "url": "https://technews.tw/2026/06/01/nvidia-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "SiliconANGLE：Five thoughts on Jensen Huang's GTC Taipei 2026 keynote",
+          "url": "https://siliconangle.com/2026/06/01/five-thoughts-nvidia-ceo-jensen-huangs-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "經濟日報：整理包／黃仁勳演講重點一次看",
+          "url": "https://money.udn.com/money/story/5612/9538995"
+        }
+      ]
+    },
+    "rtx-spark": {
+      "companies": [
+        {
+          "name": "聯發科 (MediaTek)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名：RTX Spark/N1X 內的 20 核 Grace CPU 由 NVIDIA 與聯發科合作打造，是這顆 AI PC 晶片的 CPU 核心夥伴。"
+        },
+        {
+          "name": "台積電 (TSMC)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名：RTX Spark 採用台積電 3 奈米製程，整顆晶片約 700 億顆電晶體，由台積電代工製造。"
+        },
+        {
+          "name": "微軟 (Microsoft)",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名：與 NVIDIA 合作三年共同重新發明 PC，提供「為代理人打造的 Windows 平台」，台機新 PC 維持 100% Windows 相容。"
+        },
+        {
+          "name": "Adobe",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名：重構 Photoshop、Premiere 核心架構並為 RTX Spark 釋出，速度提升至兩倍，並透過 MCP server 支援代理人互動。"
+        },
+        {
+          "name": "微星 (MSI)",
+          "tag": "終端·品牌",
+          "note": "keynote 點名：黃仁勳展示的 RTX Spark 桌機由微星打造，為新 PC 產品線的 OEM/品牌夥伴之一。"
+        },
+        {
+          "name": "PC OEM/ODM 廠（如華碩、宏碁、廣達、仁寶等）",
+          "tag": "台廠供應鏈",
+          "note": "keynote 稱「100% 全球 PC 產業都加入」共同打造 RTX Spark 筆電、桌機與工作站；台灣為 PC 組裝與代工重鎮，為主要受惠生態系。"
+        },
+        {
+          "name": "Anthropic (Claude)",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 設計示範中，本機代理人透過 Hermes harness 連接雲端的 Claude Sonnet 完成住宅設計工作流程。"
+        },
+        {
+          "name": "Arm",
+          "tag": "其他",
+          "note": "N1X 為 Arm 架構的 Windows PC 晶片（聯發科設計的 Grace CPU 採 Arm 指令集），Arm 生態系為此 PC 重塑的底層架構基礎。"
+        },
+        {
+          "name": "高通 (Qualcomm)",
+          "tag": "競爭對手",
+          "note": "在 Arm/Windows on Arm 的 AI PC 市場與 NVIDIA N1X 直接競爭（Snapdragon X 系列）。"
+        },
+        {
+          "name": "英特爾 / 超微 (Intel / AMD)",
+          "tag": "競爭對手",
+          "note": "傳統 x86 PC 處理器與 GPU 供應商，在 PC 與 AI PC 市場與 RTX Spark 平台形成競爭。"
+        }
+      ],
+      "growth": "根據 NVIDIA 在本場演講的說法（為公司願景，非投資建議）：黃仁勳將 RTX Spark 定位為「40 年來首次重新發明 PC」，並強調「100% 全球 PC 產業都已加入」，桌機、筆電與工作站三條產品線全面展開，意在打造一個全新且每代都會更新的產品家族。NVIDIA 主張其護城河在於完整軟體堆疊（100% CUDA、Tensor Core 與 NVIDIA AI），加上與微軟深度優化使新機維持 100% Windows 相容、同時原生執行代理人 (agent)。公司並提出本機 AI 模型的 roadmap（Nemotron 3 Ultra 到後續 4、5、6 代），主張裝置會「越來越聰明」，並描繪「家用 AI 超級電腦」如同家庭劇院般普及的長期願景。供應鏈面，NVIDIA 點名與台積電 3nm、聯發科 Grace CPU 等台灣夥伴合作，凸顯台廠在此新 PC 世代的角色。上述市場規模與普及速度均屬 NVIDIA 的展望敘事，實際採用與營收貢獻仍待驗證。",
+      "sources": [
+        {
+          "title": "PCWorld：RTX Spark reinvents laptops for agentic AI",
+          "url": "https://www.pcworld.com/article/3152460/nvidia-rtx-spark-chip-reinvents-laptops-for-agentic-ai.html"
+        },
+        {
+          "title": "Yahoo 新聞：黃仁勳發表 N1X 晶片 攜手台積電聯發科 AI 代理進駐 PC",
+          "url": "https://tw.news.yahoo.com/%E9%BB%83%E4%BB%81%E5%8B%B3%E7%99%BC%E8%A1%A8n1x%E6%99%B6%E7%89%87%E6%94%9C%E6%89%8B%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%81%AF%E7%99%BC%E7%A7%91-ai%E4%BB%A3%E7%90%86%E9%80%B2%E9%A7%90pc-014514375.html"
+        },
+        {
+          "title": "動區動趨 BlockTempo：Vera Rubin / Agentic CPU / RTX Spark",
+          "url": "https://www.blocktempo.com/jensen-huang-gtc2026-vera-rubin-agentic-cpu-rtx-spark/"
+        },
+        {
+          "title": "Tom's Hardware：NVIDIA and Microsoft tease a new era of PC (N1X / Windows on Arm)",
+          "url": "https://www.tomshardware.com/laptops/nvidia-and-microsoft-tease-a-new-era-of-pc-ahead-of-computex-2026-coordinated-social-media-posts-could-indicate-that-rumored-n1x-laptops-will-be-windows-on-arm-systems"
+        }
+      ]
+    },
+    "n1x-newpc": {
+      "companies": [
+        {
+          "name": "聯發科 (MediaTek)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 點名：N1X 由 NVIDIA 與聯發科共同打造，聯發科負責 Arm CPU 部分，是這顆 AI PC 晶片最核心的合作夥伴"
+        },
+        {
+          "name": "台積電 (TSMC)",
+          "tag": "台廠供應鏈",
+          "note": "黃仁勳明言新晶片「starts at TSMC」、採 3 奈米製程；N1X／RTX Spark 與 Vera Rubin 同樣由台積電代工先進製程與封裝"
+        },
+        {
+          "name": "Microsoft 微軟",
+          "tag": "軟體·企業夥伴",
+          "note": "keynote 點名：與 NVIDIA 花三年「重新發明 PC」，全新三款 Windows 機種 100% Windows 相容，DGX Station 亦推 Windows 版本"
+        },
+        {
+          "name": "華碩 (ASUS)",
+          "tag": "終端·品牌",
+          "note": "全球 PC 產業被點名「100% 加入」全新 Windows 產品線，華碩為首波導入 RTX Spark／N1X 機種的台系品牌之一"
+        },
+        {
+          "name": "宏碁 (Acer)",
+          "tag": "終端·品牌",
+          "note": "屬黃仁勳所述全面加入新 PC 平台的品牌陣營，台系 PC 大廠之一，受惠 AI PC 換機題材"
+        },
+        {
+          "name": "微星 (MSI)",
+          "tag": "終端·品牌",
+          "note": "供應鏈報導列為 N1X／RTX Spark 首波機種製造夥伴，台系 PC 品牌，受惠全新 Windows 機種產品線"
+        },
+        {
+          "name": "Dell",
+          "tag": "終端·品牌",
+          "note": "keynote 點名其 Vera Rubin 工程機架；亦為 N1X／RTX Spark 桌機與工作站平台的首波 OEM 夥伴"
+        },
+        {
+          "name": "HP",
+          "tag": "終端·品牌",
+          "note": "全球 PC 產業全面加入新 Windows×CUDA 平台陣營的主要國際品牌之一，受惠 AI PC 產品線擴張"
+        },
+        {
+          "name": "鴻海／富士康 (Foxconn)",
+          "tag": "台廠供應鏈",
+          "note": "keynote 提及 Foxconn、廣達等台灣 150 家供應鏈夥伴；為 NVIDIA 系統與 PC 平台的關鍵代工製造基礎"
+        },
+        {
+          "name": "高通 (Qualcomm)",
+          "tag": "競爭對手",
+          "note": "Arm 架構 Windows PC 晶片的主要既有玩家，N1X 直接切入其 AI PC 市場，形成競爭"
+        }
+      ],
+      "growth": "根據 NVIDIA 在這場 keynote 的說法（以下為公司觀點，非投資建議）：黃仁勳表示 NVIDIA 與微軟花了「三年」徹底重新發明 PC，等的就是代理式 AI（agentic AI）這一刻，並一次推出涵蓋桌機、筆電、工作站的「全新三款 Windows 機種」，強調全部 100% Windows 相容、100% CUDA、100% NVIDIA AI Tensor Core。公司主張其護城河在於「100% NVIDIA 軟體堆疊都能在 N1X 上跑」，把過去要靠雲端訂閱的本地 AI 微調與推論帶到 PC 端。NVIDIA 並強調台灣供應鏈規模，稱有「150 家供應鏈夥伴」橫跨台積電（3 奈米）、聯發科、鴻海、廣達等，是其量產底氣。公司定位這是「40 年來 PC 的首次重新發明」，並以全球 PC 產業全面加入作為市場規模論述。上述市占、出貨與營收等具體數字 NVIDIA 未在演講中明確量化，故此處保守不臆測。",
+      "sources": [
+        {
+          "title": "Yahoo 新聞：黃仁勳發表 N1X 晶片攜手台積電聯發科，AI 代理進駐 PC",
+          "url": "https://tw.news.yahoo.com/%E9%BB%83%E4%BB%81%E5%8B%B3%E7%99%BC%E8%A1%A8n1x%E6%99%B6%E7%89%87%E6%94%9C%E6%89%8B%E5%8F%B0%E7%A9%8D%E9%9B%BB%E8%81%AF%E7%99%BC%E7%A7%91-ai%E4%BB%A3%E7%90%86%E9%80%B2%E9%A7%90pc-014514375.html"
+        },
+        {
+          "title": "Tom's Hardware：NVIDIA and Microsoft tease a new era of PC (N1X / Windows on Arm)",
+          "url": "https://www.tomshardware.com/laptops/nvidia-and-microsoft-tease-a-new-era-of-pc-ahead-of-computex-2026-coordinated-social-media-posts-could-indicate-that-rumored-n1x-laptops-will-be-windows-on-arm-systems"
+        },
+        {
+          "title": "TechTimes：NVIDIA Arm laptop chip N1X confirmed (CUDA, RTX 5070-class GPU onboard)",
+          "url": "https://www.techtimes.com/articles/317428/20260530/nvidia-arm-laptop-chip-n1x-confirmed-computex-cuda-rtx-5070-gpu-onboard.htm"
+        },
+        {
+          "title": "三竹 RichClub：黃仁勳 GTC Taipei 2026 主題演講—攜手聯發科推首款 AI PC 晶片",
+          "url": "https://www.sinotrade.com.tw/richclub/hotstock/%E9%BB%83%E4%BB%81%E5%8B%B3-GTC-Taipei-2026-%E4%B8%BB%E9%A1%8C%E6%BC%94%E8%AC%9B%E5%AE%A3%E5%91%8A-%E4%BB%A3%E7%90%86%E5%BC%8F-AI-%E6%99%82%E4%BB%A3%E5%BC%95%E7%88%86-Vera-Rubin-%E5%85%A8%E9%9D%A2%E9%87%8F%E7%94%A2-%E6%94%9C%E6%89%8B%E8%81%AF%E7%99%BC%E7%A7%91%E6%8E%A8%E9%A6%96%E6%AC%BE-AI-PC-%E6%99%B6%E7%89%87-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a1d2702660bc5bfd236d6d0"
+        }
+      ]
+    },
+    "cosmos-physical-ai": {
+      "companies": [
+        {
+          "name": "NVIDIA",
+          "tag": "其他",
+          "note": "Physical AI 三大平台 Cosmos 3、Alpamo 2、Isaac GR00T 的母體，提供 Thor 機器人運算、Hyperion 自駕參考平台與完整軟體堆疊，演講中自稱為 physical AI 的領先者"
+        },
+        {
+          "name": "Mercedes-Benz 賓士",
+          "tag": "車廠·機器人",
+          "note": "keynote 自駕 demo 中實際出現以語音操作的車輛（Hey Mercedes），是 NVIDIA Hyperion／Alpamo 2 自駕推理車的示範品牌"
+        },
+        {
+          "name": "Sharpa",
+          "tag": "車廠·機器人",
+          "note": "Isaac GR00T 參考人形機器人雙手的製造商，黃仁勳點名每隻手 25 個自由度由 Sharpa 打造"
+        },
+        {
+          "name": "Unitree 宇樹科技",
+          "tag": "車廠·機器人",
+          "note": "依國際報導，Isaac GR00T 參考人形機器人採用其 H2 Plus 機身，並計畫於 2026 年底提供完整硬體"
+        },
+        {
+          "name": "Hyundai 現代汽車",
+          "tag": "車廠·機器人",
+          "note": "keynote 提及為 NVIDIA AI 雲端（韓國 Neighbor Cloud）的客戶；同時屬於與 NVIDIA 在自駕／機器人合作的車廠生態"
+        },
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "Thor 等機器人與自駕 SoC、以及整體 NVIDIA 晶片的先進製程代工基礎，是 Physical AI 量產的關鍵台廠（供應鏈，非 keynote 在此段直接點名）"
+        },
+        {
+          "name": "Linker Vision",
+          "tag": "軟體·企業夥伴",
+          "note": "Cosmos 生態夥伴，於智慧城市／交通異常偵測情境展示 Cosmos 的世界模型應用"
+        },
+        {
+          "name": "Agile Robots",
+          "tag": "車廠·機器人",
+          "note": "Cosmos Coalition 成員，投入工業用人形機器人開發，使用 Cosmos 作為基礎模型"
+        },
+        {
+          "name": "Tesla",
+          "tag": "競爭對手",
+          "note": "自駕領域與 NVIDIA Alpamo 2／Hyperion 路線形成對照的競爭者；自研自駕堆疊不採用 NVIDIA 參考平台"
+        },
+        {
+          "name": "Waymo",
+          "tag": "競爭對手",
+          "note": "Robotaxi／自駕領域的外部對照點，與 NVIDIA 推動的開放 AV 堆疊路線形成競爭"
+        }
+      ],
+      "growth": "以下為 NVIDIA 於 GTC Taipei 2026 主題演講中的公司說法，非投資建議。NVIDIA 主張自己是 physical AI（實體 AI）領域「全球最強」，並以 Cosmos 3 作為涵蓋機器人、工廠、自駕、智慧城市與手術機器人的開放世界基礎模型，定位 physical AI 為下一個運算典範。在自駕方面，NVIDIA 表示已簽署採用 Hyperion 平台的車廠約占全球汽車的 80%，且全球約 97% 的移動服務（mobility services）正與其連接，並推出開放自駕模型 Alpamo 2 與 Halos 作業系統，作為其護城河與市場觸及的成長驅動。在機器人方面，NVIDIA 推出 Isaac GR00T 開放人形機器人參考平台（搭載 Thor 運算、25 自由度雙手由 Sharpa 製造），鎖定研究機構與大學降低開發門檻，宣稱「機器人時代從這裡開始」。NVIDIA 同時強調 Cosmos「以算力生成資料（compute is data）」可解決真實世界資料難以規模化的瓶頸，並以開放模型、開放資料與開放訓練方法擴大生態。上述市佔與比例為公司於演講中的陳述，未提供獨立第三方查證數字，請保守看待。",
+      "sources": [
+        {
+          "title": "The Decoder：NVIDIA bets big on Physical AI at GTC Taipei (world model, driving brain, open humanoid robot)",
+          "url": "https://the-decoder.com/nvidia-bets-big-on-physical-ai-at-gtc-taipei-with-a-new-world-model-driving-brain-and-open-humanoid-robot/"
+        },
+        {
+          "title": "NVIDIA Blog：Cosmos 3 — Open World Foundation Model for Physical AI",
+          "url": "https://blogs.nvidia.com/blog/cosmos-3-physical-ai-open-world-foundation-model/"
+        },
+        {
+          "title": "NVIDIA News：NVIDIA Launches Cosmos 3, the Open Frontier Foundation Model for Physical AI",
+          "url": "https://nvidianews.nvidia.com/news/nvidia-launches-cosmos-3-the-open-frontier-foundation-model-for-physical-ai"
+        },
+        {
+          "title": "NVIDIA Blog：GTC 2026 Virtual Worlds & Physical AI",
+          "url": "https://blogs.nvidia.com/blog/gtc-2026-virtual-worlds-physical-ai/"
+        }
+      ]
+    },
+    "closing": {
+      "companies": [
+        {
+          "name": "台積電 TSMC",
+          "tag": "台廠供應鏈",
+          "note": "NVIDIA 全系列 GPU/CPU（含 Vera Rubin、N1X）的晶圓代工與先進封裝核心，被黃仁勳譽為支撐整個 AI 基礎建設的關鍵夥伴"
+        },
+        {
+          "name": "鴻海 Foxconn",
+          "tag": "台廠供應鏈",
+          "note": "AI 伺服器與 AI 工廠系統整合代工主力，是 NVIDIA 從晶片走向「基礎建設公司」整機與資料中心交付的核心夥伴"
+        },
+        {
+          "name": "聯發科 MediaTek",
+          "tag": "台廠供應鏈",
+          "note": "與 NVIDIA 合作 N1X agentic AI PC 晶片，把 agentic 運算延伸到 PC 端，是跨雲/PC 生態系的關鍵台廠"
+        },
+        {
+          "name": "微軟 Microsoft",
+          "tag": "軟體·企業夥伴",
+          "note": "在 Windows on Arm 與 RTX Spark/agentic PC 上與 NVIDIA 合作，並透過 Azure 雲端承載 agentic 運算，跨雲與 PC 生態系夥伴"
+        },
+        {
+          "name": "廣達 Quanta",
+          "tag": "台廠供應鏈",
+          "note": "AI 伺服器與資料中心系統 ODM 代工，支撐 NVIDIA AI 工廠規模化的台廠製造夥伴"
+        },
+        {
+          "name": "緯創/緯穎 Wistron/Wiwynn",
+          "tag": "台廠供應鏈",
+          "note": "AI 伺服器與資料中心機櫃供應，受惠於 NVIDIA 基礎建設規模擴張"
+        },
+        {
+          "name": "超微 AMD",
+          "tag": "競爭對手",
+          "note": "在資料中心 AI 加速器與 CPU 市場與 NVIDIA 競爭，亦推進自家 agentic/AI PC 路線"
+        },
+        {
+          "name": "GMI Cloud",
+          "tag": "雲端·AI Cloud",
+          "note": "與 NVIDIA 合作的 AI 雲端業者，是 agentic 運算在雲端落地、把 GPU 算力服務化的生態系夥伴"
+        }
+      ],
+      "growth": "根據 NVIDIA 在本場演講的說法，黃仁勳將 NVIDIA 定位為從晶片公司轉型為「AI 基礎建設公司」，主張 agentic 運算模式將橫跨雲端、PC 與機器人三大場域，形成單一連貫的運算平台與生態系。NVIDIA 表示這套生態系建立在 CUDA 軟體護城河與全球（尤其台灣）供應鏈規模之上，並以 Vera Rubin 平台量產、N1X agentic PC、Cosmos 3 等 roadmap 作為持續成長的驅動。公司並重申台北/台灣供應鏈是「一切的起點」，視其為支撐 AI 工廠規模化交付的核心優勢。以上為 NVIDIA 與黃仁勳於演講中的論述與展望，屬公司說法，並非投資建議；文中未列出具體市場規模或營收數字以避免失準。",
+      "sources": [
+        {
+          "title": "SiliconANGLE：Five thoughts on the keynote",
+          "url": "https://siliconangle.com/2026/06/01/five-thoughts-nvidia-ceo-jensen-huangs-gtc-taipei-2026-keynote/"
+        },
+        {
+          "title": "經濟日報：整理包／黃仁勳演講重點一次看",
+          "url": "https://money.udn.com/money/story/5612/9538995"
+        },
+        {
+          "title": "Domino Theory：Jensen praises Taiwan supply chain",
+          "url": "https://dominotheory.com/worlds-best-supply-chain-jensen-huang-praises-taiwan-at-nvidia-gtc-keynote/"
+        },
+        {
+          "title": "WION：5 biggest announcements from GTC Taipei 2026 keynote",
+          "url": "https://www.wionews.com/technology/nvidia-s-next-ai-push-5-biggest-announcements-from-ceo-jensen-huang-s-gtc-taipei-2026-keynote-1780298627531"
+        }
+      ]
+    }
+  }
+};
+
 /* ============================================================
    主應用
    ============================================================ */
@@ -918,6 +1882,18 @@ function App() {
   `;
 }
 
+/* 關聯公司分類配色 */
+const TAG_COLOR = {
+  '台廠供應鏈': '#76b900',
+  '記憶體': '#22d3ee',
+  '雲端·AI Cloud': '#a78bfa',
+  '軟體·企業夥伴': '#f59e0b',
+  '終端·品牌': '#f472b6',
+  '車廠·機器人': '#34d399',
+  '競爭對手': '#ef4444',
+  '其他': '#94a3b8',
+};
+
 /* ============================================================
    詳情面板（第 3 層）
    ============================================================ */
@@ -926,6 +1902,13 @@ function DrawerPanel({ theme, audienceKey, onClose }) {
   const aud = AUD_MAP[aKey];
   const a = theme.audiences[aKey];
   const Icon = aud.icon;
+
+  // 受眾專屬補充（目前僅投資者）
+  const extra = (aKey === 'investor' && typeof AUDIENCE_EXTRA !== 'undefined' && AUDIENCE_EXTRA.investor)
+    ? AUDIENCE_EXTRA.investor[theme.id] : null;
+  const compGroups = extra
+    ? extra.companies.reduce((acc, c) => { (acc[c.tag] = acc[c.tag] || []).push(c); return acc; }, {})
+    : null;
 
   return html`
     <div class="drawer-overlay" onClick=${onClose}></div>
@@ -1017,6 +2000,37 @@ function DrawerPanel({ theme, audienceKey, onClose }) {
             <div class="acs-v">${a.extension}</div>
           </div>
         </div>
+
+        ${extra && html`
+          <!-- 投資者專屬：關聯公司 -->
+          <div class="sect-label" style=${{ color: aud.color }}><span class="sl-bar"></span> 關聯公司</div>
+          <div class="comp-groups">
+            ${Object.keys(compGroups).map((tag) => html`
+              <div class="comp-group" key=${tag}>
+                <span class="cg-tag" style=${{ color: TAG_COLOR[tag] || '#94a3b8', background: (TAG_COLOR[tag] || '#94a3b8') + '1f', borderColor: (TAG_COLOR[tag] || '#94a3b8') + '55' }}>${tag}</span>
+                <div class="chips">
+                  ${compGroups[tag].map((c) => html`
+                    <span class="chip comp-chip" key=${c.name} title=${c.note}
+                      style=${{ borderColor: (TAG_COLOR[tag] || '#94a3b8') + '55' }}>${c.name}</span>
+                  `)}
+                </div>
+              </div>
+            `)}
+          </div>
+
+          <!-- 投資者專屬：成長與未來性 -->
+          <div class="sect-label" style=${{ color: aud.color }}><span class="sl-bar"></span> 成長與未來性</div>
+          <div class="body-text">${extra.growth}</div>
+
+          <!-- 投資者專屬：參考資料 -->
+          <div class="sect-label" style=${{ color: aud.color }}><span class="sl-bar"></span> 參考資料</div>
+          <ul class="src-list">
+            ${extra.sources.map((s) => html`
+              <li key=${s.url}><a href=${s.url} target="_blank" rel="noopener">${s.title}</a></li>
+            `)}
+          </ul>
+          <div class="disclaimer">※ 內容為 NVIDIA／黃仁勳演講中的說法與公司觀點整理，僅供理解，非投資建議。</div>
+        `}
 
         <div style=${{ height: '20px' }}></div>
       </div>

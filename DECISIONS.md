@@ -84,16 +84,30 @@
 ## 15. 版本控管
 - **選擇**：`git init` 並提交（純本機 repo，無遠端）。`.claude/` 已排除。
 
+## 16. 投資者視角加「關聯公司 / 成長與未來性 / 參考資料」
+- **動機**：投資者真正在意的是「NVIDIA 產品最後關聯到哪些公司」與「每個產品的成長性／未來性」。
+- **選擇**：每個主題的投資者視角多三塊 —— 關聯公司（依分類上色 chips、hover 看角色說明）、成長與未來性（NVIDIA 演講說法，附「非投資建議」聲明）、參考資料（真實連結）。
+- **來源**：由聚焦工作流產生；**agent 先讀 `REFERENCES.md` 挑已查證連結**，不足再補搜（避免亂搜、來源一致）。
+- **資料結構**：`AUDIENCE_EXTRA = { investor: { <themeId>: { companies[{name,tag,note}], growth, sources[{title,url}] } } }`，**刻意設計成可擴充** —— 之後要替知識工作者／一般消費者／公司決策者各加專屬維度，往這個物件加 key 即可。
+- **不重跑 build**：以程式注入既有 HTML（保留先前手動修正：jsx-runtime、每主題 iframe、file:// fallback、核心點亮、全貌/聚焦），未重跑整個 build agent。
+
+## 17. 影片全螢幕修正
+- **問題**：face iframe 全螢幕鈕無作用。
+- **原因**：`allow=` 清單漏了 `fullscreen`，且 React/htm 需用 camelCase `allowFullScreen` 屬性才會輸出。
+- **選擇**：`allow` 補 `fullscreen` + 改用 `allowFullScreen`。
+
 ---
 
 ## 之後可調整的「旋鈕」
 - **核心主題對照**：`AUDIENCE_CORE`（決定每個受眾點亮哪些）。
+- **受眾專屬補充**：`AUDIENCE_EXTRA`（目前僅 investor；可加其他受眾的維度）。
 - **聚焦佈局鬆緊**：`focusThemePositions()` 的 `Rc`(核心半徑)、`spanC`(核心展開角度)、`Rn`/`spanN`(非核心)。
 - **預設模式**：`useState(false)` 的 `focusMode`（改 `true` 則預設聚焦）。
 - **環狀半徑/視角位置**：`THEME_RADIUS`、`AUD_RADIUS`、`audiencePositions` 的角度。
 - **視覺**：`--nv-green` 等 CSS 變數、`.node-theme.core` / `.node-theme.dim` 樣式。
 
 ## 仍未做（刻意 YAGNI，需要再說）
+- **其他三種受眾的專屬維度**（知識工作者→該學的技能；一般消費者→何時買得到/看得到；公司決策者→導入檢查清單）。結構已備（`AUDIENCE_EXTRA`），待填。
 - 「公開版 vs 深度版」兩層 → 已用受眾切換取代，未拆兩份。
 - 標題列加「★ 重點 N 個」計數（提過、未做）。
 - 主題 × 受眾的完整總覽矩陣表（原捲動版規劃，畫布版未放）。
