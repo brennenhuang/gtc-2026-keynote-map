@@ -567,13 +567,28 @@
   .cpop-catch { position: fixed; inset: 0; z-index: 40; }
   .company-pop {
     position: fixed; z-index: 41;
-    max-width: calc(100vw - 24px);
+    max-width: calc(100vw - 24px); max-height: min(78vh, 460px); overflow-y: auto;
     background: #0d1118; border: 1px solid var(--tagc);
     border-radius: 14px; padding: 16px 18px;
     box-shadow: 0 18px 50px -10px rgba(0,0,0,0.7), 0 0 0 1px var(--tagc) inset;
     animation: cpopIn .18s ease;
   }
   @keyframes cpopIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  /* 相關受惠族群（台灣個股延伸） */
+  .cpop-ben-label { font-size: 12px; font-weight: 700; color: var(--tagc); margin: 11px 0 7px; }
+  .cpop-ben-list { display: flex; flex-direction: column; gap: 8px; }
+  .cpop-ben-group {
+    display: inline-block; font-size: 12px; font-weight: 700; color: var(--txt-0);
+    background: color-mix(in srgb, var(--tagc) 16%, transparent);
+    border: 1px solid color-mix(in srgb, var(--tagc) 42%, transparent);
+    padding: 1px 9px; border-radius: 6px; margin-right: 7px; white-space: nowrap;
+  }
+  .cpop-ben-why { font-size: 11.5px; color: var(--txt-2); line-height: 1.55; }
+  .cpop-ben-disc {
+    font-size: 11px; color: var(--txt-2); line-height: 1.5;
+    margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 8px;
+  }
+  .cpop-ben-disc strong { color: #fca5a5; }
   .cpop-close {
     position: absolute; top: 10px; right: 10px;
     background: rgba(255,255,255,0.06); border: 0; color: var(--txt-1);
@@ -2767,6 +2782,404 @@ const AUDIENCE_EXTRA = {
   }
 };
 
+/* 台灣個股 → 相關受惠族群（只列族群與理由，不列個股；非投資建議） */
+const BENEFICIARIES = {
+  "2330.TW": {
+    "name": "台積電 (TSMC)",
+    "groups": [
+      {
+        "group": "ABF載板/IC載板",
+        "why": "台積電CoWoS與HPC晶片接單放大，先進封裝對高層數ABF載板需求暴增，台廠載板四雄直接吃單。"
+      },
+      {
+        "group": "IC封測",
+        "why": "台積電晶圓產出與先進封裝爆量後，後段測試/封裝產能跟著吃緊，封測廠承接溢出與外包訂單。"
+      },
+      {
+        "group": "CoWoS先進封裝設備",
+        "why": "台積電CoWoS月產能由6萬片向8萬片擴產，濕製程、壓合、AOI檢測設備滿載，設備鏈直接受惠。"
+      },
+      {
+        "group": "半導體材料/耗材/載具",
+        "why": "台積電2奈米預量產、3奈米擴產推升EUV光罩盒、CMP鑽石碟、CoWoS載具與耗材消耗，上游材料商隨產能放量受惠。"
+      },
+      {
+        "group": "散熱(氣冷/液冷)",
+        "why": "台積電晶片堆進AI伺服器後TDP飆升，架構由氣冷轉液冷，每櫃散熱含金量提高，水冷板與模組廠吃單。"
+      },
+      {
+        "group": "光通訊/CPO/矽光子",
+        "why": "Vera Rubin世代導入CPO與矽光子，台積電矽光子製程帶動光引擎、光纖陣列耦合與光收發模組需求。"
+      }
+    ]
+  },
+  "2317.TW": {
+    "name": "鴻海 (Foxconn)",
+    "groups": [
+      {
+        "group": "散熱 (氣冷/液冷)",
+        "why": "鴻海是輝達 GB300/Vera Rubin 機櫃最大組裝廠,液冷從選配變標配,水冷板與快接頭(UQD)用量倍增,散熱模組廠直接跟著吃整櫃訂單。"
+      },
+      {
+        "group": "電源 (PSU/Power Shelf)",
+        "why": "Vera Rubin 機櫃功耗逼近 MW 級,鴻海組裝的高功耗 AI 機架需搭配高瓦數電源模組與 Power Shelf,電源大廠單機價值量與毛利同步拉升。"
+      },
+      {
+        "group": "連接器/高速傳輸介面",
+        "why": "鴻海整機櫃需大量 GPU socket、CPU 插槽、高速背板與 UQD 水冷快接頭,連接器廠隨 GB300/VR 規格升級與接單放大而受惠。"
+      },
+      {
+        "group": "伺服器機殼/機構件/滑軌",
+        "why": "鴻海做整櫃(rack)交付需大量機殼、機構件與伺服器滑軌,液冷化讓機殼複雜度與單價提升,機殼廠隨組裝出貨同步放量。"
+      },
+      {
+        "group": "PCB/CCL (高速基板)",
+        "why": "AI 伺服器主機板、GPU 載板與交換板需高層數、高速低損耗 PCB 與 CCL,鴻海組裝放量直接拉動板廠與銅箔基板上游材料。"
+      },
+      {
+        "group": "光通訊/CPO",
+        "why": "AI 工廠橫向擴張需高速光模組與矽光子,Vera Rubin 世代導入 CPO,鴻海整櫃交付帶動機櫃內外光連結與光收發族群需求。"
+      }
+    ]
+  },
+  "2382.TW": {
+    "name": "廣達 (Quanta)",
+    "groups": [
+      {
+        "group": "散熱（氣冷／液冷）",
+        "why": "廣達 GB200/GB300/Vera Rubin 整機櫃出貨放量，每櫃需大量水冷板、CDU、快接頭與 3D VC，散熱模組用量隨機櫃數直接放大。"
+      },
+      {
+        "group": "電源（伺服器電源／高壓直流電源櫃）",
+        "why": "AI 機櫃功耗暴增，廣達整櫃需搭配電源供應器與 800V HVDC 電源櫃、BBU，電源用量與機櫃出貨同步成長。"
+      },
+      {
+        "group": "連接器／高速線材",
+        "why": "廣達整櫃內 GPU 互連與機櫃間需大量高速連接器、銅纜與 AEC/UQD 快接，接單量隨機櫃規模與傳輸速率升級放大。"
+      },
+      {
+        "group": "機殼／伺服器導軌",
+        "why": "廣達組整櫃需搭配液冷機殼、機構件與滑軌，機殼與導軌出貨數量直接跟著廣達機櫃出貨走。"
+      },
+      {
+        "group": "PCB／CCL（高速材料）",
+        "why": "廣達 AI 主機板、背板與 OAM/UBB 升級至高層數 HDI 與低損耗 M8/M9 材料，帶動高階 PCB 與銅箔基板需求與報價。"
+      }
+    ]
+  },
+  "3231.TW": {
+    "name": "緯創 (Wistron)",
+    "groups": [
+      {
+        "group": "散熱 (液冷/水冷板/分歧管/快接頭)",
+        "why": "緯創/緯穎組裝 GB300、Vera Rubin 整櫃 AI 伺服器時,單櫃功耗飆破百 kW 必須採液冷,水冷板、分歧管、快接頭隨機櫃出貨同步放量。"
+      },
+      {
+        "group": "電源 (PSU/BBU/800V HVDC 電源架構)",
+        "why": "緯創整櫃伺服器需搭配高功率電源模組與機櫃級供電,Vera Rubin 導入 800V HVDC,電源廠隨緯創出貨量與單櫃瓦數提升而吃單。"
+      },
+      {
+        "group": "連接器/插槽 (高速連接器/GPU socket/線材)",
+        "why": "緯創 compute tray 與機櫃需大量高速背板連接器、GPU/CPU socket 與線材,GB300 採可拆式 GPU socket 後用量倍增,連接器廠直接受惠緯創組裝放量。"
+      },
+      {
+        "group": "PCB/CCL (高層數高速板與銅箔基板)",
+        "why": "緯創 AI 伺服器主板、Midplane 升級至 20-40+ 層、M8/M9 等級高速材料,板廠與 CCL 廠隨緯創訂單與規格升級量價齊揚。"
+      },
+      {
+        "group": "機殼/機構件 (伺服器機殼與機櫃)",
+        "why": "緯創/緯穎整櫃 L10/L11 出貨需大量伺服器機殼與機構件,機殼廠隨緯創 AI 伺服器與整櫃導入液冷而拉貨。"
+      },
+      {
+        "group": "伺服器晶片/BMC (管理控制晶片)",
+        "why": "緯創每台 AI 伺服器主板都需搭載 BMC 管理晶片做遠端監控與系統健康管理,出貨量直接綁緯創 AI 伺服器出貨。"
+      }
+    ]
+  },
+  "6669.TW": {
+    "name": "緯穎 (Wiwynn)",
+    "groups": [
+      {
+        "group": "散熱(液冷/氣冷)",
+        "why": "緯穎AI機櫃從氣冷全面轉向液冷(冷板+Manifold+CDU)，單櫃功耗破300kW，整機出貨放量直接拉動水冷板與分歧管用量"
+      },
+      {
+        "group": "電源(PSU/HVDC電源櫃)",
+        "why": "Vera Rubin機櫃耗電暴增帶動高瓦數PSU與800V HVDC電源櫃需求，緯穎整櫃出貨直接放大電源模組採購"
+      },
+      {
+        "group": "BBU備援電池模組",
+        "why": "AI機櫃導入BBU做斷電備援且單櫃BBU用量與單價同步翻倍，緯穎整機櫃交付放量直接帶動BBU模組訂單"
+      },
+      {
+        "group": "連接器/高速線材",
+        "why": "AI機櫃內高速互連(224G/1.6T)與800V電力線材價值大增，緯穎機櫃用量是通用伺服器數倍，直接吃線材與連接器單"
+      },
+      {
+        "group": "PCB/CCL",
+        "why": "AI主機板與交換板升級至M8/M9高速材料，緯穎伺服器與機櫃出貨放量直接拉動高多層板與高階銅箔基板需求"
+      },
+      {
+        "group": "機構件/伺服器滑軌",
+        "why": "整櫃式AI伺服器需大量滑軌與機構件，緯穎機櫃出貨量放大直接帶動高毛利導軌與機殼結構件需求"
+      }
+    ]
+  },
+  "2454.TW": {
+    "name": "聯發科 (MediaTek)",
+    "groups": [
+      {
+        "group": "ABF 載板",
+        "why": "聯發科 Google TPU ASIC 與自研雲端晶片需高層數、大尺寸 ABF 載板承載，IC 載板四雄為主要承接者，AI ASIC 拉貨直接放大載板用量與報價。"
+      },
+      {
+        "group": "封測 / 後段測試 (OSAT)",
+        "why": "聯發科 ASIC 採台積電 N3P + CoWoS-S，後段最終測試與委外封測量同步放大；京元電已接 TPU 不同版本最終測試訂單，為最純 AI 測試受惠股。"
+      },
+      {
+        "group": "CoWoS 先進封裝設備",
+        "why": "聯發科 ASIC 初期下單台積電 CoWoS 約 2 萬片、2027 年上看 15 萬片，台積電加速擴產與委外，直接帶動先進封裝設備供應鏈滿單。"
+      },
+      {
+        "group": "散熱 (氣冷/液冷)",
+        "why": "聯發科高功率 AI ASIC 進入資料中心機櫃，TDP 攀升推升水冷板、均熱片與 CDU 液冷需求，散熱三雄與健策直接受惠。"
+      },
+      {
+        "group": "PCB / CCL",
+        "why": "AI ASIC 伺服器主板與交換器升級至 M8/M9 高速等級 CCL，台光電、聯茂為輝達與 CSP 自研晶片主要材料供應商，料號升級量價齊揚。"
+      }
+    ]
+  },
+  "2308.TW": {
+    "name": "台達電 (Delta)",
+    "groups": [
+      {
+        "group": "液冷散熱（CDU/水冷板/快接頭）",
+        "why": "台達電做整櫃電源與側掛 CDU，當其 GB200/Vera Rubin 機櫃電源接單放大，同一機櫃的水冷板、Manifold、CDU 與快接頭需求同步拉升，散熱模組廠跟著吃單。"
+      },
+      {
+        "group": "BBU 電池備援模組",
+        "why": "800V/HVDC 電力架構下台達電出貨電源系統，同機櫃必配 BBU 做斷電備援，台達電電源接單成長直接外溢到 BBU 電池模組廠的整櫃配套需求。"
+      },
+      {
+        "group": "連接器（電源鞭線/匯流排/UQD 快接）",
+        "why": "台達電 PSU、Power Rack 與 DC/DC 模組需大量電源連接器、機櫃匯流排與水冷快接頭，其電源系統出貨放大直接帶動高電流連接器與線束廠接單。"
+      },
+      {
+        "group": "被動元件（電感/MLCC/TLVR）",
+        "why": "高功率 PSU、DC/DC 與 VRM 設計需大量功率電感、TLVR 與高階 MLCC，台達電電源規格升級與出貨量增直接拉高其上游被動元件用量。"
+      },
+      {
+        "group": "電源同業（HVDC/Power Rack）",
+        "why": "台達電是 AI 電源龍頭，其在 800V HVDC、整櫃電源的規格認證與出貨節奏領先，是電源同業的指標；台達電放量代表 AI 電源 TAM 擴大，同業比價跟漲。"
+      },
+      {
+        "group": "PCB/CCL（伺服器主板/電源板）",
+        "why": "台達電的高功率電源板與機櫃電力背板需用高層、高散熱 PCB 與高速 CCL，其電源與整櫃出貨放大同步帶動伺服器級 PCB/載板與銅箔基板需求。"
+      }
+    ]
+  },
+  "4938.TW": {
+    "name": "和碩 (Pegatron)",
+    "groups": [
+      {
+        "group": "散熱（液冷/水冷板/CDU/UQD快接頭）",
+        "why": "和碩出貨 Vera Rubin NVL72/水冷機櫃，高功耗 GPU 必須整櫃液冷化，水冷板、分歧管、CDU 與快接頭模組是機櫃級系統的必備零件，直接隨和碩的 rack 出貨量放大。"
+      },
+      {
+        "group": "電源（PSU/HVDC/電源櫃/Busbar）",
+        "why": "和碩組裝整櫃 AI 伺服器須整合高瓦數電源，Vera Rubin 走向 800V HVDC 架構，PSU、電源櫃與 DC-DC 模組是機櫃必備，和碩接單放大同步拉動電源供應鏈。"
+      },
+      {
+        "group": "連接器/高速線材（AEC/UQD/CPU插槽）",
+        "why": "機櫃級系統需大量高速傳輸連接器、主動式電纜(AEC)與水冷快接頭，PCIe/CXL 規格升級使單機價值倍增，和碩出貨整櫃時這些元件用量同步上升。"
+      },
+      {
+        "group": "機殼/機構件/滑軌",
+        "why": "和碩做 rack-level 系統出貨，伺服器機殼、機櫃與滑軌(導軌)是系統組裝的機構基礎，整櫃化與液冷化推升機構件規格與用量，隨和碩出貨節奏受惠。"
+      },
+      {
+        "group": "PCB/CCL（高多層板/高頻基板）",
+        "why": "AI 伺服器主機板與交換器板走向高層數、高頻高速，是和碩系統組裝的核心料件，和碩 GPU/ASIC 伺服器專案放量直接帶動高階板與高頻 CCL 需求。"
+      },
+      {
+        "group": "BBU 電池備援模組",
+        "why": "AI 資料中心電力中斷風險推升 BBU 成機櫃標配，與 PSU 一起整合進電源架構，和碩出貨整櫃 AI 伺服器時 BBU 模組隨之納入吃單。"
+      }
+    ]
+  },
+  "2357.TW": {
+    "name": "華碩 (ASUS)",
+    "groups": [
+      {
+        "group": "散熱 (氣冷/液冷)",
+        "why": "華碩 GB200/GB300 NVL 機櫃高功耗轉向液冷，散熱模組、水冷板、CDU、快接頭隨機櫃出貨放量"
+      },
+      {
+        "group": "連接器/高速傳輸",
+        "why": "華碩 AI 伺服器與主機板需大量 CPU Socket、高速連接器與 GPU 互連介面，組裝拉貨直接帶動連接器廠"
+      },
+      {
+        "group": "伺服器機殼/機櫃",
+        "why": "華碩 AI 機櫃出貨需配套機殼、滑軌與液冷機櫃整合，機殼廠隨之吃單並升級系統整合"
+      },
+      {
+        "group": "電源供應器",
+        "why": "華碩 AI 伺服器採鈦金級 3000W 備援電源、AI PC 也拉高電源需求，電源大廠通吃 Blackwell 平台訂單"
+      },
+      {
+        "group": "PCB / CCL 銅箔基板",
+        "why": "華碩主機板與 AI 伺服器板需高層數、高速低損耗 PCB 與高階 CCL，出貨增帶動板廠與基板材料"
+      },
+      {
+        "group": "AI 伺服器線材",
+        "why": "華碩 NVL 機櫃內部高速銅纜與電源線材用量大增，AI 伺服器電纜廠隨機櫃組裝同步成長"
+      }
+    ]
+  },
+  "2353.TW": {
+    "name": "宏碁 (Acer)",
+    "groups": [
+      {
+        "group": "散熱 (氣冷/液冷)",
+        "why": "宏碁旗下安圖斯 Altos R880 F7 搭 8 顆 NVIDIA Blackwell GPU、主打高 TDP 水冷機種，AI 伺服器出貨放大直接拉升冷板、UQD、水冷模組需求。"
+      },
+      {
+        "group": "電源 (PSU/HVDC/BBU)",
+        "why": "Vera Rubin 機櫃功率飆升、電源從 54V 升級至 800V HVDC，安圖斯高密度 AI 伺服器每多一台就帶動高瓦數電源與電源櫃出貨。"
+      },
+      {
+        "group": "伺服器連接器/滑軌/機殼",
+        "why": "安圖斯 AI 伺服器需 GPU 板高階連接器、UQD 快接頭、機櫃滑軌與白牌機殼，伺服器接單放大同步帶動結構件族群。"
+      },
+      {
+        "group": "PCB/CCL",
+        "why": "AI 伺服器主板與 GPU 載板採高多層板與 M9 等級 CCL，安圖斯 Blackwell 平台量產推升伺服器板與銅箔基板用量。"
+      },
+      {
+        "group": "AI PC ODM/組裝",
+        "why": "宏碁為 AI PC 與電競筆電品牌廠，新機放量會把訂單外溢給代工組裝廠，形成同一條 AI PC 換機潮供應鏈。"
+      },
+      {
+        "group": "主機板/顯卡 (AI PC 同業)",
+        "why": "宏碁電競筆電搭 NVIDIA RTX GPU，與同樣吃 GPU 的板卡品牌共享 GeForce/AI PC 拉貨動能，屬連動性高的 GPU 下游族群。"
+      }
+    ]
+  },
+  "2377.TW": {
+    "name": "微星 (MSI)",
+    "groups": [
+      {
+        "group": "伺服器機殼 / 滑軌 (機構件)",
+        "why": "微星以 NVIDIA MGX 模組化架構打造 4U/6U AI 伺服器與整櫃方案，機殼、機櫃、滑軌是組裝必備外購機構件，出貨放大直接帶動機殼與滑軌廠拉貨。"
+      },
+      {
+        "group": "散熱 (氣冷 / 液冷)",
+        "why": "微星 Vera Rubin/Blackwell 世代伺服器走高功耗液冷架構，需外購水冷板、CDU、快接頭與均熱片，伺服器出貨愈多散熱廠單量同步放大。"
+      },
+      {
+        "group": "電源供應器 / BBU",
+        "why": "AI 伺服器是吃電怪獸，Vera Rubin 走 800V 高壓架構且 BBU 從選配變標配，微星整機需搭載 PSU 與電池備援模組，組裝放量直接拉動電源族群。"
+      },
+      {
+        "group": "PCB / CCL (高速基板材料)",
+        "why": "微星主機板與伺服器母板隨 AI 規格升級至高層數 HDI 與 M9 等級高速 CCL，板量與單價同步提升，帶動 PCB 與銅箔基板上游材料廠接單。"
+      },
+      {
+        "group": "高速連接器 / 線材",
+        "why": "微星伺服器與 AI PC 需大量 CPU 插槽、PCIe/CXL 高速連接器與內部線材連接主機板、記憶體與 GPU，系統組裝放量直接帶動連接器廠出貨。"
+      }
+    ]
+  },
+  "3017.TW": {
+    "name": "奇鋐 (AVC)",
+    "groups": [
+      {
+        "group": "液冷零組件（CDU／快接頭／manifold／熱交換器）",
+        "why": "奇鋐做液冷板與整櫃散熱整合，整櫃液冷導入放大時，需搭配 CDU、快接頭、分歧管、熱交換器一起出貨，同櫃零組件廠跟著吃單"
+      },
+      {
+        "group": "散熱關鍵件（均熱片／導熱介面／鈦合金件）",
+        "why": "奇鋐液冷板與冷板模組需搭配均熱片、VC、導熱介面等關鍵件，散熱出貨放大時上游材料件同步受惠"
+      },
+      {
+        "group": "AI 伺服器機殼／機構件",
+        "why": "奇鋐提供機殼＋風扇＋散熱整合方案，與機殼廠同處機櫃機構生態，AI 機櫃放量時機殼、機架件一起吃單"
+      },
+      {
+        "group": "AI 伺服器電源（HVDC／800V／BBU）",
+        "why": "Vera Rubin 整櫃功率飆升、散熱與供電同步升級，奇鋐液冷接單放大代表機櫃放量，高壓電源與電池備援同步受惠"
+      },
+      {
+        "group": "連接器／線材（高速連接器、Cable）",
+        "why": "AI 機櫃機構與散熱整合放量時，櫃內高速連接器、電源連接器與線材用量同步拉升，與機構散熱同屬機櫃組裝鏈"
+      },
+      {
+        "group": "系統組裝／伺服器代工（下游客戶）",
+        "why": "奇鋐散熱與機構直接供貨給 AI 伺服器代工與品牌廠，下游整櫃出貨放大即是奇鋐接單放大的源頭，連動性最直接"
+      }
+    ]
+  },
+  "2383.TW": {
+    "name": "台光電 (EMC)",
+    "groups": [
+      {
+        "group": "PCB 印刷電路板（高速主板/GPU板）",
+        "why": "台光電的高階 CCL（M8/M9）是 PCB 板廠壓合的核心基材，台光電接單放大代表 AI 伺服器主板、GPU/ASIC 載板需求同步暴增，板廠直接吃單。"
+      },
+      {
+        "group": "玻纖布（上游基材）",
+        "why": "玻纖布是 CCL 三大原料之一，台光電拉貨高速低損耗 CCL，等於向上游低 CTE/低損耗玻纖布大量備料，玻纖布在 AI 缺貨潮中直接受惠。"
+      },
+      {
+        "group": "銅箔/HVLP 銅箔（上游材料）",
+        "why": "高速 CCL 需搭配極低輪廓 HVLP/RTF 銅箔以降低訊號損耗，台光電升級 M8/M9 製程同步拉升高階銅箔用量，銅箔廠隨之受惠。"
+      },
+      {
+        "group": "CCL 同業（同族群比價）",
+        "why": "台光電是高階 CCL 龍頭，AI 伺服器與 800G/1.6T 交換器材料升級是全產業趨勢，同為高速 CCL 供應的同業跟著吃升級單與比價行情。"
+      },
+      {
+        "group": "ABF 載板",
+        "why": "CCL/PCB 與 ABF 載板同屬 AI 加速卡的訊號互連基礎，GPU/ASIC 平台（Vera Rubin）拉貨時，主板用 CCL 與封裝用 ABF 載板需求同步攀升，是平行受惠的高階互連族群。"
+      },
+      {
+        "group": "光通訊／CPO 矽光子",
+        "why": "高速 CCL 主板與 1.6T 交換器、CPO 共封裝光學是同一波 AI 網路升級的兩端，板材升級代表交換器/光模組規格同步拉高，CPO 光通訊族群連帶受惠。"
+      }
+    ]
+  },
+  "6125.TWO": {
+    "name": "廣運 (KENMEC)",
+    "groups": [
+      {
+        "group": "液冷散熱(水冷板/CDU/Sidecar)",
+        "why": "廣運子公司金運主攻AI資料中心液冷CDU，與同業共構GB/Vera Rubin液冷生態,當其CDU接單放大,同屬水冷板與熱交換模組的散熱廠同步吃單。"
+      },
+      {
+        "group": "液冷快接頭/QD/Manifold",
+        "why": "廣運CDU液冷系統須搭配通過NVIDIA認證的水冷快接頭與分歧管,CDU部署量增帶動QD與浮動接頭等關鍵零件需求。"
+      },
+      {
+        "group": "AI電源/800V HVDC",
+        "why": "廣運導入800V HVDC機櫃級液冷解決方案,與電源廠在高壓直流機櫃整合互補,算力機櫃放量同步拉升HVDC電源櫃需求。"
+      },
+      {
+        "group": "AI機櫃/機殼",
+        "why": "液冷CDU與Sidecar需整合進AI機櫃,廣運液冷案放量時,提供NVL72機櫃與液冷機殼的機構廠一併受惠。"
+      },
+      {
+        "group": "系統組裝ODM/AI伺服器",
+        "why": "廣運液冷方案已切入廣達、緯創、鴻海等系統廠供應鏈,ODM廠機櫃組裝放大即帶動其液冷CDU出貨,屬同向連動。"
+      },
+      {
+        "group": "智慧倉儲/自動化/機器人",
+        "why": "廣運本業為自動化倉儲與AGV/人形機器人,AI工廠與Physical AI推升智慧製造投資時,同屬自動化與機械傳動設備族群同步受惠。"
+      }
+    ]
+  }
+};
+
 /* ============================================================
    主應用
    ============================================================ */
@@ -3042,9 +3455,13 @@ function CompanyPopover({ company, onClose, onOpenTheme }) {
   const theme = THEMES.find((t) => t.id === company.themeId);
   const originLabel = ORIGIN_LABEL[company.origin] || '';
   const basisLabel = BASIS_LABEL[company.basis] || '';
+  // 台灣個股 → 相關受惠族群（只列族群與理由，不列個股）
+  const primaryTicker = (company.ticker || '').split(/[／/]/)[0].trim();
+  const ben = (company.origin === 'taiwan' && company.listed && typeof BENEFICIARIES !== 'undefined')
+    ? BENEFICIARIES[primaryTicker] : null;
   // 就近定位：以點擊座標為基準，並夾在視窗內
   const vw = window.innerWidth, vh = window.innerHeight;
-  const W = 340, H = 220;
+  const W = 340, H = ben ? 380 : 220;
   const pos = (typeof company.sx === 'number')
     ? { left: Math.min(Math.max(12, company.sx - W / 2), vw - W - 12), top: Math.min(Math.max(12, company.sy + 18), vh - H - 12) }
     : { left: (vw - W) / 2, top: vh - H - 30 };
@@ -3063,6 +3480,18 @@ function CompanyPopover({ company, onClose, onOpenTheme }) {
       </div>
       ${(company.tnote || basisLabel) && html`<div class="cpop-basis">${company.tnote ? company.tnote + '　' : ''}${basisLabel ? '· 依據：' + basisLabel : ''}</div>`}
       <div class="cpop-note">${company.note}</div>
+      ${ben && html`
+        <div class="cpop-ben-label">相關受惠族群（此股接單／成長連帶受惠）</div>
+        <div class="cpop-ben-list">
+          ${ben.groups.map((g) => html`
+            <div class="cpop-ben-item" key=${g.group}>
+              <span class="cpop-ben-group">${g.group}</span>
+              <span class="cpop-ben-why">${g.why}</span>
+            </div>
+          `)}
+        </div>
+        <div class="cpop-ben-disc">※ 以上為產業關聯整理，僅供理解，<strong>不構成投資建議</strong>，投資請自行評估風險。</div>
+      `}
       ${theme && html`<button class="cpop-link" onClick=${() => onOpenTheme(company.themeId)}>看「${theme.title}」詳情 →</button>`}
     </div>
   `;
