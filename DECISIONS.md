@@ -139,6 +139,19 @@
 - **可調**：`ORIGIN_COLOR` 三色；台廠判定在注入腳本的 TW 關鍵字清單；`basis`/`origin` 存於 `AUDIENCE_EXTRA…companies[]`。
 - **手動修正**：NVIDIA 本尊不列為關聯公司（它是主體，已全數移除）；GMI Cloud 非台廠（美國 GPU 雲新創，origin 改 overseas）。
 
+## 24. 受眾重新校準（對齊內容與 LinkedIn 通路）
+- **問題**：四類「概念對稱、實際不對稱」——投資者最實、消費者最虛（GTC 內容對一般消費者多為間接）。
+- **校準**：知識工作者→**開發者·技術工作者**、一般消費者→**科技愛好者**（LinkedIn 最廣的一群，內容改「大局/意義」而非「你會買什麼」）、公司決策者→**企業決策者**；投資者明確定位為**散戶「該買哪些股票」**。開發者與科技愛好者內容全面重寫、重設核心主題。
+
+## 25. 投資者（散戶）：上市狀態＋股票代號
+- **動機**：散戶要「買得到」。每家關聯公司標 listed/ticker/exchange。
+- **未上市**（GMI Cloud、Cursor、Nscale、Anthropic/OpenAI、Unitree、林科、Red Pill 等）明確標「未上市」、球泡改空心虛線；角色卡顯示代號與備註。保留非投資建議聲明。
+- **作法**：工作流查代號（87 家）＋正規化比對＋手動補漏（Arm、Dell、現代、聯想、宏碁、高通、ServiceNow、Nebius、Siemens 等）。
+
+## 26. 部署：GitHub Pages
+- **選擇**：主檔改名 `index.html`，`gh` 建立公開 repo `brennenhuang/gtc-2026-keynote-map`，開啟 Pages（main 分支根目錄）。
+- **網址**：https://brennenhuang.github.io/gtc-2026-keynote-map/ —— https origin 讓影片可正常內嵌；之後 `git push` 自動更新。
+
 ---
 
 ## 之後可調整的「旋鈕」
