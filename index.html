@@ -542,6 +542,18 @@
     margin-top: 7px; font-size: 11.5px; font-weight: 600;
     color: var(--txt-0); text-align: center; line-height: 1.3; max-width: 128px;
   }
+  .node-company .ncp-ticker {
+    margin-top: 3px; font-family: var(--font-en); font-size: 10px; letter-spacing: .3px;
+    color: var(--tagc); opacity: .9;
+  }
+  .node-company .ncp-ticker.ncp-unlisted { color: var(--txt-2); opacity: .8; }
+  /* 未上市：球泡改空心虛線（散戶買不到） */
+  .node-company.unlisted .ncp-bubble {
+    background: transparent !important;
+    border-style: dashed;
+    box-shadow: none;
+    opacity: .7;
+  }
 
   /* 公司角色小卡 */
   .cpop-catch { position: fixed; inset: 0; z-index: 40; }
@@ -650,7 +662,7 @@ import {
 } from '@xyflow/react';
 import htm from 'htm';
 import {
-  TrendingUp, BriefcaseBusiness, ShoppingBag, Building2,
+  TrendingUp, BriefcaseBusiness, ShoppingBag, Building2, Code2, Compass,
   Play, X, LocateFixed, Quote, Clock, Sparkles, Lightbulb, Star, Network
 } from 'lucide-react';
 
@@ -662,28 +674,14 @@ const html = htm.bind(React.createElement);
 const VIDEO_ID = 'wzxc29ol3R0';
 
 const AUDIENCES = [
-  { key: 'investor',        label: '投資者',     en: 'Investor',         icon: TrendingUp,        color: '#34d399' },
-  { key: 'knowledgeWorker', label: '知識工作者', en: 'Knowledge Worker', icon: BriefcaseBusiness, color: '#60a5fa' },
-  { key: 'consumer',        label: '一般消費者', en: 'Consumer',         icon: ShoppingBag,       color: '#f472b6' },
-  { key: 'decisionMaker',   label: '公司決策者', en: 'Decision Maker',   icon: Building2,         color: '#fbbf24' },
+  { key: 'investor',        label: '投資者',          en: 'Retail Investor',   icon: TrendingUp, color: '#34d399' },
+  { key: 'knowledgeWorker', label: '開發者·技術工作者', en: 'Developer',         icon: Code2,      color: '#60a5fa' },
+  { key: 'consumer',        label: '科技愛好者',       en: 'Tech Enthusiast',   icon: Compass,    color: '#f472b6' },
+  { key: 'decisionMaker',   label: '企業決策者',       en: 'Enterprise Leader', icon: Building2,  color: '#fbbf24' },
 ];
 const AUD_MAP = Object.fromEntries(AUDIENCES.map(a => [a.key, a]));
 
-const THEMES = [
-  {"id":"opening","title":"開場・「台北是一切的起點」與台灣生態系","timestampDisplay":"00:00:08 – 00:06:31","startSec":8,"endSec":391,"anchorQuote":"\"And here in Taipei is where it all begins.\" / \"Very good to be home. I brought my parents home.\" / \"the world's best supply chain ecosystem.\"","whatIsThis":"黃仁勳以一段「新型工廠孕育 token」的開場影片揭開 GTC Taipei 2026，影片結尾點題「台北就是這一切的起點」(And here in Taipei is where it all begins)。上台後他親切地說「回到家真好，我把父母也帶來了」(Very good to be home. I brought my parents home.)，把這場全球盛會定位為一次「返鄉」。他將台灣定義為「全世界最好的供應鏈生態系」(the world's best supply chain ecosystem)，並逐一致謝從台積電、鴻海、廣達、緯創、華碩到聯發科、台達電等夥伴，甚至點名在地小吃店，凸顯台灣從晶片到系統整合的完整製造能量。整段開場為後續 Vera Rubin 量產、AI PC、代理式 AI 等發表，建立「台灣是 AI 時代製造起點」的敘事基調。","keyTerms":["台北是起點 (where it all begins)","供應鏈生態系 (supply chain ecosystem)","台積電 / 鴻海 / 廣達 / 緯創","聯發科 / 台達電 / 華碩","Vera Rubin","token / AI 工廠","代理式 AI (Agentic AI)","數位孿生工廠"],"audiences":{"investor":{"whyCare":"黃仁勳把台灣定義為「全世界最好的供應鏈生態系」，等於由 NVIDIA 官方背書整條台廠價值鏈。對投資者而言，這段開場直接連動到台積電、鴻海、廣達、緯創、華碩、聯發科、台達電等個股的營收想像，也預告 Vera Rubin 量產所帶動的訂單能見度與資本支出循環。","takeaway":"NVIDIA 的 AI 工廠藍圖高度綁定台灣製造，台廠是這波 AI 資本支出最直接的受惠族群。","extension":"若 Vera Rubin 進入全面量產，哪些台廠在散熱、機櫃、CoWoS、伺服器組裝環節的營收占比與毛利率最具上修空間？","matrixView":"官方認證台灣是 AI 供應鏈核心，台廠價值鏈受惠想像被放大。"},"knowledgeWorker":{"whyCare":"開場以「工廠孕育 token」比喻 AI 的生產本質，並把台北定位為 AI 時代的起點。對知識工作者而言，這預示 token（AI 運算）將像水電一樣成為日常工作底層資源，後續代理式 AI 將從「回答問題」走向「觀察、推理、行動」，改變工作流程的分工方式。","takeaway":"AI 正從輔助工具升級為會自己行動的代理人，工作重心將轉向定義任務與監督產出。","extension":"當 AI 代理能自主執行多步驟任務，你目前工作中哪些環節最先會被「交辦給代理」而非自己動手？","matrixView":"token 成為工作底層資源，代理式 AI 將重塑任務分工。"},"consumer":{"whyCare":"這段開場對一般消費者是較間接的，但黃仁勳刻意點名「王記府城肉粽」等在地小吃，把高科技生態系與庶民生活連結。它的訊號是：AI 製造的核心就在台灣身邊，後續的 AI PC、機器人等產品會更快、更貼近台灣使用者的日常。","takeaway":"AI 的源頭就在台灣，未來的 AI 裝置與服務會更快走進你我生活。","extension":"如果 AI PC 與機器人最早在台灣落地，你最希望它先幫你解決生活中的哪件事？","matrixView":"AI 製造源頭在台灣，消費端產品落地會更快更近。"},"decisionMaker":{"whyCare":"黃仁勳將 AI 比喻為「新型工廠生產 token」，等於告訴企業主：運算力是新的生產要素。台灣完整供應鏈意味著本地企業在採購 AI 基礎建設（伺服器、AI PC、機器人）上具備地利之便，決策者需要評估何時、以何種規模導入 AI 工廠級基礎建設。","takeaway":"AI 算力是新生產要素，企業要把「導入 AI 基礎建設」當成製造業升級而非單純 IT 採購。","extension":"你的企業要先投資自建 AI 算力，還是先用雲端與代理式 AI 服務驗證價值再擴大規模？","matrixView":"算力即生產要素，企業需把 AI 基礎建設視為策略性投資。"}}},
-  {"id":"agentic","title":"Agentic AI 時代：「有用的 AI 已經到來」","timestampDisplay":"00:06:31 – 00:16:11","startSec":391,"endSec":971,"anchorQuote":"\"agentic AI has arrived, that useful AI has arrived.\" / GitHub commits 「nearly tripled」 / \"People talk about AI reducing jobs. Complete nonsense. It's causing more software engineers to be hired.\" / agent = model + harness + tools + memory，示範 Claude Code / Codex。","whatIsThis":"黃仁勳在這段宣告「agentic AI 已經到來、有用的 AI 已經到來」，認為 AI 不再只是會回答問題的聊天機器人，而是能觀察、推理、規劃並執行任務的「代理（agent）」。他以程式開發為最直接的證據：GitHub 上的程式提交數（commits）在短短兩年內「幾乎成長三倍」，因為 Claude Code、Codex 這類 AI 編碼工具大幅提升了工程師的生產力。他直接駁斥「AI 會減少工作」的說法，稱其為「完全胡說」，反而是因為每位工程師產出變多，企業要僱用更多軟體工程師。他並把 agent 拆解為四個組成：模型（model）＋執行框架（harness）＋工具（tools）＋記憶（memory），並現場示範了 Claude Code 與 Codex。","keyTerms":["Agentic AI（代理式 AI）","有用的 AI（useful AI）","GitHub commits","Claude Code","Codex","Agent 組成：模型＋執行框架＋工具＋記憶","軟體工程師生產力","Token 經濟學"],"audiences":{"investor":{"whyCare":"黃仁勳把「agentic AI 已到來」從願景變成可量測的需求訊號：GitHub commits 兩年內幾乎成長三倍，代表 AI 推論（inference）與運算需求正快速放大，直接連動 NVIDIA 整個生態系與台廠供應鏈的訂單想像。他強調 AI 帶來的是「更多工程師被僱用」而非裁員，等於替「AI 需求持續擴張、而非泡沫」這個論點背書，對評估 NVIDIA 及上下游營收動能是關鍵定錨。","takeaway":"Commits 成長三倍是 agentic AI 真實落地的可量化證據，意味推論運算與 token 消耗的長期需求成長，撐起 NVIDIA 生態系與台廠供應鏈的營收想像。","extension":"若 commits 成長真的反映 token 消耗暴增，哪些台廠（伺服器、散熱、網通、CoWoS 相關）最直接受惠，而哪些只是題材性連動？","matrixView":"Commits 三倍＝真實需求訊號，撐起 NVIDIA 生態與台廠供應鏈營收想像。"},"knowledgeWorker":{"whyCare":"這段最直接衝擊的就是知識工作者，尤其是軟體工程師。黃仁勳明確說「AI 會減少工作是完全胡說」，因為每位工程師借助 Claude Code、Codex 等工具產出可達數倍，企業反而要僱更多人。工作型態從「自己寫每一行程式」轉為「指揮並審查 AI agent」，技能重心移到拆解問題、給出脈絡、驗證產出與管理多個 agent。","takeaway":"工作不會消失，但會被重塑：你的價值從親手執行，轉向指揮、審查與整合 AI agent 的產出。","extension":"當 agent 由模型＋執行框架＋工具＋記憶組成，知識工作者該優先培養哪一塊能力，才能在「指揮 agent」的工作流裡不可取代？","matrixView":"工作不減反增，重心從親手寫轉為指揮與審查 AI agent。"},"consumer":{"whyCare":"這段對一般消費者是間接但會逐漸顯現的影響。黃仁勳談的是開發端的 agentic AI，消費者短期不會直接「用到」commits，但工程師生產力大增意味未來軟體、App 與數位服務會更快推出、更新更頻繁、客製化更容易。你日常用的服務背後，會越來越多由能自主執行任務的 AI agent 打造與維運。","takeaway":"你不會直接看到 agent，但你常用的 App 與服務會做得更快、更新更勤，因為背後的 AI 正在加速軟體生產。","extension":"如果軟體開發成本大幅下降，會帶來更多更好用的服務，還是更多品質參差、快速堆出來的應用？","matrixView":"看不見 agent，但常用 App 與服務會更快推出、更勤更新。"},"decisionMaker":{"whyCare":"黃仁勳等於對企業老闆喊話：agentic AI 已是「有用的、可落地的」生產力工具，不導入就會在效率上落後。對決策者而言，重點是理解 agent 的四個組成（模型＋執行框架＋工具＋記憶），據此規劃導入路徑——不只是買一個模型，而是要建立工具串接、記憶／資料層與執行框架，並重新設計「人＋agent」的工作流程與治理。他駁斥裁員邏輯，提醒導入目的是放大團隊產出而非單純省人力。","takeaway":"agentic AI 已可實用落地，企業該規劃的是模型＋工具＋記憶＋執行框架的整套基礎建設與工作流，目標是放大產出而非裁員。","extension":"導入 agent 時，公司要先投資哪一層——工具串接、內部資料與記憶層，還是人＋agent 的工作流程與治理規範？","matrixView":"agentic AI 可落地，導入重點是整套基礎建設與人＋agent 工作流。"}}},
-  {"id":"cuda-x","title":"CUDA-X 函式庫：Agent 的工具與護城河","timestampDisplay":"00:16:11 – 00:24:08","startSec":971,"endSec":1448,"anchorQuote":"\"CUDA X libraries are tools for agents.\" / \"20 years ago, we built CUDA... A thousand CUDA X libraries.\" / \"all of our CUDA X libraries are now going to come with skills that the AI could learn how to use.\"","whatIsThis":"黃仁勳把 NVIDIA 累積近 20 年、約一千個的 CUDA-X 函式庫，重新定位為「給 AI agent 使用的工具」。他說「CUDA-X libraries are tools for agents」，並強調這些函式庫現在都會附帶「skills」（技能/使用說明書），讓 AI 讀過之後就知道怎麼呼叫，使用工具的能力甚至會超越人類工程師。在他描繪的 agent 架構裡，一個 agent 是「大型語言模型坐在一個 harness（協調框架）裡」，由 harness 理解意圖、推理、規劃並呼叫工具——而這些工具可以是試算表、編譯器、資料庫，也可以是 CUDA 加速的函式庫（如 cuDF、cuOpt、NeMo、CUDA-Q）。換句話說，NVIDIA 想把過去開發者才會用的硬功夫，變成 agent 時代的標準工具集與生態護城河。","keyTerms":["CUDA-X 函式庫","Agent（智慧代理）","Skills（技能/工具說明書）","Harness（協調框架）","Tools for agents（工具化）","cuDF / cuOpt / NeMo / CUDA-Q","生態系護城河","Agentic AI"],"audiences":{"investor":{"whyCare":"CUDA-X 是 NVIDIA 最深、最難複製的軟體護城河，這段是把硬體領先轉成「軟體鎖定」的關鍵敘事。把近千個函式庫變成 agent 標準工具集，意味著每一個 AI agent 的運算需求都會被導回 NVIDIA 加速堆疊，強化長期黏著度與 GPU 需求。對台廠供應鏈（Vera Rubin 板卡、伺服器代工）而言，軟體護城河越穩，硬體訂單能見度越長。","takeaway":"護城河從硬體往軟體延伸：CUDA-X 工具化等於把 agent 時代的運算需求鎖進 NVIDIA 生態，是估值的長期支撐。","extension":"如果 agent 主要透過開放的 skill 標準呼叫工具，競爭對手（AMD、自研晶片）會更容易繞過 CUDA，還是 CUDA-X 的工具廣度反而讓護城河更深？","matrixView":"近千個 CUDA-X 函式庫工具化，把 agent 運算鎖進 NVIDIA 生態，是軟體護城河與長期 GPU 需求的支撐。"},"knowledgeWorker":{"whyCare":"黃仁勳說 agent 用這些函式庫的能力會「遠超人類工程師」，這直接衝擊資料工程、最佳化、模擬等技術工作。過去你要會寫 CUDA、調 cuDF/cuOpt 才能做的高效能工作，未來可能是「對 agent 說明意圖、由它呼叫工具完成」。技能價值從「會手寫程式」轉向「會定義問題、驗證 agent 產出、編排工具」。","takeaway":"你的價值不再是親手呼叫函式庫，而是會定義意圖、選對工具、驗證 agent 用 CUDA-X 跑出的結果。","extension":"當 agent 能比你更熟練地呼叫 cuDF、cuOpt，你要培養哪種「人類獨有」的判斷力，才不會被工具化取代？","matrixView":"高效能函式庫變成 agent 工具，技術工作從手寫程式轉為定義意圖與驗證 agent 產出。"},"consumer":{"whyCare":"這段對一般消費者是間接影響，但很實在：你不會直接碰到 CUDA-X，但你用的 AI 助理在背後會自動呼叫這些加速工具。這代表未來在筆電（RTX Spark/N1X）或雲端上跟 AI 對話時，複雜的資料分析、最佳化、模擬會更快、更準地完成，而你只需要說出想要什麼。","takeaway":"你看不到 CUDA-X，但你的 AI 助理會偷偷用它，讓「說一句話就完成複雜任務」變得更快更可靠。","extension":"當 AI 在背後自動呼叫一堆專業工具完成任務，你要怎麼判斷它給的結果是不是真的可信？","matrixView":"消費者不直接接觸 CUDA-X，但 AI 助理在背後呼叫它，讓口語下指令完成複雜任務更快更準。"},"decisionMaker":{"whyCare":"這段給企業主一個明確訊號：未來導入 AI 不只是接一個聊天機器人，而是部署「會呼叫工具的 agent」。要讓 agent 真正產生生產力，你的資料、系統、內部工具都需要能被 agent 以 skill 形式呼叫，而 NVIDIA 正把它的加速函式庫變成現成工具集。導入決策會牽涉到要不要押注 NVIDIA 堆疊、要投資哪些 GPU/AI 基礎建設，以及內部流程如何「工具化」。","takeaway":"AI 導入的重點正從「買模型」轉向「建能被 agent 呼叫的工具與基礎建設」，CUDA-X 提供了現成加速工具集可借力。","extension":"你的企業內部流程與資料，有多少能被包裝成 agent 可呼叫的 skill？這會是你導入 agentic AI 的真正瓶頸嗎？","matrixView":"AI 導入從買模型轉向建可被 agent 呼叫的工具與基礎建設，CUDA-X 是可借力的現成加速工具集。"}}},
-  {"id":"vera-rubin-intro","title":"Vera Rubin：不只是 GPU，而是為 Agent 打造的完整系統","timestampDisplay":"00:24:08 – 00:26:03","startSec":1448,"endSec":1563,"anchorQuote":"\"Vera Rubin is not one chip. Vera Rubin is not a GPU only. It starts with the GPU.\" / \"Vera Rubin is the most ambitious endeavor in the history of our company.\" / \"we've evolved to become a systems company.\"","whatIsThis":"黃仁勳說 Vera Rubin 不只是 GPU，而是一整套系統。","keyTerms":["Vera Rubin","系統公司","AI Agent","GPU","Vera CPU","NVL72 機櫃","AI 工廠","Token 經濟學"],"audiences":{"investor":{"whyCare":"Vera Rubin 是公司史上最有企圖心的工程，NVIDIA 轉型為系統公司，營收單位從一顆 GPU 放大到整套機櫃，台廠供應鏈被全面拉動。","takeaway":"賣的單位從晶片變整套系統，台廠受惠面放大。","extension":"系統化後，台廠議價力會升還是降？","matrixView":"從賣 GPU 到賣系統，客單價放大。"},"knowledgeWorker":{"whyCare":"Vera Rubin 是為 AI Agent 而生的系統，未來助你工作的是能推理規劃並執行任務的 Agent，可代辦環節變多。","takeaway":"算力為 Agent 而造，工作轉向監督審核。","extension":"哪一段最先會被 Agent 接手？","matrixView":"算力為 Agent 而生，工作轉向指揮審核。"},"consumer":{"whyCare":"這段是間接影響。但它為 Agent 推理打造、降低 token 成本，會讓日後 AI 助理更聰明、更便宜。","takeaway":"它讓 AI 助理更能幹、更便宜。","extension":"你最想先交給 AI 的雜事是什麼？","matrixView":"間接影響：讓日常 AI 助理更會做事。"},"decisionMaker":{"whyCare":"它是整套系統而非晶片，改變採購思維：要不要導入一套為 Agent 設計的 AI 基礎建設。","takeaway":"決策從買晶片升為規劃 Agent 基礎建設。","extension":"該自建還是雲端租用？","matrixView":"採購從買晶片升為規劃 Agent 基礎建設。"}}},
-  {"id":"ai-factory-dsx","title":"AI 工廠生態系與 DSX、Omniverse 數位分身","timestampDisplay":"00:26:03 – 00:34:50","startSec":1563,"endSec":2090,"anchorQuote":"\"our customers... don't want to buy computers. They want to build AI factories.\" / \"NVIDIA DSX is the blueprint, a reference design for building and operating AI factories.\" / \"everything was built in Omniverse.\" / \"100 gigawatts of AI factories will come online before the end of the decade.\"","whatIsThis":"黃仁勳在這一段把 NVIDIA 的定位從「賣電腦/GPU」轉向「幫客戶蓋 AI 工廠」，他直言「客戶不想買電腦，他們想蓋 AI 工廠」。他推出 NVIDIA DSX 作為建造與營運 AI 工廠的「藍圖」(blueprint) 與參考設計，涵蓋晶片、機櫃、網路、電力與冷卻的整體協同設計。他強調這整套 AI 工廠「都是在 Omniverse 裡建造的」——也就是先以數位分身 (digital twin) 完整模擬、驗證後，才實際動工蓋廠。他並預言「在這個十年結束前，將有 100 GW (gigawatt) 規模的 AI 工廠上線」，把 AI 推向全球基礎建設等級的產業現象。現場以鴻海數位孿生工廠等台廠合作夥伴影像佐證生態系規模。","keyTerms":["AI 工廠 (AI Factory)","NVIDIA DSX 參考設計/藍圖","Omniverse 數位分身 (Digital Twin)","Vera Rubin","100 GW (Gigawatt) 規模","Token 經濟學 / 運算即收入","台廠供應鏈 (鴻海、台達電、緯創等)","Physical AI"],"audiences":{"investor":{"whyCare":"黃仁勳把 NVIDIA 從賣 GPU 重新定義為「賣整座 AI 工廠」，意味著營收想像從單一晶片擴張到電力、冷卻、機櫃、網路與軟體的整廠系統。100 GW 上線的預言，加上市場估算每 1GW AI 工廠投資上看 800~1,000 億美元，等於把 NVIDIA 生態系綁進一個數兆美元級的基礎建設長線題材。DSX 生態系與台積電、鴻海、台達電、緯創等供應鏈的整廠協同，直接放大台廠的接單能見度。","takeaway":"AI 工廠化把 NVIDIA 的 TAM 從晶片擴大到整廠基礎建設，台廠供應鏈是這條長線的核心受惠者。","extension":"若 100 GW 是十年願景，哪些台廠是「整廠」(電力、散熱、機構) 而非僅「零件」受惠者，重估空間最大？","matrixView":"賣 GPU 變賣整座 AI 工廠，TAM 與台廠供應鏈一起放大"},"knowledgeWorker":{"whyCare":"DSX 與 Omniverse 數位分身把「先在虛擬世界蓋好、驗證再動工」變成標準工作流程，對工程、製造、營運、設施規劃類工作者影響最直接——設計與營運將圍繞數位分身進行模擬、協同與最佳化。即使你不在資料中心產業，這代表「先模擬再執行」的工作方法論正擴散，對流程設計與決策驗證類技能形成新需求。","takeaway":"數位分身讓「先模擬、後動工」成為主流工作方法，懂得用虛擬環境驗證流程的人更吃香。","extension":"我的工作流程中，有哪一段可以先用「數位分身/模擬」驗證，降低實際執行的試錯成本？","matrixView":"工作從「直接做」轉向「先在數位分身模擬驗證再做」"},"consumer":{"whyCare":"這段對一般消費者是間接但根本的影響：AI 工廠是支撐你日常使用的 AI 助理、生成內容、推薦服務背後的「發電廠」。黃仁勳把它類比成基礎建設，意味著未來 AI 服務的速度、成本與普及度，取決於這些工廠蓋得多快、多省電。100 GW 規模也牽動電力與能源議題，可能影響電價與在地資料中心的環境討論。","takeaway":"你用的 AI 服務背後是一座座 AI 工廠，它們蓋得越快越省電，AI 對你越便宜好用。","extension":"如果 AI 服務的成本最終取決於工廠的電力效率，未來哪些 AI 應用會因此先普及到你的生活？","matrixView":"你用的每個 AI 服務，背後都是一座耗電的 AI 工廠"},"decisionMaker":{"whyCare":"黃仁勳的核心訊息「客戶不想買電腦，他們想蓋 AI 工廠」直接對企業主提問：你要的是買算力，還是要自建/共建 AI 產能。DSX 提供的「藍圖+參考設計」降低了自建門檻，讓企業能用協同設計與數位分身先驗證再投資，避免重資產試錯。決策點在於：自建 AI 工廠、租用雲端算力、或透過合作夥伴導入，以及配套的電力與冷卻基礎建設投資。","takeaway":"導入 AI 不再只是採購算力，而是要決定『自建工廠 vs 租用算力』，並用數位分身先驗證再下重注。","extension":"以我們的 AI 用量與資本結構，自建 DSX 式 AI 工廠的回收期，相比租用雲端算力是否划算？","matrixView":"決策從『買多少算力』升級為『要不要蓋自己的 AI 產能』"}}},
-  {"id":"token-economics","title":"Token 經濟學：運算即營收，買越多賺越多","timestampDisplay":"00:34:50 – 00:40:41","startSec":2090,"endSec":2441,"anchorQuote":"\"Compute is revenue. Now compute is profit.\" / \"every token is profitable. Every token is revenues.\" / \"The more you buy, the more you make.\"","whatIsThis":"黃仁勳在這段把 AI 運算的商業邏輯講白：過去「運算就是營收」（compute is revenue），現在更進一步「運算就是利潤」（now compute is profit）。他主張在推論（inference）時代，AI 工廠每吐出一個 token 都能對應到終端客戶願意付的錢，所以「每個 token 都是營收、每個 token 都有利可圖」。正因為 token 可以直接變現，AI 公司會想生更多 token、蓋更多 AI 工廠、買更多運算，於是推導出那句招牌口號「買越多、賺越多」（the more you buy, the more you make）。他並用不同等級的 token 定價（從免費問答到科學研究等高價層級）與每 GW 資料中心的營收想像，說明為何台灣與全球的運算需求像火箭一樣往上飆。","keyTerms":["Token 經濟學","運算即營收（Compute is revenue）","運算即利潤（Compute is profit）","買越多賺越多","AI 工廠（AI Factory）","推論（Inference）","Vera Rubin","每 GW 營收"],"audiences":{"investor":{"whyCare":"這段把 NVIDIA 從「賣硬體」重新定位成「賣可變現的運算」，等於替整個 AI 資本支出循環提供了財務正當性。對投資者來說，「每個 token 都有利可圖」若成立，代表客戶買越多 GPU 不是成本黑洞而是營收引擎，這正是支撐 NVIDIA 估值與台廠供應鏈（伺服器、散熱、CoWoS、電源）長線需求的核心敘事。","takeaway":"Token 經濟學是把 AI 資本支出包裝成正循環的關鍵敘事：只要 token 能變現，運算需求就有複利成長的理由。","extension":"若某天 token 的市場單價因競爭快速下殺，「買越多賺越多」的循環會在哪個環節先出現裂縫？","matrixView":"把 GPU 從成本變營收引擎，撐起 NVIDIA 與台廠供應鏈的長線需求敘事。"},"knowledgeWorker":{"whyCare":"當運算被定價成「每個 token 都是錢」，你日常用的 AI 工具背後其實是一條計費的生產線。這會直接影響公司給你開多少 AI 額度、哪些工作流程被鼓勵自動化（高價值任務值得多燒 token），以及你的產出如何被用「省下多少運算成本 vs 創造多少價值」來衡量。","takeaway":"你用 AI 不再是免費背景功能，而是有成本與報酬的生產行為，懂得把 token 花在高價值任務上會成為新技能。","extension":"如果你的 AI 用量被明確計價，你會怎麼重排工作流程，把昂貴的運算留給真正創造價值的環節？","matrixView":"AI 用量被明確計價，把 token 花在刀口上成為新工作技能。"},"consumer":{"whyCare":"這段對一般人是間接影響，但會慢慢滲透到生活。當業者發現「每個 token 都能賺錢」，消費端會出現分層：免費的基本問答持續存在，但更聰明、更即時、更專業的 AI 功能會走向訂閱或按用量收費，就像水電一樣計量。你感受到的會是 AI 服務變多、變強，但好用的部分越來越多要付費。","takeaway":"未來 AI 服務會像水電被計量收費，免費的夠用、強大的要付錢，分層會越來越明顯。","extension":"當 AI 功能從免費走向按用量計費，你願意為哪一種「更聰明的回答」掏錢？","matrixView":"AI 服務走向分層計費，免費的夠用、強大的要付費訂閱。"},"decisionMaker":{"whyCare":"黃仁勳這段其實是對老闆喊話：別把買運算當花錢，要當投資。對企業決策者，重點是先想清楚自家的 token 能對應到什麼可收費或可省成本的價值（客服、研發、文件處理），再回推要不要自建或租用 AI 工廠等級的基礎建設。沒有變現路徑就盲目擴充算力，「買越多賺越多」對你只會變成「買越多賠越多」。","takeaway":"導入 AI 的前提是先找到 token 的變現或省本路徑，再決定基礎建設規模，否則買越多只是燒越多。","extension":"你公司哪一個流程的 AI 產出，最能清楚換算成可收費的營收或可量化的成本節省？","matrixView":"先確認 token 能變現再投資算力，否則買越多只會賠越多。"}}},
-  {"id":"vera-rubin-production","title":"Vera Rubin 全面量產：供應鏈、製造與揭幕","timestampDisplay":"00:40:41 – 00:51:00","startSec":2441,"endSec":3060,"anchorQuote":"\"Vera Rubin is in full production.\" / \"the supply chain we created for Vera Rubin is twice as large as Grace Blackwell.\" / \"what used to take two hours to assemble... now only takes five minutes.\" / \"Today NVIDIA's token cost is the lowest in the world... by X factors, orders of magnitude.\"","whatIsThis":"這段是黃仁勳宣布次世代 AI 平台 Vera Rubin 進入「全面量產」(in full production)。他強調為 Vera Rubin 打造的供應鏈規模是上一代 Grace Blackwell 的兩倍，並大幅優化製造效率：過去組裝一座機櫃要兩小時，現在只需五分鐘。他把 Vera Rubin 定位為整個系統（NVLink 機櫃、Vera CPU、網路、共封裝光學等），而不只是 GPU。最後他連結到 Token 經濟學，宣稱 NVIDIA 今日的單一 Token 成本是全世界最低，且低出數個數量級（orders of magnitude），藉此論證量產與製造效率如何轉化為運算成本優勢。此段也是他向台灣供應鏈致謝、強調台北是這一切起點的橋段。","keyTerms":["Vera Rubin 全面量產","供應鏈規模兩倍 (vs. Grace Blackwell)","五分鐘組裝 (製造效率)","Token 經濟學","Token 成本全球最低","NVLink 72 機櫃系統","台灣供應鏈夥伴","AI 工廠 (AI Factory)"],"audiences":{"investor":{"whyCare":"Vera Rubin 全面量產代表 NVIDIA 下一波營收引擎已經啟動，不是 PPT 而是真的在出貨。供應鏈規模翻倍、組裝從兩小時縮到五分鐘，直接對應產能放大與毛利結構，這是評估後續幾季營收與獲利能見度的關鍵訊號。台廠供應鏈（代工、散熱、光通訊、PCB、機櫃組裝）是這條鏈的核心受惠者。","takeaway":"量產 + 供應鏈翻倍 + 製造提速，等於 NVIDIA 把營收天花板再墊高，台廠是直接受惠的卡位點。","extension":"供應鏈規模翻倍與五分鐘組裝，最終會反映在 NVIDIA 的毛利率還是讓利給雲端客戶？哪些台廠在這條鏈裡是不可替代的關鍵環節？","matrixView":"量產啟動＋供應鏈翻倍，是 NVIDIA 下一波營收與台廠訂單的能見度訊號。"},"knowledgeWorker":{"whyCare":"這段表面在講硬體製造，但黃仁勳把它連到 Token 成本全球最低、且低數個數量級。對知識工作者來說，這意味著驅動你日常 AI 工具（寫作、程式、分析、客服）的底層運算會越來越便宜，AI 助理會從偶爾用變成隨時掛在工作流裡。成本下降是 AI 能力普及到每個工位的前提。","takeaway":"Token 成本被打到全球最低，等於你用的 AI 工具會更便宜、更隨手可得，加速滲透日常工作。","extension":"當運算成本低到可以忽略時，哪些目前因為太貴而不做的工作（即時翻譯、全程錄音摘要、隨時跑代理人）會變成預設行為？","matrixView":"量產壓低 Token 成本，是你手上 AI 工具變便宜、變日常的底層原因。"},"consumer":{"whyCare":"這段對一般消費者是間接但真實的影響。Vera Rubin 是資料中心等級的硬體，你不會買，但它壓低的 Token 成本，會讓你用的 ChatGPT、AI 搜尋、手機 AI 功能變得更快、更便宜甚至免費。製造效率與量產，最終會反映在你每天接觸的 AI 服務體驗上。","takeaway":"你買不到 Vera Rubin，但它讓你用的 AI 服務變更快更便宜，這是背後看不見的引擎。","extension":"當 AI 運算成本逼近零，哪些現在要付費訂閱的 AI 功能，會變成手機或 App 內建免費的標配？","matrixView":"看不見的資料中心引擎，讓你日常用的 AI 服務更快更便宜。"},"decisionMaker":{"whyCare":"對企業老闆，重點是黃仁勳把製造規模與 Token 成本綁在一起：運算成本正在快速下降且可預期。這改變了導入 AI 的投報率算式，原本因單位成本太高而不划算的應用（大量自動化、代理式工作流）門檻正在崩塌。同時要思考自建 AI 工廠 vs. 採購雲端算力的基礎建設決策。","takeaway":"運算成本結構性下滑，讓更多 AI 導入案從不划算變划算，現在是重算投報率與盤點基礎建設的時點。","extension":"面對持續下降的 Token 成本，公司該鎖定長約算力、自建小型 AI 工廠，還是維持彈性走雲端？哪種對你的工作負載最划算？","matrixView":"Token 成本下滑改寫 AI 導入投報率，企業該重評算力採購與基礎建設策略。"}}},
-  {"id":"vera-cpu","title":"Vera CPU：為 Agent 而生的 CPU","timestampDisplay":"00:51:00 – 01:08:00","startSec":3060,"endSec":4080,"anchorQuote":"\"All the CPUs of the past we built for humans. This CPU is built for agents.\" / \"Agents are impatient... They live in a world that's in nanoseconds.\" / \"This is SQL running three times faster.\" / 紐約證交所即時串流處理「six times」。Olympus core，能效與頻寬世界級。","whatIsThis":"黃仁勳介紹 Vera CPU，並用一句話定調：「過去所有 CPU 都是為人類打造的，這顆 CPU 是為 agent 打造的。」他形容 agent「沒有耐心」、「活在以奈秒計的世界」，因此 Vera 針對 agentic AI 背後真正吃重的 CPU 工作而設計——程式碼執行、工具呼叫、沙箱、編排邏輯與資料管線。他現場展示效能：SQL 查詢快三倍、紐約證交所（NYSE）即時串流處理快六倍。Vera 採用 NVIDIA 自研的 Olympus 核心（共 88 核），搭配 LPDDR5X 高頻寬記憶體，主打世界級的能效與頻寬，整體相較 x86 可達約 1.8 倍的任務完成速度。它是 Vera Rubin 平台的 CPU，也是 NVIDIA 首款獨立資料中心 CPU。","keyTerms":["Vera CPU","Olympus 核心","Agentic AI（代理式 AI）","LPDDR5X 高頻寬記憶體","Vera Rubin 平台","SQL / 資料處理加速","x86 競爭","NYSE 即時串流"],"audiences":{"investor":{"whyCare":"Vera 是 NVIDIA 首款獨立資料中心 CPU，正式切入過去由 Intel、AMD x86 主導的市場，等於把營收觸角從 GPU 延伸到 CPU，擴大每座 AI 工廠的單位金額。客戶名單已涵蓋 NYSE、Anthropic、OpenAI、xAI 與 ByteDance、Oracle 等雲端業者，需求面具體。對台廠而言，Vera 採 Arm 架構自研核心，意味先進製程、CoWoS 封裝、伺服器代工與機櫃供應鏈再添一條新的成長曲線。","takeaway":"NVIDIA 從賣 GPU 變成賣整套 CPU+GPU 機櫃，吃下原本 x86 的份額，台廠供應鏈跟著放大訂單規模。","extension":"若 Vera 把資料中心 CPU 從 x86 換成 Arm 自研核心，Intel、AMD 的資料中心營收與台廠既有 x86 板卡客戶會受到多大擠壓？","matrixView":"NVIDIA 首款獨立 CPU 切入 x86 市場，台廠供應鏈再添一條新成長曲線。"},"knowledgeWorker":{"whyCare":"黃仁勳明說 Vera 是為 agent 而非人類打造，背後處理的正是程式碼執行、工具呼叫、沙箱與資料管線——也就是 AI agent 替你跑分析、查資料、串流程的那一層。對工程師、資料分析師而言，SQL 快三倍、串流快六倍代表 agent 完成任務的等待時間大幅縮短，工作流程會更傾向「交辦給 agent、自己審核結果」。","takeaway":"你越來越不是親手跑查詢的人，而是指揮一群跑在 Vera 上、以奈秒回應的 agent，並負責驗證它們的產出。","extension":"當資料查詢與程式碼執行都由 agent 在硬體層被加速數倍，知識工作者的核心價值會從「會操作」轉向哪些難以被自動化的能力？","matrixView":"Agent 在硬體層被加速，工作重心從動手操作轉為交辦與審核。"},"consumer":{"whyCare":"這是基礎建設層的晶片，消費者不會直接買到或看到 Vera。但它加速的是 agent 背後的運算，因此你日常用的 AI 助理、客服、即時翻譯與金融服務反應會更快、更即時——黃仁勳用 agent「活在奈秒世界」來形容這種瞬時感。影響是間接但真實的：體驗變順，但你感受不到那顆晶片的存在。","takeaway":"你不會看到 Vera，但會感覺到 AI 服務回應變快、更即時——好處藏在看不見的機房裡。","extension":"當 AI 服務的反應速度由資料中心晶片決定，一般人該如何分辨體驗變好是來自軟體還是底層硬體升級？","matrixView":"看不見的機房晶片，讓日常 AI 服務反應更快更即時。"},"decisionMaker":{"whyCare":"Vera 直接對應企業導入 agentic AI 時最常卡關的「非模型」工作——編排、工具呼叫、沙箱化程式碼執行與資料管線。對要不要自建 AI 工廠或上雲的老闆，這代表跑 agent 的單位成本與延遲可望下降（號稱較 x86 約 1.8 倍任務速度、半功耗 2 倍頻寬）。但它隨 Vera Rubin 機櫃出貨、且是 Arm 架構，導入須評估與現有 x86 軟體堆疊的相容與遷移成本。","takeaway":"若企業要認真跑 AI agent，運算基礎建設的選型已不只看 GPU，CPU 與整櫃方案的能效、延遲同樣是成本關鍵。","extension":"你的 agent 工作負載要到多大規模，才值得採用 Vera 整櫃方案而非沿用既有 x86 加 GPU 的混合架構？","matrixView":"導入 agent 的選型從 GPU 擴大到 CPU 與整櫃能效、延遲評估。"}}},
-  {"id":"enterprise-toolkit","title":"企業 AI 工具組：OpenShell、Nemotron 3 Ultra、Cadence 超級代理","timestampDisplay":"01:08:00 – 01:19:53","startSec":4080,"endSec":4793,"anchorQuote":"\"Every company will be an agent company.\" / \"we're announcing the Neotron 3 Ultra... five times faster... 30% cheaper, completely open.\" / Cadence「What once took weeks now takes hours. Verification cycles over 40 times faster.」 / \"Nvidia open shell is open source.\" 工具組 = 模型 + harness + 工具/技能 + runtime。","whatIsThis":"這段黃仁勳提出核心命題：「每一家公司都會變成 agent 公司」（Every company will be an agent company），企業內部會有大量 AI 代理協助客服、資安、財務、設計、工程到供應鏈。他把企業代理拆成四個組件：模型（model）、harness（協調代理行為）、工具與技能（企業系統、資料庫、CUDA 函式庫）、runtime（安全執行環境），合稱「企業 AI 工具組」。他發表 Nemotron 3 Ultra 開源模型，宣稱「速度快五倍、成本便宜約三成、完全開源」，並強調 NVIDIA OpenShell 是開源的安全 runtime／harness。最後以 Cadence 的晶片設計超級代理為案例：「過去要數週、現在只要數小時」，驗證週期加速逾 40 倍，示範代理化如何重構真實的高價值工作流。","keyTerms":["Agent 公司（每家公司都會變成代理公司）","Nemotron 3 Ultra","NVIDIA OpenShell（開源安全 runtime）","企業 AI 工具組（模型＋harness＋工具技能＋runtime）","Cadence 晶片設計超級代理","Harness（代理協調層）","開源（Open Source）","驗證週期加速 40 倍"],"audiences":{"investor":{"whyCare":"這段把 NVIDIA 的故事從『賣晶片』升級到『賣完整企業代理平台』，是擴大 TAM 的關鍵敘事。Nemotron 3 Ultra 走完全開源、便宜三成的路線，意在用成本與開放性綁住企業生態系，而非短期靠模型授權收費。Cadence 案例則證明代理能進入高單價、難取代的專業工作流，是軟體與訂閱想像的支點。","takeaway":"重點不在單一模型賣多少錢，而在 NVIDIA 是否能把『代理工具組＋runtime』變成企業標準層，鎖住長期算力與軟體營收。","extension":"若模型完全開源、便宜三成，NVIDIA 的獲利究竟落在哪一層（OpenShell runtime、CUDA-X、還是底層算力）？這個變現點是否足夠寬廣且具防禦性？","matrixView":"從賣晶片升級為賣企業代理平台，開源模型換生態鎖定，變現靠 runtime 與算力。"},"knowledgeWorker":{"whyCare":"黃仁勳直接說每家公司都會有大量代理處理財務、設計、工程、資料分析等工作，這正是知識工作者的日常。Cadence 案例中『數週變數小時、驗證快 40 倍』顯示代理不只做雜事，而是能承接專業核心流程。工具組的四件式（模型／harness／工具／runtime）也意味著未來工作是『協調與監督一群代理』而非親手執行每一步。","takeaway":"你的價值會從『親自完成任務』移往『定義流程、給代理工具與技能、審核結果』，懂得駕馭代理工具組的人會被放大。","extension":"在我的領域裡，哪些步驟最適合交給代理執行、哪些必須由我把關品質與責任歸屬？","matrixView":"代理接手專業核心流程，工作重心轉向協調、給工具與審核結果。"},"consumer":{"whyCare":"這段主要談企業內部基礎建設，對一般消費者是間接影響，但結果會滲透到日常：你接觸的客服、銀行、保險、線上服務背後將由企業代理處理，回應更快、可全天運作。Cadence 把晶片設計從數週壓到數小時，也意味未來你買的裝置可能更快迭代、功能演進加速。短期內你不會直接『使用 OpenShell』，但會體驗到服務變敏捷。","takeaway":"你不會直接碰到這些工具，但日常接觸的各種服務會因為背後的企業代理而更快、更即時。","extension":"當服務背後是 AI 代理在處理，遇到複雜或出錯的狀況時，我要如何找到能負責的真人？","matrixView":"間接影響：背後企業代理讓日常服務更快更即時，產品迭代也加速。"},"decisionMaker":{"whyCare":"黃仁勳給了企業一張清楚的導入藍圖：代理＝模型＋harness＋工具技能＋runtime，模型可用 Nemotron 也可混用其他模型，runtime 用 OpenShell 確保安全。對老闆而言，這降低了『要不要做、怎麼做』的不確定性，開源與便宜三成也壓低試錯成本。Cadence 的 40 倍驗證加速是可量化的 ROI 範例，適合拿來對標自家最耗時的工作流。","takeaway":"別把代理當單點工具買，而要把『模型／harness／工具／安全 runtime』視為一套企業基礎建設來規劃，並從一條高價值、可量化的流程切入試點。","extension":"我的企業最值得第一個代理化的流程是哪一條？資料治理與 runtime 安全（如 OpenShell）要先補哪些缺口才敢上線？","matrixView":"代理是四件式基礎建設，從高價值流程試點切入，先補安全與治理。"}}},
-  {"id":"rtx-spark","title":"RTX Spark 與重新發明 PC","timestampDisplay":"01:19:53 – 01:26:00","startSec":4793,"endSec":5160,"anchorQuote":"\"40 years later, Microsoft and Nvidia are going to reinvent the PC.\" / \"Introducing RTX Spark... Blackwell RTX GPU... a custom 20 core Grace CPU built in partnership with MediaTek... 128 GB unified memory. TSMC 3 nanometer, 70 billion transistors.\" / 本地 agent + Hermes harness + Claude Sonnet 設計房屋 demo（Rhino→Blender→Flux 2）。","whatIsThis":"黃仁勳宣布 NVIDIA 與微軟攜手「重新發明 PC」，並以「40 年後微軟與 NVIDIA 要重新發明 PC」一句揭開。核心產品是 RTX Spark：搭載 Blackwell RTX GPU、與聯發科（MediaTek）合作打造的客製 20 核 Grace CPU、以 NVLink 融合、128GB 統一記憶體，採台積電 3 奈米製程、約 700 億個電晶體。這台機器的定位是讓本地端 AI agent 真正可用，而非只跑雲端。黃仁勳並現場展示本地 agent 加上 Hermes harness 與 Claude Sonnet，串起 Rhino → Blender → Flux 2 的工作流程，由 AI 自動設計一棟房屋。他強調這次電腦的重新發明，重要性等同於當年手機演進成智慧型手機。","keyTerms":["RTX Spark","Blackwell RTX GPU","Grace CPU（聯發科合作）","NVLink 融合","128GB 統一記憶體","台積電 3 奈米 / 700 億電晶體","本地端 AI agent","Hermes harness + Claude Sonnet demo"],"audiences":{"investor":{"whyCare":"RTX Spark 讓 NVIDIA 從資料中心正式跨入個人 PC 市場，且與微軟、聯發科綁定、由台積電 3 奈米代工，整條台廠供應鏈（聯發科 CPU 設計、台積電製程、ASUS/宏碁/技嘉等品牌與代工）都直接受惠。這是把 GB10 Grace Blackwell 架構從工作站下放到消費級筆電與小型桌機的新營收曲線。秋季由 ASUS、Dell、HP、Lenovo、Microsoft Surface、MSI 首發，出貨節奏與滲透率是觀察重點。","takeaway":"NVIDIA 開出 PC 這條新戰線，聯發科與台積電是最直接的台廠受益者。","extension":"RTX Spark 切入的是高階 AI PC，對 x86（Intel/AMD）與既有 Arm Windows 陣營的市佔侵蝕速度有多快？","matrixView":"NVIDIA 跨入 PC，聯發科、台積電與品牌廠拿到新一波 AI PC 訂單。"},"knowledgeWorker":{"whyCare":"128GB 統一記憶體可在本地跑得動約 1200 億參數等級的大模型與長上下文，意味敏感資料不必上雲，agent 直接在你的筆電上完成工作。Demo 中 Claude Sonnet 透過 Hermes harness 串接 Rhino→Blender→Flux 2 自動設計房屋，預告設計、3D、影音、程式等專業工作流程會從『描述任務』變成『AI 直接交付成果』。技能重點將轉向設計 agent 工作流與審核 AI 產出。","takeaway":"本地 agent 讓專業軟體串成自動化流水線，你的角色從操作者變成流程編排者與把關者。","extension":"當 agent 能跨多個專業軟體自動完工，你的核心價值該重押在判斷力與品味，還是工具操作熟練度？","matrixView":"本地 agent 把跨軟體流程自動化，工作從操作轉為編排與審核。"},"consumer":{"whyCare":"今年秋天起會看到一批新型 Windows 筆電與小桌機（標榜全天候續航、高階螢幕），主打『AI 直接幫你把事情做完』而非只給建議。因為運算在本機，隱私資料不必傳雲端、離線也能用 AI。對一般人來說，這是繼智慧型手機之後又一次『電腦本身被重新定義』的換機潮起點。","takeaway":"下一台筆電可能內建會替你動手完成任務的本地 AI 助理。","extension":"如果 AI 能在你的電腦上自動完成跨軟體的任務，你會願意為這份『本地隱私 + 全程代勞』多付多少錢？","matrixView":"秋季上市的新 AI 筆電，主打本地、隱私、AI 直接代你完工。"},"decisionMaker":{"whyCare":"RTX Spark 提供一條『本地推論』路線：員工裝置就能跑大模型與 agent，降低把機密丟上雲端的疑慮，也可能省下部分 API 與雲端推論成本。但這是秋季才出貨的新平台、Arm 架構，企業需評估 Windows on Arm 的軟體相容性、裝置採購與汰換、以及 agent 工作流的治理與資安。導入策略偏向先針對設計、研發等高算力、高敏感資料部門試點。","takeaway":"本地 AI PC 是降低雲端成本與資料外洩風險的選項，但要先驗證 Arm 相容性與 agent 治理。","extension":"你的 AI 算力該放在雲端集中管理，還是下放到員工裝置做本地推論——成本、資安與管理三者如何取捨？","matrixView":"本地 AI PC 可省雲端成本、保資料於內部，但需評估相容性與治理。"}}},
-  {"id":"n1x-newpc","title":"N1X 晶片與全新 PC 產品線、DGX Station","timestampDisplay":"01:26:00 – 01:37:00","startSec":5160,"endSec":5820,"anchorQuote":"\"This is the N1X that we built in partnership with MediaTek.\" / \"100% of Nvidia software stack runs here.\" / DGX Station「768 GB of memory... run a trillion parameter model.」 / \"an AI supercomputer in your house... more like R2-D2... C3PO than a PC.\" / \"100% of the world's PC industry has joined us to reinvent the PC.\"","whatIsThis":"黃仁勳發表 N1X 晶片與全新 PC 產品線、DGX Station，把 AI 運算帶到桌面與筆電。","keyTerms":["N1X","聯發科","DGX Station","RTX Spark","一兆參數模型"],"audiences":{"investor":{"whyCare":"NVIDIA 從資料中心切入每台 PC 與筆電的新成長曲線。N1X 由聯發科共同設計，DGX Station 由華碩、戴爾、技嘉等 OEM 量產，台廠供應鏈直接受惠。","takeaway":"AI 運算下放桌面與筆電，開新營收曲線，聯發科與台廠 OEM 受惠。","extension":"本地能跑一兆參數模型後，雲端 GPU 需求是被分流還是放大。","matrixView":"AI 運算下放 PC 與筆電，聯發科與台廠 OEM 受惠。"},"knowledgeWorker":{"whyCare":"你桌上的機器將能本地跑一兆參數前沿模型，敏感資料不必上雲，研究、設計、寫程式可離線完成。N1X 讓 RTX 與 CUDA 跑在筆電上。","takeaway":"AI 算力從雲端搬到桌邊與筆電，本地化、可離線、隱私可控。","extension":"哪些因資料敏感而不敢交給雲端的任務會先被解放。","matrixView":"前沿模型搬到桌邊，可離線保護隱私。"},"consumer":{"whyCare":"黃仁勳說 DGX Station 更像 R2-D2、C3PO，描繪家裡一台 AI 超級電腦。較直接的是秋季上市、搭 N1X 的 RTX 筆電與 PC，本機就能跑 AI。","takeaway":"未來 PC 與筆電就是會思考的 AI 機器，但旗艦桌邊機種仍偏專業價位。","extension":"家裡電腦能跑大型 AI，你願意為本地算力多付少錢。","matrixView":"PC 與筆電變成本地 AI 機器，秋季上市。"},"decisionMaker":{"whyCare":"DGX Station for Windows 把一兆參數模型的算力放到員工桌邊，原生支援 Windows，導入門檻比自建機房低。對重視資料主權與合規的產業是新選項。","takeaway":"企業可用桌邊裝置部署本地 AI，兼顧合規，但需評估與雲端的取捨。","extension":"本地部署相較雲端 GPU，成本與合規的平衡點在哪。","matrixView":"桌邊部署本地 AI、資料不出公司，介於雲端與自建機房。"}}},
-  {"id":"cosmos-physical-ai","title":"Physical AI：Cosmos 3、Alpamo 2、Isaac GR00T","timestampDisplay":"01:37:00 – 01:51:00","startSec":5820,"endSec":6660,"anchorQuote":"\"the biggest problem is data.\" / \"today we are announcing Cosmos 3... the frontier of physical AI.\" / \"in physical AI, we are absolutely the world's best.\" / \"Alpamo 2, an open model for self-driving cars\"（Mercedes demo，\"the world's first reasoning autonomous vehicle\"）。 / \"NVIDIA Isaac Groot... a reference humanoid robot... 31 degrees of freedom. 6 feet 150 lbs. Just like me.\"","whatIsThis":"這段是黃仁勳在 GTC Taipei 2026 主題演講中的「Physical AI（實體 AI）」段落。他先點出核心難題：「the biggest problem is data.」——機器人與自駕車不像語言模型有海量網路文字可學，真實世界的訓練資料極度稀缺。為此他發表 Cosmos 3，稱其為「the frontier of physical AI」，是一個全面重構、開源的世界基礎模型，能生成合成訓練資料並預測世界狀態，並直言「in physical AI, we are absolutely the world's best.」。接著展示 Alpamo 2（Alpamayo 2）這個給自駕車的開放模型，搭配 Mercedes 實車 demo，稱其為「the world's first reasoning autonomous vehicle」——會邊開邊「推理」並產生文字決策鏈。最後揭曉 NVIDIA Isaac GR00T 參考人形機器人，他形容「31 degrees of freedom. 6 feet 150 lbs. Just like me.」，定位為開放的研究與開發平台。整段核心是：用世界模型解決資料荒，把實體 AI 推進到「會推理」的自駕與人形機器人。","keyTerms":["Physical AI 實體 AI","Cosmos 3 世界基礎模型","Alpamo 2 / Alpamayo 2 自駕模型","Reasoning Autonomous Vehicle 推理型自駕車","Isaac GR00T 參考人形機器人","合成訓練資料 / 資料荒","DRIVE Hyperion 車載平台","Jetson Thor / Unitree H2 Plus"],"audiences":{"investor":{"whyCare":"Physical AI 是 NVIDIA 在資料中心之外的下一條成長曲線，TAM 從雲端 GPU 擴張到全球自駕車與機器人。黃仁勳強調 Alpamo 2 是開放模型、搭配 DRIVE Hyperion 車載平台，等於把 NVIDIA 推論晶片（Jetson Thor）綁進汽車與機器人供應鏈；而 Cosmos 3 開源則是用『送模型、賣算力與晶片』的生態系打法擴大護城河。對台廠而言，人形機器人樣板機採用台系/亞系硬體與代工能量，是繼 AI 伺服器後的新訂單想像。","takeaway":"實體 AI 把 NVIDIA 的變現點從雲端延伸到車與機器人，開源 Cosmos 是擴生態、推論晶片才是真正收租入口。","extension":"Cosmos 3 開源後，NVIDIA 靠什麼鎖住獲利——是車用/機器人推論晶片的出貨，還是 Omniverse 模擬平台的訂閱？哪一塊台廠分得到？","matrixView":"實體 AI 開新 TAM，開源換生態、晶片才收租，台廠機器人供應鏈受惠"},"knowledgeWorker":{"whyCare":"這段對多數辦公室工作者是『間接但方向性』的訊號：實體 AI 的瓶頸是資料，而 NVIDIA 用世界模型（Cosmos 3）生成合成資料來訓練機器，意味著未來工程師、資料科學家、模擬與機器人開發者的工作會大量轉向『在虛擬世界訓練 AI、再部署到實體』。Alpamo 2 會輸出文字推理鏈供安全與法規審查，代表自駕/機器人領域會出現新的『AI 行為稽核、合規文件』工作。","takeaway":"未來的技能重點不是親手標資料，而是用世界模型生成、驗證資料，以及為會推理的機器做安全稽核。","extension":"如果機器人與自駕的訓練資料越來越多是 AI 合成的，你所在領域該如何驗證『合成資料』的可靠度與偏誤？","matrixView":"工作從手動標資料轉向用世界模型生成、驗證與稽核 AI 行為"},"consumer":{"whyCare":"對一般人，這段最直接的畫面是兩件事：路上會出現『會推理』的自駕車（Mercedes demo 中車子邊開邊解釋自己的決策），以及一台 6 呎、150 磅、有 31 個關節、像人一樣動作的 Isaac GR00T 人形機器人。短期內這些仍是研究平台與車廠合作，不是馬上買回家；但它預示幾年內自駕計程車、家用/服務型機器人會更實際地進入生活。","takeaway":"會『自己推理講解』的自駕車與類人機器人正從展示走向落地，但離買回家用還要時間。","extension":"如果一台自駕車能用文字解釋它為什麼煞車，這會讓你更信任它、還是更在意它出錯時誰負責？","matrixView":"會推理的自駕車與人形機器人逐步成真，落地到日常仍需時間"},"decisionMaker":{"whyCare":"對企業老闆，重點是『資料是最大瓶頸』這句話：黃仁勳的解法是用 Cosmos 3 世界模型生成合成資料，先在虛擬環境訓練再部署實體。對製造、物流、車隊、服務業而言，這代表導入機器人/自駕不必再苦等真實資料累積，可先用模擬加速 POC。Isaac GR00T 是開放參考平台、Alpamo 2 是開放模型，降低了自建門檻，但也意味要投資模擬算力、Jetson 等邊緣推論硬體與相關人才。","takeaway":"實體 AI 的導入關鍵不在買機器人，而在投資『模擬+合成資料+邊緣推論』這套基礎建設與人才。","extension":"你的場域有哪些重複性實體工作，可以先用 Cosmos 類世界模型做模擬驗證，再決定要不要投資真實機器人？","matrixView":"導入實體 AI 先建模擬與合成資料能力，再投邊緣推論硬體與人才"}}},
-  {"id":"closing","title":"總結與收尾：Agentic 運算模式無所不在","timestampDisplay":"01:51:00 – 01:57:50","startSec":6660,"endSec":7070,"anchorQuote":"\"The computer industry has been completely changed in the last six months.\" / 總結 Vera Rubin 量產、Vera CPU、企業工具組、全新 PC 線、Physical AI 無所不在；同一套 agentic 運算模式（model+harness+tools+runtime）跨雲、PC、機器人重複出現。 / \"Thank you, Taiwan.\" / \"Welcome to Computex.\"","whatIsThis":"這是黃仁勳整場 GTC Taipei 2026 演講的總結與收尾。他用一句重話定調：「電腦產業在過去六個月被徹底改變了。」接著快速串連全場宣布的版圖——Vera Rubin 已全面量產、推出 AI 專用的 Vera CPU、面向企業的整套工具組（搭配 Nemotron、Cadence 等夥伴）、全新的 PC 產品線（RTX Spark／N1X），以及無所不在的 Physical AI（Cosmos 3、Isaac GR00T）。他點出貫穿全場的核心洞見：同一套 agentic 運算模式（model + harness + tools + runtime）正在雲端、PC、機器人三個層面重複出現，是同一個運算典範。最後以「Thank you, Taiwan.」與「Welcome to Computex.」作結，把全場榮耀歸給台灣供應鏈。","keyTerms":["Agentic 運算模式","model + harness + tools + runtime","Vera Rubin 全面量產","Vera CPU","Physical AI","Cosmos 3 / Isaac GR00T","RTX Spark / N1X","台灣供應鏈"],"audiences":{"investor":{"whyCare":"收尾段是把整場拆散的產品線收束成「一個典範」的投資論述：Vera Rubin 已量產出貨、累積數百萬套、OpenAI/Anthropic/SpaceX 為首批客戶，代表 NVIDIA 已從成長故事進入確定性放量。對台股投資人而言，黃仁勳點名約 150 家台灣供應鏈夥伴與近 20 家台廠（台積電、鴻海、廣達、緯創、華碩、技嘉、和碩、聯發科等），把 NVIDIA 的營收動能直接轉譯成台廠的訂單能見度。","takeaway":"同一套 agentic 模式跨雲、PC、機器人重複出現，意味 NVIDIA 的總體可觸及市場（TAM）疊加放大，台灣供應鏈是這條成長曲線的直接受惠者。","extension":"若 Vera Rubin 量產與 PC/機器人新線同時放量，台廠的營收貢獻會集中在少數龍頭，還是擴散到二線供應鏈？哪一段的毛利彈性最大？","matrixView":"一套模式三個戰場，量產確定性與台鏈訂單能見度同步拉高"},"knowledgeWorker":{"whyCare":"黃仁勳收尾強調 agentic 模式（model+harness+tools+runtime）會無所不在，意味知識工作者未來面對的不再是單純問答的助理，而是能觀察、推理、規劃、執行多步驟任務的代理。Cadence 的 ChipStack、Nemotron 企業工具組顯示，連晶片設計、工程這類高專業工作都被代理化，工作的價值會從「親手執行」移向「定義任務、審查代理產出、整合多代理流程」。","takeaway":"你的工作流程會被拆成可交給 AI 代理的步驟，核心技能轉向設計與監督代理，而非逐步手動操作。","extension":"在你的職務裡，哪些步驟最適合先交給代理，哪些必須由人保留最終判斷與責任？","matrixView":"工作從親手執行轉為指揮與審查 AI 代理的多步驟流程"},"consumer":{"whyCare":"收尾把全新 PC 線（RTX Spark／N1X，採台積電 3 奈米、預計秋季上市）與 Physical AI（Cosmos 3、Isaac GR00T 機器人）並列，代表 agentic AI 會從雲端走進你的個人電腦與生活周遭的機器人。對一般人而言，最直接的變化是未來換的電腦會內建能自己跑代理的晶片，而工廠、物流、服務場景的機器人會更快普及，但這些多半是間接、漸進地影響日常，不會一夜改變。","takeaway":"下一台 PC 可能本機就能跑 AI 代理，生活周遭的機器人會慢慢變多，但這是逐步滲透而非立即改變。","extension":"如果電腦本機就能跑 AI 代理（不必上雲），你最想讓它幫你自動完成哪件每天都要做的事？","matrixView":"AI 代理從雲端進到個人電腦與身邊機器人，漸進改變生活"},"decisionMaker":{"whyCare":"黃仁勳收尾的核心訊息對老闆最關鍵：不要把雲端 AI、AI PC、機器人當成三筆獨立投資，它們是同一套 agentic 模式（model+harness+tools+runtime）的不同部署面，企業應以一致的架構思考導入。Nemotron 企業工具組、DSX 資料中心平台、Token 經濟學（算力即可變現的營收單位）提供了從基礎建設到應用的完整選項；Foxconn 測試製造業代理（NemoClaw）是製造場景的早期參照。","takeaway":"把 AI 投資視為單一 agentic 架構的跨場景部署，而非各自為政的專案，能降低重複投資並讓能力跨雲、PC、現場複用。","extension":"你的企業要先從哪一個面（雲端工具組、AI PC、或現場 Physical AI）切入導入，才能最快驗證價值又不被單一供應商鎖死？","matrixView":"AI 投資應以單一 agentic 架構統籌跨雲、PC、機器人部署"}}}
-];
+const THEMES = [{"id": "opening", "title": "開場・「台北是一切的起點」與台灣生態系", "timestampDisplay": "00:00:08 – 00:06:31", "startSec": 8, "endSec": 391, "anchorQuote": "\"And here in Taipei is where it all begins.\" / \"Very good to be home. I brought my parents home.\" / \"the world's best supply chain ecosystem.\"", "whatIsThis": "黃仁勳以一段「新型工廠孕育 token」的開場影片揭開 GTC Taipei 2026，影片結尾點題「台北就是這一切的起點」(And here in Taipei is where it all begins)。上台後他親切地說「回到家真好，我把父母也帶來了」(Very good to be home. I brought my parents home.)，把這場全球盛會定位為一次「返鄉」。他將台灣定義為「全世界最好的供應鏈生態系」(the world's best supply chain ecosystem)，並逐一致謝從台積電、鴻海、廣達、緯創、華碩到聯發科、台達電等夥伴，甚至點名在地小吃店，凸顯台灣從晶片到系統整合的完整製造能量。整段開場為後續 Vera Rubin 量產、AI PC、代理式 AI 等發表，建立「台灣是 AI 時代製造起點」的敘事基調。", "keyTerms": ["台北是起點 (where it all begins)", "供應鏈生態系 (supply chain ecosystem)", "台積電 / 鴻海 / 廣達 / 緯創", "聯發科 / 台達電 / 華碩", "Vera Rubin", "token / AI 工廠", "代理式 AI (Agentic AI)", "數位孿生工廠"], "audiences": {"investor": {"whyCare": "黃仁勳把台灣定義為「全世界最好的供應鏈生態系」，等於由 NVIDIA 官方背書整條台廠價值鏈。對投資者而言，這段開場直接連動到台積電、鴻海、廣達、緯創、華碩、聯發科、台達電等個股的營收想像，也預告 Vera Rubin 量產所帶動的訂單能見度與資本支出循環。", "takeaway": "NVIDIA 的 AI 工廠藍圖高度綁定台灣製造，台廠是這波 AI 資本支出最直接的受惠族群。", "extension": "若 Vera Rubin 進入全面量產，哪些台廠在散熱、機櫃、CoWoS、伺服器組裝環節的營收占比與毛利率最具上修空間？", "matrixView": "官方認證台灣是 AI 供應鏈核心，台廠價值鏈受惠想像被放大。"}, "knowledgeWorker": {"whyCare": "黃仁勳把這場演講定錨在「台灣＝AI 製造起點」，意味你寫的程式、訓練的模型、部署的服務，底層硬體與供應鏈幾乎都從這座島出發。對工程師的實質訊號是：從 Vera Rubin、AI PC 到代理式 AI，整個技術棧正圍繞 NVIDIA 生態重組，越早熟悉 CUDA-X、本地/雲端混合部署與 agent 架構，越能站在浪潮上游而非被動接單。", "takeaway": "別只把台灣當代工，把它當成你技術棧的最上游：搞懂從晶片到系統整合這條鏈，決定你接下來能蓋什麼。", "extension": "如果你的下一個專案註定跑在「台灣製造、NVIDIA 加速」的硬體上，你現在該補的是 CUDA 生態與系統級優化，還是 agent 框架與分散式部署？哪一項對你三年後的市場價值最關鍵？", "matrixView": "台灣是你技術棧最上游，從晶片到系統決定你能蓋什麼"}, "consumer": {"whyCare": "黃仁勳一句「台北就是這一切的起點」，把全球最熱的 AI 浪潮的源頭明確指向台灣的供應鏈生態。這不只是場面話，而是一個趨勢宣告：AI 時代的競爭核心從演算法轉向「誰能把晶片變成可量產的系統」，而這正是台灣從台積電到鴻海、緯創一整條鏈的強項。理解這點，你就看懂了未來十年地緣與產業權力的關鍵支點在哪。", "takeaway": "AI 的勝負不只在矽谷的模型，更在台灣這條「把晶片變成工廠」的供應鏈，這才是真正的稀缺資源。", "extension": "當一個國家的供應鏈被定位成全球 AI 的「起點」，這對台灣是史無前例的機會還是難以承受的集中風險？你會怎麼看這份「不可取代性」的兩面？", "matrixView": "AI 浪潮的源頭被指向台灣供應鏈，產業權力從模型移向製造"}, "decisionMaker": {"whyCare": "黃仁勳將 AI 比喻為「新型工廠生產 token」，等於告訴企業主：運算力是新的生產要素。台灣完整供應鏈意味著本地企業在採購 AI 基礎建設（伺服器、AI PC、機器人）上具備地利之便，決策者需要評估何時、以何種規模導入 AI 工廠級基礎建設。", "takeaway": "AI 算力是新生產要素，企業要把「導入 AI 基礎建設」當成製造業升級而非單純 IT 採購。", "extension": "你的企業要先投資自建 AI 算力，還是先用雲端與代理式 AI 服務驗證價值再擴大規模？", "matrixView": "算力即生產要素，企業需把 AI 基礎建設視為策略性投資。"}}}, {"id": "agentic", "title": "Agentic AI 時代：「有用的 AI 已經到來」", "timestampDisplay": "00:06:31 – 00:16:11", "startSec": 391, "endSec": 971, "anchorQuote": "\"agentic AI has arrived, that useful AI has arrived.\" / GitHub commits 「nearly tripled」 / \"People talk about AI reducing jobs. Complete nonsense. It's causing more software engineers to be hired.\" / agent = model + harness + tools + memory，示範 Claude Code / Codex。", "whatIsThis": "黃仁勳在這段宣告「agentic AI 已經到來、有用的 AI 已經到來」，認為 AI 不再只是會回答問題的聊天機器人，而是能觀察、推理、規劃並執行任務的「代理（agent）」。他以程式開發為最直接的證據：GitHub 上的程式提交數（commits）在短短兩年內「幾乎成長三倍」，因為 Claude Code、Codex 這類 AI 編碼工具大幅提升了工程師的生產力。他直接駁斥「AI 會減少工作」的說法，稱其為「完全胡說」，反而是因為每位工程師產出變多，企業要僱用更多軟體工程師。他並把 agent 拆解為四個組成：模型（model）＋執行框架（harness）＋工具（tools）＋記憶（memory），並現場示範了 Claude Code 與 Codex。", "keyTerms": ["Agentic AI（代理式 AI）", "有用的 AI（useful AI）", "GitHub commits", "Claude Code", "Codex", "Agent 組成：模型＋執行框架＋工具＋記憶", "軟體工程師生產力", "Token 經濟學"], "audiences": {"investor": {"whyCare": "黃仁勳把「agentic AI 已到來」從願景變成可量測的需求訊號：GitHub commits 兩年內幾乎成長三倍，代表 AI 推論（inference）與運算需求正快速放大，直接連動 NVIDIA 整個生態系與台廠供應鏈的訂單想像。他強調 AI 帶來的是「更多工程師被僱用」而非裁員，等於替「AI 需求持續擴張、而非泡沫」這個論點背書，對評估 NVIDIA 及上下游營收動能是關鍵定錨。", "takeaway": "Commits 成長三倍是 agentic AI 真實落地的可量化證據，意味推論運算與 token 消耗的長期需求成長，撐起 NVIDIA 生態系與台廠供應鏈的營收想像。", "extension": "若 commits 成長真的反映 token 消耗暴增，哪些台廠（伺服器、散熱、網通、CoWoS 相關）最直接受惠，而哪些只是題材性連動？", "matrixView": "Commits 三倍＝真實需求訊號，撐起 NVIDIA 生態與台廠供應鏈營收想像。"}, "knowledgeWorker": {"whyCare": "黃仁勳把 agent 拆成 model + harness + tools + memory，這正在重塑你的開發流程：你會從「逐行寫程式」轉成「規劃任務、設計工具、審查 agent 產出」。GitHub commits 兩年內近三倍，意味著生產力基準被墊高，會用 Claude Code / Codex 不再是加分，而是門檻。值得投資的是工具設計（把你的系統包成 agent 可呼叫的 tools 與 skills）、context／memory 管理，以及 agent 工作流的編排與驗證能力。", "takeaway": "把你最常重複的工作流包成 agent 可呼叫的工具，並練熟一套 coding agent，讓自己從寫程式的人變成指揮 agent 的人。", "extension": "你手上哪一段工作流最適合先 agent 化？要讓 agent 能可靠執行，你得先為它補上哪些工具、skills 與記憶？", "matrixView": "agent = 模型+harness+工具+記憶，開發者要從寫程式轉為設計工具與指揮 agent"}, "consumer": {"whyCare": "這段的重點是 AI 跨過了一個門檻：從「會聊天的機器人」變成「會做事的代理」——能觀察、推理、規劃、動手執行。黃仁勳用 GitHub 程式提交兩年近三倍當證據，並直接反駁「AI 會搶工作」，主張產能變高反而要請更多工程師。它透露的趨勢是：未來判斷一個人或一家公司的競爭力，關鍵在於「能不能指揮一群 AI 代理把事做完」，而不只是會不會用 AI。", "takeaway": "AI 已經從會回答問題，進化到會替你把事情做完；接下來比的不是誰會問 AI，而是誰能管好一群 AI 代理。", "extension": "如果 AI 代理讓每個人的產出倍增，工作會因此變少還是變多？你所在的行業，第一個被代理化的會是哪個環節？", "matrixView": "AI 從會聊天進化到會做事的代理，產能倍增重塑工作而非取代工作"}, "decisionMaker": {"whyCare": "黃仁勳等於對企業老闆喊話：agentic AI 已是「有用的、可落地的」生產力工具，不導入就會在效率上落後。對決策者而言，重點是理解 agent 的四個組成（模型＋執行框架＋工具＋記憶），據此規劃導入路徑——不只是買一個模型，而是要建立工具串接、記憶／資料層與執行框架，並重新設計「人＋agent」的工作流程與治理。他駁斥裁員邏輯，提醒導入目的是放大團隊產出而非單純省人力。", "takeaway": "agentic AI 已可實用落地，企業該規劃的是模型＋工具＋記憶＋執行框架的整套基礎建設與工作流，目標是放大產出而非裁員。", "extension": "導入 agent 時，公司要先投資哪一層——工具串接、內部資料與記憶層，還是人＋agent 的工作流程與治理規範？", "matrixView": "agentic AI 可落地，導入重點是整套基礎建設與人＋agent 工作流。"}}}, {"id": "cuda-x", "title": "CUDA-X 函式庫：Agent 的工具與護城河", "timestampDisplay": "00:16:11 – 00:24:08", "startSec": 971, "endSec": 1448, "anchorQuote": "\"CUDA X libraries are tools for agents.\" / \"20 years ago, we built CUDA... A thousand CUDA X libraries.\" / \"all of our CUDA X libraries are now going to come with skills that the AI could learn how to use.\"", "whatIsThis": "黃仁勳把 NVIDIA 累積近 20 年、約一千個的 CUDA-X 函式庫，重新定位為「給 AI agent 使用的工具」。他說「CUDA-X libraries are tools for agents」，並強調這些函式庫現在都會附帶「skills」（技能/使用說明書），讓 AI 讀過之後就知道怎麼呼叫，使用工具的能力甚至會超越人類工程師。在他描繪的 agent 架構裡，一個 agent 是「大型語言模型坐在一個 harness（協調框架）裡」，由 harness 理解意圖、推理、規劃並呼叫工具——而這些工具可以是試算表、編譯器、資料庫，也可以是 CUDA 加速的函式庫（如 cuDF、cuOpt、NeMo、CUDA-Q）。換句話說，NVIDIA 想把過去開發者才會用的硬功夫，變成 agent 時代的標準工具集與生態護城河。", "keyTerms": ["CUDA-X 函式庫", "Agent（智慧代理）", "Skills（技能/工具說明書）", "Harness（協調框架）", "Tools for agents（工具化）", "cuDF / cuOpt / NeMo / CUDA-Q", "生態系護城河", "Agentic AI"], "audiences": {"investor": {"whyCare": "CUDA-X 是 NVIDIA 最深、最難複製的軟體護城河，這段是把硬體領先轉成「軟體鎖定」的關鍵敘事。把近千個函式庫變成 agent 標準工具集，意味著每一個 AI agent 的運算需求都會被導回 NVIDIA 加速堆疊，強化長期黏著度與 GPU 需求。對台廠供應鏈（Vera Rubin 板卡、伺服器代工）而言，軟體護城河越穩，硬體訂單能見度越長。", "takeaway": "護城河從硬體往軟體延伸：CUDA-X 工具化等於把 agent 時代的運算需求鎖進 NVIDIA 生態，是估值的長期支撐。", "extension": "如果 agent 主要透過開放的 skill 標準呼叫工具，競爭對手（AMD、自研晶片）會更容易繞過 CUDA，還是 CUDA-X 的工具廣度反而讓護城河更深？", "matrixView": "近千個 CUDA-X 函式庫工具化，把 agent 運算鎖進 NVIDIA 生態，是軟體護城河與長期 GPU 需求的支撐。"}, "knowledgeWorker": {"whyCare": "NVIDIA 把累積近 20 年、約一千個的 CUDA-X 函式庫（cuDF、cuOpt、NeMo、CUDA-Q）重新包裝成「給 agent 用的工具」，每個函式庫都附上 skills 說明書，讓 AI 讀完就會呼叫。這意味著你寫程式的方式正在反轉：你不再是親手 import 與調參的人，而是設計 harness、定義工具邊界、把領域知識寫成 agent 看得懂的 skill 的人。會「呼叫 GPU 加速函式庫」這件硬功夫，正從工程師的稀缺技能變成 agent 的標準配備。", "takeaway": "別只練「怎麼用函式庫」，要練「怎麼把你的函式庫與領域知識寫成 agent 能讀的 skill 和工具介面」。", "extension": "如果你的團隊明天就要把現有的內部函式庫接給 agent 用，你會怎麼撰寫它的 skill 說明、定義工具的輸入輸出與安全邊界，才能讓 agent 用得比資深工程師更穩、更快？", "matrixView": "千個 CUDA-X 函式庫變成 agent 工具，附 skills 說明書讓 AI 學會呼叫"}, "consumer": {"whyCare": "黃仁勳這句「CUDA-X 函式庫是給 agent 用的工具」其實在宣告一件事：NVIDIA 二十年來最深的護城河不再只是硬體，而是一整套只有它的生態系有、且 AI 已經學會怎麼用的軟體工具。當這些工具都附上 skills 讓 AI 自學呼叫，等於把過去要工程師苦練多年的能力，下放成 agent 的內建技能。這揭示了 AI 競爭的下一個戰場：不是誰的模型最聰明，而是誰握有最完整、最好用的工具集。", "takeaway": "所以呢——未來 AI 強不強，比的不只是腦袋（模型），更是手上有沒有趁手的工具，而 NVIDIA 想當那個賣工具兼立規格的人。", "extension": "當 AI 能自動學會使用過去需要多年訓練的專業工具，「擁有稀缺技能」還能不能算是個人或企業的競爭優勢？護城河會從「會做」轉移到哪裡？", "matrixView": "NVIDIA 把軟體生態變成 AI 的工具箱與規格，護城河從硬體延伸到 agent 工具"}, "decisionMaker": {"whyCare": "這段給企業主一個明確訊號：未來導入 AI 不只是接一個聊天機器人，而是部署「會呼叫工具的 agent」。要讓 agent 真正產生生產力，你的資料、系統、內部工具都需要能被 agent 以 skill 形式呼叫，而 NVIDIA 正把它的加速函式庫變成現成工具集。導入決策會牽涉到要不要押注 NVIDIA 堆疊、要投資哪些 GPU/AI 基礎建設，以及內部流程如何「工具化」。", "takeaway": "AI 導入的重點正從「買模型」轉向「建能被 agent 呼叫的工具與基礎建設」，CUDA-X 提供了現成加速工具集可借力。", "extension": "你的企業內部流程與資料，有多少能被包裝成 agent 可呼叫的 skill？這會是你導入 agentic AI 的真正瓶頸嗎？", "matrixView": "AI 導入從買模型轉向建可被 agent 呼叫的工具與基礎建設，CUDA-X 是可借力的現成加速工具集。"}}}, {"id": "vera-rubin-intro", "title": "Vera Rubin：不只是 GPU，而是為 Agent 打造的完整系統", "timestampDisplay": "00:24:08 – 00:26:03", "startSec": 1448, "endSec": 1563, "anchorQuote": "\"Vera Rubin is not one chip. Vera Rubin is not a GPU only. It starts with the GPU.\" / \"Vera Rubin is the most ambitious endeavor in the history of our company.\" / \"we've evolved to become a systems company.\"", "whatIsThis": "黃仁勳說 Vera Rubin 不只是 GPU，而是一整套系統。", "keyTerms": ["Vera Rubin", "系統公司", "AI Agent", "GPU", "Vera CPU", "NVL72 機櫃", "AI 工廠", "Token 經濟學"], "audiences": {"investor": {"whyCare": "Vera Rubin 是公司史上最有企圖心的工程，NVIDIA 轉型為系統公司，營收單位從一顆 GPU 放大到整套機櫃，台廠供應鏈被全面拉動。", "takeaway": "賣的單位從晶片變整套系統，台廠受惠面放大。", "extension": "系統化後，台廠議價力會升還是降？", "matrixView": "從賣 GPU 到賣系統，客單價放大。"}, "knowledgeWorker": {"whyCare": "當供應商從「賣 GPU」變成「賣整套系統」，你的優化邊界也跟著改變：效能瓶頸不再只是單卡算力，而是 NVLink、CPU、網路、記憶體與機櫃的協同。你會越來越少手動調單一裝置，而是在 NVIDIA 定義好的整機架構上開發，技術棧也從 CUDA kernel 往上延伸到分散式排程、互連拓樸與系統級資源調度。能讀懂整機規格、會做跨節點效能剖析的人，價值會明顯高過只懂單卡的人。", "takeaway": "別再只盯單卡 FLOPS，學會以整機系統為單位做效能剖析與資源調度。", "extension": "如果硬體供應商連系統都幫你架好了，你在這層之上還能掌握哪些別人複製不了的優化能力？是分散式排程、互連拓樸調校，還是把工作負載對應到整機架構的本事？", "matrixView": "供應商賣整套系統，優化邊界從單卡擴到整機協同。"}, "consumer": {"whyCare": "黃仁勳一句「Vera Rubin 不只是一顆晶片」，其實是 NVIDIA 公開承認自己已經從晶片公司變成系統公司。這透露 AI 競爭的主戰場正在從「誰的晶片最快」轉向「誰能把晶片、網路、電力、冷卻整合成一座運轉的機器」，門檻被一口氣墊高，也讓台灣這種能做整機整合的供應鏈位置變得更關鍵。", "takeaway": "AI 的競爭單位已經從一顆晶片，升級成一整套系統。", "extension": "當一家公司的護城河從「最強的晶片」變成「最難複製的整套系統」，後進者要追上的難度是變高還是變低？這對全球 AI 版圖的集中度意味著什麼？", "matrixView": "NVIDIA 從晶片公司變系統公司，競爭單位升級成整機。"}, "decisionMaker": {"whyCare": "它是整套系統而非晶片，改變採購思維：要不要導入一套為 Agent 設計的 AI 基礎建設。", "takeaway": "決策從買晶片升為規劃 Agent 基礎建設。", "extension": "該自建還是雲端租用？", "matrixView": "採購從買晶片升為規劃 Agent 基礎建設。"}}}, {"id": "ai-factory-dsx", "title": "AI 工廠生態系與 DSX、Omniverse 數位分身", "timestampDisplay": "00:26:03 – 00:34:50", "startSec": 1563, "endSec": 2090, "anchorQuote": "\"our customers... don't want to buy computers. They want to build AI factories.\" / \"NVIDIA DSX is the blueprint, a reference design for building and operating AI factories.\" / \"everything was built in Omniverse.\" / \"100 gigawatts of AI factories will come online before the end of the decade.\"", "whatIsThis": "黃仁勳在這一段把 NVIDIA 的定位從「賣電腦/GPU」轉向「幫客戶蓋 AI 工廠」，他直言「客戶不想買電腦，他們想蓋 AI 工廠」。他推出 NVIDIA DSX 作為建造與營運 AI 工廠的「藍圖」(blueprint) 與參考設計，涵蓋晶片、機櫃、網路、電力與冷卻的整體協同設計。他強調這整套 AI 工廠「都是在 Omniverse 裡建造的」——也就是先以數位分身 (digital twin) 完整模擬、驗證後，才實際動工蓋廠。他並預言「在這個十年結束前，將有 100 GW (gigawatt) 規模的 AI 工廠上線」，把 AI 推向全球基礎建設等級的產業現象。現場以鴻海數位孿生工廠等台廠合作夥伴影像佐證生態系規模。", "keyTerms": ["AI 工廠 (AI Factory)", "NVIDIA DSX 參考設計/藍圖", "Omniverse 數位分身 (Digital Twin)", "Vera Rubin", "100 GW (Gigawatt) 規模", "Token 經濟學 / 運算即收入", "台廠供應鏈 (鴻海、台達電、緯創等)", "Physical AI"], "audiences": {"investor": {"whyCare": "黃仁勳把 NVIDIA 從賣 GPU 重新定義為「賣整座 AI 工廠」，意味著營收想像從單一晶片擴張到電力、冷卻、機櫃、網路與軟體的整廠系統。100 GW 上線的預言，加上市場估算每 1GW AI 工廠投資上看 800~1,000 億美元，等於把 NVIDIA 生態系綁進一個數兆美元級的基礎建設長線題材。DSX 生態系與台積電、鴻海、台達電、緯創等供應鏈的整廠協同，直接放大台廠的接單能見度。", "takeaway": "AI 工廠化把 NVIDIA 的 TAM 從晶片擴大到整廠基礎建設，台廠供應鏈是這條長線的核心受惠者。", "extension": "若 100 GW 是十年願景，哪些台廠是「整廠」(電力、散熱、機構) 而非僅「零件」受惠者，重估空間最大？", "matrixView": "賣 GPU 變賣整座 AI 工廠，TAM 與台廠供應鏈一起放大"}, "knowledgeWorker": {"whyCare": "如果你蓋的是訓練或推論平台，「不買電腦、要蓋 AI 工廠」意味著你的工作邊界從寫程式、調模型，往下延伸到機櫃、網路、電力與冷卻的協同設計。DSX 把這套整廠當成可複製的參考設計，等於把基礎建設「程式碼化」；而所有規劃驗證都先在 Omniverse 數位分身裡跑過，代表 IaC、模擬驗證、容量規劃會變成基礎建設工程師的核心技能，而不只是維運後勤。", "takeaway": "別只優化單機效能，要學會用數位分身在動工前模擬整廠的電力、散熱與網路拓樸。", "extension": "你現在的系統設計，能不能先在 Omniverse／數位分身裡跑過一輪驗證再落地？哪些環節（電力、散熱、網路）是你目前完全沒納入模型、卻會成為瓶頸的？", "matrixView": "整廠協同設計取代單機優化，數位分身先模擬再動工"}, "consumer": {"whyCare": "黃仁勳把 NVIDIA 從「賣 GPU 的公司」重新定義成「幫人蓋工廠的公司」，這是產業敘事的關鍵轉折：AI 不再是裝在電腦裡的軟體，而是像發電廠一樣、用 GW 計量的實體基礎建設。當他說十年內會有 100 GW 的 AI 工廠上線，等於在說 AI 的瓶頸已經從演算法轉到電力、土地與供應鏈，這也是台灣製造生態系站上舞台中央的原因。", "takeaway": "AI 正在從「軟體」變成「基礎建設」，未來比的不只是模型多聰明，而是誰蓋得起、養得起這些吃電的工廠。", "extension": "當 AI 算力像電力一樣變成國家級基礎建設，電力與土地會不會成為比晶片更稀缺的資源？這對能源政策與區域競爭代表什麼？", "matrixView": "NVIDIA 從賣 GPU 轉為幫客戶蓋 GW 級 AI 工廠"}, "decisionMaker": {"whyCare": "黃仁勳的核心訊息「客戶不想買電腦，他們想蓋 AI 工廠」直接對企業主提問：你要的是買算力，還是要自建/共建 AI 產能。DSX 提供的「藍圖+參考設計」降低了自建門檻，讓企業能用協同設計與數位分身先驗證再投資，避免重資產試錯。決策點在於：自建 AI 工廠、租用雲端算力、或透過合作夥伴導入，以及配套的電力與冷卻基礎建設投資。", "takeaway": "導入 AI 不再只是採購算力，而是要決定『自建工廠 vs 租用算力』，並用數位分身先驗證再下重注。", "extension": "以我們的 AI 用量與資本結構，自建 DSX 式 AI 工廠的回收期，相比租用雲端算力是否划算？", "matrixView": "決策從『買多少算力』升級為『要不要蓋自己的 AI 產能』"}}}, {"id": "token-economics", "title": "Token 經濟學：運算即營收，買越多賺越多", "timestampDisplay": "00:34:50 – 00:40:41", "startSec": 2090, "endSec": 2441, "anchorQuote": "\"Compute is revenue. Now compute is profit.\" / \"every token is profitable. Every token is revenues.\" / \"The more you buy, the more you make.\"", "whatIsThis": "黃仁勳在這段把 AI 運算的商業邏輯講白：過去「運算就是營收」（compute is revenue），現在更進一步「運算就是利潤」（now compute is profit）。他主張在推論（inference）時代，AI 工廠每吐出一個 token 都能對應到終端客戶願意付的錢，所以「每個 token 都是營收、每個 token 都有利可圖」。正因為 token 可以直接變現，AI 公司會想生更多 token、蓋更多 AI 工廠、買更多運算，於是推導出那句招牌口號「買越多、賺越多」（the more you buy, the more you make）。他並用不同等級的 token 定價（從免費問答到科學研究等高價層級）與每 GW 資料中心的營收想像，說明為何台灣與全球的運算需求像火箭一樣往上飆。", "keyTerms": ["Token 經濟學", "運算即營收（Compute is revenue）", "運算即利潤（Compute is profit）", "買越多賺越多", "AI 工廠（AI Factory）", "推論（Inference）", "Vera Rubin", "每 GW 營收"], "audiences": {"investor": {"whyCare": "這段把 NVIDIA 從「賣硬體」重新定位成「賣可變現的運算」，等於替整個 AI 資本支出循環提供了財務正當性。對投資者來說，「每個 token 都有利可圖」若成立，代表客戶買越多 GPU 不是成本黑洞而是營收引擎，這正是支撐 NVIDIA 估值與台廠供應鏈（伺服器、散熱、CoWoS、電源）長線需求的核心敘事。", "takeaway": "Token 經濟學是把 AI 資本支出包裝成正循環的關鍵敘事：只要 token 能變現，運算需求就有複利成長的理由。", "extension": "若某天 token 的市場單價因競爭快速下殺，「買越多賺越多」的循環會在哪個環節先出現裂縫？", "matrixView": "把 GPU 從成本變營收引擎，撐起 NVIDIA 與台廠供應鏈的長線需求敘事。"}, "knowledgeWorker": {"whyCare": "推論時代讓「每個 token 都對應營收」，你寫的程式碼會直接被算進成本與毛利。token 用量、延遲、每次推論的單價將成為新的效能指標，你得學會像優化雲端帳單一樣優化 token：選對模型尺寸、做快取、批次化、用蒸餾與量化壓成本。FinOps 思維會從基礎建設團隊蔓延到每個會呼叫 LLM 的工程師身上。", "takeaway": "把每次推論當成有單價的交易：先量測 token 用量與單位成本，再優化模型選型、快取與批次，而不是只看準確率。", "extension": "在你手上的功能裡，哪一段呼叫 LLM 最燒 token？如果改用較小模型加快取，能省多少成本、又會犧牲多少品質，這個取捨你量化得出來嗎？", "matrixView": "每個 token 都算錢，工程師得開始優化推論成本與 token 效率"}, "consumer": {"whyCare": "黃仁勳把 AI 的商業模式講得最直白：運算不再只是成本，而是會直接吐出營收與利潤的「印鈔機」。這解釋了為什麼科技巨頭敢砸數千億蓋資料中心、為什麼算力需求像火箭往上飆，背後是一套自我增強的循環：token 能變現，所以蓋更多工廠、買更多運算、再生更多 token。", "takeaway": "AI 算力被重新定義成「越投資越賺錢」的生意，這是這波天量資本支出與台灣供應鏈火熱背後的真正引擎。", "extension": "如果「買越多、賺越多」成立的前提是 token 一直有人願意付錢買，那當市場上 token 供給暴增、價格被打到趨近於零時，這個循環還轉得動嗎？", "matrixView": "運算從成本變利潤，「買越多賺越多」是這波 AI 投資狂潮的引擎"}, "decisionMaker": {"whyCare": "黃仁勳這段其實是對老闆喊話：別把買運算當花錢，要當投資。對企業決策者，重點是先想清楚自家的 token 能對應到什麼可收費或可省成本的價值（客服、研發、文件處理），再回推要不要自建或租用 AI 工廠等級的基礎建設。沒有變現路徑就盲目擴充算力，「買越多賺越多」對你只會變成「買越多賠越多」。", "takeaway": "導入 AI 的前提是先找到 token 的變現或省本路徑，再決定基礎建設規模，否則買越多只是燒越多。", "extension": "你公司哪一個流程的 AI 產出，最能清楚換算成可收費的營收或可量化的成本節省？", "matrixView": "先確認 token 能變現再投資算力，否則買越多只會賠越多。"}}}, {"id": "vera-rubin-production", "title": "Vera Rubin 全面量產：供應鏈、製造與揭幕", "timestampDisplay": "00:40:41 – 00:51:00", "startSec": 2441, "endSec": 3060, "anchorQuote": "\"Vera Rubin is in full production.\" / \"the supply chain we created for Vera Rubin is twice as large as Grace Blackwell.\" / \"what used to take two hours to assemble... now only takes five minutes.\" / \"Today NVIDIA's token cost is the lowest in the world... by X factors, orders of magnitude.\"", "whatIsThis": "這段是黃仁勳宣布次世代 AI 平台 Vera Rubin 進入「全面量產」(in full production)。他強調為 Vera Rubin 打造的供應鏈規模是上一代 Grace Blackwell 的兩倍，並大幅優化製造效率：過去組裝一座機櫃要兩小時，現在只需五分鐘。他把 Vera Rubin 定位為整個系統（NVLink 機櫃、Vera CPU、網路、共封裝光學等），而不只是 GPU。最後他連結到 Token 經濟學，宣稱 NVIDIA 今日的單一 Token 成本是全世界最低，且低出數個數量級（orders of magnitude），藉此論證量產與製造效率如何轉化為運算成本優勢。此段也是他向台灣供應鏈致謝、強調台北是這一切起點的橋段。", "keyTerms": ["Vera Rubin 全面量產", "供應鏈規模兩倍 (vs. Grace Blackwell)", "五分鐘組裝 (製造效率)", "Token 經濟學", "Token 成本全球最低", "NVLink 72 機櫃系統", "台灣供應鏈夥伴", "AI 工廠 (AI Factory)"], "audiences": {"investor": {"whyCare": "Vera Rubin 全面量產代表 NVIDIA 下一波營收引擎已經啟動，不是 PPT 而是真的在出貨。供應鏈規模翻倍、組裝從兩小時縮到五分鐘，直接對應產能放大與毛利結構，這是評估後續幾季營收與獲利能見度的關鍵訊號。台廠供應鏈（代工、散熱、光通訊、PCB、機櫃組裝）是這條鏈的核心受惠者。", "takeaway": "量產 + 供應鏈翻倍 + 製造提速，等於 NVIDIA 把營收天花板再墊高，台廠是直接受惠的卡位點。", "extension": "供應鏈規模翻倍與五分鐘組裝，最終會反映在 NVIDIA 的毛利率還是讓利給雲端客戶？哪些台廠在這條鏈裡是不可替代的關鍵環節？", "matrixView": "量產啟動＋供應鏈翻倍，是 NVIDIA 下一波營收與台廠訂單的能見度訊號。"}, "knowledgeWorker": {"whyCare": "Vera Rubin 把單一 token 成本壓到全球最低、低出數個數量級，這直接改寫你的成本模型：原本太貴而不敢上線的推論場景（長上下文、agent 多輪呼叫、批次重算）現在可能划算。你該重新評估架構假設，把心力從『省 token』轉向『善用便宜算力』；技能上要熟悉系統層思維（NVLink 機櫃、共封裝光學、CPU/GPU 協同），而非只看單顆 GPU 規格。", "takeaway": "別再為省 token 而過度設計，重新算一次你那些被成本卡住的推論場景的單位成本。", "extension": "如果推論成本再降一個數量級，你目前哪個『因為太貴而沒做』的功能會第一個值得重做？該為它預先設計什麼架構？", "matrixView": "全面量產把 token 成本壓到全球最低，重算你被成本卡住的推論場景"}, "consumer": {"whyCare": "Vera Rubin 進入全面量產，且機櫃組裝從兩小時縮到五分鐘、供應鏈規模是上一代的兩倍，這代表 AI 已從『實驗室技術』變成『工業化量產的基礎建設』。當製造效率與規模直接轉化成全球最低的運算成本，意味著 AI 算力會像水電一樣愈來愈便宜、愈來愈普及，這才是真正會推動下一波應用爆發的底層趨勢。", "takeaway": "AI 競爭的勝負，正從『誰的模型聰明』轉向『誰能把算力做得又多又便宜』。", "extension": "當運算成本低到幾乎可以忽略，哪些我們今天覺得『太奢侈而不會用 AI』的日常場景，會在三五年內變成理所當然？", "matrixView": "AI 進入工業化量產，算力像水電般愈來愈便宜普及"}, "decisionMaker": {"whyCare": "對企業老闆，重點是黃仁勳把製造規模與 Token 成本綁在一起：運算成本正在快速下降且可預期。這改變了導入 AI 的投報率算式，原本因單位成本太高而不划算的應用（大量自動化、代理式工作流）門檻正在崩塌。同時要思考自建 AI 工廠 vs. 採購雲端算力的基礎建設決策。", "takeaway": "運算成本結構性下滑，讓更多 AI 導入案從不划算變划算，現在是重算投報率與盤點基礎建設的時點。", "extension": "面對持續下降的 Token 成本，公司該鎖定長約算力、自建小型 AI 工廠，還是維持彈性走雲端？哪種對你的工作負載最划算？", "matrixView": "Token 成本下滑改寫 AI 導入投報率，企業該重評算力採購與基礎建設策略。"}}}, {"id": "vera-cpu", "title": "Vera CPU：為 Agent 而生的 CPU", "timestampDisplay": "00:51:00 – 01:08:00", "startSec": 3060, "endSec": 4080, "anchorQuote": "\"All the CPUs of the past we built for humans. This CPU is built for agents.\" / \"Agents are impatient... They live in a world that's in nanoseconds.\" / \"This is SQL running three times faster.\" / 紐約證交所即時串流處理「six times」。Olympus core，能效與頻寬世界級。", "whatIsThis": "黃仁勳介紹 Vera CPU，並用一句話定調：「過去所有 CPU 都是為人類打造的，這顆 CPU 是為 agent 打造的。」他形容 agent「沒有耐心」、「活在以奈秒計的世界」，因此 Vera 針對 agentic AI 背後真正吃重的 CPU 工作而設計——程式碼執行、工具呼叫、沙箱、編排邏輯與資料管線。他現場展示效能：SQL 查詢快三倍、紐約證交所（NYSE）即時串流處理快六倍。Vera 採用 NVIDIA 自研的 Olympus 核心（共 88 核），搭配 LPDDR5X 高頻寬記憶體，主打世界級的能效與頻寬，整體相較 x86 可達約 1.8 倍的任務完成速度。它是 Vera Rubin 平台的 CPU，也是 NVIDIA 首款獨立資料中心 CPU。", "keyTerms": ["Vera CPU", "Olympus 核心", "Agentic AI（代理式 AI）", "LPDDR5X 高頻寬記憶體", "Vera Rubin 平台", "SQL / 資料處理加速", "x86 競爭", "NYSE 即時串流"], "audiences": {"investor": {"whyCare": "Vera 是 NVIDIA 首款獨立資料中心 CPU，正式切入過去由 Intel、AMD x86 主導的市場，等於把營收觸角從 GPU 延伸到 CPU，擴大每座 AI 工廠的單位金額。客戶名單已涵蓋 NYSE、Anthropic、OpenAI、xAI 與 ByteDance、Oracle 等雲端業者，需求面具體。對台廠而言，Vera 採 Arm 架構自研核心，意味先進製程、CoWoS 封裝、伺服器代工與機櫃供應鏈再添一條新的成長曲線。", "takeaway": "NVIDIA 從賣 GPU 變成賣整套 CPU+GPU 機櫃，吃下原本 x86 的份額，台廠供應鏈跟著放大訂單規模。", "extension": "若 Vera 把資料中心 CPU 從 x86 換成 Arm 自研核心，Intel、AMD 的資料中心營收與台廠既有 x86 板卡客戶會受到多大擠壓？", "matrixView": "NVIDIA 首款獨立 CPU 切入 x86 市場，台廠供應鏈再添一條新成長曲線。"}, "knowledgeWorker": {"whyCare": "你的程式不再只是「人寫、人跑」，而是 agent 在以奈秒計的節奏狂呼叫工具、跑 sandbox、串資料管線——Vera CPU 正是為這種負載而生。這代表你的技術棧重心會從「優化人類等待體驗」轉向「壓低工具呼叫與編排延遲」，效能瓶頸從模型推論延伸到 CPU 端的執行與調度。該培養的是熟悉 Arm/Olympus 架構的調校、低延遲資料管線設計，以及把工作流拆解成可被 agent 高頻呼叫的工具與 API 的能力。", "takeaway": "別只盯著 GPU 推論，開始把你的工具、查詢與編排層當成「給 agent 高頻呼叫」來設計，延遲與能效會是新戰場。", "extension": "如果你的服務未來主要被 agent 而非人類呼叫，哪些介面要重寫成低延遲、可組合的工具？SQL 快三倍、串流快六倍會如何改變你現在的架構選型？", "matrixView": "為 agent 而生的 CPU，戰場從 GPU 推論延伸到工具呼叫與編排延遲"}, "consumer": {"whyCare": "幾十年來 CPU 都是為「人」設計的，遷就我們點一下、等一下的節奏；Vera CPU 第一次明說是為 AI agent 打造，要服務的是活在奈秒世界、沒有耐心的軟體代理。這透露一個更大的趨勢：當主要使用者從人變成 AI，連最底層的晶片都要重新定義，硬體正在跟著「誰在用電腦」這件事翻新。", "takeaway": "所以呢？這顆晶片在告訴你：電腦未來最大的使用者不是人，是 AI agent，連 CPU 都開始為機器、而不是為人類而設計。", "extension": "當運算的「主要使用者」從人類變成 AI 代理，還有哪些我們習以為常的科技產品（介面、網路、作業系統）會被重新設計？這對人類在數位世界的角色意味著什麼？", "matrixView": "CPU 從為人類設計，轉向為沒耐心、活在奈秒世界的 AI agent 設計"}, "decisionMaker": {"whyCare": "Vera 直接對應企業導入 agentic AI 時最常卡關的「非模型」工作——編排、工具呼叫、沙箱化程式碼執行與資料管線。對要不要自建 AI 工廠或上雲的老闆，這代表跑 agent 的單位成本與延遲可望下降（號稱較 x86 約 1.8 倍任務速度、半功耗 2 倍頻寬）。但它隨 Vera Rubin 機櫃出貨、且是 Arm 架構，導入須評估與現有 x86 軟體堆疊的相容與遷移成本。", "takeaway": "若企業要認真跑 AI agent，運算基礎建設的選型已不只看 GPU，CPU 與整櫃方案的能效、延遲同樣是成本關鍵。", "extension": "你的 agent 工作負載要到多大規模，才值得採用 Vera 整櫃方案而非沿用既有 x86 加 GPU 的混合架構？", "matrixView": "導入 agent 的選型從 GPU 擴大到 CPU 與整櫃能效、延遲評估。"}}}, {"id": "enterprise-toolkit", "title": "企業 AI 工具組：OpenShell、Nemotron 3 Ultra、Cadence 超級代理", "timestampDisplay": "01:08:00 – 01:19:53", "startSec": 4080, "endSec": 4793, "anchorQuote": "\"Every company will be an agent company.\" / \"we're announcing the Neotron 3 Ultra... five times faster... 30% cheaper, completely open.\" / Cadence「What once took weeks now takes hours. Verification cycles over 40 times faster.」 / \"Nvidia open shell is open source.\" 工具組 = 模型 + harness + 工具/技能 + runtime。", "whatIsThis": "這段黃仁勳提出核心命題：「每一家公司都會變成 agent 公司」（Every company will be an agent company），企業內部會有大量 AI 代理協助客服、資安、財務、設計、工程到供應鏈。他把企業代理拆成四個組件：模型（model）、harness（協調代理行為）、工具與技能（企業系統、資料庫、CUDA 函式庫）、runtime（安全執行環境），合稱「企業 AI 工具組」。他發表 Nemotron 3 Ultra 開源模型，宣稱「速度快五倍、成本便宜約三成、完全開源」，並強調 NVIDIA OpenShell 是開源的安全 runtime／harness。最後以 Cadence 的晶片設計超級代理為案例：「過去要數週、現在只要數小時」，驗證週期加速逾 40 倍，示範代理化如何重構真實的高價值工作流。", "keyTerms": ["Agent 公司（每家公司都會變成代理公司）", "Nemotron 3 Ultra", "NVIDIA OpenShell（開源安全 runtime）", "企業 AI 工具組（模型＋harness＋工具技能＋runtime）", "Cadence 晶片設計超級代理", "Harness（代理協調層）", "開源（Open Source）", "驗證週期加速 40 倍"], "audiences": {"investor": {"whyCare": "這段把 NVIDIA 的故事從『賣晶片』升級到『賣完整企業代理平台』，是擴大 TAM 的關鍵敘事。Nemotron 3 Ultra 走完全開源、便宜三成的路線，意在用成本與開放性綁住企業生態系，而非短期靠模型授權收費。Cadence 案例則證明代理能進入高單價、難取代的專業工作流，是軟體與訂閱想像的支點。", "takeaway": "重點不在單一模型賣多少錢，而在 NVIDIA 是否能把『代理工具組＋runtime』變成企業標準層，鎖住長期算力與軟體營收。", "extension": "若模型完全開源、便宜三成，NVIDIA 的獲利究竟落在哪一層（OpenShell runtime、CUDA-X、還是底層算力）？這個變現點是否足夠寬廣且具防禦性？", "matrixView": "從賣晶片升級為賣企業代理平台，開源模型換生態鎖定，變現靠 runtime 與算力。"}, "knowledgeWorker": {"whyCare": "OpenShell 是開源的安全 runtime/harness，意味著你日後打造企業 agent 不必從零造輪子，可以直接接上現成的協調與沙箱層，把心力放在工具與技能的串接。Nemotron 3 Ultra 完全開源、速度快五倍、成本省三成，讓你能在自家環境部署高效模型而非綁雲端 API。Cadence 案例（驗證週期加速逾 40 倍）則預告：你的工作流會從「人寫每一步」變成「設計 agent 怎麼呼叫工具與技能」，技能棧重心將往編排、工具封裝與 runtime 安全移動。", "takeaway": "別只當模型的使用者，學會把你的系統、資料庫、CUDA 函式庫包成 agent 能讀的「工具＋技能」，並用 OpenShell 這類開源 harness 串起來。", "extension": "如果把你手上最耗時的一條工作流（CI、資料管線或驗證流程）拆成 model＋harness＋工具/技能＋runtime 四件，哪一塊最難交給 agent，為什麼？該補的是工具封裝、技能說明書，還是 runtime 的權限與沙箱？", "matrixView": "企業 agent ＝模型＋harness＋工具/技能＋runtime，開源元件讓你少造輪子"}, "consumer": {"whyCare": "「每一家公司都會變成 agent 公司」這句話，標誌 AI 從「員工偶爾打開的聊天視窗」變成「滲進客服、資安、財務、設計、工程到供應鏈的內部勞動力」。更值得注意的是 NVIDIA 把關鍵的模型（Nemotron 3 Ultra）和安全執行環境（OpenShell）都開源，等於把建構 agent 的門檻往下拉，預告這波不會只屬於少數巨頭。Cadence 把數週工作壓到數小時，是「高價值專業工作被代理化」的真實訊號，而非行銷話術。", "takeaway": "重點不是哪家公司又出新模型，而是「公司」這個組織本身正在被重寫成一群會自己幹活的 AI 代理，而打造它的零件正在變成公開、人人可取得的標準件。", "extension": "當建構企業 AI 代理的核心零件都走向開源、門檻大幅降低，真正的競爭優勢會從「擁有最強模型」轉移到哪裡？是專有資料、工作流設計，還是組織願不願意改變做事方式？", "matrixView": "每家公司都將變 agent 公司，關鍵零件開源讓門檻大降"}, "decisionMaker": {"whyCare": "黃仁勳給了企業一張清楚的導入藍圖：代理＝模型＋harness＋工具技能＋runtime，模型可用 Nemotron 也可混用其他模型，runtime 用 OpenShell 確保安全。對老闆而言，這降低了『要不要做、怎麼做』的不確定性，開源與便宜三成也壓低試錯成本。Cadence 的 40 倍驗證加速是可量化的 ROI 範例，適合拿來對標自家最耗時的工作流。", "takeaway": "別把代理當單點工具買，而要把『模型／harness／工具／安全 runtime』視為一套企業基礎建設來規劃，並從一條高價值、可量化的流程切入試點。", "extension": "我的企業最值得第一個代理化的流程是哪一條？資料治理與 runtime 安全（如 OpenShell）要先補哪些缺口才敢上線？", "matrixView": "代理是四件式基礎建設，從高價值流程試點切入，先補安全與治理。"}}}, {"id": "rtx-spark", "title": "RTX Spark 與重新發明 PC", "timestampDisplay": "01:19:53 – 01:26:00", "startSec": 4793, "endSec": 5160, "anchorQuote": "\"40 years later, Microsoft and Nvidia are going to reinvent the PC.\" / \"Introducing RTX Spark... Blackwell RTX GPU... a custom 20 core Grace CPU built in partnership with MediaTek... 128 GB unified memory. TSMC 3 nanometer, 70 billion transistors.\" / 本地 agent + Hermes harness + Claude Sonnet 設計房屋 demo（Rhino→Blender→Flux 2）。", "whatIsThis": "黃仁勳宣布 NVIDIA 與微軟攜手「重新發明 PC」，並以「40 年後微軟與 NVIDIA 要重新發明 PC」一句揭開。核心產品是 RTX Spark：搭載 Blackwell RTX GPU、與聯發科（MediaTek）合作打造的客製 20 核 Grace CPU、以 NVLink 融合、128GB 統一記憶體，採台積電 3 奈米製程、約 700 億個電晶體。這台機器的定位是讓本地端 AI agent 真正可用，而非只跑雲端。黃仁勳並現場展示本地 agent 加上 Hermes harness 與 Claude Sonnet，串起 Rhino → Blender → Flux 2 的工作流程，由 AI 自動設計一棟房屋。他強調這次電腦的重新發明，重要性等同於當年手機演進成智慧型手機。", "keyTerms": ["RTX Spark", "Blackwell RTX GPU", "Grace CPU（聯發科合作）", "NVLink 融合", "128GB 統一記憶體", "台積電 3 奈米 / 700 億電晶體", "本地端 AI agent", "Hermes harness + Claude Sonnet demo"], "audiences": {"investor": {"whyCare": "RTX Spark 讓 NVIDIA 從資料中心正式跨入個人 PC 市場，且與微軟、聯發科綁定、由台積電 3 奈米代工，整條台廠供應鏈（聯發科 CPU 設計、台積電製程、ASUS/宏碁/技嘉等品牌與代工）都直接受惠。這是把 GB10 Grace Blackwell 架構從工作站下放到消費級筆電與小型桌機的新營收曲線。秋季由 ASUS、Dell、HP、Lenovo、Microsoft Surface、MSI 首發，出貨節奏與滲透率是觀察重點。", "takeaway": "NVIDIA 開出 PC 這條新戰線，聯發科與台積電是最直接的台廠受益者。", "extension": "RTX Spark 切入的是高階 AI PC，對 x86（Intel/AMD）與既有 Arm Windows 陣營的市佔侵蝕速度有多快？", "matrixView": "NVIDIA 跨入 PC，聯發科、台積電與品牌廠拿到新一波 AI PC 訂單。"}, "knowledgeWorker": {"whyCare": "本地端 agent 變成可行的開發環境：128GB 統一記憶體加 NVLink 融合，讓你能在自己桌上跑大模型 agent 工作流，不必每個 token 都送雲端、不必擔心資料外流或 API 帳單。更關鍵的是 demo 展示的模式：agent + harness（Hermes）+ 工具鏈（Rhino→Blender→Flux 2）串成自動化流程，意味著你未來寫的不只是程式，而是讓 agent 能呼叫的工具與編排邏輯。本地推論能力下放，等於把『AI 開發』從雲端服務變成可以在端側設計、除錯、迭代的日常工作。", "takeaway": "把你的工具設計成 agent 能讀懂、能呼叫的介面，並開始在本地端跑 agent harness 練習編排，而不只是接雲端 API。", "extension": "如果本地就有 128GB 統一記憶體可跑 agent，你現有工作流中哪一段（建模、轉檔、生成、測試）最值得改寫成 agent 自動串接？要學 harness 編排、MCP/工具封裝，還是本地模型部署與量化？", "matrixView": "本地 agent 可行，把工具寫成 agent 能呼叫的介面並練 harness 編排"}, "consumer": {"whyCare": "黃仁勳把這次定位成『40 年來重新發明 PC』，等同當年功能手機進化成智慧型手機的等級——這句話本身就是訊號。重點不是規格，而是 AI 的重心正從遠端雲端，往你桌上、你手邊的裝置移動。當 agent 能在本地獨立運作、自己串起設計到生成的整套流程，PC 的角色就從『開應用程式的工具』變成『會自己幹活的助手』。這透露的趨勢是：個人裝置即將具備獨立的智能，而不只是雲端的終端機。", "takeaway": "所以呢——PC 不再只是上網和開軟體的盒子，而是會主動替你完成任務的本地 AI 夥伴，運算重心正在從雲端搬回你身邊。", "extension": "當你的電腦能在本地獨立跑 AI agent、不必聯網也不外傳資料，這對隱私、創作與工作習慣會帶來什麼改變？我們會更信任『自己桌上的 AI』還是『雲端的 AI』？", "matrixView": "40 年來重新發明 PC，AI 重心從雲端搬回你桌上的本地裝置"}, "decisionMaker": {"whyCare": "RTX Spark 提供一條『本地推論』路線：員工裝置就能跑大模型與 agent，降低把機密丟上雲端的疑慮，也可能省下部分 API 與雲端推論成本。但這是秋季才出貨的新平台、Arm 架構，企業需評估 Windows on Arm 的軟體相容性、裝置採購與汰換、以及 agent 工作流的治理與資安。導入策略偏向先針對設計、研發等高算力、高敏感資料部門試點。", "takeaway": "本地 AI PC 是降低雲端成本與資料外洩風險的選項，但要先驗證 Arm 相容性與 agent 治理。", "extension": "你的 AI 算力該放在雲端集中管理，還是下放到員工裝置做本地推論——成本、資安與管理三者如何取捨？", "matrixView": "本地 AI PC 可省雲端成本、保資料於內部，但需評估相容性與治理。"}}}, {"id": "n1x-newpc", "title": "N1X 晶片與全新 PC 產品線、DGX Station", "timestampDisplay": "01:26:00 – 01:37:00", "startSec": 5160, "endSec": 5820, "anchorQuote": "\"This is the N1X that we built in partnership with MediaTek.\" / \"100% of Nvidia software stack runs here.\" / DGX Station「768 GB of memory... run a trillion parameter model.」 / \"an AI supercomputer in your house... more like R2-D2... C3PO than a PC.\" / \"100% of the world's PC industry has joined us to reinvent the PC.\"", "whatIsThis": "黃仁勳發表 N1X 晶片與全新 PC 產品線、DGX Station，把 AI 運算帶到桌面與筆電。", "keyTerms": ["N1X", "聯發科", "DGX Station", "RTX Spark", "一兆參數模型"], "audiences": {"investor": {"whyCare": "NVIDIA 從資料中心切入每台 PC 與筆電的新成長曲線。N1X 由聯發科共同設計，DGX Station 由華碩、戴爾、技嘉等 OEM 量產，台廠供應鏈直接受惠。", "takeaway": "AI 運算下放桌面與筆電，開新營收曲線，聯發科與台廠 OEM 受惠。", "extension": "本地能跑一兆參數模型後，雲端 GPU 需求是被分流還是放大。", "matrixView": "AI 運算下放 PC 與筆電，聯發科與台廠 OEM 受惠。"}, "knowledgeWorker": {"whyCare": "N1X 加上 DGX Station 把資料中心級的算力搬到你桌上：768GB 記憶體、能在本地跑兆級參數模型，而且「100% 的 NVIDIA 軟體堆疊都在這裡跑」。這代表你可以把訓練、微調、推論工作流從雲端搬回本地端開發，雲端帳單、資料外洩風險與排隊等 GPU 的痛點都被改寫。你的技術棧會從「雲端優先」轉向「本地 agent + 雲端擴展」的混合模式，CUDA / 容器化 / 本地推論部署會變成日常技能。", "takeaway": "把你的開發機當成迷你資料中心：先在本地端用 N1X／DGX Station 跑通整套 NVIDIA 堆疊與本地 agent，雲端只留給真正需要規模的階段。", "extension": "如果一台桌邊機器就能跑兆級參數模型，你現在哪些「非上雲不可」的工作流可以搬回本地？你該補強本地 CUDA 部署、模型量化還是 agent 編排這塊技能？", "matrixView": "桌面級兆參數算力與完整 NVIDIA 堆疊，開發改走本地 agent 優先"}, "consumer": {"whyCare": "黃仁勳說「全球 100% 的 PC 產業都加入我們一起重新發明 PC」，N1X 與 DGX Station 的意義不在規格，而在訊號：AI 超級電腦正從遠在天邊的資料中心，走進你的書桌與家裡。他形容這台機器「更像 R2-D2、C3PO，而不是一台 PC」——暗示我們對「電腦」的想像正在從工具，轉向一個住在身邊、會幫你做事的 AI 夥伴。這是個人運算典範的一次換軌。", "takeaway": "所以呢：AI 不再只活在雲端，它正在搬進你家——下一代「電腦」可能比較像會思考的助手，而不是會開機的鐵盒子。", "extension": "當每個人桌上都有一台能獨立思考的 AI 超級電腦，運算「去中心化」回到個人手中，會讓我們更自主，還是更依賴？這對隱私與雲端巨頭的權力又意味著什麼？", "matrixView": "AI 超級電腦走進家中桌面，個人運算從工具邁向 AI 夥伴"}, "decisionMaker": {"whyCare": "DGX Station for Windows 把一兆參數模型的算力放到員工桌邊，原生支援 Windows，導入門檻比自建機房低。對重視資料主權與合規的產業是新選項。", "takeaway": "企業可用桌邊裝置部署本地 AI，兼顧合規，但需評估與雲端的取捨。", "extension": "本地部署相較雲端 GPU，成本與合規的平衡點在哪。", "matrixView": "桌邊部署本地 AI、資料不出公司，介於雲端與自建機房。"}}}, {"id": "cosmos-physical-ai", "title": "Physical AI：Cosmos 3、Alpamo 2、Isaac GR00T", "timestampDisplay": "01:37:00 – 01:51:00", "startSec": 5820, "endSec": 6660, "anchorQuote": "\"the biggest problem is data.\" / \"today we are announcing Cosmos 3... the frontier of physical AI.\" / \"in physical AI, we are absolutely the world's best.\" / \"Alpamo 2, an open model for self-driving cars\"（Mercedes demo，\"the world's first reasoning autonomous vehicle\"）。 / \"NVIDIA Isaac Groot... a reference humanoid robot... 31 degrees of freedom. 6 feet 150 lbs. Just like me.\"", "whatIsThis": "這段是黃仁勳在 GTC Taipei 2026 主題演講中的「Physical AI（實體 AI）」段落。他先點出核心難題：「the biggest problem is data.」——機器人與自駕車不像語言模型有海量網路文字可學，真實世界的訓練資料極度稀缺。為此他發表 Cosmos 3，稱其為「the frontier of physical AI」，是一個全面重構、開源的世界基礎模型，能生成合成訓練資料並預測世界狀態，並直言「in physical AI, we are absolutely the world's best.」。接著展示 Alpamo 2（Alpamayo 2）這個給自駕車的開放模型，搭配 Mercedes 實車 demo，稱其為「the world's first reasoning autonomous vehicle」——會邊開邊「推理」並產生文字決策鏈。最後揭曉 NVIDIA Isaac GR00T 參考人形機器人，他形容「31 degrees of freedom. 6 feet 150 lbs. Just like me.」，定位為開放的研究與開發平台。整段核心是：用世界模型解決資料荒，把實體 AI 推進到「會推理」的自駕與人形機器人。", "keyTerms": ["Physical AI 實體 AI", "Cosmos 3 世界基礎模型", "Alpamo 2 / Alpamayo 2 自駕模型", "Reasoning Autonomous Vehicle 推理型自駕車", "Isaac GR00T 參考人形機器人", "合成訓練資料 / 資料荒", "DRIVE Hyperion 車載平台", "Jetson Thor / Unitree H2 Plus"], "audiences": {"investor": {"whyCare": "Physical AI 是 NVIDIA 在資料中心之外的下一條成長曲線，TAM 從雲端 GPU 擴張到全球自駕車與機器人。黃仁勳強調 Alpamo 2 是開放模型、搭配 DRIVE Hyperion 車載平台，等於把 NVIDIA 推論晶片（Jetson Thor）綁進汽車與機器人供應鏈；而 Cosmos 3 開源則是用『送模型、賣算力與晶片』的生態系打法擴大護城河。對台廠而言，人形機器人樣板機採用台系/亞系硬體與代工能量，是繼 AI 伺服器後的新訂單想像。", "takeaway": "實體 AI 把 NVIDIA 的變現點從雲端延伸到車與機器人，開源 Cosmos 是擴生態、推論晶片才是真正收租入口。", "extension": "Cosmos 3 開源後，NVIDIA 靠什麼鎖住獲利——是車用/機器人推論晶片的出貨，還是 Omniverse 模擬平台的訂閱？哪一塊台廠分得到？", "matrixView": "實體 AI 開新 TAM，開源換生態、晶片才收租，台廠機器人供應鏈受惠"}, "knowledgeWorker": {"whyCare": "Physical AI 的瓶頸是「資料」，而 Cosmos 3 把世界基礎模型開源，等於給你一條用合成資料訓練機器人/自駕的捷徑。如果你做 ML 或基礎建設，技術棧會從純文字 LLM pipeline，延伸到世界模型、模擬資料生成、感測器融合與 sim-to-real 驗證。值得開始補的技能：Cosmos / Isaac GR00T、Omniverse 模擬、以及把 Alpamo 2 那種「會輸出推理鏈」的決策模型接進自駕或機器人控制迴路。", "takeaway": "別只訓練聊天機器人，去用 Cosmos 3 生合成資料、拿 Isaac GR00T 當開放平台練 sim-to-real，這是下一個吃香的技能組。", "extension": "如果真實世界資料極度稀缺，你的下一個專案要怎麼設計「合成資料生成到 sim-to-real 驗證」的 pipeline，才不會讓模型只在模擬器裡聰明、上了實機就出包？", "matrixView": "用世界模型補資料荒，技術棧從 LLM 延伸到模擬與機器人 sim-to-real"}, "consumer": {"whyCare": "過去兩年 AI 大爆發都在螢幕裡（文字、圖、程式），因為網路上有海量資料可學；但機器人和自駕的真實資料極度稀缺，這正是黃仁勳說「最大的問題是資料」的原因。Cosmos 3 這類「世界模型」的意義在於：AI 可以自己生成虛擬世界來練習，繞過資料荒。再加上「會邊開邊推理」的自駕車和人形機器人 GR00T，代表 AI 正從會打字，跨進會在物理世界行動的階段。", "takeaway": "所以呢？AI 正要走出螢幕、進入真實世界，而突破口不是更多感測器，而是讓 AI 在虛擬世界裡自己練到夠多。", "extension": "當 AI 用自己生成的虛擬世界來學習開車、走路時，我們該怎麼判斷它「真的懂物理世界」，而不是只擅長應付模擬？這對自駕與機器人的信任與監理意味著什麼？", "matrixView": "用世界模型解資料荒，AI 從螢幕走進物理世界的自駕與人形機器人"}, "decisionMaker": {"whyCare": "對企業老闆，重點是『資料是最大瓶頸』這句話：黃仁勳的解法是用 Cosmos 3 世界模型生成合成資料，先在虛擬環境訓練再部署實體。對製造、物流、車隊、服務業而言，這代表導入機器人/自駕不必再苦等真實資料累積，可先用模擬加速 POC。Isaac GR00T 是開放參考平台、Alpamo 2 是開放模型，降低了自建門檻，但也意味要投資模擬算力、Jetson 等邊緣推論硬體與相關人才。", "takeaway": "實體 AI 的導入關鍵不在買機器人，而在投資『模擬+合成資料+邊緣推論』這套基礎建設與人才。", "extension": "你的場域有哪些重複性實體工作，可以先用 Cosmos 類世界模型做模擬驗證，再決定要不要投資真實機器人？", "matrixView": "導入實體 AI 先建模擬與合成資料能力，再投邊緣推論硬體與人才"}}}, {"id": "closing", "title": "總結與收尾：Agentic 運算模式無所不在", "timestampDisplay": "01:51:00 – 01:57:50", "startSec": 6660, "endSec": 7070, "anchorQuote": "\"The computer industry has been completely changed in the last six months.\" / 總結 Vera Rubin 量產、Vera CPU、企業工具組、全新 PC 線、Physical AI 無所不在；同一套 agentic 運算模式（model+harness+tools+runtime）跨雲、PC、機器人重複出現。 / \"Thank you, Taiwan.\" / \"Welcome to Computex.\"", "whatIsThis": "這是黃仁勳整場 GTC Taipei 2026 演講的總結與收尾。他用一句重話定調：「電腦產業在過去六個月被徹底改變了。」接著快速串連全場宣布的版圖——Vera Rubin 已全面量產、推出 AI 專用的 Vera CPU、面向企業的整套工具組（搭配 Nemotron、Cadence 等夥伴）、全新的 PC 產品線（RTX Spark／N1X），以及無所不在的 Physical AI（Cosmos 3、Isaac GR00T）。他點出貫穿全場的核心洞見：同一套 agentic 運算模式（model + harness + tools + runtime）正在雲端、PC、機器人三個層面重複出現，是同一個運算典範。最後以「Thank you, Taiwan.」與「Welcome to Computex.」作結，把全場榮耀歸給台灣供應鏈。", "keyTerms": ["Agentic 運算模式", "model + harness + tools + runtime", "Vera Rubin 全面量產", "Vera CPU", "Physical AI", "Cosmos 3 / Isaac GR00T", "RTX Spark / N1X", "台灣供應鏈"], "audiences": {"investor": {"whyCare": "收尾段是把整場拆散的產品線收束成「一個典範」的投資論述：Vera Rubin 已量產出貨、累積數百萬套、OpenAI/Anthropic/SpaceX 為首批客戶，代表 NVIDIA 已從成長故事進入確定性放量。對台股投資人而言，黃仁勳點名約 150 家台灣供應鏈夥伴與近 20 家台廠（台積電、鴻海、廣達、緯創、華碩、技嘉、和碩、聯發科等），把 NVIDIA 的營收動能直接轉譯成台廠的訂單能見度。", "takeaway": "同一套 agentic 模式跨雲、PC、機器人重複出現，意味 NVIDIA 的總體可觸及市場（TAM）疊加放大，台灣供應鏈是這條成長曲線的直接受惠者。", "extension": "若 Vera Rubin 量產與 PC/機器人新線同時放量，台廠的營收貢獻會集中在少數龍頭，還是擴散到二線供應鏈？哪一段的毛利彈性最大？", "matrixView": "一套模式三個戰場，量產確定性與台鏈訂單能見度同步拉高"}, "knowledgeWorker": {"whyCare": "黃仁勳收尾點破：同一套 agentic 運算模式（model + harness + tools + runtime）正在雲端、PC、機器人三層重複出現。這代表你不再只是寫應用，而是設計 agent 系統，學會挑模型、串 harness、把既有程式碼與資料庫包成 agent 可呼叫的工具與技能（skills），並顧好沙箱化的安全 runtime。你的技術棧會從單機開發延伸到本地 agent（RTX Spark／N1X）與物理世界（Cosmos、Isaac），跨層的部署與編排會變成日常。", "takeaway": "別只把 AI 當寫程式的助手，把你手上的服務、資料庫、工具全部改造成 agent 可呼叫、附帶 skills 說明的標準介面。", "extension": "拿你現在維護的一個服務或函式庫，想想要怎麼為它寫一份 agent 可讀的 skills 說明、暴露成可被 harness 呼叫的工具，並設計安全的 runtime 邊界？", "matrixView": "同一套 agentic 模式跨雲端、PC、機器人，開發從寫程式變成設計 agent"}, "consumer": {"whyCare": "黃仁勳說「電腦產業在過去六個月被徹底改變了」，收尾的真正重點不是哪一款新硬體，而是他揭示了一個統一規律：同一套「會自己動手做事的 AI」運作模式，正同時出現在雲端、你的個人電腦、以及機器人身上。這暗示未來的運算不再以「裝置」區分，而是同一個 AI 典範滲透到生活每個層面，台灣作為這條供應鏈的起點，地位被推到產業中心。", "takeaway": "重點不是又出了什麼新晶片，而是「能自己執行任務的 AI」要從雲端一路長到你的桌機和機器人裡，成為這個時代的共通底層。", "extension": "當同一套自主 AI 同時跑在雲端、家裡的電腦和身邊的機器人，我們對「電腦」的定義會被改寫嗎？這對工作與生活意味著什麼？", "matrixView": "六個月翻轉產業，自主 AI 同一套模式滲透雲端、PC 與機器人"}, "decisionMaker": {"whyCare": "黃仁勳收尾的核心訊息對老闆最關鍵：不要把雲端 AI、AI PC、機器人當成三筆獨立投資，它們是同一套 agentic 模式（model+harness+tools+runtime）的不同部署面，企業應以一致的架構思考導入。Nemotron 企業工具組、DSX 資料中心平台、Token 經濟學（算力即可變現的營收單位）提供了從基礎建設到應用的完整選項；Foxconn 測試製造業代理（NemoClaw）是製造場景的早期參照。", "takeaway": "把 AI 投資視為單一 agentic 架構的跨場景部署，而非各自為政的專案，能降低重複投資並讓能力跨雲、PC、現場複用。", "extension": "你的企業要先從哪一個面（雲端工具組、AI PC、或現場 Physical AI）切入導入，才能最快驗證價值又不被單一供應商鎖死？", "matrixView": "AI 投資應以單一 agentic 架構統籌跨雲、PC、機器人部署"}}}];
 
 /* ============================================================
    YouTube Player（單一共用實例）
@@ -787,12 +785,14 @@ function CompanyNode({ data }) {
   const c = compColor(data); // 三色：台廠綠／海外灰／競爭紅
   const lvl = data.exposure === 'high' ? 'high' : (data.exposure === 'low' ? 'low' : 'med');
   const lvlLabel = { high: '與 NVIDIA 關聯深度：高', med: '與 NVIDIA 關聯深度：中', low: '與 NVIDIA 關聯深度：低' }[lvl];
+  const unlisted = data.listed === false;
   return html`
-    <div class="node-company exp-${lvl}" style=${{ '--tagc': c }}
-         title=${(ORIGIN_LABEL[data.origin] || '') + '　|　' + data.tag + '　|　' + lvlLabel + '\n' + data.note}>
+    <div class="node-company exp-${lvl} ${unlisted ? 'unlisted' : ''}" style=${{ '--tagc': c }}
+         title=${(ORIGIN_LABEL[data.origin] || '') + '　|　' + data.tag + '　|　' + lvlLabel + (data.ticker ? '　|　' + data.ticker : (unlisted ? '　|　未上市' : '')) + '\n' + data.note}>
       <${Handle} type="target" position=${Position.Top} />
       <div class="ncp-bubble"></div>
       <div class="ncp-name">${data.name}</div>
+      ${data.ticker ? html`<div class="ncp-ticker">${data.ticker}</div>` : (unlisted ? html`<div class="ncp-ticker ncp-unlisted">未上市</div>` : null)}
     </div>
   `;
 }
@@ -870,8 +870,8 @@ function companyPositions(themeCenter, n) {
 /* 各受眾的「核心主題」id —— 選了受眾後這些會點亮，其餘淡化（仍可點） */
 const AUDIENCE_CORE = {
   investor:        ['vera-rubin-production', 'ai-factory-dsx', 'token-economics', 'n1x-newpc', 'cosmos-physical-ai', 'cuda-x'],
-  knowledgeWorker: ['agentic', 'cuda-x', 'enterprise-toolkit', 'rtx-spark'],
-  consumer:        ['agentic', 'rtx-spark', 'n1x-newpc', 'cosmos-physical-ai'],
+  knowledgeWorker: ['agentic', 'cuda-x', 'enterprise-toolkit', 'vera-cpu', 'rtx-spark'],
+  consumer:        ['opening', 'agentic', 'rtx-spark', 'n1x-newpc', 'cosmos-physical-ai'],
   decisionMaker:   ['agentic', 'ai-factory-dsx', 'token-economics', 'enterprise-toolkit', 'cosmos-physical-ai'],
 };
 
@@ -890,7 +890,11 @@ const AUDIENCE_EXTRA = {
           "note": "開場段落（00:00:08–06:31）黃仁勳僅概括談「台灣的生態系與最頂尖的供應鏈」，未在此段點名 TSMC；其「Vera Rubin starts at TSMC、3 奈米、CoWoS-R/L」等具體點名出現在後段（約 41:45 量產影片）。屬整條台灣供應鏈最上游，列為已知供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "鴻海／富士康 (Foxconn)",
@@ -898,7 +902,11 @@ const AUDIENCE_EXTRA = {
           "note": "此開場段落未逐字點名 Foxconn（『Vera CPU 機櫃在 Foxconn 與廣達成形』出現在後段約 41:45 的 Vera Rubin 影片，非開場）。屬黃仁勳所稱台灣供應鏈核心，且 2026/6 報導指開場生態系影片有出現鴻海數位孿生工廠，列為已知供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317；另有ADR DNZOY"
         },
         {
           "name": "廣達 (Quanta)",
@@ -906,7 +914,11 @@ const AUDIENCE_EXTRA = {
           "note": "開場段落未點名；『at Foxconn and Quanta Grace LPX takes shape』出現在後段約 41:45 量產影片。屬 AI 伺服器 ODM 主力之一，為已知供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2382.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "AI 伺服器 ODM 龍頭，台股上市可直接買賣"
         },
         {
           "name": "聯發科 (MediaTek)",
@@ -914,7 +926,11 @@ const AUDIENCE_EXTRA = {
           "note": "開場段落未點名；『20 核 Grace CPU 由 NVIDIA 與聯發科合作打造』實際出現在後段 RTX Spark／N1X 環節（約 51:49–1:25）。屬 AI PC 關鍵台廠夥伴，為已知供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2454.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "IC 設計龍頭，台股可直接買"
         },
         {
           "name": "緯創 (Wistron)",
@@ -922,7 +938,11 @@ const AUDIENCE_EXTRA = {
           "note": "開場僅概括提『150 家台灣供應鏈夥伴』（此句實際在約 41:45 出現），未具體點名緯創。為 AI 伺服器/系統組裝代工夥伴，屬合理推測之台廠供應鏈一環。",
           "exposure": "high",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "3231.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "台灣上市，AI伺服器代工"
         },
         {
           "name": "華碩 (ASUS)",
@@ -930,7 +950,11 @@ const AUDIENCE_EXTRA = {
           "note": "開場與全篇均未點名華碩；屬『100% 全球 PC 產業加入』新 Windows×CUDA 平台陣營下的合理推測台系品牌（對應後段 RTX Spark／新 PC 環節），非開場點名。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2357.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "華碩電腦，台灣上市，PC/伺服器品牌"
         },
         {
           "name": "台達電 (Delta)",
@@ -938,7 +962,11 @@ const AUDIENCE_EXTRA = {
           "note": "全篇未點名台達電；演講後段（DSX/AI 工廠約 20:08–29:41）強調電力與散熱（液冷、電源、配電）是 AI 工廠瓶頸，台達電為電源/散熱供應鏈合理受惠者，屬推測而非開場點名。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2308.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "電源供應與散熱方案，AI 伺服器供應鏈"
         },
         {
           "name": "GMI Cloud",
@@ -946,7 +974,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿確有『here in Taiwan GMI』點名，但出現在後段 AI Cloud／DSX 環節（約 41:45），非 00:00:08–06:31 開場段落。另據 2026/6 報導，GMI Cloud 亦為開場台灣生態系/pregame 聚焦的本土 GPU 雲新創，故保留於本主題。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市AI雲端新創，散戶無法買賣"
         },
         {
           "name": "鑫蘊林科 (Linker Vision)",
@@ -954,7 +986,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿開場旁白為通用 token 蒙太奇、未唸出公司名；但 2026/6 報導（Yahoo/UDN、Linker Vision PR）確認其為開場台灣生態系影片聚焦的 AI 新創之一，主攻智慧城市 Physical AI／影像推理。Linker Vision 另於後段 Cosmos 環節出現。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市 AI 視覺新創，輝達入股、能率集團轉投資，傳有意申請創新板尚未掛牌"
         },
         {
           "name": "廣運機械 (METAI KENMEC)",
@@ -962,7 +998,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿開場旁白未唸出公司名；2026/6 報導確認『METAI KENMEC（廣運）』為開場台灣生態系影片聚焦的新創之一，由自動化老廠轉向 AI 基礎設施（資料中心散熱、半導體設備）。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "6125.TWO",
+          "exchange": "台股櫃買(TPEx)",
+          "tnote": "上櫃公司，代號 6125，自動化與物流系統"
         },
         {
           "name": "Red Pill Lab",
@@ -970,7 +1010,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿開場旁白未唸出公司名；2026/6 報導確認 Red Pill Lab 為開場台灣生態系影片聚焦的新創之一，以多機位無標記動作捕捉切入動畫/VFX/遊戲/機器人，呼應虛擬世界主軸。",
           "exposure": "low",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市新創，台灣即時動捕/虛擬人AI公司"
         }
       ],
       "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。黃仁勳將台灣定位為「世界最好的供應鏈生態系」與一切的起點，並表示為 Vera Rubin 打造的供應鏈規模是 Grace Blackwell 的兩倍、組裝一個機櫃時間由兩小時縮短到五分鐘，全程動員約 150 家台灣供應鏈夥伴與數百萬平方英尺廠房。他主張「有用的 AI」已到來、token 成為可獲利的營收單位，因此 AI 工廠需求大增，並稱單一 1GW AI 工廠的資本支出正從 300-500 億美元朝 800-1000 億美元規模成長（公司說法，數字為演講口述）。NVIDIA 強調其護城河在於 CUDA 軟體生態、整機到資料中心的全棧整合與「每瓦吞吐量」優勢，並把 Vera Rubin 全面量產與 Vera 代理式 CPU 視為新的主要成長動能。黃仁勳並引述他人轉述稱台灣年度 GDP 可望成長近 10%（演講中引用、非經查證的官方數據，宜保守看待）。",
@@ -1001,7 +1045,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段（06:31–16:11）黃仁勳以 GitHub 的 commit 數作為「Agentic AI 已到來」的證據：2023 約 3 億、2024 約 4 億、2025 約 5 億，2026 前幾個月近乎三倍；軟體開發是代理式 AI 的首個重要應用。GitHub 隸屬微軟。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "GitHub 為微軟子公司，無獨立股票；買微軟 MSFT"
         },
         {
           "name": "Anthropic（Claude Code）",
@@ -1009,7 +1057,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段 cue 36 黃仁勳明言「we use cloud code here」（Claude Code），作為代理可用工具的示範。註：以 Hermes harness 連 Claude Sonnet 設計房屋的 demo 屬後段 RTX Spark 段（約 01:27），非本段；本段僅點名 Claude Code 本身。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市 AI 新創，散戶無法直接買賣"
         },
         {
           "name": "OpenAI（Codex）",
@@ -1017,7 +1069,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段 cue 36 點名「Codex does an incredible job as well」，與 Claude Code 並列為代理式編碼工具。Cadence 晶片設計超級代理由 Codex/Claude Code 編排屬後段（約 01:08–01:14），非本段。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市私有公司，散戶無法直接買賣"
         },
         {
           "name": "Cadence",
@@ -1025,7 +1081,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；Cadence 晶片設計 super agent（ChipStack＋Xcelium/Jasper、以 Codex/Claude Code 編排、Nemotron 模型、OpenShell runtime，驗證加速逾 40 倍）出現在後段 01:08–01:14。為已證實的 NVIDIA agentic 夥伴（2026/6 報導），與代理主題相關故保留。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CDNS",
+          "exchange": "Nasdaq",
+          "tnote": "EDA 軟體大廠 Cadence Design Systems，美股可買"
         },
         {
           "name": "Cursor",
@@ -1033,7 +1093,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；Cursor 在後段（約 00:38）被列為 CoreWeave 等 NVIDIA AI 雲上的軟體編碼公司客戶，且為 OpenShell 相容代理。屬已證實的代理式編碼夥伴，故保留為供應鏈/合作關係。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市新創，母公司 Anysphere 私有，估值約 500 億美元，散戶無法直接買"
         },
         {
           "name": "台積電 TSMC",
@@ -1041,7 +1105,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段（06:31–16:11）未點名台積電；其 3 奈米、CoWoS、CouPe 等內容出現在後段 Vera Rubin 影片（約 00:41）。作為支撐代理式運算硬體最上游的代工夥伴，列為供應鏈關聯。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "美光 Micron",
@@ -1049,7 +1117,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；HBM4 由美光、SK 海力士、三星供應的內容在後段 Vera Rubin 影片（約 00:41–00:45）。代理需大量記憶體頻寬，列為記憶體供應鏈關聯。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MU",
+          "exchange": "Nasdaq",
+          "tnote": "記憶體大廠 Micron Technology，美股可買"
         },
         {
           "name": "鴻海 Foxconn／廣達 Quanta",
@@ -1057,7 +1129,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；Grace LPX 在鴻海、廣達成形、台灣約 150 家供應鏈夥伴等內容在後段 Vera Rubin 影片（約 00:43–00:45）。作為代理式 AI 工廠組裝主力，列為供應鏈關聯（並非本段被點名）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317"
         },
         {
           "name": "CoreWeave",
@@ -1065,7 +1141,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；CoreWeave 成長至約 500–700 億美元、承載 Cursor 等客戶、率先建 Vera Rubin NVL72 機櫃等在後段（約 00:38、00:41）。為承載代理式應用的 AI 雲夥伴，故列供應鏈/合作關係。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWV",
+          "exchange": "Nasdaq",
+          "tnote": "2025年3月IPO的AI雲端公司"
         },
         {
           "name": "Red Hat／Canonical",
@@ -1073,7 +1153,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；OpenShell 開源代理 runtime 被 Red Hat、Canonical、Microsoft 廣泛採用的內容在後段 enterprise toolkit 段（約 01:08）。為企業安全執行代理的作業系統層夥伴，與代理主題相關故保留。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "已於 2019 年被 IBM 收購並下市，欲投資需透過母公司 IBM(NYSE)"
         }
       ],
       "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 主題演講中的說法與展望，非投資建議，數字以演講口述為準、僅供參考。NVIDIA 主張「代理式 AI（Agentic AI）已經到來」，並以軟體開發為首個爆發場景：全球約 3,000 萬至 4,000 萬名專業軟體開發者、約 3 兆美元年薪規模，因 AI 而把產出推升至近三倍，等同「以 3 兆美元薪資創造約 9 兆美元生產力」，且工程師需求是增加而非減少。NVIDIA 將代理式 AI 定義為下一個十年的運算型態——「每家公司都會是代理公司、每家公司都會有自己的代理作業系統」，並以四件套（模型 Nemotron、harness、工具 CUDA-X、runtime OpenShell）構成企業代理堆疊作為護城河。在硬體面，公司宣稱專為代理式 AI 打造的 Vera Rubin 已進入全面量產，供應鏈規模是 Grace Blackwell 的兩倍、組裝時間由兩小時縮短至五分鐘，並以「算力即營收、每瓦吞吐量即營收（the more you buy, the more you make）」描述 AI 工廠的成長邏輯，單一 1GW 工廠資本支出據其說法正朝 800 億至 1,000 億美元規模邁進。NVIDIA 同時強調 CUDA 生態的相容性與資產壽命，主張其平台 TCO 較低、護城河更深。上述為公司觀點與目標，實際落地與財務結果仍有不確定性。",
@@ -1104,7 +1188,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段影片點名 cuLitho（運算微影）等 CUDA-X 函式庫；台積電為 cuLitho 量產導入者，是 CUDA-X 在晶片製造端的實際供應鏈夥伴（本時間窗內未逐字點名 TSMC 公司名）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "益華電腦 Cadence",
@@ -1112,7 +1200,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 將 Cadence EDA 工具加速到 CUDA、共建晶片設計 super agent，屬 CUDA-X 工具化的代表夥伴；惟相關點名出現在後段企業工具組/晶片設計段（約 01:08 起），非本 00:16–00:24 時間窗內。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CDNS",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市，EDA 軟體大廠"
         },
         {
           "name": "CrowdStrike",
@@ -1120,7 +1212,11 @@ const AUDIENCE_EXTRA = {
           "note": "keynote 確有點名 CrowdStrike，但屬企業代理工具組/Nemotron 段（約 01:19），非本 cuda-x 時間窗；與 CUDA-X 函式庫無直接關係，列此段僅為產業關聯推測。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWD",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市，資安公司"
         },
         {
           "name": "Palantir",
@@ -1128,7 +1224,11 @@ const AUDIENCE_EXTRA = {
           "note": "keynote 於企業代理夥伴清單點名（約 01:19），非本 cuda-x 時間窗；與 CUDA-X 函式庫無直接綁定，於本段僅屬推測關聯。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "PLTR",
+          "exchange": "Nasdaq",
+          "tnote": "Palantir Technologies，資料分析軟體"
         },
         {
           "name": "SAP",
@@ -1136,7 +1236,11 @@ const AUDIENCE_EXTRA = {
           "note": "keynote 列為企業軟體夥伴（約 01:19 段），非本 cuda-x 時間窗；與 CUDA-X 函式庫無直接關係，於本段為推測關聯。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "SAP",
+          "exchange": "NYSE",
+          "tnote": "德國企業軟體，美股 ADR 代號 SAP，原股於法蘭克福 SAP.DE"
         },
         {
           "name": "ServiceNow",
@@ -1144,7 +1248,11 @@ const AUDIENCE_EXTRA = {
           "note": "keynote 於企業代理夥伴清單點名（約 01:19），非本 cuda-x 時間窗；與 CUDA-X 函式庫無直接綁定，於本段屬推測。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "NOW",
+          "exchange": "NYSE",
+          "tnote": "企業 SaaS"
         },
         {
           "name": "Red Hat",
@@ -1152,7 +1260,11 @@ const AUDIENCE_EXTRA = {
           "note": "被點名為 OpenShell（代理 runtime）採用者（約 01:08 段），屬 runtime/作業系統層而非 CUDA-X 函式庫；非本 cuda-x 時間窗，於本段僅為堆疊關聯推測。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "已併入 IBM（NYSE: IBM）"
         },
         {
           "name": "AMD",
@@ -1160,7 +1272,11 @@ const AUDIENCE_EXTRA = {
           "note": "CUDA 護城河的正面競爭者，其 ROCm 軟體堆疊須繞過 CUDA 生態；CUDA-X 的開發者鎖定效應正是對其的護城河（本段未點名，屬產業競爭對照）。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "AMD",
+          "exchange": "Nasdaq",
+          "tnote": "超微"
         },
         {
           "name": "雲端自研晶片陣營（Google TPU、Amazon Trainium 等）",
@@ -1168,7 +1284,11 @@ const AUDIENCE_EXTRA = {
           "note": "以自研 AI 晶片試圖降低對 NVIDIA 依賴，但須繞過上千個 CUDA-X 函式庫與開發者生態，正是本段強調的護城河對象（本段未點名，屬競爭對照）。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "自研陣營：Alphabet GOOGL、Amazon AMZN"
         }
       ],
       "growth": "根據黃仁勳在 GTC Taipei 2026 演講的說法(非投資建議)，他將 CUDA-X 函式庫稱為 NVIDIA 的「寶藏(treasure)」，並指出 20 年來累積上千個 CUDA-X 函式庫(如 cuLitho 運算微影、cuOpt 決策最佳化、cuDSS 稀疏求解、AIQ 深度研究、Aerial、Warp、Parabricks 等)構成跨各科學與工程領域的開發者鎖定效應。NVIDIA 的成長敘事是：在代理式 AI(agentic AI)時代，這些函式庫不再只給人類使用，而是成為「給代理人的工具」，代理人數量遠超人類，因此會比以往使用更多工具，反而擴大 CUDA-X 的需求面。公司主張這對軟體業是「機會而非被顛覆」，並以與 Cadence 共建晶片設計 super agent、推出 Neotron(Nemo)開放模型與企業 agentic toolkit 作為落地路徑。護城河論點在於：競爭者(AMD、自研晶片)的硬體即使追上，仍須繞過龐大的 CUDA-X 軟體生態與開發者習慣，遷移成本構成防禦縱深。以上市場規模、roadmap 與生態優勢均為 NVIDIA 演講中的公司觀點，實際商業成果仍待後續財報與第三方驗證，本文不構成投資建議。",
@@ -1199,7 +1319,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段（00:24:08–00:26:03）未點名台積電；但台積電確為 Vera Rubin 7 顆晶片 3 奈米製程與 CoWoS-R/L 先進封裝的代工源頭，屬已知供應鏈（點名出現在其他段落，非此段）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "美光 Micron",
@@ -1207,7 +1331,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；美光為 Vera Rubin HBM4 供應商之一，屬已知供應鏈。逐字稿此段僅泛指儲存/記憶體系統將被革命，未列供應商名稱。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MU",
+          "exchange": "Nasdaq",
+          "tnote": "記憶體大廠 Micron Technology，美股可買"
         },
         {
           "name": "SK 海力士 SK Hynix",
@@ -1215,7 +1343,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名（逐字稿全文亦未出現 Hynix）；SK 海力士為 Vera Rubin HBM4 主力供應商，屬已知供應鏈。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "000660.KS",
+          "exchange": "KRX (韓國)",
+          "tnote": "HBM 記憶體大廠，韓股需透過複委託；美股 OTC 代號 HXSCL"
         },
         {
           "name": "三星電子 Samsung",
@@ -1223,7 +1355,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；三星為 HBM4 供應商之一，屬已知供應鏈，隨 Vera Rubin 量產受惠。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "005930.KS",
+          "exchange": "KRX",
+          "tnote": "韓國交易所掛牌，散戶可透過複委託買賣"
         },
         {
           "name": "鴻海／富士康 Foxconn",
@@ -1231,7 +1367,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名（逐字稿全文未出現 Foxconn 字樣）；鴻海為 Vera Rubin NVL72 機櫃級系統組裝核心夥伴，屬已知供應鏈。此段呼應「客戶要的是 AI 工廠整套系統」的系統公司主軸。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317；另有ADR DNZOY"
         },
         {
           "name": "廣達 Quanta",
@@ -1239,7 +1379,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段未點名；廣達為 AI 伺服器/NVL72 機櫃代工夥伴，屬已知供應鏈，受惠於由晶片轉為整套系統的客單價放大。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2382.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "AI 伺服器 ODM 龍頭，台股上市可直接買賣"
         },
         {
           "name": "微軟 Microsoft",
@@ -1247,7 +1391,11 @@ const AUDIENCE_EXTRA = {
           "note": "修正：原 note 講的是 RTX Spark/重新發明 PC，與本「Vera Rubin 系統公司」段無關。本段未點名微軟；微軟與 Vera Rubin 的實際關聯是早期展示/採用 Vera Rubin 工程機櫃的雲端夥伴，屬合理推測而非本段點名。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市"
         }
       ],
       "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。NVIDIA 表示 Vera Rubin NVL72 是首款專為代理式 AI（Agentic AI）打造的「多機櫃 pod 等級」系統，且已進入全面量產（full production），強調公司正從賣 GPU 晶片轉為交付整套 AI factory 系統，使單一機櫃整合運算板（6 兆顆電晶體、逾 18,000 個零件）、ConnectX-9 SuperNIC、Bluefield-4 DPU、NVLink 交換機與液冷匯流排等，客單價由晶片放大到整套系統。NVIDIA 將此供應鏈製造稱為「橫跨整條供應鏈的奇蹟」，並表示一切始於台積電與台灣供應鏈，是其護城河的一部分。公司另以軟體生態擴張佐證需求：宣稱 CUDA 相關開發提交數在 2026 年初已近三倍成長，並把全球 PC 產業「100% 加入」重新發明 PC 視為新的成長曲線。公司同時提出每代架構皆推出桌機、筆電、工作站的產品 roadmap（搭配 Nemotron 3/4/5 持續迭代），描繪長期成長路徑。上述規模與量產時程屬公司展望，實際落地與數字仍有不確定性，宜保守看待。",
@@ -1278,7 +1426,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名的數位孿生軟體夥伴，將 DSX 參考設計整合進其 CATIA 驅動的 MBSE 平台，打造 AI 工廠 Virtual Twin（逐字稿此段未點名，屬已公布夥伴）。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "DSY.PA",
+          "exchange": "Euronext Paris",
+          "tnote": "法國上市，OTC ADR代號DASTY"
         },
         {
           "name": "廣達雲達科技 QCT (Quanta Cloud Technology)",
@@ -1286,7 +1438,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名的 DSX-ready 系統製造夥伴之一，提供 SimReady 資產，承接 AI 工廠機櫃量產（逐字稿此段未點名，屬已公布夥伴）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "廣達(2382)子公司，未獨立上市"
         },
         {
           "name": "和碩 Pegatron",
@@ -1294,7 +1450,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名的 DSX-ready 系統製造夥伴，建置全堆疊 AI 工廠方案（逐字稿此段未點名，屬已公布夥伴）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "4938.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "和碩聯合科技，台股代號4938"
         },
         {
           "name": "CoreWeave",
@@ -1302,7 +1462,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段親口點名「now CoreWeave is worth 50 60 70 billion dollars」，並為 NVIDIA 官方 DSX 公告列名、部署 DSX Sim/MaxLPS/OS 的 AI cloud 夥伴。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWV",
+          "exchange": "Nasdaq",
+          "tnote": "2025年3月IPO的AI雲端公司"
         },
         {
           "name": "Nebius",
@@ -1310,7 +1474,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段點名「recently we worked with Nbius」，並為 NVIDIA 官方 DSX 公告列名、部署 DSX 平台堆疊的 AI cloud 夥伴。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "NBIS",
+          "exchange": "Nasdaq",
+          "tnote": "AI 雲，Nebius Group"
         },
         {
           "name": "Nscale",
@@ -1318,7 +1486,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段點名「this is NScale and their customers are British Telecom Google...」，並為 NVIDIA 官方 DSX 公告列名的 AI cloud 夥伴。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市英國 AI 雲端新創，2026 年 C 輪估值約 146 億美元、計畫 2026 年底 IPO 但尚未掛牌"
         },
         {
           "name": "GMI Cloud",
@@ -1326,7 +1498,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段親口點名「here in Taiwan GMI」，台灣本土 GPU 雲業者、NVIDIA Reference Platform Cloud Partner。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市AI雲端新創，散戶無法買賣"
         },
         {
           "name": "緯穎 Wiwynn / 緯創 Wistron",
@@ -1334,7 +1510,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告同時列名 Wistron 與 Wiwynn 為 DSX-ready 系統製造夥伴，承接 AI 工廠機櫃與伺服器代工（逐字稿此段未點名，屬已公布夥伴）。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "3231.TW / 6669.TW",
+          "exchange": "台股",
+          "tnote": "緯創 3231、緯穎 6669"
         },
         {
           "name": "Emerald AI",
@@ -1342,7 +1522,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名，與 Silicon Valley Power 合作示範「對電網友善」(grid-responsive) 的 AI 工廠，呼應逐字稿 DSX Flex 依電網訊號動態調整功率的主題。",
           "exposure": "low",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市新創，NVIDIA投資的資料中心電網調度公司"
         },
         {
           "name": "PTC",
@@ -1350,7 +1534,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名，將 DSX 藍圖整合進 Windchill PLM（DSX Accelerator），串接工程與產品設計資料；名單原本只在 QCT 註解中順帶提及，應獨立列為夥伴。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "PTC",
+          "exchange": "Nasdaq",
+          "tnote": "工業軟體 (CAD/PLM)，美股可直接買"
         },
         {
           "name": "Siemens",
@@ -1358,7 +1546,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名，開發平衡高密度運算與電力/散熱/自動化的 AI 基礎設施框架；名單原本只在註解中順帶提及，應獨立列為夥伴。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "SIEGY",
+          "exchange": "ADR(OTC)/XETRA SIE",
+          "tnote": "工業/PLM"
         },
         {
           "name": "Cadence (益華電腦)",
@@ -1366,7 +1558,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 官方 DSX 公告列名，Cadence Reality Digital Twin 平台建構於 DSX 藍圖之上、整合 Omniverse 函式庫並以 CUDA 加速熱與電氣模擬；名單原本只在註解中順帶提及，應獨立列為夥伴。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CDNS",
+          "exchange": "Nasdaq",
+          "tnote": "EDA軟體大廠"
         }
       ],
       "growth": "根據 NVIDIA 在這場演講的說法（非投資建議），DSX 被定位為「打造 AI 工廠的公式」，把過去客製化的資料中心建置標準化、模組化，讓系統廠、軟體商與 AI cloud 業者能依同一藍圖快速複製產能。NVIDIA 強調 AI 工廠的競爭已從單一晶片延伸到整座工廠的設計、電力、散熱與營運（DSX OS），並以 Dassault、QCT、和碩等夥伴在 Omniverse 中先做數位孿生再實體興建，作為縮短建廠時間的護城河。公司方面描繪 AI 工廠走向 GW 級規模，並提及每 GW 投資金額顯著放大的趨勢（演講提及的 100GW 與每 GW 數十億至上看百億美元等級屬 NVIDIA 願景數字，具體金額請保守看待）。對台廠而言，NVIDIA 的敘事是供應鏈深度綁定：從系統代工、電力散熱到本土 AI cloud（如被點名的 GMI）皆被納入生態系。以上為 NVIDIA 與相關公司在演講中的展望與說法，存在執行與總體環境風險，非投資建議。",
@@ -1397,7 +1593,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未逐字點名，但為 Vera Rubin GPU/Vera CPU 先進製程與 CoWoS 封裝核心代工方（keynote 他段與官方生態名單列為關鍵晶圓夥伴），運算需求放大直接拉動產能，屬最上游供應鏈受惠者。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "鴻海 Foxconn",
@@ -1405,7 +1605,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未逐字點名公司（僅泛稱「all across Taiwan」與供應鏈規模放大），但 Foxconn 為 Vera Rubin NVL72 整櫃系統組裝主力、屬 150 家台灣供應鏈夥伴，且其高層 Kathy Yang 在 keynote 同台，運算規模擴大直接帶動代工。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317"
         },
         {
           "name": "廣達 Quanta",
@@ -1413,7 +1617,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未逐字點名，但廣達（Barry Lam 同台）為 AI 伺服器與整櫃系統組裝大廠；逐字稿提到 Vera Rubin 供應鏈規模約為 Grace Blackwell 兩倍、組裝時間由 2 小時縮短到 5 分鐘，組裝量隨之擴張。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2382.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "AI 伺服器 ODM 龍頭，台股上市可直接買賣"
         },
         {
           "name": "台達電 Delta",
@@ -1421,7 +1629,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未點名；逐字稿強調 throughput per watt 與電力／每瓦營收，台達電為電源與電力轉換供應商，屬合理推測的受惠者而非被點名對象。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2308.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "電源供應與散熱方案，AI 伺服器供應鏈"
         },
         {
           "name": "奇鋐 AVC / 雙鴻 Auras",
@@ -1429,7 +1641,11 @@ const AUDIENCE_EXTRA = {
           "note": "原條目把奇鋐與雙鴻兩家不同散熱廠併列，僅作族群代表保留。此段未點名任何散熱廠，僅泛談 liquid cooling 與每瓦效能；高功耗 Rubin 機櫃推升液冷需求屬合理推測，非 keynote 此段點名。",
           "exposure": "high",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "3017.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "兩家散熱廠皆台灣上市；奇鋐3017.TW、雙鴻3324.TW"
         },
         {
           "name": "台光電 / 欣興 / 臻鼎-KY",
@@ -1437,7 +1653,11 @@ const AUDIENCE_EXTRA = {
           "note": "原條目把三家不同 PCB/載板廠併列為族群。此段完全未點名，AI 伺服器整櫃化帶動 PCB/載板用量為產業推測，非逐字稿此段內容。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2383.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "三家皆台股上市：台光電 2383.TW、欣興 3037.TW、臻鼎-KY 4958.TW（PCB/載板族群）"
         },
         {
           "name": "Groq",
@@ -1445,7 +1665,11 @@ const AUDIENCE_EXTRA = {
           "note": "修正分類：非競爭對手。經 NVIDIA 2025 年底約 200 億美元交易後，Groq 3 LPU 已整合進 Vera Rubin 解耦式推理（LPU 負責 decode、Rubin GPU 負責 prefill/attention），是 Token 經濟學中提升每瓦 token 產出的夥伴，而非對手。此段未逐字點名，屬已知整合關係。",
           "exposure": "low",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市 AI 晶片新創，無公開股票代號，散戶買不到"
         },
         {
           "name": "三星電子 Samsung",
@@ -1453,7 +1677,11 @@ const AUDIENCE_EXTRA = {
           "note": "修正依據：GTC 2026 確認 Samsung Foundry 以 SF4X 4 奈米製程代工 Groq 3 LPU（2026 下半年出貨）；三星同時為 HBM 供應商。屬 Vera Rubin 推理供應鏈的製造夥伴，此段未逐字點名。",
           "exposure": "low",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "005930.KS",
+          "exchange": "KRX",
+          "tnote": "韓國交易所掛牌，散戶可透過複委託買賣"
         },
         {
           "name": "CoreWeave",
@@ -1461,7 +1689,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段逐字點名：「Coreweave is worth 50 60 70 billion dollars and growing incredibly fast」，是 NVIDIA 扶植成世界級 AI cloud 的代表案例，直接體現「compute is revenue」敘事。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWV",
+          "exchange": "Nasdaq",
+          "tnote": "2025年3月IPO的AI雲端公司"
         },
         {
           "name": "Nebius",
@@ -1469,7 +1701,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段逐字點名：「recently we worked with Nbius and again they're growing incredibly fast」，客戶含 Cursor、Shopify、World Labs 等，是 AI 工廠營收化的代表 AI cloud。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "NBIS",
+          "exchange": "Nasdaq",
+          "tnote": "AI 雲，Nebius Group"
         },
         {
           "name": "Nscale",
@@ -1477,7 +1713,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段逐字點名：「this is NScale and their customers are British Telecom Google」，列為 NVIDIA AI cloud 夥伴之一。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市英國 AI 雲端新創，2026 年 C 輪估值約 146 億美元、計畫 2026 年底 IPO 但尚未掛牌"
         },
         {
           "name": "GMI Cloud",
@@ -1485,7 +1725,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段逐字明確點名兩次：「here in Taiwan GMI ... it's okay to clap」，台灣本土 AI cloud 夥伴，是黃仁勳於此段唯一特別停頓強調的台灣業者。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市AI雲端新創，散戶無法買賣"
         },
         {
           "name": "Cursor",
@@ -1493,7 +1737,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段逐字點名為 AI cloud 客戶：「cursor the software coding company」，代理式編碼公司，是 AI cloud 算力下游的代表客戶。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市新創，母公司 Anysphere 私有，估值約 500 億美元，散戶無法直接買"
         }
       ],
       "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 演講中的說法，非投資建議。NVIDIA 主張「運算即營收、買越多賺越多」：以同樣 1GW 功耗的 AI 工廠為例，公司宣稱年營收可從 Blackwell 世代的約 300 億美元，提升至 Vera Rubin 世代約 1,500 億美元（約 5 倍），若再搭配解耦式推理更上看約 3,000 億美元（約 10 倍）——這些為 NVIDIA 提出的情境性數字，實際結果未必如此。NVIDIA 並表示 Vera Rubin 供應鏈規模約為 Grace Blackwell 的兩倍，且有超過 150 家台灣供應鏈夥伴參與，將算力擴張的成長直接外溢到台廠的晶圓、封裝、組裝、散熱、電源、PCB 與連接器等環節。公司將護城河定位在 token 產出效率（每瓦、每元的 token 數）與 roadmap 的世代式躍升上。上述市場規模與倍數皆為公司展望，數字具不確定性，投資人應自行查證並審慎評估。",
@@ -1524,7 +1772,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片明言 Vera Rubin「starts at TSMC」，七顆晶片以 3 奈米製程、CoWoS-R/L 封裝與 CouPe 矽光子封裝製造，是整個量產鏈最上游。",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "鴻海 (Foxconn)",
@@ -1532,7 +1784,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片點名「at Foxconn and Quanta」Grok 3 LPX 與 Vera CPU 機櫃成形，是系統與機櫃組裝核心代工夥伴。",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317"
         },
         {
           "name": "廣達 (Quanta)",
@@ -1540,7 +1796,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片與鴻海並列點名（at Foxconn and Quanta），承接 Vera CPU 機櫃與 Grok 3 LPX 系統組裝。",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2382.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "AI 伺服器 ODM 龍頭，台股上市可直接買賣"
         },
         {
           "name": "緯創 (Wistron)",
@@ -1548,7 +1808,11 @@ const AUDIENCE_EXTRA = {
           "note": "本段並未被逐字稿個別點名（原 note 稱『keynote 點名 engineering rack』有誤）；屬影片所述『150 supply chain partners across Taiwan』之一，為 AI 伺服器代工供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "3231.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "台灣上市，AI伺服器代工"
         },
         {
           "name": "美光 (Micron)",
@@ -1556,7 +1820,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片明確點名 Vera Rubin 運算板 HBM4 記憶體供應商之一（from Micron, SKH and Samsung）。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MU",
+          "exchange": "Nasdaq",
+          "tnote": "記憶體大廠 Micron Technology，美股可買"
         },
         {
           "name": "SK 海力士 (SK Hynix)",
@@ -1564,7 +1832,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片以「SKH」點名為 Vera Rubin HBM4 三大供應商之一。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "000660.KS",
+          "exchange": "KRX (韓國)",
+          "tnote": "HBM 記憶體大廠，韓股需透過複委託；美股 OTC 代號 HXSCL"
         },
         {
           "name": "三星 (Samsung)",
@@ -1572,7 +1844,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片點名為 Vera Rubin HBM4 供應商之一（Micron, SKH and Samsung）。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "005930.KS",
+          "exchange": "韓股(KRX)",
+          "tnote": "韓國上市三星電子；台灣券商複委託多可交易"
         },
         {
           "name": "Microsoft",
@@ -1580,7 +1856,11 @@ const AUDIENCE_EXTRA = {
           "note": "影片點名「congratulations to Microsoft」率先建置可運行的 Vera Rubin NVL72 工程機櫃，是早期雲端部署夥伴。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "微軟"
         },
         {
           "name": "Dell",
@@ -1588,7 +1868,11 @@ const AUDIENCE_EXTRA = {
           "note": "影片點名「congratulations to Dell and CoreWeave」建置 Vera Rubin NVL72 工程機櫃，整機系統與企業出貨夥伴。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "DELL",
+          "exchange": "NYSE",
+          "tnote": "戴爾"
         },
         {
           "name": "CoreWeave",
@@ -1596,7 +1880,11 @@ const AUDIENCE_EXTRA = {
           "note": "影片與 Dell 並列點名建置 Vera Rubin NVL72 工程機櫃，為 Rubin 平台早期採用的 AI 雲端業者。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWV",
+          "exchange": "Nasdaq",
+          "tnote": "2025年3月IPO的AI雲端公司"
         },
         {
           "name": "Groq",
@@ -1604,7 +1892,11 @@ const AUDIENCE_EXTRA = {
           "note": "量產影片明確點名「at Foxconn and Quanta, Grok 3 LPX takes shape」（256 顆 Groq LPU、40 PB/s SRAM 頻寬），其 LPX 低延遲推理系統整合進 Vera Rubin 機櫃；此處為合作整合夥伴而非單純競爭對手。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市 AI 晶片新創，無公開股票代號，散戶買不到"
         }
       ],
       "growth": "以下為 NVIDIA / 黃仁勳於 GTC Taipei 2026 演講中的說法與展望，非投資建議。NVIDIA 表示 Vera Rubin 已進入全面量產，其供應鏈規模約為前代 Grace Blackwell 的兩倍，並由約 150 家台灣供應鏈夥伴共同支撐製造、封裝與系統組裝。黃仁勳強調此等級的複雜度「只有台灣能做得到」，並稱台灣為「全世界最好的供應鏈生態系」。NVIDIA 描述每座 Vera Rubin 機櫃整合上百萬個零件、採無線纜 (cable-free) 設計可在數分鐘內完成組裝，藉以拉高量產速度與良率，構成其在代理式 AI (agentic AI) 浪潮下的供給護城河。上述供應鏈倍增與量產規模均為公司於演講中提出的數字與敘述，實際出貨、營收與市場規模仍需以官方財報與後續揭露為準，投資人應自行查證。",
@@ -1635,7 +1927,11 @@ const AUDIENCE_EXTRA = {
           "note": "段首 Vera Rubin 影片明言「starts at TSMC」，七顆晶片採 3 奈米製程、CoWoS-R/L 封裝；Vera CPU 屬同一系統，先進製程由台積電代工",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "台灣 ODM/OEM（鴻海、廣達等）",
@@ -1643,7 +1939,11 @@ const AUDIENCE_EXTRA = {
           "note": "黃仁勳明言 Vera 將「to go to market with us Taiwan's ODMs and computer makers all the OEMs」；段首影片亦點名機櫃在 Foxconn 與 Quanta 成形。鴻海、廣達為明確點名，緯創、英業達屬合理推測之台廠 ODM",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "為產業類別非單一公司，個別成員(2317、2382等)各自上市"
         },
         {
           "name": "紐約證交所 NYSE",
@@ -1651,7 +1951,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名與 NYSE 總裁 Lynn Martin 合作，用 Vera CPU 跑即時串流處理（real time stream processing），宣稱效能達 x86 約 6 倍，為旗艦客戶案例",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "母公司 ICE（NYSE: ICE）"
         },
         {
           "name": "戴爾 Dell",
@@ -1659,7 +1963,11 @@ const AUDIENCE_EXTRA = {
           "note": "段首影片點名 Dell 與 CoreWeave 完成 Vera Rubin NVL72 工程機架（engineering rack），屬 Vera 系統的伺服器/部署夥伴",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "DELL",
+          "exchange": "NYSE",
+          "tnote": "戴爾"
         },
         {
           "name": "CoreWeave",
@@ -1667,7 +1975,11 @@ const AUDIENCE_EXTRA = {
           "note": "段首影片與 Dell 並列為 Vera Rubin NVL72 工程機架的早期落地夥伴，AI 雲端業者導入 Vera 機架",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWV",
+          "exchange": "Nasdaq",
+          "tnote": "2025年3月IPO的AI雲端公司"
         },
         {
           "name": "益華 Cadence",
@@ -1675,7 +1987,11 @@ const AUDIENCE_EXTRA = {
           "note": "段末逐字稿點名「partner with cadence to build super agent」，與 NVIDIA 共建晶片設計 super agent（由 Codex/Claude Code 編排、搭配 Nemotron），是 agentic CPU 新工作負載的代表企業夥伴",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CDNS",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市，EDA 軟體大廠（同 Cadence）"
         },
         {
           "name": "英特爾 Intel / 超微 AMD（x86 陣營）",
@@ -1683,7 +1999,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿全程以 x86 為對標（單執行緒效能、記憶體延遲約低 40%、agentic sandbox 約 1.8 倍均宣稱勝出）；Intel/AMD 未被逐字點名，但 x86 是明確對標對象，直接挑戰資料中心 CPU 地盤",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "INTC / AMD",
+          "exchange": "Nasdaq",
+          "tnote": "Intel INTC、AMD AMD"
         },
         {
           "name": "Arm",
@@ -1691,7 +2011,11 @@ const AUDIENCE_EXTRA = {
           "note": "Vera 的 Olympus 自研核心採 Arm v9.2-A 指令集（NVIDIA 自研核心，非聯發科設計），Arm 為底層架構授權方。逐字稿未點名，惟為已知架構基礎",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "ARM",
+          "exchange": "Nasdaq",
+          "tnote": "Arm Holdings"
         },
         {
           "name": "Red Hat / Canonical / Microsoft",
@@ -1699,7 +2023,11 @@ const AUDIENCE_EXTRA = {
           "note": "段末逐字稿點名 OpenShell 開源 runtime 將被「red Hat Canonical Microsoft」廣泛採用，構成 agent 作業系統的軟體生態夥伴（此段邊界與 enterprise-toolkit 重疊）",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "已於 2019 年被 IBM 收購並下市，欲投資需透過母公司 IBM(NYSE)"
         }
       ],
       "growth": "根據 NVIDIA 在這場 GTC Taipei 2026 keynote 的說法（以下為公司自述，非投資建議）：黃仁勳將 Vera CPU 定位為公司「新的主要成長驅動」，主張 agent 工作負載是一個「過去不存在的全新市場」，並斷言因為「agent 數量會遠多於人類、而且 agent 很沒耐心」，這個 CPU-for-agents 市場「肯定會比上一個（為人類設計的 CPU）市場更大」。他並強調護城河來自生態慣性：NVIDIA 已售出數百萬顆 Grace、宣稱自己已是全球最大 CPU 製造商之一，每家雲端與企業都已為 Grace 完成軟體最佳化，Vera 將沿著 Vera Rubin 出貨而成為「全球最被最佳化的 agentic CPU」。供應鏈面，他點名與台灣 ODM、電腦製造商與 OEM 一起進入市場，Vera Rubin 系統有約 150 家供應鏈夥伴、Vera Rubin 已進入全量產且規模約為 Grace Blackwell 的兩倍。技術賣點上 NVIDIA 宣稱 Olympus 核心達全球最高 IPC（每時脈 10 條指令）、3.6 TB/s 內部 fabric、相較 x86 記憶體延遲低約 40%、agentic sandbox 效能約 1.8 倍、SQL 與即時串流分別約 3 倍與 6 倍，並表示有「相當可觀的 roadmap」即將推出。上述數字與市場規模均為 NVIDIA 演講中的單方說法，未經第三方驗證，投資前請自行查證。",
@@ -1730,7 +2058,11 @@ const AUDIENCE_EXTRA = {
           "note": "keynote 核心點名：與 NVIDIA 共建晶片設計『超級代理（super agent）』，由 Codex 編排、Cadence ChipStack/Xcelium/Jasper 工具搭配 Nemotron(逐字稿讀作 Neotron)，驗證週期號稱快逾 40 倍、從數週縮至數小時。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CDNS",
+          "exchange": "Nasdaq",
+          "tnote": "EDA軟體大廠"
         },
         {
           "name": "CrowdStrike",
@@ -1738,7 +2070,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿結尾合作夥伴清單明確點名(『Cadence and Crowdstrike...』)，屬以 NVIDIA 企業 AI 工具組打造代理的資安軟體公司。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "CRWD",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市，資安公司"
         },
         {
           "name": "Palantir",
@@ -1746,7 +2082,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名(轉錄為『Palunteer』)，被歸為將以代理創造機會而非被顛覆的企業軟體夥伴。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "PLTR",
+          "exchange": "Nasdaq",
+          "tnote": "Palantir Technologies，資料分析軟體"
         },
         {
           "name": "SAP",
@@ -1754,7 +2094,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿結尾夥伴清單明確點名，運用 NVIDIA 代理工具組在自家工作流建構 AI 代理的企業應用軟體商。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "SAP",
+          "exchange": "NYSE",
+          "tnote": "德國企業軟體，美股 ADR 代號 SAP，原股於法蘭克福 SAP.DE"
         },
         {
           "name": "ServiceNow",
@@ -1762,7 +2106,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿結尾夥伴清單明確點名(『Service Now』)，以 NVIDIA 企業 AI 工具組打造代理服務的代表企業軟體公司。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "NOW",
+          "exchange": "NYSE",
+          "tnote": "企業 SaaS"
         },
         {
           "name": "Red Hat",
@@ -1770,7 +2118,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名為 NVIDIA OpenShell(開源代理 runtime)採用者(『red Hat Canonical Microsoft』)，協助企業安全運行代理。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "已併入 IBM（NYSE: IBM）"
         },
         {
           "name": "Canonical",
@@ -1778,7 +2130,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名為 OpenShell 採用者之一(Ubuntu 母公司)，擴大開源代理執行環境落地。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": ""
         },
         {
           "name": "Microsoft",
@@ -1786,7 +2142,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名為 OpenShell 採用者(『red Hat Canonical Microsoft』)；同時為企業代理在雲端與裝置端落地的關鍵夥伴。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "微軟"
         },
         {
           "name": "OpenAI / Anthropic（Codex、Claude Code 等代理）",
@@ -1794,7 +2154,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿示範中明確點名可在 OpenShell harness 內運行 Codex(『codeex incredible agent』)與 Claude Code(轉錄為 cloud/clock code)，是『harness 編排模型』模式的實際代理範例；Cadence super agent 亦由 Codex 或 Claude Code 編排。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "類別非單一公司；OpenAI 與 Anthropic 皆為未上市私有公司"
         },
         {
           "name": "達梭系統 Dassault Systèmes",
@@ -1802,7 +2166,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿結尾合作夥伴清單點名(轉錄為『Disso』，即 Dassault Systèmes)，與 Cadence、CrowdStrike、Palantir、SAP、ServiceNow 並列為運用 NVIDIA 企業 AI 工具組建構代理的企業軟體夥伴；此名單原漏列，依逐字稿補入。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "DSY.PA",
+          "exchange": "Euronext Paris",
+          "tnote": "法國上市，OTC ADR代號DASTY"
         }
       ],
       "growth": "以下為 NVIDIA／黃仁勳在 GTC Taipei 2026 主題演講中的說法與展望，非投資建議。黃仁勳主張『代理（agents）』是未來十年的運算模式，並斷言每一家公司都會是代理公司、每家公司內部都會運行代理，因此每家企業都需要『模型＋harness 編排＋工具/技能＋runtime』四要素，這正是 NVIDIA 企業 AI 工具組（含開源模型 Nemotron、開源執行環境 OpenShell）的定位。他發布的 Nemotron 3 Ultra 採用 SSM 狀態空間模型與 MoE 混合架構，宣稱比前一代快 5 倍、推論成本低約 30%，且模型、訓練腳本與資料全面開源，目標是降低企業自建專屬代理的門檻（並透露已在開發 Nemotron 4）。他以 Cadence 晶片設計超級代理為旗艦案例，稱 NVIDIA 自身將『雇用數十萬個 Cadence 超級代理』加速研發，驗證效率較傳統流程提升逾 40 倍。黃仁勳並反駁外界認為代理會顛覆企業軟體市場的看法，主張代理反而會為 SAP、ServiceNow、CrowdStrike、Palantir 等夥伴創造『史上最大的機會』，並將此工具組視為 NVIDIA 自身的成長動能；上述數字與市場判斷均為公司宣稱，實際表現仍待驗證。",
@@ -1833,7 +2201,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名：RTX Spark/N1X 內的 custom 20 核 Grace CPU 由 NVIDIA 與聯發科合作打造（並再次以 N1X 點名 MediaTek），是這顆 AI PC 晶片的 CPU 核心夥伴。",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2454.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "IC 設計龍頭，台股可直接買"
         },
         {
           "name": "台積電 (TSMC)",
@@ -1841,7 +2213,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名：RTX Spark 採台積電 3 奈米製程、約 700 億顆電晶體（tsmc 3 nanometer process 70 billion transistors），由台積電代工。",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "微軟 (Microsoft)",
@@ -1849,7 +2225,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名：Microsoft 與 NVIDIA 歷時三年重新發明 PC，提供「為代理人打造的 Windows 平台」，黃仁勳並提到隔晚將與 Satya 同台；新 PC 維持 100% Windows 相容。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市"
         },
         {
           "name": "Adobe",
@@ -1857,7 +2237,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名：Adobe 重構 Photoshop、Premiere 核心架構並為 RTX Spark 釋出，速度達兩倍，且透過 MCP server 支援代理人互動。（此段落出現在 RTX Spark 主題塊內、約 01:29:55 處，緊接於指定 01:26:00 之後，仍屬本主題。）",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "ADBE",
+          "exchange": "Nasdaq",
+          "tnote": "Adobe Inc.，創意/文件軟體"
         },
         {
           "name": "微星 (MSI)",
@@ -1865,7 +2249,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名：黃仁勳展示的 RTX Spark 桌機「this one's from MSI」，為新 PC 產品線的 OEM/品牌夥伴。（出現於 RTX Spark 主題塊、約 01:31:20 處，屬同一主題延伸。）",
           "exposure": "medium",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2377.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "微星科技，台股代號2377"
         },
         {
           "name": "PC OEM/ODM 廠（如華碩、宏碁、廣達、仁寶等）",
@@ -1873,7 +2261,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿稱「100% of the world's PC industry has joined us」共同打造 RTX Spark 筆電/桌機/工作站，但未逐一點名上述台廠；台灣為 PC 組裝與代工重鎮，屬已知生態系受惠者（具體公司名為推測）。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "類別非單一公司；成員多為台股上市，如華碩2357.TW、宏碁2353.TW、廣達2382.TW、仁寶2324.TW"
         },
         {
           "name": "Anthropic (Claude)",
@@ -1881,7 +2273,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名：RTX Spark 住宅設計示範中，本機代理人在 OpenShell 沙盒以 Hermes harness 連接雲端 Claude Sonnet 完成設計工作流（約 01:27:48 處，屬 RTX Spark 主題塊）。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": ""
         },
         {
           "name": "Arm",
@@ -1889,7 +2285,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未點名 Arm；N1X 的 20 核 Grace CPU（聯發科設計）採 Arm 指令集架構，Arm 生態為此 Windows-on-Arm PC 的底層架構基礎，屬合理產業關聯推測。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "ARM",
+          "exchange": "Nasdaq",
+          "tnote": "Arm Holdings"
         },
         {
           "name": "高通 (Qualcomm)",
@@ -1897,7 +2297,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未點名；在 Windows on Arm 的 AI PC 市場（Snapdragon X 系列）與 NVIDIA N1X 直接競爭。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "QCOM",
+          "exchange": "Nasdaq",
+          "tnote": "高通"
         },
         {
           "name": "英特爾 / 超微 (Intel / AMD)",
@@ -1905,7 +2309,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未點名；傳統 x86 PC 處理器與 GPU 供應商，在 PC/AI PC 市場與 RTX Spark 平台形成競爭。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "INTC",
+          "exchange": "Nasdaq",
+          "tnote": "兩家皆美股上市；Intel為INTC、AMD為AMD(皆Nasdaq)"
         }
       ],
       "growth": "根據 NVIDIA 在本場演講的說法（為公司願景，非投資建議）：黃仁勳將 RTX Spark 定位為「40 年來首次重新發明 PC」，並強調「100% 全球 PC 產業都已加入」，桌機、筆電與工作站三條產品線全面展開，意在打造一個全新且每代都會更新的產品家族。NVIDIA 主張其護城河在於完整軟體堆疊（100% CUDA、Tensor Core 與 NVIDIA AI），加上與微軟深度優化使新機維持 100% Windows 相容、同時原生執行代理人 (agent)。公司並提出本機 AI 模型的 roadmap（Nemotron 3 Ultra 到後續 4、5、6 代），主張裝置會「越來越聰明」，並描繪「家用 AI 超級電腦」如同家庭劇院般普及的長期願景。供應鏈面，NVIDIA 點名與台積電 3nm、聯發科 Grace CPU 等台灣夥伴合作，凸顯台廠在此新 PC 世代的角色。上述市場規模與普及速度均屬 NVIDIA 的展望敘事，實際採用與營收貢獻仍待驗證。",
@@ -1936,7 +2344,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名「the N1X that we built in partnership with MediaTek」，聯發科是 N1X 這顆 Arm AI PC 晶片最核心的共同開發夥伴",
           "exposure": "high",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2454.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "IC 設計龍頭，台股可直接買"
         },
         {
           "name": "台積電 (TSMC)",
@@ -1944,7 +2356,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段並未出現「starts at TSMC」字樣（該句屬其他段落），原 note 有誤；但供應鏈報導確認 N1X／RTX Spark 採台積電 3 奈米製程代工，屬已知製造夥伴",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "Microsoft 微軟",
@@ -1952,7 +2368,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿多次點名：與 NVIDIA「meticulously optimized」並共同重新發明 PC，推出三款 100% Windows 相容的全新機種，DGX Station 亦推 Windows 版本（Surface Laptop Ultra 亦為首發機種）",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "微軟"
         },
         {
           "name": "華碩 (ASUS)",
@@ -1960,7 +2380,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未被點名；但 2026/6 報導確認華碩為 N1X／RTX Spark 首發 OEM 夥伴（ProArt P14／P16 等機種）",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2357.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "華碩電腦，台灣上市，PC/伺服器品牌"
         },
         {
           "name": "宏碁 (Acer)",
@@ -1968,7 +2392,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未被點名；報導列其與技嘉為「預計隨後跟進」的 RTX Spark／N1X 機種品牌，屬已知後續夥伴",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2353.TW",
+          "exchange": "台股",
+          "tnote": "宏碁"
         },
         {
           "name": "微星 (MSI)",
@@ -1976,7 +2404,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿黃仁勳展示桌機時直接點名「this one's from MSI, Joseph」，微星為新 PC 產品線首發品牌之一（Prestige N16 Flip AI 等）",
           "exposure": "medium",
           "basis": "named",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2377.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "微星科技，台股代號2377"
         },
         {
           "name": "Dell (戴爾)",
@@ -1984,7 +2416,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段並未點名 Dell（原 note 把 Vera Rubin 工程機架混入此主題，屬張冠李戴已修正）；但報導確認 Dell 為 N1X／RTX Spark 首發 OEM（XPS 16 等）",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "DELL",
+          "exchange": "NYSE",
+          "tnote": "戴爾"
         },
         {
           "name": "HP (惠普)",
@@ -1992,7 +2428,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段未被點名；2026/6 報導確認 HP 為 RTX Spark／N1X 首發 OEM 夥伴（OmniBook X14、Ultra 16 等）",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "HPQ",
+          "exchange": "NYSE",
+          "tnote": "HP Inc. (PC/印表機) 代號 HPQ；企業伺服器事業 HPE 為另一家公司"
         },
         {
           "name": "鴻海／富士康 (Foxconn)",
@@ -2000,7 +2440,11 @@ const AUDIENCE_EXTRA = {
           "note": "此段（01:26–01:37）並未點名 Foxconn 或台灣 150 家供應鏈；作為全球 PC／系統代工龍頭為合理的組裝推測，但無此主題的直接證據",
           "exposure": "high",
           "basis": "inferred",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317；另有ADR DNZOY"
         },
         {
           "name": "高通 (Qualcomm)",
@@ -2008,7 +2452,11 @@ const AUDIENCE_EXTRA = {
           "note": "Windows on Arm AI PC 市場既有主要玩家（Snapdragon X 系列），N1X 直接切入其地盤；報導指 Qualcomm 的 Windows on Arm 獨家約到期後由 NVIDIA 接棒",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "QCOM",
+          "exchange": "Nasdaq",
+          "tnote": "高通"
         },
         {
           "name": "Adobe",
@@ -2016,7 +2464,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿點名：Adobe 重構 Photoshop、Premiere 核心架構並為 RTX Spark 釋出，速度提升至兩倍，並透過 MCP server 支援代理人互動",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "ADBE",
+          "exchange": "Nasdaq",
+          "tnote": "Adobe Inc.，創意/文件軟體"
         },
         {
           "name": "Lenovo (聯想)",
@@ -2024,7 +2476,11 @@ const AUDIENCE_EXTRA = {
           "note": "原名單漏列；2026/6 報導確認 Lenovo 為 N1X／RTX Spark 首發 OEM 夥伴（Yoga Pro 9N 等），屬此主題關鍵終端品牌",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "0992.HK",
+          "exchange": "HKEX",
+          "tnote": "聯想"
         }
       ],
       "growth": "根據 NVIDIA 在這場 keynote 的說法（以下為公司觀點，非投資建議）：黃仁勳表示 NVIDIA 與微軟花了「三年」徹底重新發明 PC，等的就是代理式 AI（agentic AI）這一刻，並一次推出涵蓋桌機、筆電、工作站的「全新三款 Windows 機種」，強調全部 100% Windows 相容、100% CUDA、100% NVIDIA AI Tensor Core。公司主張其護城河在於「100% NVIDIA 軟體堆疊都能在 N1X 上跑」，把過去要靠雲端訂閱的本地 AI 微調與推論帶到 PC 端。NVIDIA 並強調台灣供應鏈規模，稱有「150 家供應鏈夥伴」橫跨台積電（3 奈米）、聯發科、鴻海、廣達等，是其量產底氣。公司定位這是「40 年來 PC 的首次重新發明」，並以全球 PC 產業全面加入作為市場規模論述。上述市占、出貨與營收等具體數字 NVIDIA 未在演講中明確量化，故此處保守不臆測。",
@@ -2055,7 +2511,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿明確點名：Isaac GR00T 參考人形機器人每隻手由 Sharpa 製造（黃仁勳稱每手 25 個自由度；官方新聞稿為 Sharpa Wave 觸覺五指手、22 自由度）。",
           "exposure": "high",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市新創，新加坡機器人獨角獸（2024 成立），散戶無法買"
         },
         {
           "name": "Unitree 宇樹科技",
@@ -2063,7 +2523,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未直接點名，但官方與多家報導證實 Isaac GR00T 參考人形機器人採用 Unitree H2 Plus 機身（全身 31 自由度、約 6 呎 150 磅），預計 2026 年底由 Unitree 出貨。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "中國人形機器人新創，2026/6 上交所科創板 IPO 過會但尚未掛牌交易，且台灣散戶難直接參與"
         },
         {
           "name": "鑫蘊林科 Linker Vision",
@@ -2071,7 +2535,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段未點名，但官方說明 Cosmos 3 作為 VLM 偵測智慧城市交通異常的實際夥伴即為 Linker Vision，屬 Cosmos 生態夥伴。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市 AI 視覺新創，輝達入股、能率集團轉投資，傳有意申請創新板尚未掛牌"
         },
         {
           "name": "Agile Robots",
@@ -2079,7 +2547,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段未點名，但官方證實 Agile Robots 為 Cosmos Coalition 創始成員，並示範以 Cosmos 世界-動作模型產生關節角度等工業機器人動作資料。",
           "exposure": "medium",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": ""
         },
         {
           "name": "Mercedes-Benz 賓士",
@@ -2087,7 +2559,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿 Alpamayo 自駕 demo 以語音「hey Mercedes」操作車輛，是此段唯一在逐字稿中具名出現的車輛品牌（車內語音助理品牌）；該車跑 Hyperion 參考平台。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MBG.DE",
+          "exchange": "法蘭克福證交所 (XETRA)",
+          "tnote": "德國車廠，原股 MBG.DE；美股 OTC ADR 代號 MBGYY"
         },
         {
           "name": "台積電 TSMC",
@@ -2095,7 +2571,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段未點名；但 Thor 機器人/自駕 SoC 及 NVIDIA 全系列晶片之先進製程代工皆仰賴台積電，為 Physical AI 量產的供應鏈上游。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "Hyundai 現代汽車",
@@ -2103,7 +2583,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿此段並未點名任何車廠（僅稱簽署 Hyperion 的品牌約佔全球八成汽車）；Hyundai 屬與 NVIDIA 自駕/雲端合作的車廠生態，但在此 Physical AI 段為合理推測而非具名。",
           "exposure": "medium",
           "basis": "inferred",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "005380.KS",
+          "exchange": "KRX",
+          "tnote": "現代汽車"
         },
         {
           "name": "Tesla",
@@ -2111,7 +2595,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未點名；自駕領域與 NVIDIA Alpamayo 2／Hyperion 開放堆疊路線形成對照的競爭者，採自研堆疊。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "TSLA",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市，電動車/自駕"
         },
         {
           "name": "Waymo",
@@ -2119,7 +2607,11 @@ const AUDIENCE_EXTRA = {
           "note": "逐字稿未點名；Robotaxi／自駕領域外部對照競爭者，與 NVIDIA 推動的開放 AV 堆疊路線形成競爭。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "屬 Alphabet（GOOGL）"
         }
       ],
       "growth": "以下為 NVIDIA 於 GTC Taipei 2026 主題演講中的公司說法，非投資建議。NVIDIA 主張自己是 physical AI（實體 AI）領域「全球最強」，並以 Cosmos 3 作為涵蓋機器人、工廠、自駕、智慧城市與手術機器人的開放世界基礎模型，定位 physical AI 為下一個運算典範。在自駕方面，NVIDIA 表示已簽署採用 Hyperion 平台的車廠約占全球汽車的 80%，且全球約 97% 的移動服務（mobility services）正與其連接，並推出開放自駕模型 Alpamo 2 與 Halos 作業系統，作為其護城河與市場觸及的成長驅動。在機器人方面，NVIDIA 推出 Isaac GR00T 開放人形機器人參考平台（搭載 Thor 運算、25 自由度雙手由 Sharpa 製造），鎖定研究機構與大學降低開發門檻，宣稱「機器人時代從這裡開始」。NVIDIA 同時強調 Cosmos「以算力生成資料（compute is data）」可解決真實世界資料難以規模化的瓶頸，並以開放模型、開放資料與開放訓練方法擴大生態。上述市佔與比例為公司於演講中的陳述，未提供獨立第三方查證數字，請保守看待。",
@@ -2150,7 +2642,11 @@ const AUDIENCE_EXTRA = {
           "note": "NVIDIA 全系列 GPU/CPU 的晶圓代工與先進封裝核心；收尾段未逐字點名，但為公認最上游供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2330.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "台灣晶圓代工龍頭，美股 ADR 代號 TSM (NYSE)"
         },
         {
           "name": "鴻海 Foxconn",
@@ -2158,7 +2654,11 @@ const AUDIENCE_EXTRA = {
           "note": "AI 伺服器與 AI 工廠系統整合代工主力；收尾段未具名，但呼應黃仁勳稱 NVIDIA 已成「基礎建設公司」的整機交付夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2317.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "鴻海精密，台股代號2317"
         },
         {
           "name": "聯發科 MediaTek",
@@ -2166,7 +2666,11 @@ const AUDIENCE_EXTRA = {
           "note": "與 NVIDIA 合作 N1X agentic AI PC 晶片；收尾段提及 NVIDIA 與 Microsoft 推出全新 PC 線，聯發科為該晶片的台廠合作方，惟此段未逐字點名。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2454.TW",
+          "exchange": "台股 (TWSE)",
+          "tnote": "IC 設計龍頭，台股可直接買"
         },
         {
           "name": "微軟 Microsoft",
@@ -2174,7 +2678,11 @@ const AUDIENCE_EXTRA = {
           "note": "收尾段逐字點名：『NVIDIA and Microsoft has created a whole new line of PCs』，為 agentic PC（RTX Spark/Windows）關鍵夥伴。",
           "exposure": "medium",
           "basis": "named",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": true,
+          "ticker": "MSFT",
+          "exchange": "Nasdaq",
+          "tnote": "美股上市"
         },
         {
           "name": "廣達 Quanta",
@@ -2182,7 +2690,11 @@ const AUDIENCE_EXTRA = {
           "note": "AI 伺服器與資料中心系統 ODM 代工；收尾段未具名，屬支撐 AI 工廠規模化的供應鏈夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "2382.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "AI 伺服器 ODM 龍頭，台股上市可直接買賣"
         },
         {
           "name": "緯創/緯穎 Wistron/Wiwynn",
@@ -2190,7 +2702,11 @@ const AUDIENCE_EXTRA = {
           "note": "緯穎由緯創分拆、兩家同屬 NVIDIA AI 伺服器/機櫃供應鏈，合併標示合理；收尾段未具名，屬基礎建設擴張受惠台廠。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "taiwan"
+          "origin": "taiwan",
+          "listed": true,
+          "ticker": "3231.TW",
+          "exchange": "台股(TWSE)",
+          "tnote": "兩家皆台股上市：緯創 3231.TW、緯穎 6669.TW"
         },
         {
           "name": "超微 AMD",
@@ -2198,7 +2714,11 @@ const AUDIENCE_EXTRA = {
           "note": "資料中心 AI 加速器與 CPU 市場競爭者；收尾段未提及，屬競爭對手而非受惠夥伴。",
           "exposure": "low",
           "basis": "competitor",
-          "origin": "competitor"
+          "origin": "competitor",
+          "listed": true,
+          "ticker": "AMD",
+          "exchange": "Nasdaq",
+          "tnote": "Advanced Micro Devices"
         },
         {
           "name": "GMI Cloud",
@@ -2206,7 +2726,11 @@ const AUDIENCE_EXTRA = {
           "note": "經查證為 NVIDIA Cloud Partner、台灣 AI Factory（7,000 顆 Blackwell GPU）業者；收尾段未逐字點名，列為已知雲端合作夥伴。",
           "exposure": "high",
           "basis": "supplychain",
-          "origin": "overseas"
+          "origin": "overseas",
+          "listed": false,
+          "ticker": "",
+          "exchange": "",
+          "tnote": "未上市AI雲端新創，散戶無法買賣"
         }
       ],
       "growth": "根據 NVIDIA 在本場演講的說法，黃仁勳將 NVIDIA 定位為從晶片公司轉型為「AI 基礎建設公司」，主張 agentic 運算模式將橫跨雲端、PC 與機器人三大場域，形成單一連貫的運算平台與生態系。NVIDIA 表示這套生態系建立在 CUDA 軟體護城河與全球（尤其台灣）供應鏈規模之上，並以 Vera Rubin 平台量產、N1X agentic PC、Cosmos 3 等 roadmap 作為持續成長的驅動。公司並重申台北/台灣供應鏈是「一切的起點」，視其為支撐 AI 工廠規模化交付的核心優勢。以上為 NVIDIA 與黃仁勳於演講中的論述與展望，屬公司說法，並非投資建議；文中未列出具體市場規模或營收數字以避免失準。",
@@ -2332,7 +2856,7 @@ function App() {
       companyNodes = extra.companies.map((c, i) => ({
         id: 'company-' + i, type: 'company',
         position: { x: cpos[i].x - 64, y: cpos[i].y - 45 },
-        data: { name: c.name, tag: c.tag, note: c.note, exposure: c.exposure, basis: c.basis, origin: c.origin, themeId: compThemeId },
+        data: { name: c.name, tag: c.tag, note: c.note, exposure: c.exposure, basis: c.basis, origin: c.origin, listed: c.listed, ticker: c.ticker, exchange: c.exchange, tnote: c.tnote, themeId: compThemeId },
         draggable: true,
       }));
       companyEdges = extra.companies.map((c, i) => ({
@@ -2520,8 +3044,13 @@ function CompanyPopover({ company, onClose, onOpenTheme }) {
       <div class="cpop-tag" style=${{ color: c }}>
         <span class="cpop-dot" style=${{ background: c }}></span>${originLabel}　·　${company.tag}　·　與 NVIDIA 關聯深度：${exp}
       </div>
-      <div class="cpop-name">${company.name}</div>
-      ${basisLabel && html`<div class="cpop-basis">依據：${basisLabel}</div>`}
+      <div class="cpop-name">
+        ${company.name}
+        ${company.listed
+          ? html`<span class="cpop-ticker">${company.ticker}${company.exchange ? ' · ' + company.exchange : ''}</span>`
+          : html`<span class="cpop-ticker cpop-unlisted">未上市</span>`}
+      </div>
+      ${(company.tnote || basisLabel) && html`<div class="cpop-basis">${company.tnote ? company.tnote + '　' : ''}${basisLabel ? '· 依據：' + basisLabel : ''}</div>`}
       <div class="cpop-note">${company.note}</div>
       ${theme && html`<button class="cpop-link" onClick=${() => onOpenTheme(company.themeId)}>看「${theme.title}」詳情 →</button>`}
     </div>
