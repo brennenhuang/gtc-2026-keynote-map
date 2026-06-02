@@ -17,7 +17,7 @@
 ```bash
 cd gtc_introduction
 python3 -m http.server 8000
-# 瀏覽器開 http://localhost:8000/gtc_taipei_2026_map.html
+# 瀏覽器開 http://localhost:8000/index.html
 ```
 
 ## 操作
@@ -31,7 +31,7 @@ python3 -m http.server 8000
 
 | 檔案 | 說明 |
 |---|---|
-| `gtc_taipei_2026_map.html` | 主成品（單一檔，React Flow + Lucide + Noto Sans TC/Space Grotesk，ESM CDN，免 build） |
+| `index.html` | 主成品（單一檔，React Flow + Lucide + Noto Sans TC/Space Grotesk，ESM CDN，免 build） |
 | `transcript.srt` | 官方逐字稿（內容與時間戳的權威來源） |
 | `keynote-timestamps.md` | 13 主題章節時間地圖（真實時間 + 黃仁勳原句） |
 | `REFERENCES.md` | 全部參考來源（逐字稿為主 + 各媒體報導連結） |
